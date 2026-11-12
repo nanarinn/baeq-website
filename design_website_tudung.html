@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Baeq – Inner caps</title>
+<meta name="description" content="Baeq inner caps in soft, cool fabrics. Order on WhatsApp. Shipping across Malaysia.">
+<meta name="theme-color" content="#151210">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700&family=Inter:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1C1814;--b1:#EFE8DF;--b2:#FBF8F3;--line:#CFC5B7;--muted:#6F6458;--putty:#BDB5A5;--hero:#151210;--heroink:#F3ECE2;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#F0E8DD;--b1:#26211C;--b2:#1D1916;--line:#4A4037;--muted:#B5A898;--putty:#4A4238;color-scheme:dark}}
+:root[data-theme="dark"]{--ink:#F0E8DD;--b1:#26211C;--b2:#1D1916;--line:#4A4037;--muted:#B5A898;--putty:#4A4238;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--b2);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.55;overflow-x:hidden}
+h1,h2,h3{font-family:'Inter Tight',system-ui,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:-.035em;line-height:.92;margin:0}
+h1{font-size:clamp(3.4rem,12vw,9rem)}
+h2{font-size:clamp(2.6rem,8vw,6rem)}
+i{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;text-transform:none;letter-spacing:0}
+a{color:inherit}
+.in{max-width:1120px;margin:0 auto;padding:0 24px;position:relative}
+
+/* --- PRELOADER ANIMATION --- */
+#preloader{position:fixed;inset:0;background:var(--hero);color:var(--heroink);z-index:9999;display:flex;justify-content:center;align-items:center;font-family:'Inter Tight',sans-serif;font-size:2rem;font-weight:700;transition:opacity 0.6s ease, visibility 0.6s ease}
+#preloader.hide{opacity:0;visibility:hidden}
+
+.strip{background:var(--putty);color:var(--ink);font-size:.82rem;font-weight:500}
+.strip .in{display:flex;justify-content:space-between;gap:16px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
+.strip nav a{margin-left:20px;text-decoration:none}
+.strip nav a:hover{text-decoration:underline}
+.pill{display:inline-block;border:1px solid currentColor;border-radius:999px;padding:9px 20px;font:inherit;font-size:.85rem;font-weight:500;text-decoration:none;background:none;color:inherit;cursor:pointer;transition:all 0.3s ease}
+.pill:hover,.pill[aria-pressed="true"]{background:currentColor}
+.pill:hover span,.pill[aria-pressed="true"] span{color:var(--inv)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--putty);outline-offset:3px}
+
+.hero{background:var(--hero);color:var(--heroink);padding:56px 0 64px;--inv:var(--hero);position:relative;overflow:hidden}
+.hgrid{display:grid;grid-template-columns:260px 1fr;gap:40px;align-items:start}
+.photo{margin:0;background:var(--putty);aspect-ratio:3/4;display:grid;place-items:end center;overflow:hidden}
+.photo svg{width:88%;height:auto}
+#tud{fill:var(--tudung,#C9A98B);transition:fill .35s}
+.hright p{max-width:42ch;color:#CFC5B7;margin:28px 0}
+.hmeta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.swatches{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:32px}
+.sw{width:30px;height:30px;border-radius:50%;border:1px solid #7a7064;cursor:pointer;padding:0;transition:transform 0.2s}
+.sw:hover{transform:scale(1.15)}
+.sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--hero),0 0 0 3px var(--heroink)}
+#swname{font-size:.85rem;color:#CFC5B7;margin-left:6px}
+
+.block{padding:80px 0}
+.b1{background:var(--b1)}
+.center{text-align:center}
+.center p{color:var(--muted);margin:20px auto 28px;max-width:46ch}
+
+/* --- SCROLL REVEAL ANIMATION --- */
+.rv{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease-out, transform 0.8s ease-out}
+.rv.on{opacity:1;transform:translateY(0)}
+
+/* --- PRODUCT CARDS HOVER EFFECT --- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.card{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:6px;--inv:var(--b2);transition:all 0.3s ease;position:relative;overflow:hidden}
+.card:hover{background:var(--b1);transform:translateY(-4px);box-shadow:0 10px 20px rgba(0,0,0,0.05);z-index:2}
+.card .pic{background:var(--putty);aspect-ratio:1;display:grid;place-items:end center;margin-bottom:10px;overflow:hidden;border-radius:999px 999px 0 0}
+.card .pic svg{width:70%;height:auto;transition:transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)}
+.card:hover .pic svg{transform:scale(1.1) translateY(-5px)}
+
+/* --- FLOATING ANIMATION FOR HERO IMAGE --- */
+.hero .photo{border-radius:999px 999px 0 0;aspect-ratio:3/4.2;position:relative;animation:float 6s ease-in-out infinite}
+@keyframes float{0%{transform:translateY(0px)}50%{transform:translateY(-10px)}100%{transform:translateY(0px)}}
+
+/* --- MARQUEE --- */
+.marq{overflow:hidden;background:var(--hero);color:var(--heroink);border-top:1px solid #3a322b;padding:18px 0;white-space:nowrap}
+.marq div{display:inline-block;animation:mq 25s linear infinite;font-family:'Inter Tight',sans-serif;font-size:clamp(1.6rem,4vw,2.6rem);text-transform:uppercase;letter-spacing:-.02em;font-weight:700}
+.marq i{padding:0 .5em;color:var(--putty);text-transform:none}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* --- WHATSAPP FAB PULSE --- */
+.fab{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:25;background:var(--ink);color:var(--b2);padding:12px 20px;border-radius:999px;text-decoration:none;font-weight:500;font-size:.9rem;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .2s}
+.fab:hover{transform:translateY(-3px)}
+.fab::after{content:'';position:absolute;inset:0;border-radius:999px;border:2px solid var(--ink);animation:pulse 2s infinite;opacity:0.5;pointer-events:none}
+@keyframes pulse{0%{transform:scale(1);opacity:0.5}100%{transform:scale(1.3);opacity:0}}
+
+/* --- OTHER STYLES --- */
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end}
+.split p{max-width:44ch;color:var(--muted);margin:24px 0 0}
+.cells{border:1px solid var(--line);background:var(--b2);border-radius:24px;overflow:hidden}
+.cells div{padding:22px 24px;border-bottom:1px solid var(--line);transition:background 0.3s}
+.cells div:hover{background:var(--b1)}
+.cells div:last-child{border-bottom:0}
+.cells h3{font-size:1.3rem;margin-bottom:8px;line-height:1}
+.cells p{margin:0;font-size:.92rem;color:var(--muted)}
+
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:40px;border-top:1px solid var(--line)}
+.quotes blockquote{margin:0;padding:24px 24px 24px 0;transition:transform 0.3s}
+.quotes blockquote:hover{transform:scale(1.02)}
+.quotes p{margin:0 0 14px;font-size:1.05rem}
+.quotes cite{font-style:normal;font-size:.85rem;color:var(--muted)}
+
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px}
+details{border-top:1px solid var(--line);padding:16px 0;transition:padding 0.3s}
+details[open]{padding-bottom:24px}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';font-size:1.5rem;transition:transform 0.3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:10px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4s ease-in}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+
+.end{background:var(--hero);color:var(--heroink);padding:80px 0 32px;--inv:var(--hero)}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;margin-top:72px;padding-top:28px;border-top:1px solid #3a322b;font-size:.9rem;color:#CFC5B7}
+.fgrid h3{font-size:1rem;color:var(--heroink);margin-bottom:10px;line-height:1}
+.fgrid p{margin:3px 0}
+
+/* --- CART DRAWER --- */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:30;opacity:0;visibility:hidden;transition:opacity .25s}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--b2);z-index:31;transform:translateX(100%);visibility:hidden;transition:transform .3s cubic-bezier(0.4, 0, 0.2, 1),visibility .3s;display:flex;flex-direction:column;padding:24px;--inv:var(--b2);border-left:1px solid var(--line)}
+.open .drawer{transform:none;visibility:visible}.open .scrim{opacity:1;visibility:visible}
+
+/* --- RESPONSIVE (SUPAYA KEMAS DI LAPTOP KECIL & PHONE) --- */
+@media(max-width:1024px){
+  .hgrid{grid-template-columns:1fr; text-align: center; gap: 20px;}
+  .hright{order: -1;}
+  .hmeta{justify-content: center;}
+  .swatches{justify-content: center;}
+  .mwrap{margin: 0 auto;}
+  .split,.faq{grid-template-columns:1fr; text-align: center;}
+  .cells{margin-top: 20px;}
+  .quotes blockquote{padding: 24px 0; text-align: center;}
+  .steps{text-align: center;}
+  .step{padding: 24px 0 0 0 !important;}
+}
+
+@media(max-width:640px){
+ .in{padding:0 20px}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .card .pill{width:100%;text-align:center}
+ .marq div{font-size:1.5rem;}
+ .fab{right:10px;bottom:10px;padding:10px 15px;font-size:0.8rem;}
+}
+</style>
+</head>
+<body>
+
+<div id="preloader">Baeq.</div>
+
+<div class="strip"><div class="in"><span>Free shipping on orders over RM100</span><span>Ships across Malaysia</span></div></div>
+<header class="top" style="position:sticky;top:0;z-index:20;background:var(--b2);border-bottom:1px solid var(--line);"><div class="in" style="display:flex;align-items:center;justify-content:space-between;height:64px;"><a class="logo" href="#" style="font-family:'Inter Tight';font-weight:700;font-size:1.3rem;text-decoration:none;text-transform:uppercase;">Baeq</a><nav style="display:flex;"><a href="#collection" style="margin:0 14px;text-decoration:none;font-size:.9rem;">Collection</a><a href="#why" style="margin:0 14px;text-decoration:none;font-size:.9rem;">Why us</a><a href="#faq" style="margin:0 14px;text-decoration:none;font-size:.9rem;">FAQ</a><a href="#order" style="margin:0 14px;text-decoration:none;font-size:.9rem;">Contact</a></nav><button class="pill" id="cartbtn" aria-label="Open cart"><span>Cart (<b id="cnt">0</b>)</span></button></div></header>
+
+<section class="hero">
+  <div class="in hgrid">
+    <div class="mwrap" role="group" aria-label="Mirror colour slider"><div class="mirrors" id="mirrors" style="display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 13% 14px;scrollbar-width:none;"></div><div class="marrows" style="display:flex;justify-content:center;align-items:center;gap:18px;font-size:.85rem;color:#CFC5B7;"><button id="mprev" aria-label="Previous colour" style="width:40px;height:40px;border-radius:50%;border:1px solid currentColor;background:none;color:inherit;cursor:pointer;font-size:1rem;">←</button><span id="mcount"></span><button id="mnext" aria-label="Next colour" style="width:40px;height:40px;border-radius:50%;border:1px solid currentColor;background:none;color:inherit;cursor:pointer;font-size:1rem;">→</button></div></div>
+    <div class="hright">
+      <span class="cap"><i>soft, cool &amp; yours</i></span>
+      <h1>Inner<br><i>C</i>aps</h1>
+      <p>Ninja and ciput inner caps in soft fabrics that absorb sweat and stay in place all day. Pick a colour and order straight through WhatsApp.</p>
+      <div class="hmeta"><a class="pill" href="#collection"><span>Shop the collection</span></a><a class="pill" id="wa1" href="#" target="_blank" rel="noopener"><span>Message us</span></a></div>
+      <div class="swatches" role="group" aria-label="Choose a colour" id="swatches"></div>
+    </div>
+  </div>
+</section>
+
+<div class="marq" aria-hidden="true"><div>Cool fabric <i>&amp;</i> Soft fit <i>&amp;</i> Stays in place <i>&amp;</i> Cool fabric <i>&amp;</i> Soft fit <i>&amp;</i> Stays in place <i>&amp;</i> </div><div>Cool fabric <i>&amp;</i> Soft fit <i>&amp;</i> Stays in place <i>&amp;</i> Cool fabric <i>&amp;</i> Soft fit <i>&amp;</i> Stays in place <i>&amp;</i> </div></div>
+
+<section class="block b1" id="why">
+  <div class="in">
+    <div class="split rv">
+      <div><h2>Made for <i>e</i>very day</h2><p>Cotton and jersey that absorb sweat, with a cut and elastic designed to stay put from the first prayer to the last meeting.</p></div>
+      <div class="cells">
+        <div><h3>Stays in place</h3><p>The cut and elastic are designed to stay put all day.</p></div>
+        <div><h3>Cool fabric</h3><p>Soft cotton and jersey that don’t feel hot.</p></div>
+        <div><h3>Shipping across Malaysia</h3><p>We post to Peninsular Malaysia, Sabah and Sarawak.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="collection">
+  <div class="in center rv">
+    <h2>The <i>c</i>ollection</h2>
+    <p>Ninja and ciput inner caps in six colours. Choose a colour, then add to cart.</p>
+    <div class="tabs" id="tabs" role="group" aria-label="Filter products" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;"></div>
+    <div class="grid" id="products" style="text-align:left"></div>
+  </div>
+</section>
+
+<section class="block dark" id="wear">
+  <div class="in rv">
+    <h2>How to <i>w</i>ear it</h2>
+    <div class="steps" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:48px;border-top:1px solid #3a322b">
+      <div class="step" style="padding:32px 28px 0 0"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,8vw,5.5rem);line-height:1;color:var(--putty);margin-bottom:12px;">01</b><h3>Slip it on</h3><p>Pull the inner cap over your hair, covering the hairline and ears.</p></div>
+      <div class="step" style="padding:32px 28px 0 0"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,8vw,5.5rem);line-height:1;color:var(--putty);margin-bottom:12px;">02</b><h3>Smooth and set</h3><p>Tuck stray hair in and adjust the band so it sits flat and snug.</p></div>
+      <div class="step" style="padding:32px 28px 0 0"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,8vw,5.5rem);line-height:1;color:var(--putty);margin-bottom:12px;">03</b><h3>Style your tudung</h3><p>Layer your bawal or shawl on top. The cap grips the fabric so it stays put.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="faq">
+  <div class="in faq rv">
+    <h2>Good <i>t</i>o know</h2>
+    <div>
+      <details><summary>How do I order?</summary><p>Tap the Order button on a product. WhatsApp opens with a message already written. Send it to us and we’ll confirm stock and payment.</p></details>
+      <details><summary>How do I choose a size?</summary><p>Most of our inner caps are free size and stretch. If you’re unsure, ask us on WhatsApp.</p></details>
+      <details><summary>How long does delivery take?</summary><p>Usually 2 to 4 working days for Peninsular Malaysia, and 4 to 7 days for Sabah and Sarawak.</p></details>
+      <details><summary>Can I exchange or return an item?</summary><p>Yes, if the item is damaged or the wrong one was sent. Contact us within 3 days of receiving it.</p></details>
+      <details><summary>Which payment methods do you accept?</summary><p>Bank transfer, DuitNow and e-wallets. We’ll send the details through WhatsApp.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="end" id="order">
+  <div class="in rv">
+    <h2>Order on <i>W</i>hatsApp</h2>
+    <p class="lead" style="color:#CFC5B7;max-width:44ch;margin:24px 0 28px">Want to order or ask first? Send us a message and we’ll reply as soon as we can.</p>
+    <a class="pill" id="wa" href="#" target="_blank" rel="noopener"><span>Message on WhatsApp</span></a>
+    <div class="fgrid">
+      <div><h3>Baeq</h3><p>Comfortable inner caps for all-day wear.</p></div>
+      <div><h3>Contact</h3><p>WhatsApp: 012-345 6789</p><p>Email: hello@baeq.com</p><p>Monday to Saturday, 9am to 6pm</p></div>
+      <div><h3>Follow</h3><p>Instagram: @baeq</p><p>TikTok: @baeq</p><p>Facebook: Baeq</p></div>
+    </div>
+    <p class="copy" style="margin:32px 0 0;font-size:.8rem;color:#8d8275">© <span id="yr"></span> Baeq. All rights reserved.</p>
+  </div>
+</section>
+
+<a class="fab" id="fab" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Cart"><header><h2>Cart</h2><button class="pill" id="closecart"><span>Close</span></button></header><ul id="lines" style="list-style:none;margin:0;padding:0;flex:1;overflow:auto"></ul><div class="sum" style="border-top:1px solid var(--ink);padding-top:16px;display:grid;gap:10px"><div class="row" style="display:flex;justify-content:space-between;font-weight:500"><span>Total</span><span id="tot">RM0</span></div><small id="ship" style="color:var(--muted)"></small><a class="pill" id="co" target="_blank" rel="noopener" href="#" style="text-align:center"><span>Checkout on WhatsApp</span></a><small style="color:var(--muted)">We’ll confirm stock and payment details on WhatsApp.</small></div></aside>
+
+<script>
+// Hide preloader on load
+window.addEventListener('load', function() {
+    document.getElementById('preloader').classList.add('hide');
+});
+
+var WA="60123456789"; // Tukar nombor WhatsApp anda di sini
+var colors=[["Latte","#C9A98B"],["Cream","#E9DCC3"],["Mocha","#9A7458"],["Dusty rose","#D9B3A8"],["Sage","#B5C0A3"],["Dark brown","#6B4A38"]];
+var cat="All";
+var items=[
+ ["Cotton Ninja","Cool cotton fabric that absorbs sweat.","RM12","Ninja"],
+ ["Jersey Ninja","Soft, stretchy jersey that isn’t tight on the head.","RM14","Ninja"],
+ ["Drawstring Ninja","Adjustable ties for a snug or loose fit.","RM15","Ninja"],
+ ["Double-Layer Ninja","Two layers so hair stays hidden.","RM16","Ninja"],
+ ["Elastic Ciput","Free size with a comfy elastic band.","RM8","Ciput"],
+ ["Jersey Ciput","Lightweight and ideal under a shawl.","RM9","Ciput"],
+ ["Non-Slip Ciput","Smooth grip texture so your tudung doesn’t slip.","RM11","Ciput"],
+ ["Sports Inner Cap","Dry-fit fabric with fine holes for exercise.","RM17","Sports"]
+];
+var cur=colors[0];
+var sel={};
+
+function dots(k){return '<div class="cdots" role="group" aria-label="Choose a colour" style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;">'+colors.map(function(c,j){return '<button class="cd" data-k="'+k+'" data-j="'+j+'" aria-label="'+c[0]+'" aria-pressed="'+(sel[k]===j)+'" style="width:22px;height:22px;border-radius:50%;border:1px solid var(--line);cursor:pointer;padding:0;background:'+c[1]+'"></button>'}).join('')+'</div><small class="cn" style="color:var(--muted);font-size:.8rem">'+(sel[k]==null?'Choose a colour':colors[sel[k]][0])+'</small>'}
+function warn(el){var n=el.closest('article').querySelector('.cn');n.textContent='Please choose a colour first';n.classList.add('warn');n.style.color='#C4553D';}
+document.addEventListener('click',function(e){var b=e.target.closest('.cd');if(!b)return;var k=b.dataset.k,j=+b.dataset.j,card=b.closest('article');sel[k]=j;card.querySelectorAll('.cd').forEach(function(x){x.setAttribute('aria-pressed',x===b);x.style.boxShadow=x===b?'0 0 0 2px var(--b2),0 0 0 3px var(--ink)':'none'});var n=card.querySelector('.cn');n.textContent=colors[j][0];n.classList.remove('warn');n.style.color='var(--muted)';var pc=card.querySelector('.pic');if(pc)pc.innerHTML=pic(colors[j][1],card.dataset.cat);});
+function wa(t){return "https://wa.me/"+WA+"?text="+encodeURIComponent(t)}
+
+function pic(c,k){
+ var ninja=k!=='Ciput';
+ var cap=ninja?'M100 20C60 20 40 54 40 100v58c0 22-8 34-14 48 24 18 124 18 148 0-6-14-14-26-14-48v-58c0-46-20-80-60-80Z':'M100 24C58 24 42 58 42 104l14 8c2-26 14-42 44-42s42 16 44 42l14-8c0-46-16-80-58-80Z';
+ var dots=k==='Sports'?'<g fill="#0003"><circle cx="72" cy="58" r="2.5"/><circle cx="88" cy="46" r="2.5"/><circle cx="104" cy="42" r="2.5"/><circle cx="120" cy="48" r="2.5"/><circle cx="132" cy="60" r="2.5"/><circle cx="60" cy="90" r="2.5"/><circle cx="140" cy="90" r="2.5"/></g>':'';
+ return '<svg viewBox="0 0 200 240"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".3"/><stop offset=".55" stop-opacity="0"/><stop offset="1" stop-opacity=".22"/></linearGradient></defs><path d="M6 240c4-42 34-58 94-60s90 18 94 60Z" fill="#3b312b"/>'+(ninja?'':'<path d="M84 150h32v34q-16 9-32 0Z" fill="#E7BFA5"/>')+'<path d="'+cap+'" fill="'+c+'"/><path d="'+cap+'" fill="url(#g)"/>'+dots+'<ellipse cx="100" cy="112" rx="34" ry="44" fill="#F1D3C0"/><circle cx="87" cy="108" r="2.6" fill="#2B1B2E"/><circle cx="113" cy="108" r="2.6" fill="#2B1B2E"/><path d="M92 132q8 6 16 0" stroke="#2B1B2E" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>';
+}
+
+(function(){var t=document.getElementById('tabs');['All','Ninja','Ciput','Sports'].forEach(function(n){var b=document.createElement('button');b.className='pill';b.innerHTML='<span>'+n+'</span>';b.setAttribute('aria-pressed',n===cat);b.onclick=function(){cat=n;document.querySelectorAll('.tabs .pill').forEach(function(x){x.setAttribute('aria-pressed',x===b)});renderProducts()};t.appendChild(b)})})();
+function setColor(c,fs){
+  cur=c;document.documentElement.style.setProperty('--tudung',c[1]);
+  document.getElementById('swname').textContent=c[0];if(!fs)goMirror(colors.indexOf(c));
+  document.querySelectorAll('.sw').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.n===c[0])});
+  renderProducts();
+}
+function renderProducts(){
+  document.getElementById('products').innerHTML=items.filter(function(p){return cat==='All'||p[3]===cat}).map(function(p){
+    return '<article class="card" data-cat="'+p[3]+'"><div class="pic">'+pic(sel['i'+items.indexOf(p)]==null?'#D8D0C4':colors[sel['i'+items.indexOf(p)]][1],p[3])+'</div><span class="tag" style="font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">'+p[3]+'</span><h3 style="font-size:1.35rem;line-height:1">'+p[0]+'</h3><p style="margin:0;font-size:.88rem;color:var(--muted);flex:1">'+p[1]+'</p><span class="price" style="font-weight:500;font-size:.9rem">'+p[2]+'</span>'+dots('i'+items.indexOf(p))+'<button class="pill add" data-i="'+items.indexOf(p)+'" style="align-self:flex-start;margin-top:8px"><span>Add to cart</span></button></article>';
+  }).join('');
+}
+var box=document.getElementById('swatches');
+colors.forEach(function(c){
+  var b=document.createElement('button');b.className='sw';b.style.background=c[1];b.dataset.n=c[0];
+  b.setAttribute('aria-label',c[0]);b.onclick=function(){setColor(c)};box.appendChild(b);
+});
+var s=document.createElement('span');s.id='swname';box.appendChild(s);
+var msg=wa("Hi, I’d like to ask about your inner caps.");
+document.getElementById('wa').href=msg;document.getElementById('wa1').href=msg;document.getElementById('fab').href=msg;
+document.getElementById('yr').textContent=new Date().getFullYear();
+var cart=[],root=document.body;
+function renderCart(){
+ var n=0,t=0;
+ var h=cart.map(function(l,k){n+=l.q;t+=l.q*l.p;return '<li style="display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 0;border-top:1px solid var(--line)"><div><strong>'+l.n+'</strong><br><small>'+l.c+' · RM'+l.p+'</small></div><div class="qty" style="display:flex;align-items:center;gap:10px"><button data-k="'+k+'" data-d="-1" aria-label="Decrease" style="width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:none;color:inherit;cursor:pointer;font:inherit">−</button><span>'+l.q+'</span><button data-k="'+k+'" data-d="1" aria-label="Increase" style="width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:none;color:inherit;cursor:pointer;font:inherit">+</button></div></li>'}).join('');
+ document.getElementById('lines').innerHTML=h||'<li class="empty" style="color:var(--muted)">Your cart is empty.</li>';
+ document.getElementById('cnt').textContent=n;
+ document.getElementById('tot').textContent='RM'+t;
+ document.getElementById('ship').textContent=!n?'':(t>=100?'Free shipping applied':'Add RM'+(100-t)+' more for free shipping');
+ var co=document.getElementById('co');co.style.display=n?'block':'none';
+ co.href=wa("Hi, I’d like to order:\n"+cart.map(function(l){return l.q+" x "+l.n+" ("+l.c+") RM"+(l.q*l.p)}).join("\n")+"\nTotal: RM"+t);
+}
+function openCart(o){root.classList.toggle('open',o)}
+document.addEventListener('click',function(e){
+ var a=e.target.closest('.add'),d=e.target.closest('[data-d]');
+ if(a){var p=items[a.dataset.i],ci=sel['i'+a.dataset.i];if(ci==null){warn(a);return}var cn=colors[ci][0],f=cart.find(function(l){return l.n===p[0]&&l.c===cn});
+  if(f)f.q++;else cart.push({n:p[0],c:cn,p:parseInt(p[2].slice(2),10),q:1});renderCart();openCart(true)}
+ if(d){var l=cart[d.dataset.k];l.q+=parseInt(d.dataset.d,10);if(l.q<1)cart.splice(d.dataset.k,1);renderCart()}
+});
+document.getElementById('cartbtn').onclick=function(){openCart(true)};
+document.getElementById('closecart').onclick=document.getElementById('scrim').onclick=function(){openCart(false)};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')openCart(false)});
+
+renderCart();
+// --- SCROLL REVEAL LOGIC ---
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}
+    })
+  },{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)})
+}
+
+var mir=document.getElementById('mirrors'),mcnt=document.getElementById('mcount'),mi=0,lockT=0,raf;
+mir.innerHTML=colors.map(function(c,j){return '<div class="mirror" data-j="'+j+'" style="flex:0 0 74%;scroll-snap-align:center;text-align:center;transform:scale(.86);opacity:.5;transition:transform .35s,opacity .35s"><div class="frame" style="padding:9px;border-radius:999px 999px 28px 28px;background:linear-gradient(135deg,#E2C9A6,#8F6548 55%,#C9A98B);box-shadow:0 18px 40px rgba(0,0,0,.45)"><div class="glass" style="position:relative;overflow:hidden;border-radius:999px 999px 20px 20px;aspect-ratio:3/4.1;background:linear-gradient(180deg,#d9d2c6,#b9b1a2);display:grid;place-items:end center;box-shadow:inset 0 0 24px rgba(0,0,0,.25)">'+pic(c[1],'Ninja')+'<i class="shine" style="position:absolute;inset:-20%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.35) 46%,rgba(255,255,255,.08) 52%,transparent 58%);pointer-events:none"></i></div></div><span class="mname" style="display:block;margin-top:10px;font-family:\'Playfair Display\',Georgia,serif;font-style:italic;font-size:1.25rem">'+c[0]+'</span></div>'}).join('');
+function mark(j){[].forEach.call(mir.children,function(m,k){m.classList.toggle('on',k===j); m.style.transform = k===j ? 'scale(1)' : 'scale(.86)'; m.style.opacity = k===j ? '1' : '.5';});mcnt.textContent=(j+1)+' / '+colors.length}
+function goMirror(j){var el=mir.children[j];if(!el)return;mi=j;mark(j);lockT=Date.now()+700;mir.scrollTo({left:el.offsetLeft-(mir.clientWidth-el.clientWidth)/2,behavior:'smooth'})}
+mir.addEventListener('scroll',function(){if(Date.now()<lockT)return;cancelAnimationFrame(raf);raf=requestAnimationFrame(function(){var mid=mir.scrollLeft+mir.clientWidth/2,best=0,bd=1e9;[].forEach.call(mir.children,function(m,k){var d=Math.abs(m.offsetLeft+m.clientWidth/2-mid);if(d<bd){bd=d;best=k}});if(best!==mi){mi=best;mark(best);setColor(colors[best],true)}})});
+document.getElementById('mprev').onclick=function(){setColor(colors[Math.max(0,mi-1)])};
+document.getElementById('mnext').onclick=function(){setColor(colors[Math.min(colors.length-1,mi+1)])};
+setColor(colors[0]);
+</script>
+</body>
+</html>
