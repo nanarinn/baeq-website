@@ -27,9 +27,9 @@ a{color:inherit; text-decoration: none;}
 /* --- CUSTOM CURSOR (KURSOR BULAT) --- */
 .cursor {
     position: fixed; width: 24px; height: 24px; border-radius: 50%; background: white;
-    pointer-events: none; z-index: 9999; mix-blend-mode: difference; /* Efek negatif warna */
+    pointer-events: none; z-index: 9999; mix-blend-mode: difference;
     transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s;
-    display: none; /* Sembunyi kat phone */
+    display: none;
 }
 .cursor.active { width: 60px; height: 60px; background: rgba(255,255,255,0.5); }
 
@@ -49,11 +49,7 @@ a{color:inherit; text-decoration: none;}
 .hgrid{display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:center}
 .hright p{max-width:42ch;color:#CFC5B7;margin:28px 0}
 .hmeta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-
-/* Teks gergasi parallax */
 .hero h1 { transition: transform 0.1s ease-out; will-change: transform; }
-
-/* Gambar Terapung */
 .hero .photo{border-radius:999px 999px 0 0;aspect-ratio:3/4.2;position:relative;animation:float 6s ease-in-out infinite; overflow:hidden; background: var(--putty);}
 @keyframes float{0%{transform:translateY(0px)}50%{transform:translateY(-10px)}100%{transform:translateY(0px)}}
 
@@ -140,7 +136,7 @@ details p{margin:10px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4
   .quotes blockquote{padding: 24px 0; text-align: center;}
   .steps{text-align: center;}
   .step{padding: 24px 0 0 0 !important;}
-  * { cursor: auto !important; } /* Paksa kursor normal kat phone */
+  * { cursor: auto !important; }
   .cursor { display: none !important; }
 }
 @media(max-width:640px){
@@ -241,7 +237,7 @@ details p{margin:10px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4
 <script>
 // --- CUSTOM CURSOR LOGIC ---
 const cursor = document.getElementById('customCursor');
-if(window.matchMedia("(pointer: fine)").matches){ // Hanya aktif kat laptop/PC
+if(window.matchMedia("(pointer: fine)").matches){
     document.addEventListener('mousemove', e => {
         cursor.style.display = 'block';
         cursor.style.left = e.clientX + 'px';
@@ -276,24 +272,33 @@ window.addEventListener('scroll', () => {
     const title = document.getElementById('heroTitle');
     if(title){
         let scrollY = window.scrollY;
-        title.style.transform = `translateY(${scrollY * 0.2}px)`; // Gerak ke bawah sikit
+        title.style.transform = `translateY(${scrollY * 0.2}px)`;
     }
 });
 
 // --- DATA & LOGIC BAWAAN ---
 var WA="60123456789"; // Tukar nombor WhatsApp anda di sini
 var colors=[["Latte","#C9A98B"],["Cream","#E9DCC3"],["Mocha","#9A7458"],["Dusty rose","#D9B3A8"],["Sage","#B5C0A3"],["Dark brown","#6B4A38"]];
-var cat="All";
+
+// --- KATEGORI BARU ---
+var cat="All"; 
+var categories = ["All", "Premium", "Mampu Milik"];
+
+// --- SENARAI PRODUK BARU ---
 var items=[
- ["Cotton Ninja","Cool cotton fabric that absorbs sweat.","RM19","Ninja"],
- ["Jersey Ninja","Soft, stretchy jersey that isn’t tight on the head.","RM22","Ninja"],
- ["Drawstring Ninja","Adjustable ties for a snug or loose fit.","RM24","Ninja"],
- ["Double-Layer Ninja","Two layers so hair stays hidden.","RM25","Ninja"],
- ["Elastic Ciput","Free size with a comfy elastic band.","RM12","Ciput"],
- ["Jersey Ciput","Lightweight and ideal under a shawl.","RM15","Ciput"],
- ["Non-Slip Ciput","Smooth grip texture so your tudung doesn’t slip.","RM17","Ciput"],
- ["Sports Inner Cap","Dry-fit fabric with fine holes for exercise.","RM26","Sports"]
+ // PREMIUM
+ ["Najwa Necktie","Premium inner cap","RM39","Premium"],
+ ["Najwa Midi","Premium inner cap","RM49","Premium"],
+ ["Najwa Magic","Premium inner cap","RM39","Premium"],
+ ["Najwa Bonnet","Premium inner cap","RM49","Premium"],
+ ["Inner Diva (DV01-CREAM)","Premium inner cap","RM29","Premium"],
+ ["Inner Ninja (NN15-NAVY BLUE)","Premium inner cap","RM29","Premium"],
+ ["Inner Sufi (SUFI03-PALE PINK)","Premium inner cap","RM29","Premium"],
+ // MAMPU MILIK
+ ["Inner WARDA","Mampu milik inner cap","RM6","Mampu Milik"],
+ ["Inner Cotton Viscose Dagu","Mampu milik inner cap","RM7","Mampu Milik"]
 ];
+
 var cur=colors[0];
 var sel={};
 
@@ -302,15 +307,31 @@ function warn(el){var n=el.closest('article').querySelector('.cn');n.textContent
 document.addEventListener('click',function(e){var b=e.target.closest('.cd');if(!b)return;var k=b.dataset.k,j=+b.dataset.j,card=b.closest('article');sel[k]=j;card.querySelectorAll('.cd').forEach(function(x){x.setAttribute('aria-pressed',x===b);x.style.boxShadow=x===b?'0 0 0 2px var(--b2),0 0 0 3px var(--ink)':'none'});var n=card.querySelector('.cn');n.textContent=colors[j][0];n.classList.remove('warn');n.style.color='var(--muted)';var pc=card.querySelector('.pic');if(pc)pc.innerHTML=pic(colors[j][1],card.dataset.cat);});
 function wa(t){return "https://wa.me/"+WA+"?text="+encodeURIComponent(t)}
 
-// Gambar SVG (Awak boleh tukar jadi <img src="model.jpg" ...> nanti)
 function pic(c,k){
- var ninja=k!=='Ciput';
+ // Guna SVG buat masa ni. Nanti boleh tukar jadi <img src="model.jpg" ...>
+ var ninja=k!=='Mampu Milik';
  var cap=ninja?'M100 20C60 20 40 54 40 100v58c0 22-8 34-14 48 24 18 124 18 148 0-6-14-14-26-14-48v-58c0-46-20-80-60-80Z':'M100 24C58 24 42 58 42 104l14 8c2-26 14-42 44-42s42 16 44 42l14-8c0-46-16-80-58-80Z';
  var dots=k==='Sports'?'<g fill="#0003"><circle cx="72" cy="58" r="2.5"/><circle cx="88" cy="46" r="2.5"/><circle cx="104" cy="42" r="2.5"/><circle cx="120" cy="48" r="2.5"/><circle cx="132" cy="60" r="2.5"/><circle cx="60" cy="90" r="2.5"/><circle cx="140" cy="90" r="2.5"/></g>':'';
  return '<svg viewBox="0 0 200 240"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".3"/><stop offset=".55" stop-opacity="0"/><stop offset="1" stop-opacity=".22"/></linearGradient></defs><path d="M6 240c4-42 34-58 94-60s90 18 94 60Z" fill="#3b312b"/>'+(ninja?'':'<path d="M84 150h32v34q-16 9-32 0Z" fill="#E7BFA5"/>')+'<path d="'+cap+'" fill="'+c+'"/><path d="'+cap+'" fill="url(#g)"/>'+dots+'<ellipse cx="100" cy="112" rx="34" ry="44" fill="#F1D3C0"/><circle cx="87" cy="108" r="2.6" fill="#2B1B2E"/><circle cx="113" cy="108" r="2.6" fill="#2B1B2E"/><path d="M92 132q8 6 16 0" stroke="#2B1B2E" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>';
 }
 
-(function(){var t=document.getElementById('tabs');['All','Ninja','Ciput','Sports'].forEach(function(n){var b=document.createElement('button');b.className='pill';b.innerHTML='<span>'+n+'</span>';b.setAttribute('aria-pressed',n===cat);b.onclick=function(){cat=n;document.querySelectorAll('.tabs .pill').forEach(function(x){x.setAttribute('aria-pressed',x===b)});renderProducts()};t.appendChild(b)})})();
+// --- LOGIK TABS BARU (Premium / Mampu Milik) ---
+(function(){
+ var t=document.getElementById('tabs');
+ categories.forEach(function(n){
+  var b=document.createElement('button');
+  b.className='pill';
+  b.innerHTML='<span>'+n+'</span>';
+  b.setAttribute('aria-pressed',n===cat);
+  b.onclick=function(){
+   cat=n;
+   document.querySelectorAll('.tabs .pill').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+   renderProducts();
+  };
+  t.appendChild(b);
+ });
+})();
+
 function setColor(c,fs){
   cur=c;document.documentElement.style.setProperty('--tudung',c[1]);
   document.getElementById('swname').textContent=c[0];if(!fs)goMirror(colors.indexOf(c));
