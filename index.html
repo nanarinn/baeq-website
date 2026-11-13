@@ -9,66 +9,75 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700&family=Inter:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <style>
+/* --- CSS VARIABLES & RESET --- */
 :root{--ink:#1C1814;--b1:#EFE8DF;--b2:#FBF8F3;--line:#CFC5B7;--muted:#6F6458;--putty:#BDB5A5;--hero:#151210;--heroink:#F3ECE2;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#F0E8DD;--b1:#26211C;--b2:#1D1916;--line:#4A4037;--muted:#B5A898;--putty:#4A4238;color-scheme:dark}}
 :root[data-theme="dark"]{--ink:#F0E8DD;--b1:#26211C;--b2:#1D1916;--line:#4A4037;--muted:#B5A898;--putty:#4A4238;color-scheme:dark}
 html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
-*{box-sizing:border-box}
+*{box-sizing:border-box; cursor: none; /* Sembunyikan kursor asal */ }
 body{margin:0;background:var(--b2);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.55;overflow-x:hidden}
 h1,h2,h3{font-family:'Inter Tight',system-ui,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:-.035em;line-height:.92;margin:0}
 h1{font-size:clamp(3.4rem,12vw,9rem)}
 h2{font-size:clamp(2.6rem,8vw,6rem)}
 i{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;text-transform:none;letter-spacing:0}
-a{color:inherit}
+a{color:inherit; text-decoration: none;}
 .in{max-width:1120px;margin:0 auto;padding:0 24px;position:relative}
 
-/* --- PRELOADER ANIMATION --- */
-#preloader{position:fixed;inset:0;background:var(--hero);color:var(--heroink);z-index:9999;display:flex;justify-content:center;align-items:center;font-family:'Inter Tight',sans-serif;font-size:2rem;font-weight:700;transition:opacity 0.6s ease, visibility 0.6s ease}
+/* --- CUSTOM CURSOR (KURSOR BULAT) --- */
+.cursor {
+    position: fixed; width: 24px; height: 24px; border-radius: 50%; background: white;
+    pointer-events: none; z-index: 9999; mix-blend-mode: difference; /* Efek negatif warna */
+    transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s;
+    display: none; /* Sembunyi kat phone */
+}
+.cursor.active { width: 60px; height: 60px; background: rgba(255,255,255,0.5); }
+
+/* --- PRELOADER --- */
+#preloader{position:fixed;inset:0;background:var(--hero);color:var(--heroink);z-index:10000;display:flex;justify-content:center;align-items:center;font-family:'Inter Tight',sans-serif;font-size:2rem;font-weight:700;transition:opacity 0.6s ease, visibility 0.6s ease}
 #preloader.hide{opacity:0;visibility:hidden}
 
+/* --- NAVBAR --- */
 .strip{background:var(--putty);color:var(--ink);font-size:.82rem;font-weight:500}
 .strip .in{display:flex;justify-content:space-between;gap:16px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
-.strip nav a{margin-left:20px;text-decoration:none}
-.strip nav a:hover{text-decoration:underline}
-.pill{display:inline-block;border:1px solid currentColor;border-radius:999px;padding:9px 20px;font:inherit;font-size:.85rem;font-weight:500;text-decoration:none;background:none;color:inherit;cursor:pointer;transition:all 0.3s ease}
+.pill{display:inline-block;border:1px solid currentColor;border-radius:999px;padding:9px 20px;font:inherit;font-size:.85rem;font-weight:500;background:none;color:inherit;cursor:pointer;transition:all 0.3s ease}
 .pill:hover,.pill[aria-pressed="true"]{background:currentColor}
 .pill:hover span,.pill[aria-pressed="true"] span{color:var(--inv)}
-a:focus-visible,button:focus-visible{outline:3px solid var(--putty);outline-offset:3px}
 
+/* --- HERO SECTION & PARALLAX --- */
 .hero{background:var(--hero);color:var(--heroink);padding:56px 0 64px;--inv:var(--hero);position:relative;overflow:hidden}
-.hgrid{display:grid;grid-template-columns:260px 1fr;gap:40px;align-items:start}
-.photo{margin:0;background:var(--putty);aspect-ratio:3/4;display:grid;place-items:end center;overflow:hidden}
-.photo svg{width:88%;height:auto}
-#tud{fill:var(--tudung,#C9A98B);transition:fill .35s}
+.hgrid{display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:center}
 .hright p{max-width:42ch;color:#CFC5B7;margin:28px 0}
 .hmeta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+
+/* Teks gergasi parallax */
+.hero h1 { transition: transform 0.1s ease-out; will-change: transform; }
+
+/* Gambar Terapung */
+.hero .photo{border-radius:999px 999px 0 0;aspect-ratio:3/4.2;position:relative;animation:float 6s ease-in-out infinite; overflow:hidden; background: var(--putty);}
+@keyframes float{0%{transform:translateY(0px)}50%{transform:translateY(-10px)}100%{transform:translateY(0px)}}
+
+/* --- MAGNETIC BUTTON --- */
+.magnetic-btn { display: inline-block; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+/* --- SWATCHES --- */
 .swatches{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:32px}
 .sw{width:30px;height:30px;border-radius:50%;border:1px solid #7a7064;cursor:pointer;padding:0;transition:transform 0.2s}
 .sw:hover{transform:scale(1.15)}
 .sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--hero),0 0 0 3px var(--heroink)}
 #swname{font-size:.85rem;color:#CFC5B7;margin-left:6px}
 
-.block{padding:80px 0}
-.b1{background:var(--b1)}
-.center{text-align:center}
-.center p{color:var(--muted);margin:20px auto 28px;max-width:46ch}
-
-/* --- SCROLL REVEAL ANIMATION --- */
+/* --- SCROLL REVEAL --- */
 .rv{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease-out, transform 0.8s ease-out}
 .rv.on{opacity:1;transform:translateY(0)}
 
-/* --- PRODUCT CARDS HOVER EFFECT --- */
+/* --- PRODUCT CARDS --- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.card{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:6px;--inv:var(--b2);transition:all 0.3s ease;position:relative;overflow:hidden}
+.card{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:6px;--inv:var(--b2);transition:all 0.3s ease;position:relative;overflow:hidden;background:var(--b2)}
 .card:hover{background:var(--b1);transform:translateY(-4px);box-shadow:0 10px 20px rgba(0,0,0,0.05);z-index:2}
 .card .pic{background:var(--putty);aspect-ratio:1;display:grid;place-items:end center;margin-bottom:10px;overflow:hidden;border-radius:999px 999px 0 0}
-.card .pic svg{width:70%;height:auto;transition:transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)}
-.card:hover .pic svg{transform:scale(1.1) translateY(-5px)}
-
-/* --- FLOATING ANIMATION FOR HERO IMAGE --- */
-.hero .photo{border-radius:999px 999px 0 0;aspect-ratio:3/4.2;position:relative;animation:float 6s ease-in-out infinite}
-@keyframes float{0%{transform:translateY(0px)}50%{transform:translateY(-10px)}100%{transform:translateY(0px)}}
+.card .pic img{width:100%; height:100%; object-fit:cover; transition:transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);}
+.card:hover .pic img{transform:scale(1.1) translateY(-5px)}
 
 /* --- MARQUEE --- */
 .marq{overflow:hidden;background:var(--hero);color:var(--heroink);border-top:1px solid #3a322b;padding:18px 0;white-space:nowrap}
@@ -76,13 +85,17 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--putty);outline-offs
 .marq i{padding:0 .5em;color:var(--putty);text-transform:none}
 @keyframes mq{to{transform:translateX(-50%)}}
 
-/* --- WHATSAPP FAB PULSE --- */
-.fab{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:25;background:var(--ink);color:var(--b2);padding:12px 20px;border-radius:999px;text-decoration:none;font-weight:500;font-size:.9rem;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .2s}
+/* --- WHATSAPP FAB --- */
+.fab{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:25;background:var(--ink);color:var(--b2);padding:12px 20px;border-radius:999px;font-weight:500;font-size:.9rem;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .2s}
 .fab:hover{transform:translateY(-3px)}
 .fab::after{content:'';position:absolute;inset:0;border-radius:999px;border:2px solid var(--ink);animation:pulse 2s infinite;opacity:0.5;pointer-events:none}
 @keyframes pulse{0%{transform:scale(1);opacity:0.5}100%{transform:scale(1.3);opacity:0}}
 
 /* --- OTHER STYLES --- */
+.block{padding:80px 0}
+.b1{background:var(--b1)}
+.center{text-align:center}
+.center p{color:var(--muted);margin:20px auto 28px;max-width:46ch}
 .split{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end}
 .split p{max-width:44ch;color:var(--muted);margin:24px 0 0}
 .cells{border:1px solid var(--line);background:var(--b2);border-radius:24px;overflow:hidden}
@@ -91,13 +104,11 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--putty);outline-offs
 .cells div:last-child{border-bottom:0}
 .cells h3{font-size:1.3rem;margin-bottom:8px;line-height:1}
 .cells p{margin:0;font-size:.92rem;color:var(--muted)}
-
 .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:40px;border-top:1px solid var(--line)}
 .quotes blockquote{margin:0;padding:24px 24px 24px 0;transition:transform 0.3s}
 .quotes blockquote:hover{transform:scale(1.02)}
 .quotes p{margin:0 0 14px;font-size:1.05rem}
 .quotes cite{font-style:normal;font-size:.85rem;color:var(--muted)}
-
 .faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px}
 details{border-top:1px solid var(--line);padding:16px 0;transition:padding 0.3s}
 details[open]{padding-bottom:24px}
@@ -108,7 +119,6 @@ summary::after{content:'+';font-size:1.5rem;transition:transform 0.3s}
 details[open] summary::after{transform:rotate(45deg)}
 details p{margin:10px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4s ease-in}
 @keyframes fadeIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
-
 .end{background:var(--hero);color:var(--heroink);padding:80px 0 32px;--inv:var(--hero)}
 .fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;margin-top:72px;padding-top:28px;border-top:1px solid #3a322b;font-size:.9rem;color:#CFC5B7}
 .fgrid h3{font-size:1rem;color:var(--heroink);margin-bottom:10px;line-height:1}
@@ -119,31 +129,31 @@ details p{margin:10px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4
 .drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--b2);z-index:31;transform:translateX(100%);visibility:hidden;transition:transform .3s cubic-bezier(0.4, 0, 0.2, 1),visibility .3s;display:flex;flex-direction:column;padding:24px;--inv:var(--b2);border-left:1px solid var(--line)}
 .open .drawer{transform:none;visibility:visible}.open .scrim{opacity:1;visibility:visible}
 
-/* --- RESPONSIVE (SUPAYA KEMAS DI LAPTOP KECIL & PHONE) --- */
+/* --- RESPONSIVE --- */
 @media(max-width:1024px){
   .hgrid{grid-template-columns:1fr; text-align: center; gap: 20px;}
   .hright{order: -1;}
   .hmeta{justify-content: center;}
   .swatches{justify-content: center;}
-  .mwrap{margin: 0 auto;}
   .split,.faq{grid-template-columns:1fr; text-align: center;}
   .cells{margin-top: 20px;}
   .quotes blockquote{padding: 24px 0; text-align: center;}
   .steps{text-align: center;}
   .step{padding: 24px 0 0 0 !important;}
+  * { cursor: auto !important; } /* Paksa kursor normal kat phone */
+  .cursor { display: none !important; }
 }
-
 @media(max-width:640px){
  .in{padding:0 20px}
  .grid{grid-template-columns:repeat(2,1fr)}
  .card .pill{width:100%;text-align:center}
- .marq div{font-size:1.5rem;}
  .fab{right:10px;bottom:10px;padding:10px 15px;font-size:0.8rem;}
 }
 </style>
 </head>
 <body>
 
+<div class="cursor" id="customCursor"></div>
 <div id="preloader">Baeq.</div>
 
 <div class="strip"><div class="in"><span>Free shipping on orders over RM100</span><span>Ships across Malaysia</span></div></div>
@@ -151,12 +161,12 @@ details p{margin:10px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4
 
 <section class="hero">
   <div class="in hgrid">
-    <div class="mwrap" role="group" aria-label="Mirror colour slider"><div class="mirrors" id="mirrors" style="display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 13% 14px;scrollbar-width:none;"></div><div class="marrows" style="display:flex;justify-content:center;align-items:center;gap:18px;font-size:.85rem;color:#CFC5B7;"><button id="mprev" aria-label="Previous colour" style="width:40px;height:40px;border-radius:50%;border:1px solid currentColor;background:none;color:inherit;cursor:pointer;font-size:1rem;">←</button><span id="mcount"></span><button id="mnext" aria-label="Next colour" style="width:40px;height:40px;border-radius:50%;border:1px solid currentColor;background:none;color:inherit;cursor:pointer;font-size:1rem;">→</button></div></div>
+    <div class="mwrap" role="group" aria-label="Mirror colour slider"><div class="mirrors" id="mirrors" style="display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 13% 14px;scrollbar-width:none; cursor: grab;"></div><div class="marrows" style="display:flex;justify-content:center;align-items:center;gap:18px;font-size:.85rem;color:#CFC5B7;"><button id="mprev" aria-label="Previous colour" style="width:40px;height:40px;border-radius:50%;border:1px solid currentColor;background:none;color:inherit;cursor:pointer;font-size:1rem;">←</button><span id="mcount"></span><button id="mnext" aria-label="Next colour" style="width:40px;height:40px;border-radius:50%;border:1px solid currentColor;background:none;color:inherit;cursor:pointer;font-size:1rem;">→</button></div></div>
     <div class="hright">
       <span class="cap"><i>soft, cool &amp; yours</i></span>
-      <h1>Inner<br><i>C</i>aps</h1>
+      <h1 id="heroTitle" style="will-change: transform;">Inner<br><i>C</i>aps</h1>
       <p>Ninja and ciput inner caps in soft fabrics that absorb sweat and stay in place all day. Pick a colour and order straight through WhatsApp.</p>
-      <div class="hmeta"><a class="pill" href="#collection"><span>Shop the collection</span></a><a class="pill" id="wa1" href="#" target="_blank" rel="noopener"><span>Message us</span></a></div>
+      <div class="hmeta"><a class="pill magnetic-btn" href="#collection"><span>Shop the collection</span></a><a class="pill magnetic-btn" id="wa1" href="#" target="_blank" rel="noopener"><span>Message us</span></a></div>
       <div class="swatches" role="group" aria-label="Choose a colour" id="swatches"></div>
     </div>
   </div>
@@ -214,7 +224,7 @@ details p{margin:10px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4
   <div class="in rv">
     <h2>Order on <i>W</i>hatsApp</h2>
     <p class="lead" style="color:#CFC5B7;max-width:44ch;margin:24px 0 28px">Want to order or ask first? Send us a message and we’ll reply as soon as we can.</p>
-    <a class="pill" id="wa" href="#" target="_blank" rel="noopener"><span>Message on WhatsApp</span></a>
+    <a class="pill magnetic-btn" id="wa" href="#" target="_blank" rel="noopener"><span>Message on WhatsApp</span></a>
     <div class="fgrid">
       <div><h3>Baeq</h3><p>Comfortable inner caps for all-day wear.</p></div>
       <div><h3>Contact</h3><p>WhatsApp: 012-345 6789</p><p>Email: hello@baeq.com</p><p>Monday to Saturday, 9am to 6pm</p></div>
@@ -229,16 +239,51 @@ details p{margin:10px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4
 <aside class="drawer" id="drawer" aria-label="Cart"><header><h2>Cart</h2><button class="pill" id="closecart"><span>Close</span></button></header><ul id="lines" style="list-style:none;margin:0;padding:0;flex:1;overflow:auto"></ul><div class="sum" style="border-top:1px solid var(--ink);padding-top:16px;display:grid;gap:10px"><div class="row" style="display:flex;justify-content:space-between;font-weight:500"><span>Total</span><span id="tot">RM0</span></div><small id="ship" style="color:var(--muted)"></small><a class="pill" id="co" target="_blank" rel="noopener" href="#" style="text-align:center"><span>Checkout on WhatsApp</span></a><small style="color:var(--muted)">We’ll confirm stock and payment details on WhatsApp.</small></div></aside>
 
 <script>
-// Hide preloader on load
+// --- CUSTOM CURSOR LOGIC ---
+const cursor = document.getElementById('customCursor');
+if(window.matchMedia("(pointer: fine)").matches){ // Hanya aktif kat laptop/PC
+    document.addEventListener('mousemove', e => {
+        cursor.style.display = 'block';
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button, .sw, .cd, .mirror').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+    });
+}
+
+// --- PRELOADER ---
 window.addEventListener('load', function() {
     document.getElementById('preloader').classList.add('hide');
 });
 
+// --- MAGNETIC BUTTON LOGIC ---
+document.querySelectorAll('.magnetic-btn').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+        btn.style.transform = `translate(0px, 0px)`;
+    });
+});
+
+// --- PARALLAX EFFECT ON SCROLL ---
+window.addEventListener('scroll', () => {
+    const title = document.getElementById('heroTitle');
+    if(title){
+        let scrollY = window.scrollY;
+        title.style.transform = `translateY(${scrollY * 0.2}px)`; // Gerak ke bawah sikit
+    }
+});
+
+// --- DATA & LOGIC BAWAAN ---
 var WA="60123456789"; // Tukar nombor WhatsApp anda di sini
 var colors=[["Latte","#C9A98B"],["Cream","#E9DCC3"],["Mocha","#9A7458"],["Dusty rose","#D9B3A8"],["Sage","#B5C0A3"],["Dark brown","#6B4A38"]];
 var cat="All";
-
-// HARGA BARU MENGIKUT MARKET SURVEY (Affordable Premium)
 var items=[
  ["Cotton Ninja","Cool cotton fabric that absorbs sweat.","RM19","Ninja"],
  ["Jersey Ninja","Soft, stretchy jersey that isn’t tight on the head.","RM22","Ninja"],
@@ -257,6 +302,7 @@ function warn(el){var n=el.closest('article').querySelector('.cn');n.textContent
 document.addEventListener('click',function(e){var b=e.target.closest('.cd');if(!b)return;var k=b.dataset.k,j=+b.dataset.j,card=b.closest('article');sel[k]=j;card.querySelectorAll('.cd').forEach(function(x){x.setAttribute('aria-pressed',x===b);x.style.boxShadow=x===b?'0 0 0 2px var(--b2),0 0 0 3px var(--ink)':'none'});var n=card.querySelector('.cn');n.textContent=colors[j][0];n.classList.remove('warn');n.style.color='var(--muted)';var pc=card.querySelector('.pic');if(pc)pc.innerHTML=pic(colors[j][1],card.dataset.cat);});
 function wa(t){return "https://wa.me/"+WA+"?text="+encodeURIComponent(t)}
 
+// Gambar SVG (Awak boleh tukar jadi <img src="model.jpg" ...> nanti)
 function pic(c,k){
  var ninja=k!=='Ciput';
  var cap=ninja?'M100 20C60 20 40 54 40 100v58c0 22-8 34-14 48 24 18 124 18 148 0-6-14-14-26-14-48v-58c0-46-20-80-60-80Z':'M100 24C58 24 42 58 42 104l14 8c2-26 14-42 44-42s42 16 44 42l14-8c0-46-16-80-58-80Z';
