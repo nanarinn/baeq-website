@@ -5,16 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Baeq – Premium Inner caps</title>
 <meta name="description" content="Baeq inner caps in soft, cool fabrics. Order on WhatsApp. Shipping across Malaysia.">
-<meta name="theme-color" content="#151210">
+<meta name="theme-color" content="#FBF8F3">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700&family=Inter:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <style>
-/* --- CSS VARIABLES & RESET --- */
-:root{--ink:#1C1814;--b1:#EFE8DF;--b2:#FBF8F3;--line:#CFC5B7;--muted:#6F6458;--putty:#BDB5A5;--hero:#151210;--heroink:#F3ECE2;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#F0E8DD;--b1:#26211C;--b2:#1D1916;--line:#4A4037;--muted:#B5A898;--putty:#4A4238;color-scheme:dark}}
-:root[data-theme="dark"]{--ink:#F0E8DD;--b1:#26211C;--b2:#1D1916;--line:#4A4037;--muted:#B5A898;--putty:#4A4238;color-scheme:dark}
-html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+/* --- CSS VARIABLES & RESET (LIGHT THEME) --- */
+:root{
+  --ink:#1C1814;       /* Warna teks utama (hitam arang) */
+  --b1:#F4EFE8;        /* Background section 1 (krim cair) */
+  --b2:#FBF8F3;        /* Background utama (putih susu) */
+  --line:#E5DCD1;      /* Warna garis border */
+  --muted:#6F6458;     /* Warna teks kelabu */
+  --putty:#E8DFD3;     /* Warna kotak gambar */
+  --hero:#FBF8F3;      /* Background hero (cerah) */
+  --heroink:#1C1814;   /* Warna teks hero (gelap) */
+  --accent:#A67C52;    /* Warna kayu/emas untuk butang */
+}
 *{box-sizing:border-box; cursor: none; }
 body{margin:0;background:var(--b2);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden; width: 100%;}
 h1,h2,h3{font-family:'Inter Tight',system-ui,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:-.035em;line-height:.92;margin:0}
@@ -25,40 +31,36 @@ a{color:inherit; text-decoration: none;}
 .in{max-width:1120px;margin:0 auto;padding:0 24px;position:relative}
 
 /* --- CUSTOM CURSOR --- */
-.cursor { position: fixed; width: 24px; height: 24px; border-radius: 50%; background: white; pointer-events: none; z-index: 9999; mix-blend-mode: difference; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s; display: none; }
-.cursor.active { width: 60px; height: 60px; background: rgba(255,255,255,0.5); }
+.cursor { position: fixed; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); pointer-events: none; z-index: 9999; mix-blend-mode: difference; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s; display: none; }
+.cursor.active { width: 60px; height: 60px; background: rgba(28, 24, 20, 0.5); }
 
 /* --- PRELOADER --- */
-#preloader{position:fixed;inset:0;background:var(--hero);color:var(--heroink);z-index:10000;display:flex;justify-content:center;align-items:center;font-family:'Inter Tight',sans-serif;font-size:2rem;font-weight:700;transition:opacity 0.6s ease, visibility 0.6s ease}
+#preloader{position:fixed;inset:0;background:var(--b2);color:var(--ink);z-index:10000;display:flex;justify-content:center;align-items:center;font-family:'Inter Tight',sans-serif;font-size:2rem;font-weight:700;transition:opacity 0.6s ease, visibility 0.6s ease}
 #preloader.hide{opacity:0;visibility:hidden}
 
 /* --- NAVBAR --- */
-.strip{background:var(--putty);color:var(--ink);font-size:.82rem;font-weight:500}
+.strip{background:var(--b1);color:var(--ink);font-size:.82rem;font-weight:500; border-bottom: 1px solid var(--line);}
 .strip .in{display:flex;justify-content:space-between;gap:16px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
-.pill{display:inline-block;border:1px solid currentColor;border-radius:999px;padding:9px 20px;font:inherit;font-size:.85rem;font-weight:500;background:none;color:inherit;cursor:pointer;transition:all 0.3s ease}
-.pill:hover,.pill[aria-pressed="true"]{background:currentColor}
-.pill:hover span,.pill[aria-pressed="true"] span{color:var(--inv)}
+.pill{display:inline-block;border:1px solid var(--ink);border-radius:999px;padding:9px 20px;font:inherit;font-size:.85rem;font-weight:500;background:none;color:var(--ink);cursor:pointer;transition:all 0.3s ease}
+.pill:hover,.pill[aria-pressed="true"]{background:var(--ink); color:var(--b2);}
+.pill:hover span,.pill[aria-pressed="true"] span{color:var(--b2)}
 
 /* --- HERO SECTION --- */
-.hero{background:var(--hero);color:var(--heroink);padding:80px 0 100px;--inv:var(--hero);position:relative;overflow:hidden; display:flex; align-items:center; min-height: 80vh;}
+.hero{background:var(--hero);color:var(--heroink);padding:80px 0 100px;position:relative;overflow:hidden; display:flex; align-items:center; min-height: 80vh;}
 .hgrid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center; width: 100%;}
-.hright p{max-width:42ch;color:#CFC5B7;margin:28px 0 40px; font-size: 1.1rem;}
+.hright p{max-width:42ch;color:var(--muted);margin:28px 0 40px; font-size: 1.1rem;}
 .hmeta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .hero h1 { transition: transform 0.1s ease-out; will-change: transform; margin-bottom: 20px;}
-
-/* Gambar Terapung */
-.hero .photo{border-radius:400px 400px 20px 20px;aspect-ratio:3/4.2;position:relative;animation:float 6s ease-in-out infinite; overflow:hidden; background: var(--putty); box-shadow: 0 30px 60px rgba(0,0,0,0.5);}
-@keyframes float{0%{transform:translateY(0px)}50%{transform:translateY(-15px)}100%{transform:translateY(0px)}}
 
 /* --- MAGNETIC BUTTON --- */
 .magnetic-btn { display: inline-block; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
 /* --- SWATCHES --- */
 .swatches{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:40px}
-.sw{width:32px;height:32px;border-radius:50%;border:1px solid #7a7064;cursor:pointer;padding:0;transition:transform 0.2s}
+.sw{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);cursor:pointer;padding:0;transition:transform 0.2s}
 .sw:hover{transform:scale(1.15)}
-.sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--hero),0 0 0 3px var(--heroink)}
-#swname{font-size:.9rem;color:#CFC5B7;margin-left:8px; font-weight: 500;}
+.sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--b2),0 0 0 3px var(--ink)}
+#swname{font-size:.9rem;color:var(--muted);margin-left:8px; font-weight: 500;}
 
 /* --- SCROLL REVEAL --- */
 .rv{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease-out, transform 0.8s ease-out}
@@ -73,8 +75,8 @@ a{color:inherit; text-decoration: none;}
 
 /* --- PRODUCT CARDS (SAMA MACAM GAMBAR) --- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px; text-align: left;}
-.card{background:var(--b2);border:1px solid var(--line);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:8px;--inv:var(--b2);transition:all 0.3s ease;position:relative;overflow:hidden;}
-.card:hover{background:var(--b2);transform:translateY(-8px);box-shadow:0 15px 30px rgba(0,0,0,0.08);border-color:var(--putty);}
+.card{background:var(--b2);border:1px solid var(--line);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:8px;transition:all 0.3s ease;position:relative;overflow:hidden;}
+.card:hover{transform:translateY(-8px);box-shadow:0 15px 30px rgba(0,0,0,0.05);border-color:var(--putty);}
 .card .pic{background:var(--putty);aspect-ratio:1;display:grid;place-items:end center;margin-bottom:12px;overflow:hidden;border-radius:16px;}
 .card .pic svg, .card .pic img{width:100%; height:100%; object-fit:cover; transition:transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);}
 .card:hover .pic svg, .card:hover .pic img{transform:scale(1.08);}
@@ -84,21 +86,21 @@ a{color:inherit; text-decoration: none;}
 .card .pill{align-self:flex-start;margin-top:12px; width: 100%; text-align: center;}
 
 /* --- MARQUEE --- */
-.marq{overflow:hidden;background:var(--hero);color:var(--heroink);border-top:1px solid #3a322b;border-bottom:1px solid #3a322b;padding:24px 0;white-space:nowrap}
+.marq{overflow:hidden;background:var(--ink);color:var(--b2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0;white-space:nowrap}
 .marq div{display:inline-block;animation:mq 25s linear infinite;font-family:'Inter Tight',sans-serif;font-size:clamp(1.8rem,4vw,3rem);text-transform:uppercase;letter-spacing:-.02em;font-weight:700}
 .marq i{padding:0 .5em;color:var(--putty);text-transform:none}
 @keyframes mq{to{transform:translateX(-50%)}}
 
 /* --- WHATSAPP FAB --- */
-.fab{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:25;background:var(--hero);color:var(--heroink);padding:14px 24px;border-radius:999px;font-weight:600;font-size:.95rem;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:transform .2s; display: flex; align-items: center; gap: 8px;}
+.fab{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:25;background:var(--ink);color:var(--b2);padding:14px 24px;border-radius:999px;font-weight:600;font-size:.95rem;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:transform .2s; display: flex; align-items: center; gap: 8px;}
 .fab:hover{transform:translateY(-4px)}
-.fab::after{content:'';position:absolute;inset:0;border-radius:999px;border:2px solid var(--hero);animation:pulse 2s infinite;opacity:0.5;pointer-events:none}
+.fab::after{content:'';position:absolute;inset:0;border-radius:999px;border:2px solid var(--ink);animation:pulse 2s infinite;opacity:0.5;pointer-events:none}
 @keyframes pulse{0%{transform:scale(1);opacity:0.5}100%{transform:scale(1.3);opacity:0}}
 
 /* --- OTHER SECTIONS --- */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .split p{max-width:44ch;color:var(--muted);margin:24px 0 0; font-size: 1.1rem;}
-.cells{border:1px solid var(--line);background:var(--b2);border-radius:24px;overflow:hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03);}
+.cells{border:1px solid var(--line);background:var(--b2);border-radius:24px;overflow:hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.02);}
 .cells div{padding:28px 30px;border-bottom:1px solid var(--line);transition:background 0.3s}
 .cells div:hover{background:var(--b1)}
 .cells div:last-child{border-bottom:0}
@@ -117,14 +119,14 @@ details[open] summary::after{transform:rotate(45deg); color: var(--ink);}
 details p{margin:15px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4s ease-in; font-size: 1rem;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
 
-.end{background:var(--hero);color:var(--heroink);padding:100px 0 40px;--inv:var(--hero)}
+.end{background:var(--ink);color:var(--b2);padding:100px 0 40px;}
 .fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-top:80px;padding-top:40px;border-top:1px solid #3a322b;font-size:.95rem;color:#CFC5B7}
-.fgrid h3{font-size:1.1rem;color:var(--heroink);margin-bottom:15px;line-height:1}
+.fgrid h3{font-size:1.1rem;color:var(--b2);margin-bottom:15px;line-height:1}
 .fgrid p{margin:5px 0}
 
 /* --- CART DRAWER --- */
-.scrim{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:30;opacity:0;visibility:hidden;transition:opacity .3s}
-.drawer{position:fixed;top:0;right:0;bottom:0;width:min(450px,100%);background:var(--b2);z-index:31;transform:translateX(100%);visibility:hidden;transition:transform .4s cubic-bezier(0.4, 0, 0.2, 1),visibility .4s;display:flex;flex-direction:column;padding:30px;--inv:var(--b2);border-left:1px solid var(--line); box-shadow: -10px 0 30px rgba(0,0,0,0.1);}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:30;opacity:0;visibility:hidden;transition:opacity .3s}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(450px,100%);background:var(--b2);z-index:31;transform:translateX(100%);visibility:hidden;transition:transform .4s cubic-bezier(0.4, 0, 0.2, 1),visibility .4s;display:flex;flex-direction:column;padding:30px;border-left:1px solid var(--line); box-shadow: -10px 0 30px rgba(0,0,0,0.05);}
 .open .drawer{transform:none;visibility:visible}.open .scrim{opacity:1;visibility:visible}
 
 /* --- RESPONSIVE (KHAS UNTUK PHONE & LAPTOP KECIL) --- */
@@ -135,7 +137,6 @@ details p{margin:15px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4
   .swatches{justify-content: center;}
   .split,.faq{grid-template-columns:1fr; text-align: center; gap: 40px;}
   .cells{margin-top: 20px;}
-  .quotes blockquote{padding: 24px 0; text-align: center;}
   .steps{text-align: center;}
   .step{padding: 24px 0 0 0 !important;}
   * { cursor: auto !important; }
@@ -199,25 +200,25 @@ details p{margin:15px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4
 <div id="preloader">Baeq.</div>
 
 <div class="strip"><div class="in"><span>Free shipping on orders over RM100</span><span>Ships across Malaysia</span></div></div>
-<header class="top" style="position:sticky;top:0;z-index:20;background:var(--b2);border-bottom:1px solid var(--line);"><div class="in" style="display:flex;align-items:center;justify-content:space-between;height:72px;"><a class="logo" href="#" style="font-family:'Inter Tight';font-weight:700;font-size:1.5rem;text-decoration:none;text-transform:uppercase;">Baeq</a><nav style="display:flex;"><a href="#collection" style="margin:0 16px;text-decoration:none;font-size:.95rem; font-weight:500;">Collection</a><a href="#why" style="margin:0 16px;text-decoration:none;font-size:.95rem; font-weight:500;">Why us</a><a href="#faq" style="margin:0 16px;text-decoration:none;font-size:.95rem; font-weight:500;">FAQ</a><a href="#order" style="margin:0 16px;text-decoration:none;font-size:.95rem; font-weight:500;">Contact</a></nav><button class="pill" id="cartbtn" aria-label="Open cart"><span>Cart (<b id="cnt">0</b>)</span></button></div></header>
+<header class="top" style="position:sticky;top:0;z-index:20;background:var(--b2);border-bottom:1px solid var(--line);"><div class="in" style="display:flex;align-items:center;justify-content:space-between;height:72px;"><a class="logo" href="#" style="font-family:'Inter Tight';font-weight:700;font-size:1.5rem;text-decoration:none;text-transform:uppercase; color: var(--ink);">Baeq</a><nav style="display:flex;"><a href="#collection" style="margin:0 16px;text-decoration:none;font-size:.95rem; font-weight:500; color: var(--ink);">Collection</a><a href="#why" style="margin:0 16px;text-decoration:none;font-size:.95rem; font-weight:500; color: var(--ink);">Why us</a><a href="#faq" style="margin:0 16px;text-decoration:none;font-size:.95rem; font-weight:500; color: var(--ink);">FAQ</a><a href="#order" style="margin:0 16px;text-decoration:none;font-size:.95rem; font-weight:500; color: var(--ink);">Contact</a></nav><button class="pill" id="cartbtn" aria-label="Open cart"><span>Cart (<b id="cnt">0</b>)</span></button></div></header>
 
 <section class="hero">
   <div class="in hgrid">
     <!-- SLIDER -->
     <div class="mwrap" role="group" aria-label="Mirror colour slider">
       <div class="mirrors" id="mirrors" style="display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 13% 14px;scrollbar-width:none; cursor: grab;"></div>
-      <div class="marrows" style="display:flex;justify-content:center;align-items:center;gap:24px;font-size:.95rem;color:#CFC5B7; margin-top: 20px;">
-        <button id="mprev" aria-label="Previous colour" style="width:44px;height:44px;border-radius:50%;border:1px solid currentColor;background:none;color:inherit;cursor:pointer;font-size:1.2rem; transition: all 0.3s;">←</button>
+      <div class="marrows" style="display:flex;justify-content:center;align-items:center;gap:24px;font-size:.95rem;color:var(--muted); margin-top: 20px;">
+        <button id="mprev" aria-label="Previous colour" style="width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;font-size:1.2rem; transition: all 0.3s;">←</button>
         <span id="mcount" style="font-weight: 600;"></span>
-        <button id="mnext" aria-label="Next colour" style="width:44px;height:44px;border-radius:50%;border:1px solid currentColor;background:none;color:inherit;cursor:pointer;font-size:1.2rem; transition: all 0.3s;">→</button>
+        <button id="mnext" aria-label="Next colour" style="width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;font-size:1.2rem; transition: all 0.3s;">→</button>
       </div>
     </div>
     
     <div class="hright">
       <span class="cap"><i>soft, cool &amp; yours</i></span>
-      <h1 id="heroTitle" style="will-change: transform;">Inner<br><i>C</i>aps</h1>
+      <h1 id="heroTitle" style="will-change: transform; color: var(--ink);">Inner<br><i>C</i>aps</h1>
       <p>Premium inner caps in soft fabrics that absorb sweat and stay in place all day. Pick a colour and order straight through WhatsApp.</p>
-      <div class="hmeta"><a class="pill magnetic-btn" href="#collection" style="background: var(--heroink); color: var(--hero); border: none; padding: 14px 28px; font-weight: 600;"><span>Shop the collection</span></a><a class="pill magnetic-btn" id="wa1" href="#" target="_blank" rel="noopener" style="padding: 14px 28px; font-weight: 600;"><span>Message us</span></a></div>
+      <div class="hmeta"><a class="pill magnetic-btn" href="#collection" style="background: var(--ink); color: var(--b2); border: none; padding: 14px 28px; font-weight: 600;"><span>Shop the collection</span></a><a class="pill magnetic-btn" id="wa1" href="#" target="_blank" rel="noopener" style="padding: 14px 28px; font-weight: 600; color: var(--ink); border-color: var(--ink);"><span>Message us</span></a></div>
       <div class="swatches" role="group" aria-label="Choose a colour" id="swatches"></div>
     </div>
   </div>
@@ -250,7 +251,7 @@ details p{margin:15px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4
 <section class="block dark" id="wear">
   <div class="in rv">
     <h2>How to <i>w</i>ear it</h2>
-    <div class="steps" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:48px;border-top:1px solid #3a322b">
+    <div class="steps" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:48px;border-top:1px solid var(--line)">
       <div class="step" style="padding:32px 28px 0 0"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,8vw,5.5rem);line-height:1;color:var(--putty);margin-bottom:12px;">01</b><h3>Slip it on</h3><p>Pull the inner cap over your hair, covering the hairline and ears.</p></div>
       <div class="step" style="padding:32px 28px 0 0"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,8vw,5.5rem);line-height:1;color:var(--putty);margin-bottom:12px;">02</b><h3>Smooth and set</h3><p>Tuck stray hair in and adjust the band so it sits flat and snug.</p></div>
       <div class="step" style="padding:32px 28px 0 0"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,8vw,5.5rem);line-height:1;color:var(--putty);margin-bottom:12px;">03</b><h3>Style your tudung</h3><p>Layer your bawal or shawl on top. The cap grips the fabric so it stays put.</p></div>
@@ -275,7 +276,7 @@ details p{margin:15px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4
   <div class="in rv">
     <h2>Order on <i>W</i>hatsApp</h2>
     <p class="lead" style="color:#CFC5B7;max-width:44ch;margin:24px 0 32px; font-size: 1.1rem;">Want to order or ask first? Send us a message and we’ll reply as soon as we can.</p>
-    <a class="pill magnetic-btn" id="wa" href="#" target="_blank" rel="noopener" style="background: var(--heroink); color: var(--hero); border: none; padding: 14px 28px; font-weight: 600;"><span>Message on WhatsApp</span></a>
+    <a class="pill magnetic-btn" id="wa" href="#" target="_blank" rel="noopener" style="background: var(--b2); color: var(--ink); border: none; padding: 14px 28px; font-weight: 600;"><span>Message on WhatsApp</span></a>
     <div class="fgrid">
       <div><h3>Baeq</h3><p>Comfortable inner caps for all-day wear.</p></div>
       <div><h3>Contact</h3><p>WhatsApp: 012-345 6789</p><p>Email: hello@baeq.com</p><p>Monday to Saturday, 9am to 6pm</p></div>
@@ -287,7 +288,7 @@ details p{margin:15px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4
 
 <a class="fab" id="fab" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
 <div class="scrim" id="scrim"></div>
-<aside class="drawer" id="drawer" aria-label="Cart"><header><h2>Cart</h2><button class="pill" id="closecart"><span>Close</span></button></header><ul id="lines" style="list-style:none;margin:0;padding:0;flex:1;overflow:auto"></ul><div class="sum" style="border-top:1px solid var(--line);padding-top:20px;display:grid;gap:15px; margin-top: 20px;"><div class="row" style="display:flex;justify-content:space-between;font-weight:600; font-size: 1.2rem;"><span>Total</span><span id="tot">RM0</span></div><small id="ship" style="color:var(--muted); font-size: 0.9rem;"></small><a class="pill" id="co" target="_blank" rel="noopener" href="#" style="text-align:center; background: var(--hero); color: var(--b2); border: none; padding: 14px; font-weight: 600;"><span>Checkout on WhatsApp</span></a><small style="color:var(--muted); text-align: center;">We’ll confirm stock and payment details on WhatsApp.</small></div></aside>
+<aside class="drawer" id="drawer" aria-label="Cart"><header><h2>Cart</h2><button class="pill" id="closecart"><span>Close</span></button></header><ul id="lines" style="list-style:none;margin:0;padding:0;flex:1;overflow:auto"></ul><div class="sum" style="border-top:1px solid var(--line);padding-top:20px;display:grid;gap:15px; margin-top: 20px;"><div class="row" style="display:flex;justify-content:space-between;font-weight:600; font-size: 1.2rem;"><span>Total</span><span id="tot">RM0</span></div><small id="ship" style="color:var(--muted); font-size: 0.9rem;"></small><a class="pill" id="co" target="_blank" rel="noopener" href="#" style="text-align:center; background: var(--ink); color: var(--b2); border: none; padding: 14px; font-weight: 600;"><span>Checkout on WhatsApp</span></a><small style="color:var(--muted); text-align: center;">We’ll confirm stock and payment details on WhatsApp.</small></div></aside>
 
 <script>
 // --- CUSTOM CURSOR LOGIC ---
@@ -358,7 +359,7 @@ function warn(el){var n=el.closest('article').querySelector('.cn');n.textContent
 document.addEventListener('click',function(e){var b=e.target.closest('.cd');if(!b)return;var k=b.dataset.k,j=+b.dataset.j,card=b.closest('article');sel[k]=j;card.querySelectorAll('.cd').forEach(function(x){x.setAttribute('aria-pressed',x===b);x.style.boxShadow=x===b?'0 0 0 2px var(--b2),0 0 0 3px var(--ink)':'none'});var n=card.querySelector('.cn');n.textContent=colors[j][0];n.classList.remove('warn');n.style.color='var(--muted)';var pc=card.querySelector('.pic');if(pc)pc.innerHTML=pic(colors[j][1],card.dataset.cat);});
 function wa(t){return "https://wa.me/"+WA+"?text="+encodeURIComponent(t)}
 
-// SVG KARTUN
+// SVG KARTUN (Kekal)
 function pic(c,k){
  var ninja=k!=='Mampu Milik';
  var cap=ninja?'M100 20C60 20 40 54 40 100v58c0 22-8 34-14 48 24 18 124 18 148 0-6-14-14-26-14-48v-58c0-46-20-80-60-80Z':'M100 24C58 24 42 58 42 104l14 8c2-26 14-42 44-42s42 16 44 42l14-8c0-46-16-80-58-80Z';
@@ -435,7 +436,7 @@ if('IntersectionObserver' in window){
 }
 
 var mir=document.getElementById('mirrors'),mcnt=document.getElementById('mcount'),mi=0,lockT=0,raf;
-mir.innerHTML=colors.map(function(c,j){return '<div class="mirror" data-j="'+j+'" style="flex:0 0 74%;scroll-snap-align:center;text-align:center;transform:scale(.86);opacity:.5;transition:transform .35s,opacity .35s"><div class="frame" style="padding:12px;border-radius:999px 999px 24px 24px;background:linear-gradient(135deg,#E2C9A6,#8F6548 55%,#C9A98B);box-shadow:0 24px 50px rgba(0,0,0,.5)"><div class="glass" style="position:relative;overflow:hidden;border-radius:999px 999px 16px 16px;aspect-ratio:3/4.1;background:linear-gradient(180deg,#d9d2c6,#b9b1a2);display:grid;place-items:end center;box-shadow:inset 0 0 24px rgba(0,0,0,.25)">'+pic(c[1],'Premium')+'<i class="shine" style="position:absolute;inset:-20%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.35) 46%,rgba(255,255,255,.08) 52%,transparent 58%);pointer-events:none"></i></div></div><span class="mname" style="display:block;margin-top:12px;font-family:\'Playfair Display\',Georgia,serif;font-style:italic;font-size:1.3rem; color: var(--heroink);">'+c[0]+'</span></div>'}).join('');
+mir.innerHTML=colors.map(function(c,j){return '<div class="mirror" data-j="'+j+'" style="flex:0 0 74%;scroll-snap-align:center;text-align:center;transform:scale(.86);opacity:.5;transition:transform .35s,opacity .35s"><div class="frame" style="padding:12px;border-radius:999px 999px 24px 24px;background:linear-gradient(135deg,#E2C9A6,#8F6548 55%,#C9A98B);box-shadow:0 24px 50px rgba(0,0,0,.1)"><div class="glass" style="position:relative;overflow:hidden;border-radius:999px 999px 16px 16px;aspect-ratio:3/4.1;background:linear-gradient(180deg,#d9d2c6,#b9b1a2);display:grid;place-items:end center;box-shadow:inset 0 0 24px rgba(0,0,0,.1)">'+pic(c[1],'Premium')+'<i class="shine" style="position:absolute;inset:-20%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.35) 46%,rgba(255,255,255,.08) 52%,transparent 58%);pointer-events:none"></i></div></div><span class="mname" style="display:block;margin-top:12px;font-family:\'Playfair Display\',Georgia,serif;font-style:italic;font-size:1.3rem; color: var(--ink);">'+c[0]+'</span></div>'}).join('');
 function mark(j){[].forEach.call(mir.children,function(m,k){m.classList.toggle('on',k===j); m.style.transform = k===j ? 'scale(1)' : 'scale(.86)'; m.style.opacity = k===j ? '1' : '.5';});mcnt.textContent=(j+1)+' / '+colors.length}
 function goMirror(j){var el=mir.children[j];if(!el)return;mi=j;mark(j);lockT=Date.now()+700;mir.scrollTo({left:el.offsetLeft-(mir.clientWidth-el.clientWidth)/2,behavior:'smooth'})}
 mir.addEventListener('scroll',function(){if(Date.now()<lockT)return;cancelAnimationFrame(raf);raf=requestAnimationFrame(function(){var mid=mir.scrollLeft+mir.clientWidth/2,best=0,bd=1e9;[].forEach.call(mir.children,function(m,k){var d=Math.abs(m.offsetLeft+m.clientWidth/2-mid);if(d<bd){bd=d;best=k}});if(best!==mi){mi=best;mark(best);setColor(colors[best],true)}})});
