@@ -5,21 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Baeq – Premium Inner caps</title>
 <meta name="description" content="Baeq inner caps in soft, cool fabrics. Order on WhatsApp. Shipping across Malaysia.">
-<meta name="theme-color" content="#F9F8F6">
+<meta name="theme-color" content="#E6E1D8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700&family=Inter:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <style>
-/* --- PALETTE BARU (LEBIH CANTIK & JELAS) --- */
+/* --- PALETTE BARU (LEBIH GELAP & MEWAH) --- */
 :root{
-  --bg-main: #F9F8F6;    /* Warm Off-White (cerah tapi tak menyilaukan) */
-  --bg-card: #FFFFFF;    
+  --bg-main: #E6E1D8;    /* Warm Greige (lebih gelap dari tadi, selesa di mata) */
+  --bg-card: #F4F1EB;    /* Kad warna cerah sikit */
   --ink: #111111;        /* Hitam Pekat (tulisan sangat jelas) */
-  --muted: #555555;      /* Kelabu gelap (jelas terbaca) */
-  --line: #EAEAEA;       /* Border halus */
-  --accent: #A68A6D;     /* Bronze / Earth tone (untuk aksen) */
-  --hero: #F2EFEA;       
+  --muted: #4A463F;      /* Kelabu gelap (jelas terbaca) */
+  --line: #D1CBC1;       /* Border yang lebih jelas */
+  --accent: #8C735B;     /* Bronze gelap (untuk aksen) */
+  --hero: #DFD9CF;       
   --footer-bg: #111111;  
-  --footer-ink: #F9F8F6; 
+  --footer-ink: #E6E1D8; 
 }
 *{box-sizing:border-box; cursor: none; margin: 0; padding: 0;}
 html { scroll-behavior: smooth; }
@@ -27,7 +27,7 @@ body{background:var(--bg-main);color:var(--ink);font-family:'Inter',system-ui,sa
 
 /* --- ANIMASI LATAR BELAKANG --- */
 .bg-animation { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; background: var(--bg-main); }
-.bg-animation span { position: absolute; display: block; border-radius: 50%; background: radial-gradient(circle, rgba(166, 138, 109, 0.08) 0%, rgba(249, 248, 246, 0) 70%); animation: floatBg 25s infinite linear; filter: blur(60px); }
+.bg-animation span { position: absolute; display: block; border-radius: 50%; background: radial-gradient(circle, rgba(140, 115, 91, 0.1) 0%, rgba(230, 225, 216, 0) 70%); animation: floatBg 25s infinite linear; filter: blur(60px); }
 .bg-animation span:nth-child(1) { width: 60vw; height: 60vw; top: -20vh; left: -20vw; animation-duration: 30s; }
 .bg-animation span:nth-child(2) { width: 50vw; height: 50vw; top: 30vh; right: -20vw; animation-duration: 35s; animation-direction: reverse; }
 .bg-animation span:nth-child(3) { width: 70vw; height: 70vw; bottom: -30vh; left: 0; animation-duration: 40s; }
@@ -44,7 +44,7 @@ body{background:var(--bg-main);color:var(--ink);font-family:'Inter',system-ui,sa
 
 /* --- NAVBAR --- */
 .strip{background:var(--ink);color:var(--bg-main);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase; text-align: center; padding: 12px; position: relative; z-index: 10;}
-header.top { position: sticky; top: 0; z-index: 20; background: rgba(249, 248, 246, 0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+header.top { position: sticky; top: 0; z-index: 20; background: rgba(230, 225, 216, 0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
 .in{max-width:1200px;margin:0 auto;padding:0 30px;position:relative}
 .pill{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:12px 28px;font:inherit;font-size:.75rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;background:transparent;color:var(--ink);cursor:pointer;transition:all 0.3s ease}
 .pill:hover,.pill[aria-pressed="true"]{background:var(--ink); color:var(--bg-main); border-color: var(--ink);}
@@ -74,8 +74,8 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(249, 248, 2
 /* --- PRODUCT CARDS --- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:30px; text-align: left;}
 .card{background:var(--bg-card);border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;transition:all 0.4s ease; position: relative; overflow: hidden; z-index: 2; border-radius: 12px;}
-.card:hover{border-color:var(--ink); box-shadow: 0 15px 30px rgba(0,0,0,0.06); transform: translateY(-5px);}
-.card .pic{background:#F0EDE6;aspect-ratio:1;display:grid;place-items:end center;margin-bottom:20px;overflow:hidden; border-radius: 8px;}
+.card:hover{border-color:var(--ink); box-shadow: 0 15px 30px rgba(0,0,0,0.08); transform: translateY(-5px);}
+.card .pic{background:#DFD9CF;aspect-ratio:1;display:grid;place-items:end center;margin-bottom:20px;overflow:hidden; border-radius: 8px;}
 .card .pic svg, .card .pic img{width:100%; height:100%; object-fit:cover; transition:transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);}
 .card:hover .pic svg, .card:hover .pic img{transform:scale(1.05);}
 .card h3{font-size:1.4rem; font-family: 'Inter Tight', sans-serif; font-weight: 500; line-height:1.2; text-transform: uppercase; margin-top: 5px; color: var(--ink);}
@@ -182,7 +182,7 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(249, 248, 2
       <span class="cap" style="font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); display: block; margin-bottom: 20px; font-weight: 600;">The Everyday Collection</span>
       <h1 id="heroTitle" style="will-change: transform; color: var(--ink); font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(3.5rem, 8vw, 7rem); line-height: 1.05;">Inner<br><i>C</i>aps</h1>
       <p>Premium inner caps crafted from soft fabrics that absorb sweat and stay in place all day. Pick a colour and order straight through WhatsApp.</p>
-      <div class="hmeta"><a class="pill magnetic-btn" href="#collection" style="background: var(--ink); color: var(--bg-main); border: none;"><span>Shop the collection</span></a><a class="pill magnetic-btn" id="wa1" href="#" target="_blank" rel="noopener" style="border-color: var(--line); background: rgba(255,255,255,0.4);"><span>Enquire</span></a></div>
+      <div class="hmeta"><a class="pill magnetic-btn" href="#collection" style="background: var(--ink); color: var(--bg-main); border: none;"><span>Shop the collection</span></a><a class="pill magnetic-btn" id="wa1" href="#" target="_blank" rel="noopener" style="border-color: var(--line); background: rgba(255,255,255,0.2);"><span>Enquire</span></a></div>
       <div class="swatches" role="group" aria-label="Choose a colour" id="swatches"></div>
     </div>
   </div>
@@ -214,7 +214,7 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(249, 248, 2
   </div>
 </section>
 
-<section class="block dark" id="wear" style="background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(10px);">
+<section class="block dark" id="wear" style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px);">
   <div class="in rv">
     <h2>How to <i>w</i>ear it</h2>
     <div class="steps" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:60px;border-top:1px solid var(--line)">
