@@ -58,7 +58,7 @@ nav a:hover {opacity: 0.6;}
 .btn-secondary {background: transparent; color: var(--ink);}
 .btn-secondary:hover {background: var(--ink); color: var(--bg-main);}
 
-/* --- HERO SLIDER (Simplified for elegance) --- */
+/* --- HERO SLIDER --- */
 .slider-wrapper {position: relative; width: 100%; aspect-ratio: 3/4; background: var(--hero); overflow: hidden;}
 .slides {display: flex; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); height: 100%;}
 .slide {min-width: 100%; height: 100%; display: flex; justify-content: center; align-items: flex-end;}
@@ -232,10 +232,10 @@ var items = [
   ["Inner Cotton Viscose","Mampu milik inner cap","RM7","Mampu Milik"]
 ];
 
-// --- SVG GENERATOR ---
+// --- SVG GENERATOR (FIXED) ---
 function pic(c){
   var cap = 'M100 20C60 20 40 54 40 100v58c0 22-8 34-14 48 24 18 124 18 148 0-6-14-14-26-14-48v-58c0-46-20-80-60-80Z';
-  return '<svg viewBox="0 0 200 240"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".2"/><stop offset=".55" stop-opacity="0"/><stop offset="1" stop-opacity=".1"/></linearGradient></defs><path d="M6 240c4-42 34-58 94-60s90 18 94 60Z" fill="#3b312b"/>'+(k!=='Mampu Milik'?'':'<path d="M84 150h32v34q-16 9-32 0Z" fill="#E7BFA5"/>')+'<path d="'+cap+'" fill="'+c+'"/><path d="'+cap+'" fill="url(#g)"/><ellipse cx="100" cy="112" rx="34" ry="44" fill="#F1D3C0"/><circle cx="87" cy="108" r="2.6" fill="#2B1B2E"/><circle cx="113" cy="108" r="2.6" fill="#2B1B2E"/><path d="M92 132q8 6 16 0" stroke="#2B1B2E" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>';
+  return '<svg viewBox="0 0 200 240"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".2"/><stop offset=".55" stop-opacity="0"/><stop offset="1" stop-opacity=".1"/></linearGradient></defs><path d="M6 240c4-42 34-58 94-60s90 18 94 60Z" fill="#3b312b"/><path d="'+cap+'" fill="'+c+'"/><path d="'+cap+'" fill="url(#g)"/><ellipse cx="100" cy="112" rx="34" ry="44" fill="#F1D3C0"/><circle cx="87" cy="108" r="2.6" fill="#2B1B2E"/><circle cx="113" cy="108" r="2.6" fill="#2B1B2E"/><path d="M92 132q8 6 16 0" stroke="#2B1B2E" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>';
 }
 
 // --- SLIDER ---
