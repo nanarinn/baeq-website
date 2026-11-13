@@ -7,79 +7,98 @@
 <meta name="description" content="Baeq inner caps in soft, cool fabrics. Order on WhatsApp. Shipping across Malaysia.">
 <meta name="theme-color" content="#F7F5F0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700&family=Inter:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
-/* --- CSS VARIABLES (WARNA ASAL YANG CANTIK) --- */
+/* --- PREMIUM EDITORIAL PALETTE --- */
 :root{
-  --bg-main: #F7F5F0;    /* Putih tulang */
+  --bg-main: #F8F6F2;    /* Alabaster (putih tulang paling selesa) */
   --bg-card: #FFFFFF;    
-  --ink: #1F1D1A;        
-  --muted: #6B665F;      
-  --line: #DFD9CF;       
-  --accent: #D3C4B4;     
-  --hero: #EBE5DB;       
-  --footer-bg: #1F1D1A;  
-  --footer-ink: #F7F5F0; 
+  --ink: #1A1816;        /* Charcoal gelap */
+  --muted: #7A7570;      /* Kelabu hangat */
+  --line: #E8E4DC;       
+  --accent: #C4B5A5;     /* Warna Emas/Pasir */
+  --hero: #EDE9E1;       
+  --footer-bg: #1A1816;  
+  --footer-ink: #F8F6F2; 
 }
-*{box-sizing:border-box; cursor: none; }
-body{margin:0;background:var(--bg-main);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden; width: 100%;}
+*{box-sizing:border-box; cursor: none; margin: 0; padding: 0;}
+html { scroll-behavior: smooth; } /* SMOOTH SCROLL */
+body{background:var(--bg-main);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden; width: 100%; position: relative;}
 
-/* --- ANIMASI LATAR BELAKANG (AURORA) --- */
+/* --- ANIMASI LATAR BELAKANG (AURORA GLOW) --- */
 .bg-animation { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; background: var(--bg-main); }
-.bg-animation span { position: absolute; display: block; border-radius: 50%; background: radial-gradient(circle, rgba(211, 196, 180, 0.4) 0%, rgba(247, 245, 240, 0) 70%); animation: floatBg 20s infinite linear; filter: blur(50px); }
-.bg-animation span:nth-child(1) { width: 600px; height: 600px; top: -150px; left: -150px; animation-duration: 25s; }
-.bg-animation span:nth-child(2) { width: 500px; height: 500px; top: 40%; right: -200px; animation-duration: 30s; animation-direction: reverse; }
-.bg-animation span:nth-child(3) { width: 700px; height: 700px; bottom: -250px; left: 10%; animation-duration: 35s; }
-@keyframes floatBg { 0% { transform: translate(0, 0) scale(1); } 33% { transform: translate(40px, -60px) scale(1.1); } 66% { transform: translate(-30px, 30px) scale(0.9); } 100% { transform: translate(0, 0) scale(1); } }
+.bg-animation span { position: absolute; display: block; border-radius: 50%; background: radial-gradient(circle, rgba(196, 181, 165, 0.4) 0%, rgba(248, 246, 242, 0) 70%); animation: floatBg 25s infinite linear; filter: blur(80px); }
+.bg-animation span:nth-child(1) { width: 60vw; height: 60vw; top: -20vh; left: -20vw; animation-duration: 30s; }
+.bg-animation span:nth-child(2) { width: 50vw; height: 50vw; top: 30vh; right: -20vw; animation-duration: 35s; animation-direction: reverse; }
+.bg-animation span:nth-child(3) { width: 70vw; height: 70vw; bottom: -30vh; left: 0; animation-duration: 40s; }
+@keyframes floatBg { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(5vw, -5vh) scale(1.1); } 100% { transform: translate(0, 0) scale(1); } }
 
 /* --- CUSTOM CURSOR & TRAIL --- */
-.cursor { position: fixed; width: 20px; height: 20px; border-radius: 50%; background: var(--ink); pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s; display: none; mix-blend-mode: difference; }
-.cursor.active { width: 50px; height: 50px; background: rgba(255,255,255,0.2); border: 1px solid var(--ink); }
+.cursor { position: fixed; width: 20px; height: 20px; border-radius: 50%; background: var(--ink); pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s, background-color 0.3s; display: none; mix-blend-mode: difference; }
+.cursor.active { width: 60px; height: 60px; background: rgba(255,255,255,0.1); border: 1px solid var(--ink); }
 .trail-dot { position: fixed; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); }
 
 /* --- PRELOADER --- */
-#preloader{position:fixed;inset:0;background:var(--bg-main);color:var(--ink);z-index:10000;display:flex;justify-content:center;align-items:center;font-family:'Playfair Display',serif;font-size:2.5rem;transition:opacity 0.6s ease, visibility 0.6s ease}
+#preloader{position:fixed;inset:0;background:var(--bg-main);color:var(--ink);z-index:10000;display:flex;justify-content:center;align-items:center;font-family:'Playfair Display',serif;font-size:3rem;transition:opacity 0.8s ease, visibility 0.8s ease}
 #preloader.hide{opacity:0;visibility:hidden}
 
-/* --- NAVBAR --- */
-.strip{background:var(--ink);color:var(--bg-main);font-size:.75rem;letter-spacing:.05em;text-transform:uppercase; text-align: center; padding: 10px; position: relative; z-index: 10;}
-header.top { position: sticky; top: 0; z-index: 20; background: rgba(247, 245, 240, 0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-.in{max-width:1200px;margin:0 auto;padding:0 30px;position:relative}
-.pill{display:inline-block;border:1px solid var(--line);border-radius:0;padding:12px 28px;font:inherit;font-size:.75rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;background:transparent;color:var(--ink);cursor:pointer;transition:all 0.3s ease}
-.pill:hover,.pill[aria-pressed="true"]{background:var(--ink); color:var(--bg-main); border-color: var(--ink);}
+/* --- NAVBAR (GLASSMORPHISM) --- */
+.strip{background:var(--ink);color:var(--bg-main);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase; text-align: center; padding: 12px; position: relative; z-index: 10;}
+header.top { position: sticky; top: 0; z-index: 20; background: rgba(248, 246, 242, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(232, 228, 220, 0.5); transition: all 0.3s ease; }
+header.top.scrolled { background: rgba(248, 246, 242, 0.95); box-shadow: 0 4px 30px rgba(0,0,0,0.03); }
+.in{max-width:1300px;margin:0 auto;padding:0 4vw;position:relative}
+.logo {font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 500; letter-spacing: -0.02em; color: var(--ink);}
+nav {display: flex; gap: 30px;}
+nav a {font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 500; transition: color 0.3s;}
+nav a:hover {color: var(--accent);}
+.cart-btn {border: 1px solid var(--line); padding: 10px 20px; font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; background: transparent; cursor: pointer; transition: all 0.3s;}
+.cart-btn:hover {background: var(--ink); color: var(--bg-main); border-color: var(--ink);}
 
-/* --- HERO SECTION (SAMA MACAM ASAL) --- */
+/* --- HERO SECTION --- */
 .hero{color:var(--ink);padding:100px 0 120px;position:relative; display:flex; align-items:center; min-height: 90vh;}
 .hgrid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center; width: 100%;}
-.hright p{max-width:40ch;color:var(--muted);margin:30px 0 40px; font-size: 1.05rem; font-weight: 400;}
+.hright p{max-width:40ch;color:var(--muted);margin:30px 0 40px; font-size: 1.05rem; font-weight: 300;}
+.btn-group{display: flex; gap: 15px;}
+.btn {padding: 16px 32px; font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 500; border: 1px solid var(--ink); cursor: pointer; transition: all 0.3s; text-align: center;}
+.btn-primary {background: var(--ink); color: var(--bg-main);}
+.btn-primary:hover {background: transparent; color: var(--ink);}
+.btn-secondary {background: transparent; color: var(--ink); border-color: var(--line);}
+.btn-secondary:hover {border-color: var(--ink); background: var(--ink); color: var(--bg-main);}
+
+/* --- HERO SLIDER (FADE EFFECT) --- */
+.slider-wrapper {position: relative; width: 100%; aspect-ratio: 3/4; background: var(--hero); overflow: hidden; border-radius: 10px;}
+.slides {position: relative; width: 100%; height: 100%;}
+.slide {position: absolute; inset: 0; display: flex; justify-content: center; align-items: flex-end; opacity: 0; transition: opacity 1s ease-in-out; background: var(--hero);}
+.slide.active {opacity: 1; z-index: 1;}
+.slide svg {width: 90%; height: auto; transform: translateY(10px);}
 
 /* --- SWATCHES --- */
 .swatches{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:40px}
-.sw{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);cursor:pointer;padding:0;transition:transform 0.2s;}
-.sw:hover{transform:scale(1.15)}
+.sw{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);cursor:pointer;padding:0;transition:all 0.3s;}
+.sw:hover{transform:scale(1.2)}
 .sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--hero),0 0 0 3px var(--ink)}
 
 /* --- SECTION STYLING --- */
 .block{padding:120px 0; border-bottom: 1px solid var(--line); position: relative; z-index: 1;}
 .center{text-align:center}
-.center p{color:var(--muted);margin:20px auto 50px;max-width:50ch; font-size: 1.05rem;}
+.center p{color:var(--muted);margin:20px auto 50px;max-width:50ch; font-size: 1.05rem; font-weight: 300;}
 
 /* --- TULISAN BERGERAK (MARQUEE) --- */
 .marq{overflow:hidden;background:var(--ink);color:var(--bg-main);padding:20px 0;white-space:nowrap; position: relative; z-index: 5;}
-.marq div{display:inline-block;animation:mq 20s linear infinite; font-family:'Inter Tight',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);text-transform:uppercase;letter-spacing:.1em;font-weight:500}
-.marq i{padding:0 1em;color:var(--accent);text-transform:none; font-family: 'Playfair Display', serif; font-size: 1.5em; font-style: italic;}
+.marq div{display:inline-block;animation:mq 25s linear infinite; font-family:'Inter Tight',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);text-transform:uppercase;letter-spacing:.15em;font-weight:500}
+.marq i{padding:0 1.5em;color:var(--accent);text-transform:none; font-family: 'Playfair Display', serif; font-size: 1.5em; font-style: italic;}
 @keyframes mq{to{transform:translateX(-50%)}}
 
-/* --- PRODUCT CARDS (SAMA MACAM GAMBAR AWAK) --- */
+/* --- PRODUCT CARDS --- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:30px; text-align: left;}
-.card{background:var(--bg-card);border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;transition:all 0.4s ease; position: relative; overflow: hidden; z-index: 2;}
-.card:hover{border-color:var(--ink); box-shadow: 0 20px 40px rgba(0,0,0,0.05); transform: translateY(-5px);}
-.card .pic{background:#DFD9CF;aspect-ratio:1;display:grid;place-items:end center;margin-bottom:20px;overflow:hidden;}
-.card .pic svg, .card .pic img{width:100%; height:100%; object-fit:cover; transition:transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);}
-.card:hover .pic svg, .card:hover .pic img{transform:scale(1.05);}
-.card h3{font-size:1.5rem; font-family: 'Inter Tight', sans-serif; font-weight: 500; line-height:1.2; text-transform: uppercase; margin-top: 5px;}
-.card p{margin:8px 0 0;font-size:.9rem;color:var(--muted);flex:1; line-height: 1.5;}
-.card .price{font-weight:500;font-size:1rem; margin-top: 15px; color: var(--ink); letter-spacing: 0.02em;}
+.card{background:var(--bg-card);border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;transition:all 0.5s cubic-bezier(0.25, 1, 0.5, 1); position: relative; overflow: hidden; z-index: 2; border-radius: 10px;}
+.card:hover{border-color:var(--ink); box-shadow: 0 30px 60px rgba(0,0,0,0.08); transform: translateY(-8px);}
+.card .pic{background:#F0EDE6;aspect-ratio:1;display:grid;place-items:end center;margin-bottom:20px;overflow:hidden; border-radius: 8px;}
+.card .pic svg, .card .pic img{width:100%; height:100%; object-fit:cover; transition:transform 1s cubic-bezier(0.25, 1, 0.5, 1);}
+.card:hover .pic svg, .card:hover .pic img{transform:scale(1.08);}
+.card h3{font-size:1.4rem; font-family: 'Inter Tight', sans-serif; font-weight: 600; line-height:1.2; text-transform: uppercase; margin-top: 5px; letter-spacing: -0.01em;}
+.card p{margin:8px 0 0;font-size:.9rem;color:var(--muted);flex:1; line-height: 1.5; font-weight: 300;}
+.card .price{font-weight:500;font-size:1rem; margin-top: 15px; color: var(--ink); letter-spacing: 0.05em;}
 .card .pill{margin-top:20px; width: 100%; text-align: center;}
 
 /* --- FOOTER GELAP --- */
@@ -87,18 +106,23 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(247, 245, 2
 .end h2 { color: var(--footer-ink); }
 .end p { color: #A9A39C; }
 .fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-top:80px;padding-top:40px;border-top:1px solid #3A3530;font-size:.9rem;color:#A9A39C}
-.fgrid h3{font-size:1rem;color:var(--footer-ink);margin-bottom:15px;line-height:1; text-transform: uppercase; font-family: 'Inter Tight', sans-serif; letter-spacing: 0.05em; font-weight: 600;}
-.fgrid p{margin:8px 0; font-weight: 400;}
-.copy{margin-top:60px;font-size:.75rem;color:#6B665F; text-transform: uppercase; letter-spacing: 0.05em; border-top: 1px solid #3A3530; padding-top: 20px; text-align: center;}
+.fgrid h3{font-size:1rem;color:var(--footer-ink);margin-bottom:15px;line-height:1; text-transform: uppercase; font-family: 'Inter Tight', sans-serif; letter-spacing: 0.08em; font-weight: 600;}
+.fgrid p{margin:8px 0; font-weight: 300; transition: color 0.3s; cursor: pointer;}
+.fgrid p:hover {color: var(--footer-ink);}
+.copy{margin-top:60px;font-size:.75rem;color:#6B665F; text-transform: uppercase; letter-spacing: 0.08em; border-top: 1px solid #3A3530; padding-top: 20px; text-align: center;}
 
 /* --- WHATSAPP FAB --- */
-.fab{position:fixed;right:30px;bottom:30px;z-index:25;background:var(--ink);color:var(--bg-main);padding:16px 28px;font-weight:500;font-size:.8rem; text-transform:uppercase; letter-spacing:0.05em; box-shadow:0 10px 30px rgba(0,0,0,.2);transition:transform .2s; border: 1px solid var(--ink);}
-.fab:hover{transform:translateY(-4px); background: transparent; color: var(--ink);}
+.fab{position:fixed;right:30px;bottom:30px;z-index:25;background:var(--ink);color:var(--bg-main);padding:16px 28px;font-weight:500;font-size:.8rem; text-transform:uppercase; letter-spacing:0.08em; box-shadow:0 10px 30px rgba(0,0,0,.2);transition:all .3s; border: 1px solid var(--ink); border-radius: 50px;}
+.fab:hover{transform:translateY(-5px); background: transparent; color: var(--ink);}
 
 /* --- CART DRAWER --- */
 .scrim{position:fixed;inset:0;background:rgba(26, 24, 22,.4);z-index:30;opacity:0;visibility:hidden;transition:opacity .3s}
-.drawer{position:fixed;top:0;right:0;bottom:0;width:min(450px,100%);background:var(--bg-main);z-index:31;transform:translateX(100%);visibility:hidden;transition:transform .4s cubic-bezier(0.4, 0, 0.2, 1),visibility .4s;display:flex;flex-direction:column;padding:40px;border-left:1px solid var(--line);}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(450px,100%);background:var(--bg-main);z-index:31;transform:translateX(100%);visibility:hidden;transition:transform .5s cubic-bezier(0.4, 0, 0.2, 1),visibility .5s;display:flex;flex-direction:column;padding:40px;border-left:1px solid var(--line);}
 .open .drawer{transform:none;visibility:visible}.open .scrim{opacity:1;visibility:visible}
+
+/* --- ANIMASI SCROLL REVEAL --- */
+.rv {opacity: 0; transform: translateY(40px); transition: opacity 1s ease-out, transform 1s ease-out;}
+.rv.on {opacity: 1; transform: translateY(0);}
 
 /* --- RESPONSIVE --- */
 @media(max-width:1024px){
@@ -142,15 +166,14 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(247, 245, 2
   .drawer {padding: 24px; width: 100%;}
   .drawer h2 {font-size: 1.8rem;}
   .fgrid { grid-template-columns: 1fr; text-align: center; gap: 30px;}
-  .bg-animation span:nth-child(1) { width: 300px; height: 300px; }
-  .bg-animation span:nth-child(2) { width: 250px; height: 250px; }
-  .bg-animation span:nth-child(3) { width: 350px; height: 350px; }
+  .bg-animation span:nth-child(1) { width: 80vw; height: 80vw; }
+  .bg-animation span:nth-child(2) { width: 70vw; height: 70vw; }
+  .bg-animation span:nth-child(3) { width: 90vw; height: 90vw; }
 }
 </style>
 </head>
 <body>
 
-<!-- LATAR BELAKANG ANIMASI -->
 <div class="bg-animation">
   <span></span>
   <span></span>
@@ -161,30 +184,31 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(247, 245, 2
 <div id="preloader">Baeq.</div>
 
 <div class="strip"><div class="in"><span>Complimentary shipping over RM100</span></div></div>
-<header class="top"><div class="in" style="display:flex;align-items:center;justify-content:space-between;height:80px;"><a class="logo" href="#" style="font-family:'Playfair Display',serif;font-weight:400;font-size:1.8rem;text-decoration:none; color: var(--ink);">Baeq</a><nav style="display:flex;"><a href="#collection" style="margin:0 20px;text-decoration:none;font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; font-weight:500;">Collection</a><a href="#why" style="margin:0 20px;text-decoration:none;font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; font-weight:500;">Philosophy</a><a href="#faq" style="margin:0 20px;text-decoration:none;font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; font-weight:500;">FAQ</a><a href="#order" style="margin:0 20px;text-decoration:none;font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; font-weight:500;">Contact</a></nav><button class="pill" id="cartbtn" aria-label="Open cart"><span>Bag (<b id="cnt">0</b>)</span></button></div></header>
+<header class="top" id="header"><div class="in" style="display:flex;align-items:center;justify-content:space-between;height:80px;"><a class="logo" href="#">Baeq</a><nav style="display:flex;"><a href="#collection" style="margin:0 20px;text-decoration:none; color:var(--ink);">Collection</a><a href="#why" style="margin:0 20px;text-decoration:none; color:var(--ink);">Philosophy</a><a href="#faq" style="margin:0 20px;text-decoration:none; color:var(--ink);">FAQ</a><a href="#order" style="margin:0 20px;text-decoration:none; color:var(--ink);">Contact</a></nav><button class="cart-btn" id="cartbtn" aria-label="Open cart">Bag (<b id="cnt">0</b>)</button></div></header>
 
 <section class="hero">
   <div class="in hgrid">
     <div class="mwrap" role="group" aria-label="Mirror colour slider">
-      <div class="mirrors" id="mirrors" style="display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 13% 14px;scrollbar-width:none; cursor: grab;"></div>
-      <div class="marrows" style="display:flex;justify-content:center;align-items:center;gap:24px;font-size:.8rem;color:var(--muted); margin-top: 20px; text-transform:uppercase; letter-spacing:0.05em;">
-        <button id="mprev" aria-label="Previous colour" style="width:40px;height:40px;border-radius:0;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer; transition: all 0.3s;">←</button>
+      <div class="slider-wrapper">
+        <div class="slides" id="slides"></div>
+      </div>
+      <div class="marrows" style="display:flex;justify-content:center;align-items:center;gap:24px;font-size:.8rem;color:var(--muted); margin-top: 20px; text-transform:uppercase; letter-spacing:0.08em;">
+        <button id="mprev" aria-label="Previous colour" style="width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer; transition: all 0.3s;">←</button>
         <span id="mcount" style="font-weight: 500;"></span>
-        <button id="mnext" aria-label="Next colour" style="width:40px;height:40px;border-radius:0;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer; transition: all 0.3s;">→</button>
+        <button id="mnext" aria-label="Next colour" style="width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer; transition: all 0.3s;">→</button>
       </div>
     </div>
     
     <div class="hright">
-      <span class="cap" style="font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); display: block; margin-bottom: 20px;">The Everyday Collection</span>
-      <h1 id="heroTitle" style="will-change: transform; color: var(--ink);">Inner<br><i>C</i>aps</h1>
+      <span class="cap" style="font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); display: block; margin-bottom: 20px; font-weight: 600;">The Everyday Collection</span>
+      <h1 id="heroTitle" style="will-change: transform; color: var(--ink); font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(3.5rem, 8vw, 7rem); line-height: 1.05;">Inner<br><i>C</i>aps</h1>
       <p>Premium inner caps crafted from soft fabrics that absorb sweat and stay in place all day. Pick a colour and order straight through WhatsApp.</p>
-      <div class="hmeta"><a class="pill magnetic-btn" href="#collection" style="background: var(--ink); color: var(--bg-main); border: none;"><span>Shop the collection</span></a><a class="pill magnetic-btn" id="wa1" href="#" target="_blank" rel="noopener" style="border-color: var(--line); background: rgba(255,255,255,0.4);"><span>Enquire</span></a></div>
+      <div class="hmeta"><a class="btn btn-primary magnetic-btn" href="#collection">Shop the collection</a><a class="btn btn-secondary magnetic-btn" id="wa1" href="#" target="_blank" rel="noopener">Enquire</a></div>
       <div class="swatches" role="group" aria-label="Choose a colour" id="swatches"></div>
     </div>
   </div>
 </section>
 
-<!-- TULISAN BERGERAK -->
 <div class="marq" aria-hidden="true">
   <div>Soft Fit <i>&amp;</i> Breathable <i>&amp;</i> Stays in place <i>&amp;</i> Soft Fit <i>&amp;</i> Breathable <i>&amp;</i> Stays in place <i>&amp;</i> </div>
 </div>
@@ -211,7 +235,7 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(247, 245, 2
   </div>
 </section>
 
-<section class="block dark" id="wear" style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px);">
+<section class="block dark" id="wear" style="background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(10px);">
   <div class="in rv">
     <h2>How to <i>w</i>ear it</h2>
     <div class="steps" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:60px;border-top:1px solid var(--line)">
@@ -239,7 +263,7 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(247, 245, 2
   <div class="in rv">
     <h2 style="margin-bottom: 20px;">Order on <i>W</i>hatsApp</h2>
     <p class="lead" style="color:#A9A39C;max-width:44ch;margin:0 0 40px; font-size: 1rem;">Want to order or ask first? Send us a message and we’ll reply as soon as we can.</p>
-    <a class="pill magnetic-btn" id="wa" href="#" target="_blank" rel="noopener" style="background: var(--footer-ink); color: var(--footer-bg); border: none;"><span>Message on WhatsApp</span></a>
+    <a class="btn btn-secondary" id="wa" href="#" target="_blank" rel="noopener" style="border-color: var(--footer-ink); color: var(--footer-ink); display: inline-block;">Message on WhatsApp</a>
     
     <div class="fgrid">
       <div><h3>Baeq</h3><p>Comfortable inner caps for all-day wear.</p></div>
@@ -252,7 +276,7 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(247, 245, 2
 
 <a class="fab" id="fab" href="#" target="_blank" rel="noopener">WhatsApp</a>
 <div class="scrim" id="scrim"></div>
-<aside class="drawer" id="drawer" aria-label="Cart"><header><h2 style="font-family: 'Playfair Display', serif; font-weight: 400; font-size: 2rem;">Your Bag</h2><button class="pill" id="closecart"><span>Close</span></button></header><ul id="lines" style="list-style:none;margin:0;padding:0;flex:1;overflow:auto; border-top: 1px solid var(--line); margin-top: 20px;"></ul><div class="sum" style="padding-top:20px;display:grid;gap:15px;"><div class="row" style="display:flex;justify-content:space-between;font-weight:500; font-size: 1.1rem;"><span>Total</span><span id="tot">RM0</span></div><small id="ship" style="color:var(--muted); font-size: 0.8rem;"></small><a class="pill" id="co" target="_blank" rel="noopener" href="#" style="text-align:center; background: var(--ink); color: var(--bg-main); border: none;"><span>Checkout</span></a><small style="color:var(--muted); text-align: center; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;">Payment details via WhatsApp</small></div></aside>
+<aside class="drawer" id="drawer" aria-label="Cart"><header style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:15px;margin-bottom:20px;"><h2 style="font-family: 'Playfair Display', serif; font-weight: 400; font-size: 2rem; margin:0;">Your Bag</h2><button class="cart-btn" id="closecart">Close</button></header><ul id="lines" style="list-style:none;margin:0;padding:0;flex:1;overflow:auto;"></ul><div class="sum" style="border-top:1px solid var(--line);padding-top:20px;display:grid;gap:15px; margin-top: 20px;"><div class="row" style="display:flex;justify-content:space-between;font-weight:500; font-size: 1.1rem;"><span>Total</span><span id="tot">RM0</span></div><small id="ship" style="color:var(--muted); font-size: 0.8rem;"></small><a class="cart-btn" id="co" target="_blank" rel="noopener" href="#" style="text-align:center; background: var(--ink); color: var(--bg-main); border: none; padding: 15px;"><span>Checkout</span></a></div></aside>
 
 <script>
 // --- MOUSE TRAIL & CURSOR LOGIC ---
@@ -282,10 +306,14 @@ if(window.matchMedia("(pointer: fine)").matches){
     });
 }
 
-// --- PRELOADER ---
-window.addEventListener('load', function() {
-    document.getElementById('preloader').classList.add('hide');
+// --- HEADER SCROLL EFFECT ---
+window.addEventListener('scroll', function() {
+    const header = document.getElementById('header');
+    if (window.scrollY > 50) { header.classList.add('scrolled'); } else { header.classList.remove('scrolled'); }
 });
+
+// --- PRELOADER ---
+window.addEventListener('load', function() { document.getElementById('preloader').classList.add('hide'); });
 
 // --- MAGNETIC BUTTON LOGIC ---
 document.querySelectorAll('.magnetic-btn').forEach(btn => {
@@ -295,9 +323,7 @@ document.querySelectorAll('.magnetic-btn').forEach(btn => {
         const y = e.clientY - rect.top - rect.height / 2;
         btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
     });
-    btn.addEventListener('mouseleave', () => {
-        btn.style.transform = `translate(0px, 0px)`;
-    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = `translate(0px, 0px)`; });
 });
 
 // --- PARALLAX EFFECT ON SCROLL ---
@@ -331,7 +357,7 @@ var items=[
 var cur=colors[0];
 var sel={};
 
-function dots(k){return '<div class="cdots" role="group" aria-label="Choose a colour" style="display:flex;gap:8px;margin-top:15px;flex-wrap:wrap;">'+colors.map(function(c,j){return '<button class="cd" data-k="'+k+'" data-j="'+j+'" aria-label="'+c[0]+'" aria-pressed="'+(sel[k]===j)+'" style="width:20px;height:20px;border-radius:50%;border:1px solid var(--line);cursor:pointer;padding:0;background:'+c[1]+'"></button>'}).join('')+'</div><small class="cn" style="color:var(--muted);font-size:.75rem; margin-top: 8px; display: block; text-transform:uppercase; letter-spacing:0.05em;">'+(sel[k]==null?'Select Colour':colors[sel[k]][0])+'</small>'}
+function dots(k){return '<div class="cdots" role="group" aria-label="Choose a colour" style="display:flex;gap:8px;margin-top:15px;flex-wrap:wrap;">'+colors.map(function(c,j){return '<button class="cd" data-k="'+k+'" data-j="'+j+'" aria-label="'+c[0]+'" aria-pressed="'+(sel[k]===j)+'" style="width:20px;height:20px;border-radius:50%;border:1px solid var(--line);cursor:pointer;padding:0;background:'+c[1]+'"></button>'}).join('')+'</div><small class="cn" style="color:var(--muted);font-size:.75rem; margin-top: 8px; display: block; text-transform:uppercase; letter-spacing:0.08em;">'+(sel[k]==null?'Select Colour':colors[sel[k]][0])+'</small>'}
 function warn(el){var n=el.closest('article').querySelector('.cn');n.textContent='Please choose a colour first';n.classList.add('warn');n.style.color='#C4553D';}
 document.addEventListener('click',function(e){var b=e.target.closest('.cd');if(!b)return;var k=b.dataset.k,j=+b.dataset.j,card=b.closest('article');sel[k]=j;card.querySelectorAll('.cd').forEach(function(x){x.setAttribute('aria-pressed',x===b);x.style.boxShadow=x===b?'0 0 0 1px var(--bg-card),0 0 0 2px var(--ink)':'none'});var n=card.querySelector('.cn');n.textContent=colors[j][0];n.classList.remove('warn');n.style.color='var(--muted)';var pc=card.querySelector('.pic');if(pc)pc.innerHTML=pic(colors[j][1],card.dataset.cat);});
 function wa(t){return "https://wa.me/"+WA+"?text="+encodeURIComponent(t)}
@@ -412,14 +438,23 @@ if('IntersectionObserver' in window){
   document.querySelectorAll('.rv').forEach(function(el){io.observe(el)})
 }
 
-var mir=document.getElementById('mirrors'),mcnt=document.getElementById('mcount'),mi=0,lockT=0,raf;
-mir.innerHTML=colors.map(function(c,j){return '<div class="mirror" data-j="'+j+'" style="flex:0 0 74%;scroll-snap-align:center;text-align:center;transform:scale(.86);opacity:.5;transition:transform .35s,opacity .35s"><div class="frame" style="padding:12px;border-radius:999px 999px 24px 24px;background:var(--bg-card);border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(0,0,0,.03)"><div class="glass" style="position:relative;overflow:hidden;border-radius:999px 999px 16px 16px;aspect-ratio:3/4.1;background:#F0EDE6;display:grid;place-items:end center;">'+pic(c[1],'Premium')+'<i class="shine" style="position:absolute;inset:-20%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.3) 46%,rgba(255,255,255,.05) 52%,transparent 58%);pointer-events:none"></i></div></div><span class="mname" style="display:block;margin-top:15px;font-family:\'Playfair Display\',Georgia,serif;font-style:italic;font-size:1.2rem; color: var(--ink);">'+c[0]+'</span></div>'}).join('');
-function mark(j){[].forEach.call(mir.children,function(m,k){m.classList.toggle('on',k===j); m.style.transform = k===j ? 'scale(1)' : 'scale(.86)'; m.style.opacity = k===j ? '1' : '.5';});mcnt.textContent=(j+1)+' / '+colors.length}
-function goMirror(j){var el=mir.children[j];if(!el)return;mi=j;mark(j);lockT=Date.now()+700;mir.scrollTo({left:el.offsetLeft-(mir.clientWidth-el.clientWidth)/2,behavior:'smooth'})}
-mir.addEventListener('scroll',function(){if(Date.now()<lockT)return;cancelAnimationFrame(raf);raf=requestAnimationFrame(function(){var mid=mir.scrollLeft+mir.clientWidth/2,best=0,bd=1e9;[].forEach.call(mir.children,function(m,k){var d=Math.abs(m.offsetLeft+m.clientWidth/2-mid);if(d<bd){bd=d;best=k}});if(best!==mi){mi=best;mark(best);setColor(colors[best],true)}})});
-document.getElementById('mprev').onclick=function(){setColor(colors[Math.max(0,mi-1)])};
-document.getElementById('mnext').onclick=function(){setColor(colors[Math.min(colors.length-1,mi+1)])};
-setColor(colors[0]);
+// SLIDER WITH FADE EFFECT
+var slidesContainer = document.getElementById('slides');
+slidesContainer.innerHTML = colors.map(function(c, i){
+    return '<div class="slide '+(i===0?'active':'')+'">'+pic(c[1],'Premium')+'</div>';
+}).join('');
+var currentSlide = 0;
+var slides = document.querySelectorAll('.slide');
+function showSlide(index) {
+    slides.forEach(s => s.classList.remove('active'));
+    slides[index].classList.add('active');
+    document.getElementById('mcount').textContent = (index+1) + ' / ' + colors.length;
+    setColor(colors[index]);
+}
+document.getElementById('mprev').onclick = function() { currentSlide = (currentSlide - 1 + colors.length) % colors.length; showSlide(currentSlide); };
+document.getElementById('mnext').onclick = function() { currentSlide = (currentSlide + 1) % colors.length; showSlide(currentSlide); };
+setInterval(function() { currentSlide = (currentSlide + 1) % colors.length; showSlide(currentSlide); }, 4000);
+showSlide(0);
 </script>
 </body>
 </html>
