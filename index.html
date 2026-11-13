@@ -5,138 +5,133 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Baeq – Premium Inner caps</title>
 <meta name="description" content="Baeq inner caps in soft, cool fabrics. Order on WhatsApp. Shipping across Malaysia.">
-<meta name="theme-color" content="#FBF8F3">
+<meta name="theme-color" content="#F7F5F0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700&family=Inter:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <style>
-/* --- CSS VARIABLES & RESET (LIGHT THEME) --- */
+/* --- ESTHETIC NEUTRAL PALETTE --- */
 :root{
-  --ink:#1C1814;       /* Warna teks utama (hitam arang) */
-  --b1:#F4EFE8;        /* Background section 1 (krim cair) */
-  --b2:#FBF8F3;        /* Background utama (putih susu) */
-  --line:#E5DCD1;      /* Warna garis border */
-  --muted:#6F6458;     /* Warna teks kelabu */
-  --putty:#E8DFD3;     /* Warna kotak gambar */
-  --hero:#FBF8F3;      /* Background hero (cerah) */
-  --heroink:#1C1814;   /* Warna teks hero (gelap) */
-  --accent:#A67C52;    /* Warna kayu/emas untuk butang */
+  --bg-main: #F7F5F0;    /* Warm Alabaster (putih tulang) */
+  --bg-card: #FFFFFF;    /* Putih bersih untuk kad */
+  --ink: #2C2A28;        /* Hampir hitam, tapi lembut (soft charcoal) */
+  --muted: #7A7570;      /* Kelabu kecoklatan untuk teks kecil */
+  --line: #E3DFD8;       /* Warna garis (border) yang sangat halus */
+  --accent: #D8D0C4;     /* Warna sand/pasir untuk butang/aksen */
+  --hero: #EEEAE3;       /* Warna hero background */
 }
 *{box-sizing:border-box; cursor: none; }
-body{margin:0;background:var(--b2);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden; width: 100%;}
-h1,h2,h3{font-family:'Inter Tight',system-ui,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:-.035em;line-height:.92;margin:0}
-h1{font-size:clamp(3.4rem,12vw,9rem)}
-h2{font-size:clamp(2.6rem,8vw,6rem)}
-i{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;text-transform:none;letter-spacing:0}
+body{margin:0;background:var(--bg-main);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden; width: 100%;}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:400;text-transform:none;letter-spacing:-.01em;line-height:1.1;margin:0} /* Guna Serif untuk nampak mahal */
+h1{font-size:clamp(3.5rem,10vw,7rem)}
+h2{font-size:clamp(2.5rem,6vw,4rem)}
+i{font-family:'Playfair Display',Georgia,serif;font-style:italic;}
 a{color:inherit; text-decoration: none;}
-.in{max-width:1120px;margin:0 auto;padding:0 24px;position:relative}
+.in{max-width:1200px;margin:0 auto;padding:0 30px;position:relative}
 
 /* --- CUSTOM CURSOR --- */
 .cursor { position: fixed; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); pointer-events: none; z-index: 9999; mix-blend-mode: difference; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s; display: none; }
-.cursor.active { width: 60px; height: 60px; background: rgba(28, 24, 20, 0.5); }
+.cursor.active { width: 60px; height: 60px; background: rgba(44, 42, 40, 0.5); }
 
 /* --- PRELOADER --- */
-#preloader{position:fixed;inset:0;background:var(--b2);color:var(--ink);z-index:10000;display:flex;justify-content:center;align-items:center;font-family:'Inter Tight',sans-serif;font-size:2rem;font-weight:700;transition:opacity 0.6s ease, visibility 0.6s ease}
+#preloader{position:fixed;inset:0;background:var(--bg-main);color:var(--ink);z-index:10000;display:flex;justify-content:center;align-items:center;font-family:'Playfair Display',serif;font-size:2.5rem;transition:opacity 0.6s ease, visibility 0.6s ease}
 #preloader.hide{opacity:0;visibility:hidden}
 
 /* --- NAVBAR --- */
-.strip{background:var(--b1);color:var(--ink);font-size:.82rem;font-weight:500; border-bottom: 1px solid var(--line);}
-.strip .in{display:flex;justify-content:space-between;gap:16px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
-.pill{display:inline-block;border:1px solid var(--ink);border-radius:999px;padding:9px 20px;font:inherit;font-size:.85rem;font-weight:500;background:none;color:var(--ink);cursor:pointer;transition:all 0.3s ease}
-.pill:hover,.pill[aria-pressed="true"]{background:var(--ink); color:var(--b2);}
-.pill:hover span,.pill[aria-pressed="true"] span{color:var(--b2)}
+.strip{background:var(--ink);color:var(--bg-main);font-size:.75rem;letter-spacing:.05em;text-transform:uppercase; text-align: center; padding: 10px;}
+.strip .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.pill{display:inline-block;border:1px solid var(--ink);border-radius:0;padding:12px 28px;font:inherit;font-size:.75rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;background:transparent;color:var(--ink);cursor:pointer;transition:all 0.3s ease}
+.pill:hover,.pill[aria-pressed="true"]{background:var(--ink); color:var(--bg-main);}
+.pill:hover span,.pill[aria-pressed="true"] span{color:var(--bg-main)}
 
 /* --- HERO SECTION --- */
-.hero{background:var(--hero);color:var(--heroink);padding:80px 0 100px;position:relative;overflow:hidden; display:flex; align-items:center; min-height: 80vh;}
-.hgrid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center; width: 100%;}
-.hright p{max-width:42ch;color:var(--muted);margin:28px 0 40px; font-size: 1.1rem;}
-.hmeta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.hero h1 { transition: transform 0.1s ease-out; will-change: transform; margin-bottom: 20px;}
+.hero{background:var(--hero);color:var(--ink);padding:100px 0 120px;position:relative;overflow:hidden; display:flex; align-items:center; min-height: 90vh;}
+.hgrid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center; width: 100%;}
+.hright p{max-width:40ch;color:var(--muted);margin:30px 0 40px; font-size: 1rem; font-weight: 400;}
+.hmeta{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.hero h1 { transition: transform 0.1s ease-out; will-change: transform; margin-bottom: 25px;}
 
 /* --- MAGNETIC BUTTON --- */
 .magnetic-btn { display: inline-block; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
 /* --- SWATCHES --- */
 .swatches{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:40px}
-.sw{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);cursor:pointer;padding:0;transition:transform 0.2s}
+.sw{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);cursor:pointer;padding:0;transition:transform 0.2s}
 .sw:hover{transform:scale(1.15)}
-.sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--b2),0 0 0 3px var(--ink)}
-#swname{font-size:.9rem;color:var(--muted);margin-left:8px; font-weight: 500;}
+.sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--hero),0 0 0 3px var(--ink)}
+#swname{font-size:.8rem;color:var(--muted);margin-left:10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;}
 
 /* --- SCROLL REVEAL --- */
-.rv{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease-out, transform 0.8s ease-out}
+.rv{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease-out, transform 0.8s ease-out}
 .rv.on{opacity:1;transform:translateY(0)}
 
 /* --- SECTION STYLING --- */
-.block{padding:100px 0}
-.b1{background:var(--b1)}
+.block{padding:120px 0; border-bottom: 1px solid var(--line);}
 .center{text-align:center}
-.center p{color:var(--muted);margin:20px auto 40px;max-width:50ch; font-size: 1.1rem;}
-.tabs{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:50px;}
+.center p{color:var(--muted);margin:20px auto 50px;max-width:50ch; font-size: 1rem;}
+.tabs{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:60px;}
 
-/* --- PRODUCT CARDS (SAMA MACAM GAMBAR) --- */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px; text-align: left;}
-.card{background:var(--b2);border:1px solid var(--line);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:8px;transition:all 0.3s ease;position:relative;overflow:hidden;}
-.card:hover{transform:translateY(-8px);box-shadow:0 15px 30px rgba(0,0,0,0.05);border-color:var(--putty);}
-.card .pic{background:var(--putty);aspect-ratio:1;display:grid;place-items:end center;margin-bottom:12px;overflow:hidden;border-radius:16px;}
-.card .pic svg, .card .pic img{width:100%; height:100%; object-fit:cover; transition:transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);}
-.card:hover .pic svg, .card:hover .pic img{transform:scale(1.08);}
-.card h3{font-size:1.4rem;line-height:1.1; margin-top: 10px;}
-.card p{margin:0;font-size:.9rem;color:var(--muted);flex:1; line-height: 1.4;}
-.card .price{font-weight:600;font-size:1rem; margin-top: 10px; color: var(--ink);}
-.card .pill{align-self:flex-start;margin-top:12px; width: 100%; text-align: center;}
+/* --- PRODUCT CARDS (MINIMALIST & ELEGANT) --- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:30px; text-align: left;}
+.card{background:var(--bg-card);border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;transition:all 0.4s ease;}
+.card:hover{border-color:var(--ink); box-shadow: 0 20px 40px rgba(0,0,0,0.03); transform: translateY(-5px);}
+.card .pic{background:#F0EDE6;aspect-ratio:1;display:grid;place-items:end center;margin-bottom:20px;overflow:hidden;}
+.card .pic svg, .card .pic img{width:100%; height:100%; object-fit:cover; transition:transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);}
+.card:hover .pic svg, .card:hover .pic img{transform:scale(1.05);}
+.card h3{font-size:1.5rem; font-family: 'Inter Tight', sans-serif; font-weight: 500; line-height:1.2; text-transform: uppercase; margin-top: 5px;}
+.card p{margin:8px 0 0;font-size:.85rem;color:var(--muted);flex:1; line-height: 1.5;}
+.card .price{font-weight:500;font-size:.95rem; margin-top: 15px; color: var(--ink); letter-spacing: 0.02em;}
+.card .pill{margin-top:20px; width: 100%; text-align: center;}
 
 /* --- MARQUEE --- */
-.marq{overflow:hidden;background:var(--ink);color:var(--b2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0;white-space:nowrap}
-.marq div{display:inline-block;animation:mq 25s linear infinite;font-family:'Inter Tight',sans-serif;font-size:clamp(1.8rem,4vw,3rem);text-transform:uppercase;letter-spacing:-.02em;font-weight:700}
-.marq i{padding:0 .5em;color:var(--putty);text-transform:none}
+.marq{overflow:hidden;background:var(--ink);color:var(--bg-main);padding:20px 0;white-space:nowrap}
+.marq div{display:inline-block;animation:mq 30s linear infinite;font-family:'Inter Tight',sans-serif;font-size:clamp(1rem,2vw,1.2rem);text-transform:uppercase;letter-spacing:.1em;font-weight:500}
+.marq i{padding:0 .8em;color:var(--accent);text-transform:none; font-family: 'Playfair Display', serif; font-size: 1.5em;}
 @keyframes mq{to{transform:translateX(-50%)}}
 
 /* --- WHATSAPP FAB --- */
-.fab{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:25;background:var(--ink);color:var(--b2);padding:14px 24px;border-radius:999px;font-weight:600;font-size:.95rem;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:transform .2s; display: flex; align-items: center; gap: 8px;}
+.fab{position:fixed;right:30px;bottom:30px;z-index:25;background:var(--ink);color:var(--bg-main);padding:14px 24px;font-weight:500;font-size:.8rem; text-transform:uppercase; letter-spacing:0.05em; box-shadow:0 10px 30px rgba(0,0,0,.2);transition:transform .2s;}
 .fab:hover{transform:translateY(-4px)}
-.fab::after{content:'';position:absolute;inset:0;border-radius:999px;border:2px solid var(--ink);animation:pulse 2s infinite;opacity:0.5;pointer-events:none}
-@keyframes pulse{0%{transform:scale(1);opacity:0.5}100%{transform:scale(1.3);opacity:0}}
+.fab::after{content:'';position:absolute;inset:0;border:1px solid var(--ink);animation:pulse 2s infinite;opacity:0.5;pointer-events:none}
+@keyframes pulse{0%{transform:scale(1);opacity:0.5}100%{transform:scale(1.1);opacity:0}}
 
 /* --- OTHER SECTIONS --- */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.split p{max-width:44ch;color:var(--muted);margin:24px 0 0; font-size: 1.1rem;}
-.cells{border:1px solid var(--line);background:var(--b2);border-radius:24px;overflow:hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.02);}
-.cells div{padding:28px 30px;border-bottom:1px solid var(--line);transition:background 0.3s}
-.cells div:hover{background:var(--b1)}
-.cells div:last-child{border-bottom:0}
-.cells h3{font-size:1.4rem;margin-bottom:10px;line-height:1}
-.cells p{margin:0;font-size:1rem;color:var(--muted)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.split p{max-width:44ch;color:var(--muted);margin:24px 0 0; font-size: 1rem;}
+.cells{border-top:1px solid var(--line);}
+.cells div{padding:30px 0;border-bottom:1px solid var(--line);display: flex; justify-content: space-between; align-items: center;}
+.cells h3{font-size:1.2rem; font-family: 'Inter Tight', sans-serif; text-transform: uppercase; font-weight: 500;}
+.cells p{margin:0;font-size:.9rem;color:var(--muted); max-width: 50%; text-align: right;}
 
 /* FAQ */
-.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}
-details{border-top:1px solid var(--line);padding:20px 0;transition:padding 0.3s}
-details[open]{padding-bottom:30px}
+.faq{display:grid;grid-template-columns:.6fr 1.4fr;gap:80px}
+details{border-top:1px solid var(--line);padding:25px 0;transition:padding 0.3s}
 details:last-child{border-bottom:1px solid var(--line)}
-summary{cursor:pointer;font-weight:600; font-size: 1.1rem; list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary{cursor:pointer;font-weight:500; font-size: 1.1rem; list-style:none;display:flex;justify-content:space-between;align-items:center; text-transform: uppercase; letter-spacing: 0.02em;}
 summary::-webkit-details-marker{display:none}
-summary::after{content:'+';font-size:1.8rem;transition:transform 0.3s; color: var(--muted);}
+summary::after{content:'+';font-size:1.5rem;font-weight:400; transition:transform 0.3s; color: var(--muted);}
 details[open] summary::after{transform:rotate(45deg); color: var(--ink);}
-details p{margin:15px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4s ease-in; font-size: 1rem;}
+details p{margin:20px 0 0;color:var(--muted);max-width:60ch;animation:fadeIn 0.4s ease-in; font-size: 0.95rem;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
 
-.end{background:var(--ink);color:var(--b2);padding:100px 0 40px;}
-.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-top:80px;padding-top:40px;border-top:1px solid #3a322b;font-size:.95rem;color:#CFC5B7}
-.fgrid h3{font-size:1.1rem;color:var(--b2);margin-bottom:15px;line-height:1}
-.fgrid p{margin:5px 0}
+.end{background:var(--bg-main);color:var(--ink);padding:100px 0 40px;}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-top:80px;padding-top:40px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.fgrid h3{font-size:.9rem;color:var(--ink);margin-bottom:20px;line-height:1; text-transform: uppercase; font-family: 'Inter Tight', sans-serif; letter-spacing: 0.05em;}
+.fgrid p{margin:8px 0}
 
 /* --- CART DRAWER --- */
-.scrim{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:30;opacity:0;visibility:hidden;transition:opacity .3s}
-.drawer{position:fixed;top:0;right:0;bottom:0;width:min(450px,100%);background:var(--b2);z-index:31;transform:translateX(100%);visibility:hidden;transition:transform .4s cubic-bezier(0.4, 0, 0.2, 1),visibility .4s;display:flex;flex-direction:column;padding:30px;border-left:1px solid var(--line); box-shadow: -10px 0 30px rgba(0,0,0,0.05);}
+.scrim{position:fixed;inset:0;background:rgba(44, 42, 40,.4);z-index:30;opacity:0;visibility:hidden;transition:opacity .3s}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(450px,100%);background:var(--bg-main);z-index:31;transform:translateX(100%);visibility:hidden;transition:transform .4s cubic-bezier(0.4, 0, 0.2, 1),visibility .4s;display:flex;flex-direction:column;padding:40px;border-left:1px solid var(--line);}
 .open .drawer{transform:none;visibility:visible}.open .scrim{opacity:1;visibility:visible}
 
-/* --- RESPONSIVE (KHAS UNTUK PHONE & LAPTOP KECIL) --- */
+/* --- RESPONSIVE (PHONE & LAPTOP KECIL) --- */
 @media(max-width:1024px){
-  .hgrid{grid-template-columns:1fr; text-align: center; gap: 40px;}
+  .hgrid{grid-template-columns:1fr; text-align: center; gap: 50px;}
   .hright{order: -1;}
   .hmeta{justify-content: center;}
   .swatches{justify-content: center;}
   .split,.faq{grid-template-columns:1fr; text-align: center; gap: 40px;}
-  .cells{margin-top: 20px;}
+  .cells div {flex-direction: column; gap: 10px;}
+  .cells p {text-align: center; max-width: 100%;}
   .steps{text-align: center;}
   .step{padding: 24px 0 0 0 !important;}
   * { cursor: auto !important; }
@@ -144,22 +139,22 @@ details p{margin:15px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4
 }
 
 @media(max-width:768px){
-  .in{padding:0 16px}
-  .strip .in{justify-content: center; text-align: center; padding: 8px 10px;}
+  .in{padding:0 20px}
+  .strip .in{justify-content: center; padding: 8px 10px;}
   .strip .in span:last-child {display: none;}
   
   /* Navbar mobile */
-  .top .in {height: 64px; padding: 0 16px;}
+  .top .in {height: 64px; padding: 0 20px;}
   .logo {font-size: 1.3rem;}
-  .top nav {display: none;} /* Sembunyi menu supaya tak bertindih */
-  .top .pill {padding: 8px 14px; font-size: 0.8rem;}
+  .top nav {display: none;}
+  .top .pill {padding: 8px 16px; font-size: 0.7rem;}
 
   /* Hero section mobile */
   .hero {padding: 40px 0; min-height: auto;}
-  .hright p {font-size: 0.95rem; margin: 15px 0 25px; text-align: center;}
+  .hright p {font-size: 0.95rem; margin: 20px 0 30px; text-align: center;}
   .hmeta {flex-direction: column; gap: 12px; width: 100%;}
   .hmeta .pill {width: 100%; text-align: center; padding: 14px;}
-  .hero h1 {font-size: 3.5rem; line-height: 1; margin-bottom: 15px;}
+  .hero h1 {font-size: 3.5rem; line-height: 1.1; margin-bottom: 15px;}
   
   /* Gambar hero mobile (Slider) */
   .mwrap { margin-top: 30px; width: 100%; max-width: 100%;}
@@ -168,28 +163,28 @@ details p{margin:15px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4
 
   /* Grid Produk mobile: 2 baris */
   .grid{grid-template-columns:repeat(2,1fr); gap: 12px;}
-  .card{padding: 10px; border-radius: 12px;}
+  .card{padding: 12px;}
   .card h3 {font-size: 1rem; margin-top: 5px; line-height: 1.2;}
-  .card p {font-size: 0.7rem; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;} 
-  .card .price {font-size: 0.9rem; margin-top: 5px;}
-  .card .pill {padding: 8px 10px; font-size: 0.75rem; margin-top: 8px;}
-  .card .pic {margin-bottom: 8px; border-radius: 10px;}
-  .cdots {gap: 4px; margin-top: 5px;}
-  .cd {width: 18px; height: 18px;}
+  .card p {font-size: 0.7rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;} 
+  .card .price {font-size: 0.9rem; margin-top: 10px;}
+  .card .pill {padding: 10px 8px; font-size: 0.7rem; margin-top: 12px;}
+  .card .pic {margin-bottom: 10px;}
+  .cdots {gap: 6px; margin-top: 8px;}
+  .cd {width: 20px; height: 20px;}
   .cn {font-size: 0.7rem; margin-top: 3px;}
 
   /* Section lain */
-  .block {padding: 50px 0;}
+  .block {padding: 60px 0;}
   .tabs {gap: 8px; margin-bottom: 30px; flex-wrap: wrap;}
-  .tabs .pill {padding: 8px 14px; font-size: 0.8rem;}
+  .tabs .pill {padding: 8px 16px; font-size: 0.7rem;}
   .split h2, .faq h2 {font-size: 2.2rem;}
-  .cells div {padding: 20px;}
+  .cells div {padding: 20px 0;}
 
   /* WhatsApp fab */
-  .fab{right:16px;bottom:16px;padding:12px 18px;font-size:0.8rem;}
+  .fab{right:20px;bottom:20px;padding:12px 20px;font-size:0.75rem;}
   
   /* Cart drawer */
-  .drawer {padding: 20px; width: 100%;}
+  .drawer {padding: 24px; width: 100%;}
   .drawer h2 {font-size: 1.5rem;}
 }
 </style>
@@ -199,37 +194,37 @@ details p{margin:15px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4
 <div class="cursor" id="customCursor"></div>
 <div id="preloader">Baeq.</div>
 
-<div class="strip"><div class="in"><span>Free shipping on orders over RM100</span><span>Ships across Malaysia</span></div></div>
-<header class="top" style="position:sticky;top:0;z-index:20;background:var(--b2);border-bottom:1px solid var(--line);"><div class="in" style="display:flex;align-items:center;justify-content:space-between;height:72px;"><a class="logo" href="#" style="font-family:'Inter Tight';font-weight:700;font-size:1.5rem;text-decoration:none;text-transform:uppercase; color: var(--ink);">Baeq</a><nav style="display:flex;"><a href="#collection" style="margin:0 16px;text-decoration:none;font-size:.95rem; font-weight:500; color: var(--ink);">Collection</a><a href="#why" style="margin:0 16px;text-decoration:none;font-size:.95rem; font-weight:500; color: var(--ink);">Why us</a><a href="#faq" style="margin:0 16px;text-decoration:none;font-size:.95rem; font-weight:500; color: var(--ink);">FAQ</a><a href="#order" style="margin:0 16px;text-decoration:none;font-size:.95rem; font-weight:500; color: var(--ink);">Contact</a></nav><button class="pill" id="cartbtn" aria-label="Open cart"><span>Cart (<b id="cnt">0</b>)</span></button></div></header>
+<div class="strip"><div class="in"><span>Complimentary shipping over RM100</span></div></div>
+<header class="top" style="position:sticky;top:0;z-index:20;background:var(--bg-main);border-bottom:1px solid var(--line);"><div class="in" style="display:flex;align-items:center;justify-content:space-between;height:80px;"><a class="logo" href="#" style="font-family:'Playfair Display',serif;font-weight:400;font-size:1.8rem;text-decoration:none; color: var(--ink);">Baeq</a><nav style="display:flex;"><a href="#collection" style="margin:0 20px;text-decoration:none;font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; font-weight:500;">Collection</a><a href="#why" style="margin:0 20px;text-decoration:none;font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; font-weight:500;">Philosophy</a><a href="#faq" style="margin:0 20px;text-decoration:none;font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; font-weight:500;">FAQ</a><a href="#order" style="margin:0 20px;text-decoration:none;font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; font-weight:500;">Contact</a></nav><button class="pill" id="cartbtn" aria-label="Open cart"><span>Bag (<b id="cnt">0</b>)</span></button></div></header>
 
 <section class="hero">
   <div class="in hgrid">
     <!-- SLIDER -->
     <div class="mwrap" role="group" aria-label="Mirror colour slider">
       <div class="mirrors" id="mirrors" style="display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 13% 14px;scrollbar-width:none; cursor: grab;"></div>
-      <div class="marrows" style="display:flex;justify-content:center;align-items:center;gap:24px;font-size:.95rem;color:var(--muted); margin-top: 20px;">
-        <button id="mprev" aria-label="Previous colour" style="width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;font-size:1.2rem; transition: all 0.3s;">←</button>
-        <span id="mcount" style="font-weight: 600;"></span>
-        <button id="mnext" aria-label="Next colour" style="width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;font-size:1.2rem; transition: all 0.3s;">→</button>
+      <div class="marrows" style="display:flex;justify-content:center;align-items:center;gap:24px;font-size:.8rem;color:var(--muted); margin-top: 20px; text-transform:uppercase; letter-spacing:0.05em;">
+        <button id="mprev" aria-label="Previous colour" style="width:40px;height:40px;border-radius:0;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer; transition: all 0.3s;">←</button>
+        <span id="mcount" style="font-weight: 500;"></span>
+        <button id="mnext" aria-label="Next colour" style="width:40px;height:40px;border-radius:0;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer; transition: all 0.3s;">→</button>
       </div>
     </div>
     
     <div class="hright">
-      <span class="cap"><i>soft, cool &amp; yours</i></span>
+      <span class="cap" style="font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); display: block; margin-bottom: 20px;">The Everyday Collection</span>
       <h1 id="heroTitle" style="will-change: transform; color: var(--ink);">Inner<br><i>C</i>aps</h1>
-      <p>Premium inner caps in soft fabrics that absorb sweat and stay in place all day. Pick a colour and order straight through WhatsApp.</p>
-      <div class="hmeta"><a class="pill magnetic-btn" href="#collection" style="background: var(--ink); color: var(--b2); border: none; padding: 14px 28px; font-weight: 600;"><span>Shop the collection</span></a><a class="pill magnetic-btn" id="wa1" href="#" target="_blank" rel="noopener" style="padding: 14px 28px; font-weight: 600; color: var(--ink); border-color: var(--ink);"><span>Message us</span></a></div>
+      <p>Premium inner caps crafted from soft fabrics that absorb sweat and stay in place all day. Pick a colour and order straight through WhatsApp.</p>
+      <div class="hmeta"><a class="pill magnetic-btn" href="#collection" style="background: var(--ink); color: var(--bg-main); border: none;"><span>Shop the collection</span></a><a class="pill magnetic-btn" id="wa1" href="#" target="_blank" rel="noopener" style="border-color: var(--line);"><span>Enquire</span></a></div>
       <div class="swatches" role="group" aria-label="Choose a colour" id="swatches"></div>
     </div>
   </div>
 </section>
 
-<div class="marq" aria-hidden="true"><div>Cool fabric <i>&amp;</i> Soft fit <i>&amp;</i> Stays in place <i>&amp;</i> Cool fabric <i>&amp;</i> Soft fit <i>&amp;</i> Stays in place <i>&amp;</i> </div><div>Cool fabric <i>&amp;</i> Soft fit <i>&amp;</i> Stays in place <i>&amp;</i> Cool fabric <i>&amp;</i> Soft fit <i>&amp;</i> Stays in place <i>&amp;</i> </div></div>
+<div class="marq" aria-hidden="true"><div>Soft Fit <i>&amp;</i> Breathable <i>&amp;</i> Stays in place <i>&amp;</i> Soft Fit <i>&amp;</i> Breathable <i>&amp;</i> Stays in place <i>&amp;</i> </div></div>
 
 <section class="block b1" id="why">
   <div class="in">
     <div class="split rv">
-      <div><h2>Made for <i>e</i>very day</h2><p>Cotton and jersey that absorb sweat, with a cut and elastic designed to stay put from the first prayer to the last meeting.</p></div>
+      <div><h2>Designed for <i>e</i>very day</h2><p>Cotton and jersey that absorb sweat, with a cut and elastic designed to stay put from the first prayer to the last meeting.</p></div>
       <div class="cells">
         <div><h3>Stays in place</h3><p>The cut and elastic are designed to stay put all day.</p></div>
         <div><h3>Cool fabric</h3><p>Soft cotton and jersey that don’t feel hot.</p></div>
@@ -241,27 +236,27 @@ details p{margin:15px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4
 
 <section class="block" id="collection">
   <div class="in center rv">
-    <h2>The <i>c</i>ollection</h2>
-    <p>Premium and affordable inner caps. Choose a colour, then add to cart.</p>
+    <h2>The <i>C</i>ollection</h2>
+    <p>Premium and affordable inner caps. Choose a colour, then add to bag.</p>
     <div class="tabs" id="tabs" role="group" aria-label="Filter products"></div>
     <div class="grid" id="products"></div>
   </div>
 </section>
 
-<section class="block dark" id="wear">
+<section class="block dark" id="wear" style="background: var(--bg-card);">
   <div class="in rv">
     <h2>How to <i>w</i>ear it</h2>
-    <div class="steps" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:48px;border-top:1px solid var(--line)">
-      <div class="step" style="padding:32px 28px 0 0"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,8vw,5.5rem);line-height:1;color:var(--putty);margin-bottom:12px;">01</b><h3>Slip it on</h3><p>Pull the inner cap over your hair, covering the hairline and ears.</p></div>
-      <div class="step" style="padding:32px 28px 0 0"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,8vw,5.5rem);line-height:1;color:var(--putty);margin-bottom:12px;">02</b><h3>Smooth and set</h3><p>Tuck stray hair in and adjust the band so it sits flat and snug.</p></div>
-      <div class="step" style="padding:32px 28px 0 0"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,8vw,5.5rem);line-height:1;color:var(--putty);margin-bottom:12px;">03</b><h3>Style your tudung</h3><p>Layer your bawal or shawl on top. The cap grips the fabric so it stays put.</p></div>
+    <div class="steps" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:60px;border-top:1px solid var(--line)">
+      <div class="step" style="padding:40px 30px 0 0; border-right: 1px solid var(--line);"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,6vw,5rem);line-height:1;color:var(--line);margin-bottom:20px;">01</b><h3 style="font-family: 'Inter Tight'; text-transform: uppercase;">Slip it on</h3><p style="color: var(--muted); margin-top: 10px;">Pull the inner cap over your hair, covering the hairline and ears.</p></div>
+      <div class="step" style="padding:40px 30px 0 30px; border-right: 1px solid var(--line);"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,6vw,5rem);line-height:1;color:var(--line);margin-bottom:20px;">02</b><h3 style="font-family: 'Inter Tight'; text-transform: uppercase;">Smooth and set</h3><p style="color: var(--muted); margin-top: 10px;">Tuck stray hair in and adjust the band so it sits flat and snug.</p></div>
+      <div class="step" style="padding:40px 0 0 30px;"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,6vw,5rem);line-height:1;color:var(--line);margin-bottom:20px;">03</b><h3 style="font-family: 'Inter Tight'; text-transform: uppercase;">Style your tudung</h3><p style="color: var(--muted); margin-top: 10px;">Layer your bawal or shawl on top. The cap grips the fabric so it stays put.</p></div>
     </div>
   </div>
 </section>
 
 <section class="block" id="faq">
   <div class="in faq rv">
-    <h2>Good <i>t</i>o know</h2>
+    <h2>Client <i>C</i>are</h2>
     <div>
       <details><summary>How do I order?</summary><p>Tap the Order button on a product. WhatsApp opens with a message already written. Send it to us and we’ll confirm stock and payment.</p></details>
       <details><summary>How do I choose a size?</summary><p>Most of our inner caps are free size and stretch. If you’re unsure, ask us on WhatsApp.</p></details>
@@ -274,21 +269,21 @@ details p{margin:15px 0 0;color:var(--muted);max-width:56ch;animation:fadeIn 0.4
 
 <section class="end" id="order">
   <div class="in rv">
-    <h2>Order on <i>W</i>hatsApp</h2>
-    <p class="lead" style="color:#CFC5B7;max-width:44ch;margin:24px 0 32px; font-size: 1.1rem;">Want to order or ask first? Send us a message and we’ll reply as soon as we can.</p>
-    <a class="pill magnetic-btn" id="wa" href="#" target="_blank" rel="noopener" style="background: var(--b2); color: var(--ink); border: none; padding: 14px 28px; font-weight: 600;"><span>Message on WhatsApp</span></a>
+    <h2 style="margin-bottom: 20px;">Order on <i>W</i>hatsApp</h2>
+    <p class="lead" style="color:var(--muted);max-width:44ch;margin:0 0 40px; font-size: 1rem;">Want to order or ask first? Send us a message and we’ll reply as soon as we can.</p>
+    <a class="pill magnetic-btn" id="wa" href="#" target="_blank" rel="noopener" style="background: var(--ink); color: var(--bg-main); border: none;"><span>Message on WhatsApp</span></a>
     <div class="fgrid">
       <div><h3>Baeq</h3><p>Comfortable inner caps for all-day wear.</p></div>
-      <div><h3>Contact</h3><p>WhatsApp: 012-345 6789</p><p>Email: hello@baeq.com</p><p>Monday to Saturday, 9am to 6pm</p></div>
-      <div><h3>Follow</h3><p>Instagram: @baeq</p><p>TikTok: @baeq</p><p>Facebook: Baeq</p></div>
+      <div><h3>Contact</h3><p>WhatsApp: 012-345 6789</p><p>Email: hello@baeq.com</p></div>
+      <div><h3>Follow</h3><p>Instagram: @baeq</p><p>TikTok: @baeq</p></div>
     </div>
-    <p class="copy" style="margin:40px 0 0;font-size:.85rem;color:#8d8275">© <span id="yr"></span> Baeq. All rights reserved.</p>
+    <p class="copy" style="margin:60px 0 0;font-size:.75rem;color:var(--muted); text-transform: uppercase; letter-spacing: 0.05em;">© <span id="yr"></span> Baeq. All rights reserved.</p>
   </div>
 </section>
 
-<a class="fab" id="fab" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+<a class="fab" id="fab" href="#" target="_blank" rel="noopener">WhatsApp</a>
 <div class="scrim" id="scrim"></div>
-<aside class="drawer" id="drawer" aria-label="Cart"><header><h2>Cart</h2><button class="pill" id="closecart"><span>Close</span></button></header><ul id="lines" style="list-style:none;margin:0;padding:0;flex:1;overflow:auto"></ul><div class="sum" style="border-top:1px solid var(--line);padding-top:20px;display:grid;gap:15px; margin-top: 20px;"><div class="row" style="display:flex;justify-content:space-between;font-weight:600; font-size: 1.2rem;"><span>Total</span><span id="tot">RM0</span></div><small id="ship" style="color:var(--muted); font-size: 0.9rem;"></small><a class="pill" id="co" target="_blank" rel="noopener" href="#" style="text-align:center; background: var(--ink); color: var(--b2); border: none; padding: 14px; font-weight: 600;"><span>Checkout on WhatsApp</span></a><small style="color:var(--muted); text-align: center;">We’ll confirm stock and payment details on WhatsApp.</small></div></aside>
+<aside class="drawer" id="drawer" aria-label="Cart"><header><h2 style="font-family: 'Playfair Display', serif; font-weight: 400; font-size: 2rem;">Your Bag</h2><button class="pill" id="closecart"><span>Close</span></button></header><ul id="lines" style="list-style:none;margin:0;padding:0;flex:1;overflow:auto; border-top: 1px solid var(--line); margin-top: 20px;"></ul><div class="sum" style="padding-top:20px;display:grid;gap:15px;"><div class="row" style="display:flex;justify-content:space-between;font-weight:500; font-size: 1.1rem;"><span>Total</span><span id="tot">RM0</span></div><small id="ship" style="color:var(--muted); font-size: 0.8rem;"></small><a class="pill" id="co" target="_blank" rel="noopener" href="#" style="text-align:center; background: var(--ink); color: var(--bg-main); border: none;"><span>Checkout</span></a><small style="color:var(--muted); text-align: center; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;">Payment details via WhatsApp</small></div></aside>
 
 <script>
 // --- CUSTOM CURSOR LOGIC ---
@@ -316,7 +311,7 @@ document.querySelectorAll('.magnetic-btn').forEach(btn => {
         const rect = btn.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
     });
     btn.addEventListener('mouseleave', () => {
         btn.style.transform = `translate(0px, 0px)`;
@@ -328,7 +323,7 @@ window.addEventListener('scroll', () => {
     const title = document.getElementById('heroTitle');
     if(title){
         let scrollY = window.scrollY;
-        title.style.transform = `translateY(${scrollY * 0.2}px)`;
+        title.style.transform = `translateY(${scrollY * 0.1}px)`;
     }
 });
 
@@ -354,9 +349,9 @@ var items=[
 var cur=colors[0];
 var sel={};
 
-function dots(k){return '<div class="cdots" role="group" aria-label="Choose a colour" style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">'+colors.map(function(c,j){return '<button class="cd" data-k="'+k+'" data-j="'+j+'" aria-label="'+c[0]+'" aria-pressed="'+(sel[k]===j)+'" style="width:24px;height:24px;border-radius:50%;border:1px solid var(--line);cursor:pointer;padding:0;background:'+c[1]+'"></button>'}).join('')+'</div><small class="cn" style="color:var(--muted);font-size:.85rem; margin-top: 5px; display: block;">'+(sel[k]==null?'Choose a colour':colors[sel[k]][0])+'</small>'}
+function dots(k){return '<div class="cdots" role="group" aria-label="Choose a colour" style="display:flex;gap:8px;margin-top:15px;flex-wrap:wrap;">'+colors.map(function(c,j){return '<button class="cd" data-k="'+k+'" data-j="'+j+'" aria-label="'+c[0]+'" aria-pressed="'+(sel[k]===j)+'" style="width:20px;height:20px;border-radius:50%;border:1px solid var(--line);cursor:pointer;padding:0;background:'+c[1]+'"></button>'}).join('')+'</div><small class="cn" style="color:var(--muted);font-size:.75rem; margin-top: 8px; display: block; text-transform:uppercase; letter-spacing:0.05em;">'+(sel[k]==null?'Select Colour':colors[sel[k]][0])+'</small>'}
 function warn(el){var n=el.closest('article').querySelector('.cn');n.textContent='Please choose a colour first';n.classList.add('warn');n.style.color='#C4553D';}
-document.addEventListener('click',function(e){var b=e.target.closest('.cd');if(!b)return;var k=b.dataset.k,j=+b.dataset.j,card=b.closest('article');sel[k]=j;card.querySelectorAll('.cd').forEach(function(x){x.setAttribute('aria-pressed',x===b);x.style.boxShadow=x===b?'0 0 0 2px var(--b2),0 0 0 3px var(--ink)':'none'});var n=card.querySelector('.cn');n.textContent=colors[j][0];n.classList.remove('warn');n.style.color='var(--muted)';var pc=card.querySelector('.pic');if(pc)pc.innerHTML=pic(colors[j][1],card.dataset.cat);});
+document.addEventListener('click',function(e){var b=e.target.closest('.cd');if(!b)return;var k=b.dataset.k,j=+b.dataset.j,card=b.closest('article');sel[k]=j;card.querySelectorAll('.cd').forEach(function(x){x.setAttribute('aria-pressed',x===b);x.style.boxShadow=x===b?'0 0 0 1px var(--bg-card),0 0 0 2px var(--ink)':'none'});var n=card.querySelector('.cn');n.textContent=colors[j][0];n.classList.remove('warn');n.style.color='var(--muted)';var pc=card.querySelector('.pic');if(pc)pc.innerHTML=pic(colors[j][1],card.dataset.cat);});
 function wa(t){return "https://wa.me/"+WA+"?text="+encodeURIComponent(t)}
 
 // SVG KARTUN (Kekal)
@@ -364,7 +359,7 @@ function pic(c,k){
  var ninja=k!=='Mampu Milik';
  var cap=ninja?'M100 20C60 20 40 54 40 100v58c0 22-8 34-14 48 24 18 124 18 148 0-6-14-14-26-14-48v-58c0-46-20-80-60-80Z':'M100 24C58 24 42 58 42 104l14 8c2-26 14-42 44-42s42 16 44 42l14-8c0-46-16-80-58-80Z';
  var dots=k==='Sports'?'<g fill="#0003"><circle cx="72" cy="58" r="2.5"/><circle cx="88" cy="46" r="2.5"/><circle cx="104" cy="42" r="2.5"/><circle cx="120" cy="48" r="2.5"/><circle cx="132" cy="60" r="2.5"/><circle cx="60" cy="90" r="2.5"/><circle cx="140" cy="90" r="2.5"/></g>':'';
- return '<svg viewBox="0 0 200 240" style="width:100%; height:100%; object-fit:cover;"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".3"/><stop offset=".55" stop-opacity="0"/><stop offset="1" stop-opacity=".22"/></linearGradient></defs><path d="M6 240c4-42 34-58 94-60s90 18 94 60Z" fill="#3b312b"/>'+(ninja?'':'<path d="M84 150h32v34q-16 9-32 0Z" fill="#E7BFA5"/>')+'<path d="'+cap+'" fill="'+c+'"/><path d="'+cap+'" fill="url(#g)"/>'+dots+'<ellipse cx="100" cy="112" rx="34" ry="44" fill="#F1D3C0"/><circle cx="87" cy="108" r="2.6" fill="#2B1B2E"/><circle cx="113" cy="108" r="2.6" fill="#2B1B2E"/><path d="M92 132q8 6 16 0" stroke="#2B1B2E" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>';
+ return '<svg viewBox="0 0 200 240" style="width:100%; height:100%; object-fit:cover;"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".2"/><stop offset=".55" stop-opacity="0"/><stop offset="1" stop-opacity=".1"/></linearGradient></defs><path d="M6 240c4-42 34-58 94-60s90 18 94 60Z" fill="#3b312b"/>'+(ninja?'':'<path d="M84 150h32v34q-16 9-32 0Z" fill="#E7BFA5"/>')+'<path d="'+cap+'" fill="'+c+'"/><path d="'+cap+'" fill="url(#g)"/>'+dots+'<ellipse cx="100" cy="112" rx="34" ry="44" fill="#F1D3C0"/><circle cx="87" cy="108" r="2.6" fill="#2B1B2E"/><circle cx="113" cy="108" r="2.6" fill="#2B1B2E"/><path d="M92 132q8 6 16 0" stroke="#2B1B2E" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>';
 }
 
 (function(){
@@ -391,7 +386,7 @@ function setColor(c,fs){
 }
 function renderProducts(){
   document.getElementById('products').innerHTML=items.filter(function(p){return cat==='All'||p[3]===cat}).map(function(p){
-    return '<article class="card" data-cat="'+p[3]+'"><div class="pic">'+pic(sel['i'+items.indexOf(p)]==null?'#D8D0C4':colors[sel['i'+items.indexOf(p)]][1],p[3])+'</div><span class="tag" style="font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted); font-weight: 600;">'+p[3]+'</span><h3>'+p[0]+'</h3><p>'+p[1]+'</p><span class="price">'+p[2]+'</span>'+dots('i'+items.indexOf(p))+'<button class="pill add" data-i="'+items.indexOf(p)+'"><span>Add to cart</span></button></article>';
+    return '<article class="card" data-cat="'+p[3]+'"><div class="pic">'+pic(sel['i'+items.indexOf(p)]==null?'#EBE6DE':colors[sel['i'+items.indexOf(p)]][1],p[3])+'</div><span class="tag" style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted); font-weight: 500;">'+p[3]+'</span><h3>'+p[0]+'</h3><p>'+p[1]+'</p><span class="price">'+p[2]+'</span>'+dots('i'+items.indexOf(p))+'<button class="pill add" data-i="'+items.indexOf(p)+'"><span>Add to bag</span></button></article>';
   }).join('');
 }
 var box=document.getElementById('swatches');
@@ -400,17 +395,17 @@ colors.forEach(function(c){
   b.setAttribute('aria-label',c[0]);b.onclick=function(){setColor(c)};box.appendChild(b);
 });
 var s=document.createElement('span');s.id='swname';box.appendChild(s);
-var msg=wa("Hi, I’d like to ask about your inner caps.");
+var msg=wa("Hi, I’d like to enquire about your inner caps.");
 document.getElementById('wa').href=msg;document.getElementById('wa1').href=msg;document.getElementById('fab').href=msg;
 document.getElementById('yr').textContent=new Date().getFullYear();
 var cart=[],root=document.body;
 function renderCart(){
  var n=0,t=0;
- var h=cart.map(function(l,k){n+=l.q;t+=l.q*l.p;return '<li style="display:flex;justify-content:space-between;gap:12px;align-items:center;padding:16px 0;border-top:1px solid var(--line)"><div><strong style="font-size: 1.1rem;">'+l.n+'</strong><br><small style="color: var(--muted);">'+l.c+' · RM'+l.p+'</small></div><div class="qty" style="display:flex;align-items:center;gap:12px"><button data-k="'+k+'" data-d="-1" aria-label="Decrease" style="width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:none;color:inherit;cursor:pointer;font:inherit; transition: background 0.2s;">−</button><span style="font-weight: 600;">'+l.q+'</span><button data-k="'+k+'" data-d="1" aria-label="Increase" style="width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:none;color:inherit;cursor:pointer;font:inherit; transition: background 0.2s;">+</button></div></li>'}).join('');
- document.getElementById('lines').innerHTML=h||'<li class="empty" style="color:var(--muted); text-align: center; padding: 40px 0;">Your cart is empty.</li>';
+ var h=cart.map(function(l,k){n+=l.q;t+=l.q*l.p;return '<li style="display:flex;justify-content:space-between;gap:12px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)"><div><strong style="font-size: .95rem; font-family: \'Inter Tight\';">'+l.n+'</strong><br><small style="color: var(--muted); font-size:.8rem;">'+l.c+' · RM'+l.p+'</small></div><div class="qty" style="display:flex;align-items:center;gap:12px"><button data-k="'+k+'" data-d="-1" aria-label="Decrease" style="width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:none;color:inherit;cursor:pointer;font:inherit;">−</button><span style="font-weight: 500; font-size: .9rem;">'+l.q+'</span><button data-k="'+k+'" data-d="1" aria-label="Increase" style="width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:none;color:inherit;cursor:pointer;font:inherit;">+</button></div></li>'}).join('');
+ document.getElementById('lines').innerHTML=h||'<li class="empty" style="color:var(--muted); text-align: center; padding: 40px 0; font-size: .9rem;">Your bag is empty.</li>';
  document.getElementById('cnt').textContent=n;
  document.getElementById('tot').textContent='RM'+t;
- document.getElementById('ship').textContent=!n?'':(t>=100?'Free shipping applied':'Add RM'+(100-t)+' more for free shipping');
+ document.getElementById('ship').textContent=!n?'':(t>=100?'Complimentary shipping applied':'Add RM'+(100-t)+' more for complimentary shipping');
  var co=document.getElementById('co');co.style.display=n?'block':'none';
  co.href=wa("Hi, I’d like to order:\n"+cart.map(function(l){return l.q+" x "+l.n+" ("+l.c+") RM"+(l.q*l.p)}).join("\n")+"\nTotal: RM"+t);
 }
@@ -436,7 +431,7 @@ if('IntersectionObserver' in window){
 }
 
 var mir=document.getElementById('mirrors'),mcnt=document.getElementById('mcount'),mi=0,lockT=0,raf;
-mir.innerHTML=colors.map(function(c,j){return '<div class="mirror" data-j="'+j+'" style="flex:0 0 74%;scroll-snap-align:center;text-align:center;transform:scale(.86);opacity:.5;transition:transform .35s,opacity .35s"><div class="frame" style="padding:12px;border-radius:999px 999px 24px 24px;background:linear-gradient(135deg,#E2C9A6,#8F6548 55%,#C9A98B);box-shadow:0 24px 50px rgba(0,0,0,.1)"><div class="glass" style="position:relative;overflow:hidden;border-radius:999px 999px 16px 16px;aspect-ratio:3/4.1;background:linear-gradient(180deg,#d9d2c6,#b9b1a2);display:grid;place-items:end center;box-shadow:inset 0 0 24px rgba(0,0,0,.1)">'+pic(c[1],'Premium')+'<i class="shine" style="position:absolute;inset:-20%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.35) 46%,rgba(255,255,255,.08) 52%,transparent 58%);pointer-events:none"></i></div></div><span class="mname" style="display:block;margin-top:12px;font-family:\'Playfair Display\',Georgia,serif;font-style:italic;font-size:1.3rem; color: var(--ink);">'+c[0]+'</span></div>'}).join('');
+mir.innerHTML=colors.map(function(c,j){return '<div class="mirror" data-j="'+j+'" style="flex:0 0 74%;scroll-snap-align:center;text-align:center;transform:scale(.86);opacity:.5;transition:transform .35s,opacity .35s"><div class="frame" style="padding:12px;border-radius:999px 999px 24px 24px;background:var(--bg-card);border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(0,0,0,.03)"><div class="glass" style="position:relative;overflow:hidden;border-radius:999px 999px 16px 16px;aspect-ratio:3/4.1;background:#F0EDE6;display:grid;place-items:end center;">'+pic(c[1],'Premium')+'<i class="shine" style="position:absolute;inset:-20%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.3) 46%,rgba(255,255,255,.05) 52%,transparent 58%);pointer-events:none"></i></div></div><span class="mname" style="display:block;margin-top:15px;font-family:\'Playfair Display\',Georgia,serif;font-style:italic;font-size:1.2rem; color: var(--ink);">'+c[0]+'</span></div>'}).join('');
 function mark(j){[].forEach.call(mir.children,function(m,k){m.classList.toggle('on',k===j); m.style.transform = k===j ? 'scale(1)' : 'scale(.86)'; m.style.opacity = k===j ? '1' : '.5';});mcnt.textContent=(j+1)+' / '+colors.length}
 function goMirror(j){var el=mir.children[j];if(!el)return;mi=j;mark(j);lockT=Date.now()+700;mir.scrollTo({left:el.offsetLeft-(mir.clientWidth-el.clientWidth)/2,behavior:'smooth'})}
 mir.addEventListener('scroll',function(){if(Date.now()<lockT)return;cancelAnimationFrame(raf);raf=requestAnimationFrame(function(){var mid=mir.scrollLeft+mir.clientWidth/2,best=0,bd=1e9;[].forEach.call(mir.children,function(m,k){var d=Math.abs(m.offsetLeft+m.clientWidth/2-mid);if(d<bd){bd=d;best=k}});if(best!==mi){mi=best;mark(best);setColor(colors[best],true)}})});
