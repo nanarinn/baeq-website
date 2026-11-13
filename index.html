@@ -5,32 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Baeq – Premium Inner caps</title>
 <meta name="description" content="Baeq inner caps in soft, cool fabrics. Order on WhatsApp. Shipping across Malaysia.">
-<meta name="theme-color" content="#F7F5F0">
+<meta name="theme-color" content="#F5F2EB">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700&family=Inter:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <style>
-/* --- ESTHETIC NEUTRAL PALETTE --- */
+/* --- ESTHETIC WARM NEUTRAL PALETTE --- */
 :root{
-  --bg-main: #F7F5F0;    /* Warm Alabaster (putih tulang) */
+  --bg-main: #F5F2EB;    /* Warm off-white (sangat selesa di mata) */
   --bg-card: #FFFFFF;    /* Putih bersih untuk kad */
-  --ink: #2C2A28;        /* Hampir hitam, tapi lembut (soft charcoal) */
-  --muted: #7A7570;      /* Kelabu kecoklatan untuk teks kecil */
-  --line: #E3DFD8;       /* Warna garis (border) yang sangat halus */
-  --accent: #D8D0C4;     /* Warna sand/pasir untuk butang/aksen */
-  --hero: #EEEAE3;       /* Warna hero background */
+  --ink: #1F1D1A;        /* Hampir hitam, tapi lembut (soft charcoal) */
+  --muted: #6B665F;      /* Kelabu kecoklatan untuk teks kecil (kontras jelas) */
+  --line: #DFD9CF;       /* Warna garis (border) yang sangat halus */
+  --accent: #D3C4B4;     /* Warna sand/pasir untuk aksen */
+  --hero: #EBE5DB;       /* Warna hero background yang agak cerah */
 }
 *{box-sizing:border-box; cursor: none; }
 body{margin:0;background:var(--bg-main);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden; width: 100%;}
-h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:400;text-transform:none;letter-spacing:-.01em;line-height:1.1;margin:0} /* Guna Serif untuk nampak mahal */
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:400;text-transform:none;letter-spacing:-.01em;line-height:1.1;margin:0} 
 h1{font-size:clamp(3.5rem,10vw,7rem)}
 h2{font-size:clamp(2.5rem,6vw,4rem)}
 i{font-family:'Playfair Display',Georgia,serif;font-style:italic;}
 a{color:inherit; text-decoration: none;}
 .in{max-width:1200px;margin:0 auto;padding:0 30px;position:relative}
 
-/* --- CUSTOM CURSOR --- */
-.cursor { position: fixed; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); pointer-events: none; z-index: 9999; mix-blend-mode: difference; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s; display: none; }
-.cursor.active { width: 60px; height: 60px; background: rgba(44, 42, 40, 0.5); }
+/* --- CUSTOM CURSOR & MOUSE TRAIL --- */
+.cursor { position: fixed; width: 20px; height: 20px; border-radius: 50%; background: var(--ink); pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s; display: none; mix-blend-mode: difference; }
+.cursor.active { width: 50px; height: 50px; background: rgba(255,255,255,0.2); border: 1px solid var(--ink); }
+.trail-dot { position: fixed; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); }
 
 /* --- PRELOADER --- */
 #preloader{position:fixed;inset:0;background:var(--bg-main);color:var(--ink);z-index:10000;display:flex;justify-content:center;align-items:center;font-family:'Playfair Display',serif;font-size:2.5rem;transition:opacity 0.6s ease, visibility 0.6s ease}
@@ -38,20 +39,14 @@ a{color:inherit; text-decoration: none;}
 
 /* --- NAVBAR --- */
 .strip{background:var(--ink);color:var(--bg-main);font-size:.75rem;letter-spacing:.05em;text-transform:uppercase; text-align: center; padding: 10px;}
-.strip .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.pill{display:inline-block;border:1px solid var(--ink);border-radius:0;padding:12px 28px;font:inherit;font-size:.75rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;background:transparent;color:var(--ink);cursor:pointer;transition:all 0.3s ease}
-.pill:hover,.pill[aria-pressed="true"]{background:var(--ink); color:var(--bg-main);}
-.pill:hover span,.pill[aria-pressed="true"] span{color:var(--bg-main)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:0;padding:12px 28px;font:inherit;font-size:.75rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;background:transparent;color:var(--ink);cursor:pointer;transition:all 0.3s ease}
+.pill:hover,.pill[aria-pressed="true"]{background:var(--ink); color:var(--bg-main); border-color: var(--ink);}
 
 /* --- HERO SECTION --- */
 .hero{background:var(--hero);color:var(--ink);padding:100px 0 120px;position:relative;overflow:hidden; display:flex; align-items:center; min-height: 90vh;}
 .hgrid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center; width: 100%;}
-.hright p{max-width:40ch;color:var(--muted);margin:30px 0 40px; font-size: 1rem; font-weight: 400;}
+.hright p{max-width:40ch;color:var(--muted);margin:30px 0 40px; font-size: 1.05rem; font-weight: 400;}
 .hmeta{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-.hero h1 { transition: transform 0.1s ease-out; will-change: transform; margin-bottom: 25px;}
-
-/* --- MAGNETIC BUTTON --- */
-.magnetic-btn { display: inline-block; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
 /* --- SWATCHES --- */
 .swatches{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:40px}
@@ -67,19 +62,19 @@ a{color:inherit; text-decoration: none;}
 /* --- SECTION STYLING --- */
 .block{padding:120px 0; border-bottom: 1px solid var(--line);}
 .center{text-align:center}
-.center p{color:var(--muted);margin:20px auto 50px;max-width:50ch; font-size: 1rem;}
+.center p{color:var(--muted);margin:20px auto 50px;max-width:50ch; font-size: 1.05rem;}
 .tabs{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:60px;}
 
-/* --- PRODUCT CARDS (MINIMALIST & ELEGANT) --- */
+/* --- PRODUCT CARDS --- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:30px; text-align: left;}
-.card{background:var(--bg-card);border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;transition:all 0.4s ease;}
-.card:hover{border-color:var(--ink); box-shadow: 0 20px 40px rgba(0,0,0,0.03); transform: translateY(-5px);}
+.card{background:var(--bg-card);border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;transition:all 0.4s ease; position: relative; overflow: hidden;}
+.card:hover{border-color:var(--ink); box-shadow: 0 20px 40px rgba(0,0,0,0.05); transform: translateY(-5px);}
 .card .pic{background:#F0EDE6;aspect-ratio:1;display:grid;place-items:end center;margin-bottom:20px;overflow:hidden;}
 .card .pic svg, .card .pic img{width:100%; height:100%; object-fit:cover; transition:transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);}
 .card:hover .pic svg, .card:hover .pic img{transform:scale(1.05);}
 .card h3{font-size:1.5rem; font-family: 'Inter Tight', sans-serif; font-weight: 500; line-height:1.2; text-transform: uppercase; margin-top: 5px;}
-.card p{margin:8px 0 0;font-size:.85rem;color:var(--muted);flex:1; line-height: 1.5;}
-.card .price{font-weight:500;font-size:.95rem; margin-top: 15px; color: var(--ink); letter-spacing: 0.02em;}
+.card p{margin:8px 0 0;font-size:.9rem;color:var(--muted);flex:1; line-height: 1.5;}
+.card .price{font-weight:500;font-size:1rem; margin-top: 15px; color: var(--ink); letter-spacing: 0.02em;}
 .card .pill{margin-top:20px; width: 100%; text-align: center;}
 
 /* --- MARQUEE --- */
@@ -89,28 +84,28 @@ a{color:inherit; text-decoration: none;}
 @keyframes mq{to{transform:translateX(-50%)}}
 
 /* --- WHATSAPP FAB --- */
-.fab{position:fixed;right:30px;bottom:30px;z-index:25;background:var(--ink);color:var(--bg-main);padding:14px 24px;font-weight:500;font-size:.8rem; text-transform:uppercase; letter-spacing:0.05em; box-shadow:0 10px 30px rgba(0,0,0,.2);transition:transform .2s;}
-.fab:hover{transform:translateY(-4px)}
-.fab::after{content:'';position:absolute;inset:0;border:1px solid var(--ink);animation:pulse 2s infinite;opacity:0.5;pointer-events:none}
-@keyframes pulse{0%{transform:scale(1);opacity:0.5}100%{transform:scale(1.1);opacity:0}}
+.fab{position:fixed;right:30px;bottom:30px;z-index:25;background:var(--ink);color:var(--bg-main);padding:16px 28px;font-weight:500;font-size:.8rem; text-transform:uppercase; letter-spacing:0.05em; box-shadow:0 10px 30px rgba(0,0,0,.2);transition:transform .2s; border: 1px solid var(--ink);}
+.fab:hover{transform:translateY(-4px); background: transparent; color: var(--ink);}
+.fab::after{content:'';position:absolute;inset:0;border:1px solid var(--ink);animation:pulse 2s infinite;opacity:0.3;pointer-events:none}
+@keyframes pulse{0%{transform:scale(1);opacity:0.3}100%{transform:scale(1.1);opacity:0}}
 
 /* --- OTHER SECTIONS --- */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.split p{max-width:44ch;color:var(--muted);margin:24px 0 0; font-size: 1rem;}
+.split p{max-width:44ch;color:var(--muted);margin:24px 0 0; font-size: 1.05rem;}
 .cells{border-top:1px solid var(--line);}
 .cells div{padding:30px 0;border-bottom:1px solid var(--line);display: flex; justify-content: space-between; align-items: center;}
-.cells h3{font-size:1.2rem; font-family: 'Inter Tight', sans-serif; text-transform: uppercase; font-weight: 500;}
-.cells p{margin:0;font-size:.9rem;color:var(--muted); max-width: 50%; text-align: right;}
+.cells h3{font-size:1.2rem; font-family: 'Inter Tight', sans-serif; text-transform: uppercase; font-weight: 500; color: var(--ink);}
+.cells p{margin:0;font-size:.95rem;color:var(--muted); max-width: 50%; text-align: right;}
 
 /* FAQ */
 .faq{display:grid;grid-template-columns:.6fr 1.4fr;gap:80px}
 details{border-top:1px solid var(--line);padding:25px 0;transition:padding 0.3s}
 details:last-child{border-bottom:1px solid var(--line)}
-summary{cursor:pointer;font-weight:500; font-size: 1.1rem; list-style:none;display:flex;justify-content:space-between;align-items:center; text-transform: uppercase; letter-spacing: 0.02em;}
+summary{cursor:pointer;font-weight:500; font-size: 1.1rem; list-style:none;display:flex;justify-content:space-between;align-items:center; text-transform: uppercase; letter-spacing: 0.02em; color: var(--ink);}
 summary::-webkit-details-marker{display:none}
 summary::after{content:'+';font-size:1.5rem;font-weight:400; transition:transform 0.3s; color: var(--muted);}
 details[open] summary::after{transform:rotate(45deg); color: var(--ink);}
-details p{margin:20px 0 0;color:var(--muted);max-width:60ch;animation:fadeIn 0.4s ease-in; font-size: 0.95rem;}
+details p{margin:20px 0 0;color:var(--muted);max-width:60ch;animation:fadeIn 0.4s ease-in; font-size: .95rem;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
 
 .end{background:var(--bg-main);color:var(--ink);padding:100px 0 40px;}
@@ -119,11 +114,11 @@ details p{margin:20px 0 0;color:var(--muted);max-width:60ch;animation:fadeIn 0.4
 .fgrid p{margin:8px 0}
 
 /* --- CART DRAWER --- */
-.scrim{position:fixed;inset:0;background:rgba(44, 42, 40,.4);z-index:30;opacity:0;visibility:hidden;transition:opacity .3s}
+.scrim{position:fixed;inset:0;background:rgba(31, 29, 26,.4);z-index:30;opacity:0;visibility:hidden;transition:opacity .3s}
 .drawer{position:fixed;top:0;right:0;bottom:0;width:min(450px,100%);background:var(--bg-main);z-index:31;transform:translateX(100%);visibility:hidden;transition:transform .4s cubic-bezier(0.4, 0, 0.2, 1),visibility .4s;display:flex;flex-direction:column;padding:40px;border-left:1px solid var(--line);}
 .open .drawer{transform:none;visibility:visible}.open .scrim{opacity:1;visibility:visible}
 
-/* --- RESPONSIVE (PHONE & LAPTOP KECIL) --- */
+/* --- RESPONSIVE --- */
 @media(max-width:1024px){
   .hgrid{grid-template-columns:1fr; text-align: center; gap: 50px;}
   .hright{order: -1;}
@@ -133,59 +128,45 @@ details p{margin:20px 0 0;color:var(--muted);max-width:60ch;animation:fadeIn 0.4
   .cells div {flex-direction: column; gap: 10px;}
   .cells p {text-align: center; max-width: 100%;}
   .steps{text-align: center;}
-  .step{padding: 24px 0 0 0 !important;}
+  .step{padding: 24px 0 0 0 !important; border-right: none !important; border-bottom: 1px solid var(--line);}
   * { cursor: auto !important; }
-  .cursor { display: none !important; }
+  .cursor, .trail-dot { display: none !important; }
 }
 
 @media(max-width:768px){
   .in{padding:0 20px}
   .strip .in{justify-content: center; padding: 8px 10px;}
   .strip .in span:last-child {display: none;}
-  
-  /* Navbar mobile */
   .top .in {height: 64px; padding: 0 20px;}
-  .logo {font-size: 1.3rem;}
+  .logo {font-size: 1.5rem;}
   .top nav {display: none;}
   .top .pill {padding: 8px 16px; font-size: 0.7rem;}
-
-  /* Hero section mobile */
   .hero {padding: 40px 0; min-height: auto;}
   .hright p {font-size: 0.95rem; margin: 20px 0 30px; text-align: center;}
   .hmeta {flex-direction: column; gap: 12px; width: 100%;}
   .hmeta .pill {width: 100%; text-align: center; padding: 14px;}
-  .hero h1 {font-size: 3.5rem; line-height: 1.1; margin-bottom: 15px;}
-  
-  /* Gambar hero mobile (Slider) */
+  .hero h1 {font-size: 4rem; line-height: 1.1; margin-bottom: 15px;}
   .mwrap { margin-top: 30px; width: 100%; max-width: 100%;}
   .hero .photo {max-width: 280px; margin: 0 auto;}
   .marrows {gap: 20px; margin-top: 15px;}
-
-  /* Grid Produk mobile: 2 baris */
   .grid{grid-template-columns:repeat(2,1fr); gap: 12px;}
   .card{padding: 12px;}
   .card h3 {font-size: 1rem; margin-top: 5px; line-height: 1.2;}
-  .card p {font-size: 0.7rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;} 
+  .card p {font-size: 0.75rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;} 
   .card .price {font-size: 0.9rem; margin-top: 10px;}
   .card .pill {padding: 10px 8px; font-size: 0.7rem; margin-top: 12px;}
   .card .pic {margin-bottom: 10px;}
   .cdots {gap: 6px; margin-top: 8px;}
   .cd {width: 20px; height: 20px;}
   .cn {font-size: 0.7rem; margin-top: 3px;}
-
-  /* Section lain */
   .block {padding: 60px 0;}
   .tabs {gap: 8px; margin-bottom: 30px; flex-wrap: wrap;}
   .tabs .pill {padding: 8px 16px; font-size: 0.7rem;}
-  .split h2, .faq h2 {font-size: 2.2rem;}
+  .split h2, .faq h2 {font-size: 2.5rem;}
   .cells div {padding: 20px 0;}
-
-  /* WhatsApp fab */
-  .fab{right:20px;bottom:20px;padding:12px 20px;font-size:0.75rem;}
-  
-  /* Cart drawer */
+  .fab{right:20px;bottom:20px;padding:14px 24px;font-size:0.75rem;}
   .drawer {padding: 24px; width: 100%;}
-  .drawer h2 {font-size: 1.5rem;}
+  .drawer h2 {font-size: 1.8rem;}
 }
 </style>
 </head>
@@ -247,9 +228,9 @@ details p{margin:20px 0 0;color:var(--muted);max-width:60ch;animation:fadeIn 0.4
   <div class="in rv">
     <h2>How to <i>w</i>ear it</h2>
     <div class="steps" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:60px;border-top:1px solid var(--line)">
-      <div class="step" style="padding:40px 30px 0 0; border-right: 1px solid var(--line);"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,6vw,5rem);line-height:1;color:var(--line);margin-bottom:20px;">01</b><h3 style="font-family: 'Inter Tight'; text-transform: uppercase;">Slip it on</h3><p style="color: var(--muted); margin-top: 10px;">Pull the inner cap over your hair, covering the hairline and ears.</p></div>
-      <div class="step" style="padding:40px 30px 0 30px; border-right: 1px solid var(--line);"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,6vw,5rem);line-height:1;color:var(--line);margin-bottom:20px;">02</b><h3 style="font-family: 'Inter Tight'; text-transform: uppercase;">Smooth and set</h3><p style="color: var(--muted); margin-top: 10px;">Tuck stray hair in and adjust the band so it sits flat and snug.</p></div>
-      <div class="step" style="padding:40px 0 0 30px;"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,6vw,5rem);line-height:1;color:var(--line);margin-bottom:20px;">03</b><h3 style="font-family: 'Inter Tight'; text-transform: uppercase;">Style your tudung</h3><p style="color: var(--muted); margin-top: 10px;">Layer your bawal or shawl on top. The cap grips the fabric so it stays put.</p></div>
+      <div class="step" style="padding:40px 30px 0 0; border-right: 1px solid var(--line);"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,6vw,5rem);line-height:1;color:var(--line);margin-bottom:20px;">01</b><h3 style="font-family: 'Inter Tight'; text-transform: uppercase; color: var(--ink);">Slip it on</h3><p style="color: var(--muted); margin-top: 10px;">Pull the inner cap over your hair, covering the hairline and ears.</p></div>
+      <div class="step" style="padding:40px 30px 0 30px; border-right: 1px solid var(--line);"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,6vw,5rem);line-height:1;color:var(--line);margin-bottom:20px;">02</b><h3 style="font-family: 'Inter Tight'; text-transform: uppercase; color: var(--ink);">Smooth and set</h3><p style="color: var(--muted); margin-top: 10px;">Tuck stray hair in and adjust the band so it sits flat and snug.</p></div>
+      <div class="step" style="padding:40px 0 0 30px;"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3.5rem,6vw,5rem);line-height:1;color:var(--line);margin-bottom:20px;">03</b><h3 style="font-family: 'Inter Tight'; text-transform: uppercase; color: var(--ink);">Style your tudung</h3><p style="color: var(--muted); margin-top: 10px;">Layer your bawal or shawl on top. The cap grips the fabric so it stays put.</p></div>
     </div>
   </div>
 </section>
@@ -286,13 +267,28 @@ details p{margin:20px 0 0;color:var(--muted);max-width:60ch;animation:fadeIn 0.4
 <aside class="drawer" id="drawer" aria-label="Cart"><header><h2 style="font-family: 'Playfair Display', serif; font-weight: 400; font-size: 2rem;">Your Bag</h2><button class="pill" id="closecart"><span>Close</span></button></header><ul id="lines" style="list-style:none;margin:0;padding:0;flex:1;overflow:auto; border-top: 1px solid var(--line); margin-top: 20px;"></ul><div class="sum" style="padding-top:20px;display:grid;gap:15px;"><div class="row" style="display:flex;justify-content:space-between;font-weight:500; font-size: 1.1rem;"><span>Total</span><span id="tot">RM0</span></div><small id="ship" style="color:var(--muted); font-size: 0.8rem;"></small><a class="pill" id="co" target="_blank" rel="noopener" href="#" style="text-align:center; background: var(--ink); color: var(--bg-main); border: none;"><span>Checkout</span></a><small style="color:var(--muted); text-align: center; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;">Payment details via WhatsApp</small></div></aside>
 
 <script>
-// --- CUSTOM CURSOR LOGIC ---
+// --- MOUSE TRAIL & CURSOR LOGIC ---
 const cursor = document.getElementById('customCursor');
 if(window.matchMedia("(pointer: fine)").matches){
     document.addEventListener('mousemove', e => {
         cursor.style.display = 'block';
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
+        
+        // Cipta partikel trail
+        let dot = document.createElement('div');
+        dot.className = 'trail-dot';
+        dot.style.left = e.clientX + 'px';
+        dot.style.top = e.clientY + 'px';
+        document.body.appendChild(dot);
+        
+        // Fade out dan buang partikel
+        setTimeout(() => {
+            dot.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            dot.style.opacity = '0';
+            dot.style.transform = `translate(-50%, -50%) scale(0.5)`;
+            setTimeout(() => dot.remove(), 600);
+        }, 10);
     });
     document.querySelectorAll('a, button, .sw, .cd, .mirror').forEach(el => {
         el.addEventListener('mouseenter', () => cursor.classList.add('active'));
