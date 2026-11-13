@@ -9,17 +9,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700&family=Inter:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <style>
-/* --- ESTHETIC NEUTRAL PALETTE (LEBIH GELAP SIKIT) --- */
+/* --- ESTHETIC NEUTRAL PALETTE --- */
 :root{
-  --bg-main: #E8E4DC;    /* Warm Greige (lebih gelap dari putih susu, selesa di mata) */
-  --bg-card: #F4F1EB;    /* Kad warna cerah sikit */
-  --ink: #1A1816;        /* Hampir hitam (kontras tinggi) */
-  --muted: #5C564F;      /* Kelabu gelap (jelas terbaca) */
-  --line: #D1CBC1;       /* Garis border */
-  --accent: #C5B5A5;     /* Sand accent */
-  --hero: #DFD9CF;       /* Hero background */
-  --footer-bg: #1A1816;  /* Footer gelap */
-  --footer-ink: #E8E4DC; /* Teks footer cerah */
+  --bg-main: #E8E4DC;    
+  --bg-card: #F4F1EB;    
+  --ink: #1A1816;        
+  --muted: #5C564F;      
+  --line: #D1CBC1;       
+  --accent: #C5B5A5;     
+  --hero: #DFD9CF;       
+  --footer-bg: #1A1816;  
+  --footer-ink: #E8E4DC; 
 }
 *{box-sizing:border-box; cursor: none; }
 body{margin:0;background:var(--bg-main);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden; width: 100%; position: relative;}
@@ -81,6 +81,12 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(232, 228, 2
 .block{padding:120px 0; border-bottom: 1px solid var(--line); position: relative; z-index: 1;}
 .center{text-align:center}
 .center p{color:var(--muted);margin:20px auto 50px;max-width:50ch; font-size: 1.05rem;}
+
+/* --- TULISAN BERGERAK (MARQUEE) - FIXED --- */
+.marq{overflow:hidden;background:var(--ink);color:var(--bg-main);padding:20px 0;white-space:nowrap; position: relative; z-index: 5;}
+.marq div{display:inline-block;animation:mq 20s linear infinite; font-family:'Inter Tight',sans-serif;font-size:clamp(1.2rem,2.5vw,1.8rem);text-transform:uppercase;letter-spacing:.1em;font-weight:500}
+.marq i{padding:0 1em;color:var(--accent);text-transform:none; font-family: 'Playfair Display', serif; font-size: 1.5em; font-style: italic;}
+@keyframes mq{to{transform:translateX(-50%)}}
 
 /* --- PRODUCT CARDS --- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:30px; text-align: left;}
@@ -189,7 +195,10 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(232, 228, 2
   </div>
 </section>
 
-<div class="marq" aria-hidden="true"><div>Soft Fit <i>&amp;</i> Breathable <i>&amp;</i> Stays in place <i>&amp;</i> Soft Fit <i>&amp;</i> Breathable <i>&amp;</i> Stays in place <i>&amp;</i> </div></div>
+<!-- TULISAN BERGERAK -->
+<div class="marq" aria-hidden="true">
+  <div>Soft Fit <i>&amp;</i> Breathable <i>&amp;</i> Stays in place <i>&amp;</i> Soft Fit <i>&amp;</i> Breathable <i>&amp;</i> Stays in place <i>&amp;</i> </div>
+</div>
 
 <section class="block b1" id="why">
   <div class="in">
