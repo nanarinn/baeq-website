@@ -103,7 +103,7 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(230, 225, 2
 .rv {opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out;}
 .rv.on {opacity: 1; transform: translateY(0);}
 
-/* --- !!! FIX UNTUK PHONE (PAKSA TURUN) !!! --- */
+/* --- !!! PAKSA FIX UNTUK PHONE !!! --- */
 @media(max-width: 900px) {
   /* Navbar */
   .top .in {height: 60px !important;}
@@ -114,14 +114,14 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(230, 225, 2
   
   /* Hero Section */
   .hero {padding: 40px 0 60px !important; min-height: auto !important;}
-  .hgrid {grid-template-columns: 1fr !important; gap: 40px !important;}
-  .hright {order: -1 !important; text-align: center !important; width: 100% !important;}
-  .hero h1 {font-size: 3rem !important; line-height: 1.1 !important; word-break: break-word !important;}
+  .hgrid {grid-template-columns: 1fr !important; gap: 40px !important; width: 100% !important;}
+  .hright {order: -1 !important; text-align: center !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important;}
+  .hero h1 {font-size: 3rem !important; line-height: 1.1 !important; word-break: break-word !important; width: 100% !important;}
   .cap {font-size: 0.7rem !important;}
-  .hright p {font-size: 0.95rem !important; margin: 15px 0 25px !important; padding: 0 10px !important;}
-  .hmeta {flex-direction: column !important; width: 100% !important; max-width: 300px !important; margin: 0 auto !important;}
-  .hmeta .pill {width: 100% !important; padding: 14px !important; font-size: 0.75rem !important; box-sizing: border-box !important;}
-  .swatches {justify-content: center !important; margin-top: 20px !important;}
+  .hright p {font-size: 0.95rem !important; margin: 15px 0 25px !important; padding: 0 15px !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important;}
+  .hmeta {flex-direction: column !important; width: 100% !important; max-width: 100% !important; padding: 0 15px !important; box-sizing: border-box !important;}
+  .hmeta .pill {width: 100% !important; padding: 14px !important; font-size: 0.75rem !important; box-sizing: border-box !important; margin-bottom: 10px !important;}
+  .swatches {justify-content: center !important; margin-top: 20px !important; width: 100% !important;}
   
   /* Section */
   .block {padding: 50px 0 !important;}
