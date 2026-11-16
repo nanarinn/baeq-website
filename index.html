@@ -81,23 +81,67 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 .card .price{font-weight:700;font-size:1rem; margin-top: 15px; color: var(--ink); letter-spacing: 0.02em;}
 .card .pill{margin-top:20px; width: 100%; text-align: center;}
 
-/* --- GAME SECTION (DAILY POINTS) --- */
+/* --- GAME SECTION (NEW & IMPROVED) --- */
 .game-section {padding: 80px 20px; text-align: center; background: var(--bg-card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; z-index: 2;}
-.game-section h2 {margin-bottom: 10px;}
-.game-section p {margin-bottom: 30px; color: var(--muted);}
-.point-box {max-width: 450px; margin: 0 auto; background: #F5F5F5; padding: 30px; border-radius: 12px; border: 1px solid var(--line); box-shadow: inset 0 0 20px rgba(0,0,0,0.05); text-align: left;}
-.point-header {display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--line); padding-bottom: 15px;}
-.point-header h3 {font-size: 1.2rem; margin: 0;}
-.point-val {font-size: 1.5rem; font-weight: 700; color: var(--accent);}
-.result-text {font-size: 1.2rem; font-weight: 700; margin: 20px 0; color: var(--accent); text-align: center; min-height: 30px;}
-.spin-btn {background: var(--ink); color: var(--white); border: none; padding: 15px 40px; font-size: 1rem; font-weight: 600; cursor: pointer; border-radius: 6px; transition: all 0.3s; width: 100%;}
-.spin-btn:hover {transform: scale(1.02);}
-.spin-btn:disabled {background: #999; cursor: not-allowed; transform: none;}
-.rewards-list {margin-top: 20px;}
-.reward-item {display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line);}
-.reward-btn {background: var(--accent); color: white; border: none; padding: 8px 15px; font-size: 0.8rem; border-radius: 4px; cursor: pointer; transition: background 0.3s;}
-.reward-btn:hover {background: #6a5d4f;}
-.reward-btn:disabled {background: #ccc; cursor: not-allowed;}
+.game-section h2 {margin-bottom: 10px; font-size: 2.5rem;}
+.game-section p {margin-bottom: 40px; color: var(--muted); font-size: 1.1rem;}
+
+/* Kad Game */
+.game-card {
+  max-width: 600px; margin: 0 auto; background: #F9F9F9; border-radius: 24px; padding: 40px; 
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1); position: relative; overflow: hidden;
+  border: 1px solid var(--line);
+}
+.game-card::before {
+  content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(138,123,107,0.1) 0%, transparent 60%);
+  animation: rotateBg 15s linear infinite; pointer-events: none;
+}
+@keyframes rotateBg { to { transform: rotate(360deg); } }
+
+/* Point Display */
+.point-badge {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--ink); color: var(--bg-main); padding: 10px 25px; border-radius: 50px;
+  font-size: 1.2rem; font-weight: 700; margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.point-badge span { font-size: 1.8rem; color: var(--accent); }
+
+/* Spin Button */
+.spin-wrapper { position: relative; margin: 30px auto; width: 200px; height: 200px; }
+.spin-btn {
+  width: 100%; height: 100%; border-radius: 50%; border: 8px solid var(--ink);
+  background: var(--accent); color: white; font-size: 1.5rem; font-weight: 700;
+  cursor: pointer; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-transform: uppercase; letter-spacing: 2px;
+}
+.spin-btn:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
+.spin-btn:disabled { background: #999; border-color: #666; cursor: not-allowed; transform: none; box-shadow: none; }
+.spin-btn i { font-size: 2.5rem; margin-bottom: 5px; }
+
+/* Animasi Berputar */
+.spinning { animation: spinAnim 1s linear infinite; }
+@keyframes spinAnim { 100% { transform: rotate(360deg); } }
+
+/* Rewards List */
+.rewards-title { font-family: 'Inter Tight'; font-size: 1.2rem; margin: 40px 0 20px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid var(--line); display: inline-block; padding-bottom: 10px;}
+.reward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.reward-card {
+  background: white; border: 1px solid var(--line); border-radius: 12px; padding: 15px;
+  display: flex; flex-direction: column; align-items: center; gap: 10px; transition: all 0.3s;
+}
+.reward-card:hover { border-color: var(--accent); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+.reward-icon { font-size: 2rem; }
+.reward-cost { font-size: 0.8rem; color: var(--muted); font-weight: 600;}
+.reward-name { font-weight: 700; font-size: 1rem; }
+.claim-btn { background: var(--ink); color: white; border: none; padding: 8px 15px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; width: 100%; transition: background 0.3s; }
+.claim-btn:hover { background: var(--accent); }
+.claim-btn:disabled { background: #ccc; cursor: not-allowed; }
+
+/* Notifikasi */
+.toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--ink); color: white; padding: 15px 30px; border-radius: 50px; font-weight: 600; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 9999; opacity: 0; }
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
 /* --- FOOTER GELAP --- */
 .end{background:var(--footer-bg); color:var(--footer-ink); padding:100px 0 40px; position: relative; z-index: 10; border-top: none;}
@@ -193,6 +237,15 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
   .cd {width: 18px !important; height: 18px !important;}
   .cn {font-size: 0.65rem !important;}
   
+  /* Game Section Mobile */
+  .game-card { padding: 20px !important; }
+  .spin-wrapper { width: 150px !important; height: 150px !important; }
+  .spin-btn { font-size: 1.1rem !important; border-width: 5px !important; }
+  .spin-btn i { font-size: 1.8rem !important; }
+  .reward-grid { grid-template-columns: 1fr !important; }
+  .point-badge { font-size: 1rem !important; padding: 8px 20px !important; }
+  .point-badge span { font-size: 1.4rem !important; }
+  
   .end {padding: 60px 0 30px !important;}
   .fgrid {grid-template-columns: 1fr !important; text-align: center !important; gap: 30px !important;}
   
@@ -207,6 +260,8 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 
 <div class="cursor" id="customCursor"></div>
 <div id="preloader">Baeq.</div>
+
+<div class="toast" id="toast">Points collected!</div>
 
 <div class="strip"><div class="in"><span>Complimentary shipping over RM100</span></div></div>
 <header class="top"><div class="in" style="display:flex;align-items:center;justify-content:space-between;height:70px;"><a class="logo" href="#" style="font-family:'Playfair Display',serif;font-weight:400;font-size:1.5rem;text-decoration:none; color: var(--ink);">Baeq</a><nav style="display:flex;"><a href="#collection" style="margin:0 15px;text-decoration:none;font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; font-weight:600; color:var(--ink);">Collection</a><a href="#why" style="margin:0 15px;text-decoration:none;font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; font-weight:600; color:var(--ink);">Philosophy</a><a href="#faq" style="margin:0 15px;text-decoration:none;font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; font-weight:600; color:var(--ink);">FAQ</a><a href="#order" style="margin:0 15px;text-decoration:none;font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; font-weight:600; color:var(--ink);">Contact</a></nav><button class="pill" id="cartbtn" aria-label="Open cart" style="padding: 8px 15px; font-size: 0.7rem;">Bag (<b id="cnt">0</b>)</button></div></header>
@@ -239,33 +294,47 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 <!-- GAME SECTION -->
 <section class="game-section rv" id="game">
   <div class="in">
-    <h2>Daily <i>Rewards</i></h2>
-    <p>Spin every day to collect points. Redeem points for discounts below!</p>
-    <div class="point-box">
-      <div class="point-header">
-        <h3>Your Points</h3>
-        <span class="point-val" id="point-display">0</span>
-      </div>
-      <div class="result-text" id="result">Tap 'Spin' to collect points!</div>
-      <button class="spin-btn" id="spin-btn">Spin Now</button>
+    <h2>Spin & <i>Win</i></h2>
+    <p>Collect points daily and redeem exclusive discounts!</p>
+    
+    <div class="game-card">
+      <div class="point-badge">Your Points: <span id="point-display">0</span></div>
       
-      <!-- REWARDS LIST -->
-      <div class="rewards-list">
-        <h4 style="margin-top: 20px; margin-bottom: 10px; font-size: 0.9rem;">Claim Rewards:</h4>
-        <div class="reward-item">
-          <span>RM5 OFF (100 pts)</span>
-          <button class="reward-btn" onclick="claimReward(100, 'RM5OFF')">Claim</button>
+      <div class="spin-wrapper">
+        <button class="spin-btn" id="spin-btn">
+          <i>🎰</i>
+          <span>SPIN</span>
+        </button>
+      </div>
+      
+      <h3 class="rewards-title">Redeem Rewards</h3>
+      <div class="reward-grid">
+        <div class="reward-card">
+          <div class="reward-icon">🎟️</div>
+          <div class="reward-name">RM5 OFF</div>
+          <div class="reward-cost">100 Points</div>
+          <button class="claim-btn" onclick="claimReward(100, 'RM5OFF')">Claim</button>
         </div>
-        <div class="reward-item">
-          <span>10% OFF (200 pts)</span>
-          <button class="reward-btn" onclick="claimReward(200, '10PERCENT')">Claim</button>
+        <div class="reward-card">
+          <div class="reward-icon">🚚</div>
+          <div class="reward-name">FREE SHIP</div>
+          <div class="reward-cost">150 Points</div>
+          <button class="claim-btn" onclick="claimReward(150, 'FREESHIP')">Claim</button>
         </div>
-        <div class="reward-item">
-          <span>Free Shipping (150 pts)</span>
-          <button class="reward-btn" onclick="claimReward(150, 'FREESHIP')">Claim</button>
+        <div class="reward-card">
+          <div class="reward-icon">💸</div>
+          <div class="reward-name">10% OFF</div>
+          <div class="reward-cost">200 Points</div>
+          <button class="claim-btn" onclick="claimReward(200, '10OFF')">Claim</button>
+        </div>
+        <div class="reward-card">
+          <div class="reward-icon">👑</div>
+          <div class="reward-name">20% OFF</div>
+          <div class="reward-cost">400 Points</div>
+          <button class="claim-btn" onclick="claimReward(400, '20OFF')">Claim</button>
         </div>
       </div>
-      <div id="claimed-code" style="margin-top: 15px; font-weight: 700; color: var(--accent); text-align: center;"></div>
+      <div id="claimed-code" style="margin-top: 20px; font-weight: 700; color: var(--accent); text-align: center; font-size: 1.2rem;"></div>
     </div>
   </div>
 </section>
@@ -340,8 +409,8 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 <script>
 // --- LOGIK GAME (DAILY POINTS) ---
 const spinBtn = document.getElementById('spin-btn');
-const resultText = document.getElementById('result');
 const pointDisplay = document.getElementById('point-display');
+const toast = document.getElementById('toast');
 let points = parseInt(localStorage.getItem('baeq_points')) || 0;
 let lastSpinDate = localStorage.getItem('baeq_last_spin') || '';
 const today = new Date().toDateString();
@@ -351,32 +420,43 @@ pointDisplay.textContent = points;
 // Semak jika dah spin hari ni
 if (lastSpinDate === today) {
     spinBtn.disabled = true;
-    spinBtn.innerText = "Come back tomorrow!";
-    resultText.innerText = "You've already spun today.";
+    spinBtn.innerHTML = "<i>⏳</i><span>TOMORROW</span>";
 }
 
 spinBtn.addEventListener('click', function() {
     if (lastSpinDate === today) return;
     
     spinBtn.disabled = true;
-    spinBtn.innerText = "Spinning...";
+    spinBtn.classList.add('spinning');
+    
     let count = 0;
     const interval = setInterval(() => {
-        resultText.innerText = "+" + [10, 20, 30, 50][Math.floor(Math.random() * 4)] + " pts";
+        // Teks berkelip (simulasi spin)
+        pointDisplay.textContent = Math.floor(Math.random() * 100);
         count++;
-        if (count > 10) {
+        if (count > 15) {
             clearInterval(interval);
-            const earned = [10, 20, 30, 50][Math.floor(Math.random() * 4)];
+            spinBtn.classList.remove('spinning');
+            
+            const earned = [10, 20, 30, 50, 100][Math.floor(Math.random() * 5)];
             points += earned;
             localStorage.setItem('baeq_points', points);
             localStorage.setItem('baeq_last_spin', today);
             
             pointDisplay.textContent = points;
-            resultText.innerText = "You earned " + earned + " points!";
-            spinBtn.innerText = "Come back tomorrow!";
+            spinBtn.innerHTML = "<i>✅</i><span>DONE</span>";
+            
+            // Tunjuk notifikasi
+            showToast("You won " + earned + " points!");
         }
     }, 100);
 });
+
+function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => { toast.classList.remove('show'); }, 3000);
+}
 
 // --- CLAIM REWARD LOGIC ---
 function claimReward(cost, codePrefix) {
@@ -387,9 +467,9 @@ function claimReward(cost, codePrefix) {
         
         const code = codePrefix + "-" + Math.floor(Math.random() * 10000);
         document.getElementById('claimed-code').innerHTML = "Your Code: <br><span style='font-size: 1.5rem; color: var(--ink);'>" + code + "</span><br><small>Show this to us on WhatsApp.</small>";
-        alert("Success! Your code is: " + code + ". Please screenshot this and send to us on WhatsApp.");
+        showToast("Reward claimed! Check your code below.");
     } else {
-        alert("Not enough points! You need " + cost + " points.");
+        showToast("Not enough points! You need " + cost + " points.");
     }
 }
 
