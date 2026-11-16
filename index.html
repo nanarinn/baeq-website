@@ -1,567 +1,298 @@
-<div class="step" style="padding:40px 30px 0 30px; border-right: 1px solid var(--line);"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3rem,6vw,4.5rem);line-height:1;color:var(--accent);margin-bottom:20px;">02</b><h3 style="font-family: 'Inter Tight'; text-transform: uppercase; color: var(--ink);">Tuck it in</h3><p style="color: var(--muted); margin-top: 10px;">Tuck any loose edges neatly under the cap for a clean look.</p></div>
-      <div class="step" style="padding:40px 30px 0 30px;"><b style="display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(3rem,6vw,4.5rem);line-height:1;color:var(--accent);margin-bottom:20px;">03</b><h3 style="font-family: 'Inter Tight'; text-transform: uppercase; color: var(--ink);">Style it</h3><p style="color: var(--muted); margin-top: 10px;">Pair with your favourite hijab or wear it alone for a minimalist look.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ SECTION -->
-<section class="block faq" id="faq" style="background: rgba(196, 201, 206, 0.85);">
-  <div class="in rv">
-    <h2>Frequently <i>a</i>sked</h2>
-    <div style="max-width: 800px; margin: 40px auto 0;">
-      <details style="border-bottom: 1px solid var(--line); padding: 20px 0;">
-        <summary style="font-weight: 600; cursor: pointer; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">What material are the inner caps made of? <span style="font-size: 1.5rem; color: var(--accent);">+</span></summary>
-        <p style="margin-top: 15px; color: var(--muted);">Our inner caps are made from a premium blend of soft cotton and breathable jersey, designed to absorb sweat and keep you cool all day.</p>
-      </details>
-      <details style="border-bottom: 1px solid var(--line); padding: 20px 0;">
-        <summary style="font-weight: 600; cursor: pointer; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">Do you ship outside Malaysia? <span style="font-size: 1.5rem; color: var(--accent);">+</span></summary>
-        <p style="margin-top: 15px; color: var(--muted);">Currently, we ship across Peninsular Malaysia, Sabah, and Sarawak. For international orders, please contact us via WhatsApp.</p>
-      </details>
-      <details style="border-bottom: 1px solid var(--line); padding: 20px 0;">
-        <summary style="font-weight: 600; cursor: pointer; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">How do I know which size to choose? <span style="font-size: 1.5rem; color: var(--accent);">+</span></summary>
-        <p style="margin-top: 15px; color: var(--muted);">Our inner caps are designed with an elastic band to fit most head sizes comfortably. If you're unsure, drop us a message on WhatsApp!</p>
-      </details>
-      <details style="border-bottom: 1px solid var(--line); padding: 20px 0;">
-        <summary style="font-weight: 600; cursor: pointer; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">Can I return or exchange my order? <span style="font-size: 1.5rem; color: var(--accent);">+</span></summary>
-        <p style="margin-top: 15px; color: var(--muted);">For hygiene reasons, we do not accept returns or exchanges on inner caps unless the item is defective. Please contact us within 3 days of receiving your order if there's an issue.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="end" id="order">
-  <div class="in">
-    <div class="center rv">
-      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 500; margin-bottom: 20px;">Ready to <i>o</i>rder?</h2>
-      <p style="max-width: 500px; margin: 0 auto 30px; color: #A9A39C;">Place your order directly through WhatsApp. We'll confirm your details and arrange shipping.</p>
-      <a class="pill magnetic-btn" href="https://wa.me/60123456789" target="_blank" rel="noopener" style="background: var(--footer-ink); color: var(--footer-bg); border: none; padding: 16px 40px; font-size: 0.85rem;"><span>Order on WhatsApp</span></a>
-    </div>
-    
-    <div class="fgrid">
-      <div>
-        <h3>Baéq</h3>
-        <p>Premium inner caps crafted for comfort and style.</p>
-      </div>
-      <div>
-        <h3>Explore</h3>
-        <p><a href="#collection" style="color: #A9A39C; text-decoration: none;">Collection</a></p>
-        <p><a href="#why" style="color: #A9A39C; text-decoration: none;">Philosophy</a></p>
-        <p><a href="#faq" style="color: #A9A39C; text-decoration: none;">FAQ</a></p>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <p>WhatsApp: +60 12-345 6789</p>
-        <p>Email: hello@baeq.com</p>
-        <p>Malaysia</p>
-      </div>
-      <div>
-        <h3>Follow</h3>
-        <p>Instagram</p>
-        <p>TikTok</p>
-      </div>
-    </div>
-    <div class="copy">© 2024 Baéq. All rights reserved.</div>
-  </div>
-</footer>
-
-<a class="fab" href="https://wa.me/60123456789" target="_blank" rel="noopener">WhatsApp</a>
-
-<!-- CART DRAWER -->
-<div id="cartRoot" class="cart-root">
-  <div class="scrim" onclick="closeCart()"></div>
-  <div class="drawer">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
-      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 500;">Your Bag</h2>
-      <button onclick="closeCart()" style="background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--ink);">&times;</button>
-    </div>
-    <div id="cartItems" style="flex: 1; overflow-y: auto;">
-      <p style="color: var(--muted); text-align: center; margin-top: 50px;">Your bag is empty.</p>
-    </div>
-    <div style="border-top: 1px solid var(--line); padding-top: 20px; margin-top: 20px;">
-      <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 1.2rem; margin-bottom: 20px;">
-        <span>Total</span>
-        <span id="cartTotal">RM0.00</span>
-      </div>
-      <a href="https://wa.me/60123456789" target="_blank" rel="noopener" class="pill" style="display: block; text-align: center; background: var(--ink); color: var(--bg-main); border: none; padding: 16px; width: 100%; text-decoration: none; font-weight: 700;">Checkout via WhatsApp</a>
-    </div>
-  </div>
-</div>
-
-<script>
-// --- PRELOADER ---
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('preloader').classList.add('hide');
-  }, 500);
-});
-
-// --- CUSTOM CURSOR (Desktop only) ---
-const cursor = document.getElementById('customCursor');
-if (window.matchMedia('(pointer: fine)').matches) {
-  document.addEventListener('mousemove', (e) => {
-    cursor.style.display = 'block';
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-  });
-  document.querySelectorAll('a, button, .card, .sw, .pill').forEach(el => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('active'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
-  });
-}
-
-// --- SCROLL REVEAL ---
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('on');
-    }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.rv').forEach(el => observer.observe(el));
-
-// --- PRODUCT DATA ---
-const products = [
-  { id: 1, name: 'Classic Beige', price: 29.90, color: '#D4C5B0', category: 'basic' },
-  { id: 2, name: 'Soft Rose', price: 29.90, color: '#E8C4C4', category: 'basic' },
-  { id: 3, name: 'Deep Brown', price: 29.90, color: '#6B4C3A', category: 'basic' },
-  { id: 4, name: 'Sage Green', price: 29.90, color: '#B5C4A8', category: 'basic' },
-  { id: 5, name: 'Charcoal', price: 29.90, color: '#4A4A4A', category: 'basic' },
-  { id: 6, name: 'Dusty Pink', price: 32.90, color: '#D4A5A5', category: 'premium' },
-  { id: 7, name: 'Navy Blue', price: 32.90, color: '#2C3E50', category: 'premium' },
-  { id: 8, name: 'Ivory White', price: 32.90, color: '#F5F0E8', category: 'premium' },
-];
-
-let cart = [];
-let currentFilter = 'all';
-
-// --- RENDER PRODUCTS ---
-function renderProducts() {
-  const grid = document.getElementById('products');
-  const filtered = currentFilter === 'all' ? products : products.filter(p => p.category === currentFilter);
-  grid.innerHTML = filtered.map(p => `
-    <div class="card">
-      <div class="pic" style="background: ${p.color}20; display: grid; place-items: center;">
-        <svg width="80" height="80" viewBox="0 0 100 100" fill="none">
-          <circle cx="50" cy="50" r="40" fill="${p.color}" opacity="0.8"/>
-          <circle cx="50" cy="50" r="30" fill="none" stroke="white" stroke-width="2"/>
-        </svg>
-      </div>
-      <h3>${p.name}</h3>
-      <p>Soft inner cap</p>
-      <div class="price">RM${p.price.toFixed(2)}</div>
-      <button class="pill" onclick="addToCart(${p.id})">Add to Bag</button>
-    </div>
-  `).join('');
-}
-
-// --- RENDER FILTER TABS ---
-function renderTabs() {
-  const tabs = document.getElementById('tabs');
-  tabs.innerHTML = `
-    <button class="pill" style="margin: 0 5px 10px;" onclick="filterProducts('all')" ${currentFilter === 'all' ? 'aria-pressed="true"' : ''}>All</button>
-    <button class="pill" style="margin: 0 5px 10px;" onclick="filterProducts('basic')" ${currentFilter === 'basic' ? 'aria-pressed="true"' : ''}>Basic</button>
-    <button class="pill" style="margin: 0 5px 10px;" onclick="filterProducts('premium')" ${currentFilter === 'premium' ? 'aria-pressed="true"' : ''}>Premium</button>
-  `;
-}
-
-function filterProducts(cat) {
-  currentFilter = cat;
-  renderTabs();
-  renderProducts();
-}
-
-// --- SWATCHES ---
-function renderSwatches() {
-  const swatches = document.getElementById('swatches');
-  const colors = ['#D4C5B0', '#E8C4C4', '#6B4C3A', '#B5C4A8', '#4A4A4A'];
-  swatches.innerHTML = colors.map((c, i) => `
-    <button class="sw" style="background: ${c};" aria-pressed="${i === 0 ? 'true' : 'false'}" onclick="selectSwatch(this)"></button>
-  `).join('');
-}
-
-function selectSwatch(el) {
-  document.querySelectorAll('.sw').forEach(s => s.setAttribute('aria-pressed', 'false'));
-  el.setAttribute('aria-pressed', 'true');
-}
-
-// --- CART ---
-function addToCart(id) {
-  const product = products.find(p => p.id === id);
-  const existing = cart.find(item => item.id === id);
-  if (existing) {
-    existing.qty++;
-  } else {
-    cart.push({ ...product, qty: 1 });
-  }
-  updateCart();
-  showToast('Added to bag!');
-}
-
-function updateCart() {
-  const cnt = document.getElementById('cnt');
-  const total = cart.reduce((sum, item) => sum + item.qty, 0);
-  cnt.textContent = total;
-  
-  const cartItems = document.getElementById('cartItems');
-  const cartTotal = document.getElementById('cartTotal');
-  
-  if (cart.length === 0) {
-    cartItems.innerHTML = '<p style="color: var(--muted); text-align: center; margin-top: 50px;">Your bag is empty.</p>';
-    cartTotal.textContent = 'RM0.00';
-  } else {
-    cartItems.innerHTML = cart.map(item => `
-      <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--line);">
-        <div>
-          <div style="font-weight: 600;">${item.name}</div>
-          <div style="font-size: 0.85rem; color: var(--muted);">Qty: ${item.qty}</div>
-        </div>
-        <div style="font-weight: 700;">RM${(item.price * item.qty).toFixed(2)}</div>
-      </div>
-    `).join('');
-    const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-    cartTotal.textContent = `RM${totalPrice.toFixed(2)}`;
-  }
-}
-
-function openCart() {
-  document.getElementById('cartRoot').classList.add('open');
-}
-function closeCart() {
-  document.getElementById('cartRoot').classList.remove('open');
-}
-
-document.getElementById('cartbtn').addEventListener('click', openCart);
-
-// --- TOAST ---
-function showToast(msg) {
-  const toast = document.getElementById('toast');
-  toast.textContent = msg;
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 2000);
-}
-
-// --- HERO MIRROR SLIDER ---
-const mirrorColors = ['#D4C5B0', '#E8C4C4', '#6B4C3A', '#B5C4A8', '#4A4A4A'];
-let mirrorIndex = 0;
-
-function renderMirrors() {
-  const mirrors = document.getElementById('mirrors');
-  mirrors.innerHTML = mirrorColors.map((c, i) => `
-    <div style="flex: 0 0 auto; width: 180px; height: 240px; background: ${c}30; border-radius: 12px; display: grid; place-items: center; scroll-snap-align: center; border: 2px solid ${i === mirrorIndex ? 'var(--ink)' : 'transparent'}; transition: border 0.3s;">
-      <svg width="120" height="120" viewBox="0 0 100 100" fill="none">
-        <circle cx="50" cy="50" r="45" fill="${c}" opacity="0.9"/>
-        <circle cx="50" cy="50" r="35" fill="none" stroke="white" stroke-width="3"/>
-      </svg>
-    </div>
-  `).join('');
-  document.getElementById('mcount').textContent = `${mirrorIndex + 1} / ${mirrorColors.length}`;
-}
-
-function scrollMirror(dir) {
-  mirrorIndex = (mirrorIndex + dir + mirrorColors.length) % mirrorColors.length;
-  renderMirrors();
-}
-
-document.getElementById('mprev').addEventListener('click', () => scrollMirror(-1));
-document.getElementById('mnext').addEventListener('click', () => scrollMirror(1));
-
-// --- SPIN GAME ---
-let points = 0;
-let spinning = false;
-
-document.getElementById('spin-btn').addEventListener('click', () => {
-  if (spinning) return;
-  spinning = true;
-  const btn = document.getElementById('spin-btn');
-  btn.classList.add('spinning');
-  btn.disabled = true;
-  
-  setTimeout(() => {
-    const reward = Math.floor(Math.random() * 50) + 10;
-    points += reward;
-    document.getElementById('point-display').textContent = points;
-    btn.classList.remove('spinning');
-    btn.disabled = false;
-    spinning = false;
-    showToast(`You won ${reward} points!`);
-  }, 2000);
-});
-
-function claimReward(cost, code) {
-  if (points >= cost) {
-    points -= cost;
-    document.getElementById('point-display').textContent = points;
-    document.getElementById('claimed-code').textContent = `Code: ${code}`;
-    showToast(`Reward claimed! Code: ${code}`);
-  } else {
-    showToast('Not enough points!');
-  }
-}
-
-// --- INIT ---
-renderProducts();
-renderTabs();
-renderSwatches();
-renderMirrors();
-updateCart();
-
-// --- FAQ ACCORDION TOGGLE ---
-document.querySelectorAll('details').forEach(detail => {
-  detail.addEventListener('toggle', () => {
-    const summary = detail.querySelector('summary');
-    const icon = summary.querySelector('span');
-    if (detail.open) {
-      icon.textContent = '−';
-    } else {
-      icon.textContent = '+';
-    }
-  });
-});
-</script>
-
 <style>
-/* --- TAMBAHAN CSS UNTUK MOBILE YANG LEBIH CANTIK --- */
-@media (max-width: 900px) {
-  /* Hero section adjustments */
-  .hero h1 {
-    font-size: 2.8rem !important;
-    line-height: 1.1 !important;
-  }
-  .hright p {
-    font-size: 0.9rem !important;
-    line-height: 1.5 !important;
-    padding: 0 10px !important;
-  }
-  .hmeta .pill {
-    padding: 14px 20px !important;
-    font-size: 0.75rem !important;
-  }
-  
-  /* Swatches */
-  .swatches {
-    gap: 10px !important;
-    margin-top: 20px !important;
-  }
-  .sw {
-    width: 32px !important;
-    height: 32px !important;
-  }
-  
-  /* Mirror slider */
-  .mirrors > div {
-    width: 140px !important;
-    height: 200px !important;
-  }
-  
-  /* Product grid */
-  .grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 10px !important;
-  }
-  .card {
-    padding: 12px !important;
-    border-radius: 8px !important;
-  }
-  .card .pic {
-    margin-bottom: 10px !important;
-  }
-  .card h3 {
-    font-size: 0.85rem !important;
-    line-height: 1.2 !important;
-  }
-  .card p {
-    font-size: 0.65rem !important;
-    margin: 5px 0 !important;
-  }
-  .card .price {
-    font-size: 0.8rem !important;
-    margin-top: 5px !important;
-  }
-  .card .pill {
-    padding: 8px !important;
-    font-size: 0.65rem !important;
-    margin-top: 10px !important;
-  }
-  
-  /* Game section */
-  .game-card {
-    padding: 20px 15px !important;
-  }
-  .spin-wrapper {
-    width: 130px !important;
-    height: 130px !important;
-  }
-  .spin-btn {
-    font-size: 1rem !important;
-    border-width: 5px !important;
-  }
-  .spin-btn i {
-    font-size: 1.5rem !important;
-  }
-  .point-badge {
-    font-size: 0.9rem !important;
-    padding: 8px 18px !important;
-  }
-  .point-badge span {
-    font-size: 1.3rem !important;
-  }
-  .reward-grid {
-    grid-template-columns: 1fr !important;
-    gap: 10px !important;
-  }
-  .reward-card {
-    padding: 12px !important;
-  }
-  .reward-icon {
-    font-size: 1.5rem !important;
-  }
-  .reward-name {
-    font-size: 0.9rem !important;
-  }
-  .reward-cost {
-    font-size: 0.7rem !important;
-  }
-  .claim-btn {
-    padding: 6px 12px !important;
-    font-size: 0.7rem !important;
-  }
-  
-  /* How to wear */
-  .steps {
-    grid-template-columns: 1fr !important;
-    border-top: none !important;
-    gap: 20px !important;
-  }
-  .step {
-    padding: 20px !important;
-    border-right: none !important;
-    border-bottom: 1px solid var(--line) !important;
-  }
-  .step:last-child {
-    border-bottom: none !important;
-  }
-  .step b {
-    font-size: 2.5rem !important;
-    margin-bottom: 10px !important;
-  }
-  .step h3 {
-    font-size: 1rem !important;
-  }
-  .step p {
-    font-size: 0.85rem !important;
-  }
-  
-  /* FAQ */
-  .faq details {
-    padding: 15px 0 !important;
-  }
-  .faq summary {
-    font-size: 0.95rem !important;
-    padding-right: 20px !important;
-  }
-  .faq summary span {
-    font-size: 1.3rem !important;
-  }
-  .faq p {
-    font-size: 0.85rem !important;
-  }
-  
-  /* Footer */
-  .end {
-    padding: 50px 0 30px !important;
-  }
-  .end h2 {
-    font-size: 2rem !important;
-  }
-  .end p {
-    font-size: 0.9rem !important;
-  }
-  .fgrid {
-    grid-template-columns: 1fr !important;
-    text-align: center !important;
-    gap: 25px !important;
-    margin-top: 40px !important;
-  }
-  .fgrid h3 {
-    font-size: 0.9rem !important;
-    margin-bottom: 10px !important;
-  }
-  .fgrid p {
-    font-size: 0.85rem !important;
-  }
-  .copy {
-    font-size: 0.7rem !important;
-    margin-top: 30px !important;
-  }
-  
-  /* FAB */
-  .fab {
-    padding: 10px 18px !important;
-    font-size: 0.7rem !important;
-    bottom: 15px !important;
-    right: 15px !important;
-  }
-  
-  /* Cart drawer */
-  .drawer {
-    padding: 20px !important;
-  }
-  .drawer h2 {
-    font-size: 1.5rem !important;
-  }
-  
-  /* Marquee */
-  .marq div {
-    font-size: 0.9rem !important;
-  }
-  .marq i {
-    font-size: 1.2em !important;
-  }
-  
-  /* Strip */
-  .strip {
-    font-size: 0.65rem !important;
-    padding: 8px !important;
-  }
-  
-  /* Header */
-  .logo {
-    font-size: 1.4rem !important;
-  }
-  
-  /* Toast */
-  .toast {
-    bottom: 20px !important;
-    padding: 12px 24px !important;
-    font-size: 0.85rem !important;
-  }
+/* --- PALETTE --- */
+:root{
+  --bg-main: #C4C9CE;    
+  --bg-card: #FFFFFF;    
+  --ink: #111111;        
+  --muted: #2C3236;      
+  --line: #AEB4BA;       
+  --accent: #8A7B6B;     
+  --hero: #B8BEC4;       
+  --footer-bg: #111111;  
+  --footer-ink: #C4C9CE; 
+}
+*{box-sizing:border-box; cursor:none; margin:0; padding:0; -webkit-tap-highlight-color: transparent;}
+html{scroll-behavior:smooth; overflow-x:hidden; width:100%; max-width:100vw;}
+body{background:var(--bg-main);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden; width:100%; max-width:100vw; position:relative;}
+img,svg{max-width:100%; display:block;}
+
+/* --- 3D CUBE --- */
+.scene{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;perspective:1200px;overflow:hidden;display:flex;justify-content:center;align-items:center;pointer-events:none;}
+.cube{width:400px;height:400px;position:relative;transform-style:preserve-3d;animation:rotateCube 25s infinite linear;}
+.face{position:absolute;width:400px;height:400px;border:1px solid rgba(138,123,107,.25);background:transparent;}
+.face.front{transform:translateZ(200px);}
+.face.back{transform:rotateY(180deg) translateZ(200px);}
+.face.right{transform:rotateY(90deg) translateZ(200px);}
+.face.left{transform:rotateY(-90deg) translateZ(200px);}
+.face.top{transform:rotateX(90deg) translateZ(200px);}
+.face.bottom{transform:rotateX(-90deg) translateZ(200px);}
+@keyframes rotateCube{0%{transform:rotateX(0) rotateY(0);}100%{transform:rotateX(360deg) rotateY(360deg);}}
+
+/* --- CURSOR --- */
+.cursor{position:fixed;width:20px;height:20px;border-radius:50%;background:var(--ink);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s,background-color .3s;display:none;mix-blend-mode:difference;}
+.cursor.active{width:50px;height:50px;background:rgba(255,255,255,.1);border:1px solid var(--ink);}
+.trail-dot{position:fixed;width:6px;height:6px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);}
+
+/* --- PRELOADER --- */
+#preloader{position:fixed;inset:0;background:var(--bg-main);color:var(--ink);z-index:10000;display:flex;justify-content:center;align-items:center;font-family:'Playfair Display',serif;font-size:2.5rem;transition:opacity .6s ease,visibility .6s ease;}
+#preloader.hide{opacity:0;visibility:hidden;}
+
+/* --- NAVBAR --- */
+.strip{background:var(--ink);color:var(--bg-main);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:12px;position:relative;z-index:10;}
+header.top{position:sticky;top:0;z-index:20;background:rgba(196,201,206,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+.in{max-width:1200px;margin:0 auto;padding:0 20px;position:relative;width:100%;}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:12px 28px;font:inherit;font-size:.75rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;background:transparent;color:var(--ink);cursor:pointer;transition:all .3s ease;}
+.pill:hover,.pill[aria-pressed="true"]{background:var(--ink);color:var(--bg-main);border-color:var(--ink);}
+#cartbtn{border:1px solid var(--ink);font-weight:700;}
+
+/* --- HERO --- */
+.hero{color:var(--ink);padding:80px 0 100px;position:relative;display:flex;align-items:center;min-height:80vh;background:rgba(196,201,206,.6);}
+.hgrid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%;}
+.hright p{max-width:40ch;color:var(--muted);margin:25px 0 35px;font-size:1rem;font-weight:500;}
+.hmeta{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+
+/* --- SWATCHES --- */
+.swatches{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:30px;}
+.sw{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);cursor:pointer;padding:0;transition:transform .2s;}
+.sw:hover{transform:scale(1.15);}
+.sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--hero),0 0 0 3px var(--ink);}
+
+/* --- SECTION --- */
+.block{padding:100px 0;position:relative;z-index:1;background:rgba(196,201,206,.8);border-bottom:1px solid var(--line);}
+.center{text-align:center;}
+.center p{color:var(--muted);margin:20px auto 50px;max-width:50ch;font-size:1rem;font-weight:500;}
+
+/* --- MARQUEE --- */
+.marq{overflow:hidden;background:var(--ink);color:var(--bg-main);padding:20px 0;white-space:nowrap;position:relative;z-index:5;}
+.marq div{display:inline-block;animation:mq 25s linear infinite;font-family:'Inter Tight',sans-serif;font-size:clamp(1rem,2.5vw,1.5rem);text-transform:uppercase;letter-spacing:.15em;font-weight:600;}
+.marq i{padding:0 1.5em;color:var(--accent);text-transform:none;font-family:'Playfair Display',serif;font-size:1.5em;font-style:italic;}
+@keyframes mq{to{transform:translateX(-50%);}}
+
+/* --- PRODUCT CARDS --- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:30px;text-align:left;}
+.card{background:var(--bg-card);border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;transition:all .4s ease;position:relative;overflow:hidden;z-index:2;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.05);}
+.card:hover{border-color:var(--ink);box-shadow:0 20px 50px rgba(0,0,0,.15);transform:translateY(-8px);}
+.card .pic{background:#F5F5F5;aspect-ratio:1;display:grid;place-items:end center;margin-bottom:20px;overflow:hidden;border-radius:8px;}
+.card .pic svg,.card .pic img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.175,.885,.32,1.275);}
+.card:hover .pic svg,.card:hover .pic img{transform:scale(1.05);}
+.card h3{font-size:1.4rem;font-family:'Inter Tight',sans-serif;font-weight:600;line-height:1.2;text-transform:uppercase;margin-top:5px;color:var(--ink);}
+.card p{margin:8px 0 0;font-size:.9rem;color:var(--muted);flex:1;line-height:1.5;font-weight:500;}
+.card .price{font-weight:700;font-size:1rem;margin-top:15px;color:var(--ink);letter-spacing:.02em;}
+.card .pill{margin-top:20px;width:100%;text-align:center;}
+
+/* --- GAME --- */
+.game-section{padding:80px 20px;text-align:center;background:var(--bg-card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:2;}
+.game-section h2{margin-bottom:10px;font-size:2.5rem;}
+.game-section p{margin-bottom:40px;color:var(--muted);font-size:1.1rem;}
+.game-card{max-width:600px;margin:0 auto;background:#F9F9F9;border-radius:24px;padding:40px;box-shadow:0 20px 50px rgba(0,0,0,.1);position:relative;overflow:hidden;border:1px solid var(--line);}
+.game-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(138,123,107,.1) 0%,transparent 60%);animation:rotateBg 15s linear infinite;pointer-events:none;}
+@keyframes rotateBg{to{transform:rotate(360deg);}}
+.point-badge{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--ink);color:var(--bg-main);padding:10px 25px;border-radius:50px;font-size:1.2rem;font-weight:700;margin-bottom:30px;box-shadow:0 5px 15px rgba(0,0,0,.2);}
+.point-badge span{font-size:1.8rem;color:var(--accent);}
+.spin-wrapper{position:relative;margin:30px auto;width:200px;height:200px;}
+.spin-btn{width:100%;height:100%;border-radius:50%;border:8px solid var(--ink);background:var(--accent);color:white;font-size:1.5rem;font-weight:700;cursor:pointer;transition:all .3s ease;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.3);text-transform:uppercase;letter-spacing:2px;}
+.spin-btn:hover{transform:scale(1.05);box-shadow:0 15px 40px rgba(0,0,0,.4);}
+.spin-btn:disabled{background:#999;border-color:#666;cursor:not-allowed;transform:none;box-shadow:none;}
+.spin-btn i{font-size:2.5rem;margin-bottom:5px;}
+.spinning{animation:spinAnim 1s linear infinite;}
+@keyframes spinAnim{100%{transform:rotate(360deg);}}
+.rewards-title{font-family:'Inter Tight';font-size:1.2rem;margin:40px 0 20px;text-transform:uppercase;letter-spacing:1px;border-bottom:2px solid var(--line);display:inline-block;padding-bottom:10px;}
+.reward-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;}
+.reward-card{background:white;border:1px solid var(--line);border-radius:12px;padding:15px;display:flex;flex-direction:column;align-items:center;gap:10px;transition:all .3s;}
+.reward-card:hover{border-color:var(--accent);box-shadow:0 10px 20px rgba(0,0,0,.05);}
+.reward-icon{font-size:2rem;}
+.reward-cost{font-size:.8rem;color:var(--muted);font-weight:600;}
+.reward-name{font-weight:700;font-size:1rem;}
+.claim-btn{background:var(--ink);color:white;border:none;padding:8px 15px;border-radius:6px;font-size:.8rem;font-weight:600;cursor:pointer;width:100%;transition:background .3s;}
+.claim-btn:hover{background:var(--accent);}
+.claim-btn:disabled{background:#ccc;cursor:not-allowed;}
+
+/* --- TOAST --- */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:white;padding:15px 30px;border-radius:50px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:transform .4s cubic-bezier(.175,.885,.32,1.275);z-index:9999;opacity:0;max-width:90vw;text-align:center;}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+
+/* --- FOOTER --- */
+.end{background:var(--footer-bg);color:var(--footer-ink);padding:100px 0 40px;position:relative;z-index:10;border-top:none;}
+.end h2{color:var(--footer-ink);}
+.end p{color:#A9A39C;font-weight:400;}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-top:80px;padding-top:40px;border-top:1px solid #333;font-size:.9rem;color:#A9A39C;}
+.fgrid h3{font-size:1rem;color:var(--footer-ink);margin-bottom:15px;line-height:1;text-transform:uppercase;font-family:'Inter Tight',sans-serif;letter-spacing:.05em;font-weight:600;}
+.fgrid p{margin:8px 0;font-weight:400;}
+.copy{margin-top:60px;font-size:.75rem;color:#777;text-transform:uppercase;letter-spacing:.05em;border-top:1px solid #333;padding-top:20px;text-align:center;}
+
+/* --- FAB --- */
+.fab{position:fixed;right:20px;bottom:20px;z-index:25;background:var(--ink);color:var(--bg-main);padding:14px 24px;font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:transform .2s;border:1px solid var(--ink);border-radius:6px;}
+.fab:hover{transform:translateY(-4px);background:transparent;color:var(--ink);}
+
+/* --- CART --- */
+.scrim{position:fixed;inset:0;background:rgba(17,17,17,.4);z-index:30;opacity:0;visibility:hidden;transition:opacity .3s;}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:100%;max-width:450px;background:var(--bg-main);z-index:31;transform:translateX(100%);visibility:hidden;transition:transform .4s cubic-bezier(.4,0,.2,1),visibility .4s;display:flex;flex-direction:column;padding:30px;border-left:1px solid var(--line);}
+.open .drawer{transform:none;visibility:visible;}
+.open .scrim{opacity:1;visibility:visible;}
+
+/* --- REVEAL --- */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .8s ease-out,transform .8s ease-out;}
+.rv.on{opacity:1;transform:translateY(0);}
+
+/* --- MIRROR SLIDER (fix desktop + mobile) --- */
+.mirrors::-webkit-scrollbar{display:none;}
+.mirror{flex:0 0 74%;scroll-snap-align:center;text-align:center;transform:scale(.86);opacity:.5;transition:transform .35s,opacity .35s;}
+.mirror.on{transform:scale(1);opacity:1;}
+.mirror .frame{padding:12px;border-radius:999px 999px 24px 24px;background:var(--bg-card);border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.03);}
+.mirror .glass{position:relative;overflow:hidden;border-radius:999px 999px 16px 16px;aspect-ratio:3/4.1;background:#F0EDE6;display:grid;place-items:end center;}
+.mirror .shine{position:absolute;inset:-20%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.3) 46%,rgba(255,255,255,.05) 52%,transparent 58%);pointer-events:none;}
+.mirror .mname{display:block;margin-top:15px;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:1.2rem;color:var(--ink);font-weight:600;}
+
+/* --- SPLIT / STEPS / FAQ --- */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.split h2{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.1;}
+.split p{color:var(--muted);margin-top:20px;}
+.cells{display:grid;gap:24px;}
+.cells h3{font-family:'Inter Tight';text-transform:uppercase;font-size:1rem;letter-spacing:.03em;margin-bottom:6px;}
+.cells p{color:var(--muted);font-size:.9rem;margin:0;}
+.faq details{border-bottom:1px solid var(--line);padding:20px 0;}
+.faq summary{cursor:pointer;font-weight:600;font-size:1rem;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;}
+.faq summary::-webkit-details-marker{display:none;}
+.faq details p{margin-top:12px;color:var(--muted);font-size:.95rem;}
+
+/* ============================================
+   !!! FIX KHAS PHONE — SUPAYA TAK TERPOTONG !!!
+   ============================================ */
+@media (max-width: 900px){
+  /* 1. GLOBAL: cegah horizontal scroll */
+  html,body{overflow-x:hidden !important; width:100% !important; max-width:100vw !important;}
+
+  /* 2. HEADER */
+  .top .in{height:60px !important; padding:0 14px !important;}
+  .top nav{display:none !important;}
+  .logo{font-size:1.5rem !important; letter-spacing:-.02em !important;}
+  .pill#cartbtn{padding:8px 14px !important; font-size:.7rem !important;}
+  .strip{padding:10px !important; font-size:.7rem !important;}
+
+  /* 3. HERO — susun menegak, tajuk tak terpotong */
+  .hero{padding:30px 0 50px !important; min-height:auto !important; overflow:hidden !important;}
+  .hgrid{grid-template-columns:1fr !important; gap:32px !important; width:100% !important; max-width:100% !important;}
+  .hright{order:-1 !important; text-align:center !important; width:100% !important; max-width:100% !important; padding:0 !important; display:flex !important; flex-direction:column !important; align-items:center !important; overflow:hidden !important;}
+  .hero h1{font-size:clamp(2.4rem, 12vw, 3.2rem) !important; line-height:1.05 !important; width:100% !important; max-width:100% !important; overflow-wrap:break-word !important; word-break:normal !important;}
+  .cap{font-size:.7rem !important; letter-spacing:.08em !important;}
+  .hright p{font-size:.92rem !important; margin:14px 0 22px !important; padding:0 6px !important; width:100% !important; max-width:100% !important; line-height:1.55 !important;}
+  .hmeta{flex-direction:column !important; width:100% !important; max-width:100% !important; padding:0 !important; gap:10px !important; display:flex !important;}
+  .hmeta .pill{width:100% !important; padding:14px !important; font-size:.75rem !important; text-align:center !important; margin:0 !important;}
+
+  /* 4. SWATCHES */
+  .swatches{justify-content:center !important; margin-top:18px !important; width:100% !important; gap:10px !important;}
+  .sw{width:30px !important; height:30px !important;}
+
+  /* 5. MIRROR SLIDER — penting: padding kecil supaya tak terpotong */
+  .mwrap{width:100% !important; max-width:100% !important; overflow:hidden !important;}
+  .mirrors{padding:6px 6% 14px !important; gap:10px !important; scroll-padding:0 6% !important; cursor:auto !important;}
+  .mirror{flex:0 0 84% !important;}
+  .mirror .frame{padding:10px !important;}
+  .mirror .mname{font-size:1.05rem !important; margin-top:12px !important;}
+  .marrows{gap:14px !important; margin-top:12px !important; font-size:.75rem !important;}
+  .marrows button{width:34px !important; height:34px !important;}
+
+  /* 6. SECTIONS */
+  .block{padding:50px 0 !important;}
+  .center h2, .split h2, .faq h2{font-size:1.8rem !important; line-height:1.15 !important;}
+  .split{grid-template-columns:1fr !important; gap:24px !important;}
+  .cells{gap:18px !important;}
+  .cells div{padding:14px 0 !important; border-bottom:1px solid var(--line);}
+  .cells div:last-child{border-bottom:none;}
+
+  /* 7. GAME */
+  .game-section{padding:50px 14px !important;}
+  .game-section h2{font-size:1.9rem !important;}
+  .game-section p{font-size:.95rem !important; margin-bottom:26px !important;}
+  .game-card{padding:22px 16px !important; border-radius:18px !important;}
+  .spin-wrapper{width:140px !important; height:140px !important;}
+  .spin-btn{font-size:1rem !important; border-width:5px !important; letter-spacing:1px !important;}
+  .spin-btn i{font-size:1.6rem !important;}
+  .reward-grid{grid-template-columns:1fr !important; gap:10px !important;}
+  .point-badge{font-size:.95rem !important; padding:8px 18px !important; gap:6px !important;}
+  .point-badge span{font-size:1.35rem !important;}
+  .rewards-title{font-size:1rem !important; margin:26px 0 14px !important;}
+
+  /* 8. PRODUCT GRID — 2 kolum, butang tak terkeluar */
+  .grid{grid-template-columns:repeat(2, minmax(0,1fr)) !important; gap:10px !important; width:100% !important; max-width:100% !important;}
+  .card{padding:9px !important; border-radius:10px !important; min-width:0 !important; overflow:hidden !important;}
+  .card .pic{margin-bottom:8px !important; border-radius:6px !important;}
+  .card h3{font-size:.82rem !important; margin-top:4px !important; line-height:1.2 !important; overflow-wrap:break-word !important;}
+  .card p{font-size:.66rem !important; line-height:1.3 !important; margin:4px 0 0 !important;}
+  .card .price{font-size:.8rem !important; margin-top:6px !important;}
+  .card .pill{padding:8px 4px !important; font-size:.62rem !important; margin-top:8px !important; letter-spacing:.02em !important; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .card .tag{font-size:.6rem !important; letter-spacing:.06em !important;}
+  .cdots{gap:5px !important; margin-top:6px !important;}
+  .cd{width:18px !important; height:18px !important;}
+  .cn{font-size:.62rem !important; margin-top:4px !important;}
+
+  /* 9. STEPS */
+  .steps{grid-template-columns:1fr !important; margin-top:30px !important; border-top:none !important;}
+  .step{padding:20px 0 !important; border-right:none !important; border-bottom:1px solid var(--line) !important;}
+  .step:last-child{border-bottom:none !important;}
+  .step b{font-size:2.4rem !important; margin-bottom:8px !important;}
+  .step h3{font-size:.95rem !important;}
+  .step p{font-size:.85rem !important;}
+
+  /* 10. FAQ */
+  .faq details{padding:14px 0 !important;}
+  .faq summary{font-size:.92rem !important; gap:12px !important;}
+  .faq details p{font-size:.85rem !important;}
+
+  /* 11. FOOTER */
+  .end{padding:50px 0 90px !important;}
+  .end h2{font-size:1.9rem !important;}
+  .end .lead{font-size:.92rem !important; max-width:100% !important;}
+  .end .pill{padding:14px !important; font-size:.75rem !important; width:100% !important; text-align:center !important;}
+  .fgrid{grid-template-columns:1fr !important; text-align:center !important; gap:24px !important; margin-top:40px !important; padding-top:30px !important;}
+  .copy{margin-top:30px !important; font-size:.7rem !important;}
+
+  /* 12. FAB — naik sikit supaya tak tutup content */
+  .fab{padding:11px 18px !important; font-size:.7rem !important; bottom:16px !important; right:14px !important;}
+
+  /* 13. CART DRAWER */
+  .drawer{padding:20px !important; max-width:100% !important;}
+  .drawer header h2{font-size:1.5rem !important;}
+  .drawer .pill{padding:10px 16px !important; font-size:.7rem !important;}
+
+  /* 14. TOAST */
+  .toast{bottom:80px !important; padding:12px 22px !important; font-size:.82rem !important; max-width:calc(100vw - 32px) !important;}
+
+  /* 15. MATIKAN CURSOR CUSTOM */
+  *{cursor:auto !important;}
+  .cursor,.trail-dot{display:none !important;}
+
+  /* 16. KECILKAN KUBUS 3D */
+  .cube{width:240px !important; height:240px !important;}
+  .face{width:240px !important; height:240px !important;}
+  .face.front{transform:translateZ(120px) !important;}
+  .face.back{transform:rotateY(180deg) translateZ(120px) !important;}
+  .face.right{transform:rotateY(90deg) translateZ(120px) !important;}
+  .face.left{transform:rotateY(-90deg) translateZ(120px) !important;}
+  .face.top{transform:rotateX(90deg) translateZ(120px) !important;}
+  .face.bottom{transform:rotateX(-90deg) translateZ(120px) !important;}
 }
 
-/* Additional mobile fixes for very small screens */
-@media (max-width: 400px) {
-  .hero h1 {
-    font-size: 2.2rem !important;
-  }
-  .hright p {
-    font-size: 0.85rem !important;
-  }
-  .grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  .card h3 {
-    font-size: 0.75rem !important;
-  }
-  .card .pill {
-    font-size: 0.6rem !important;
-    padding: 6px !important;
-  }
-  .spin-wrapper {
-    width: 110px !important;
-    height: 110px !important;
-  }
+/* ============================================
+   PHONE KECIL (<480px) — extra fix
+   ============================================ */
+@media (max-width: 480px){
+  .hero h1{font-size:clamp(2rem, 11.5vw, 2.6rem) !important;}
+  .hright p{font-size:.86rem !important;}
+  .grid{grid-template-columns:repeat(2, minmax(0,1fr)) !important; gap:8px !important;}
+  .card{padding:8px !important;}
+  .card h3{font-size:.74rem !important;}
+  .card p{font-size:.6rem !important;}
+  .card .price{font-size:.72rem !important;}
+  .card .pill{font-size:.56rem !important; padding:7px 3px !important;}
+  .cdots{gap:4px !important;}
+  .cd{width:16px !important; height:16px !important;}
+  .cn{font-size:.56rem !important;}
+  .mirror{flex:0 0 88% !important;}
+  .spin-wrapper{width:120px !important; height:120px !important;}
+  .game-card{padding:18px 12px !important;}
+  .end h2{font-size:1.6rem !important;}
+  .fgrid h3{font-size:.85rem !important;}
+  .fgrid p{font-size:.8rem !important;}
 }
 </style>
-
-</body>
-</html>
