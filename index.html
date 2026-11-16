@@ -22,17 +22,12 @@
   --footer-ink: #E6E1D8; 
 }
 *{box-sizing:border-box; cursor: none; margin: 0; padding: 0;}
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body{background:var(--bg-main);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden; width: 100%;}
 
 /* --- ANIMASI BACKGROUND (FLOATING PARTICLES) --- */
 #particles-js {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1;
   background-color: var(--bg-main);
 }
 
@@ -63,7 +58,7 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(230, 225, 2
 .sw:hover{transform:scale(1.15)}
 .sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--hero),0 0 0 3px var(--ink)}
 
-/* --- SECTION STYLING (KACA OVERLAY) --- */
+/* --- SECTION STYLING --- */
 .block{padding:120px 0; position: relative; z-index: 1; background: rgba(230, 225, 216, 0.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);}
 .center{text-align:center}
 .center p{color:var(--muted);margin:20px auto 50px;max-width:50ch; font-size: 1.05rem; font-weight: 500;}
@@ -108,7 +103,7 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(230, 225, 2
 .rv {opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out;}
 .rv.on {opacity: 1; transform: translateY(0);}
 
-/* --- RESPONSIVE --- */
+/* --- RESPONSIVE (PHONE FRIENDLY) --- */
 @media(max-width:1024px){
   .hgrid{grid-template-columns:1fr; text-align: center; gap: 50px;}
   .hright{order: -1;}
@@ -133,9 +128,8 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(230, 225, 2
   .hright p {font-size: 0.95rem; margin: 20px 0 30px; text-align: center;}
   .hmeta {flex-direction: column; gap: 12px; width: 100%;}
   .hmeta .pill {width: 100%; text-align: center; padding: 14px;}
-  .hero h1 {font-size: 4rem; line-height: 1.1; margin-bottom: 15px;}
+  .hero h1 {font-size: 3.5rem; line-height: 1.1; margin-bottom: 15px;}
   .mwrap { margin-top: 30px; width: 100%; max-width: 100%;}
-  .hero .photo {max-width: 280px; margin: 0 auto;}
   .grid{grid-template-columns:repeat(2,1fr); gap: 12px;}
   .card{padding: 12px;}
   .card h3 {font-size: 1rem; margin-top: 5px; line-height: 1.2;}
@@ -143,19 +137,18 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(230, 225, 2
   .card .price {font-size: 0.9rem; margin-top: 10px;}
   .card .pill {padding: 10px 8px; font-size: 0.7rem; margin-top: 12px;}
   .card .pic {margin-bottom: 10px;}
-  .block {padding: 60px 0;}
+  .block {padding: 50px 0;}
   .tabs .pill {padding: 8px 16px; font-size: 0.7rem;}
-  .split h2, .faq h2 {font-size: 2.5rem;}
-  .fab{right:20px;bottom:20px;padding:14px 24px;font-size:0.75rem;}
-  .drawer {padding: 24px; width: 100%;}
-  .drawer h2 {font-size: 1.8rem;}
+  .split h2, .faq h2 {font-size: 2.2rem;}
+  .fab{right:16px;bottom:16px;padding:12px 18px;font-size:0.75rem;}
+  .drawer {padding: 20px; width: 100%;}
+  .drawer h2 {font-size: 1.5rem;}
   .fgrid { grid-template-columns: 1fr; text-align: center; gap: 30px;}
 }
 </style>
 </head>
 <body>
 
-<!-- WADAH UNTUK ZARAH (PARTICLES) -->
 <div id="particles-js"></div>
 
 <div class="cursor" id="customCursor"></div>
@@ -254,7 +247,6 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(230, 225, 2
 <div class="scrim" id="scrim"></div>
 <aside class="drawer" id="drawer" aria-label="Cart"><header><h2 style="font-family: 'Playfair Display', serif; font-weight: 400; font-size: 2rem;">Your Bag</h2><button class="pill" id="closecart"><span>Close</span></button></header><ul id="lines" style="list-style:none;margin:0;padding:0;flex:1;overflow:auto; border-top: 1px solid var(--line); margin-top: 20px;"></ul><div class="sum" style="padding-top:20px;display:grid;gap:15px;"><div class="row" style="display:flex;justify-content:space-between;font-weight:600; font-size: 1.1rem;"><span>Total</span><span id="tot">RM0</span></div><small id="ship" style="color:var(--muted); font-size: 0.8rem;"></small><a class="pill" id="co" target="_blank" rel="noopener" href="#" style="text-align:center; background: var(--ink); color: var(--bg-main); border: none; padding: 15px;"><span>Checkout</span></a><small style="color:var(--muted); text-align: center; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;">Payment details via WhatsApp</small></div></aside>
 
-<!-- LIBRARY UNTUK PARTICLES -->
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 <script>
