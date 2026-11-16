@@ -9,14 +9,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700&family=Inter:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <style>
-/* --- PALETTE BARU (LEBIH GELAP & MEWAH) --- */
+/* --- PALETTE (WARM GREIGE) --- */
 :root{
-  --bg-main: #E6E1D8;    /* Warm Greige (lebih gelap dari tadi, selesa di mata) */
-  --bg-card: #F4F1EB;    /* Kad warna cerah sikit */
-  --ink: #111111;        /* Hitam Pekat (tulisan sangat jelas) */
-  --muted: #4A463F;      /* Kelabu gelap (jelas terbaca) */
-  --line: #D1CBC1;       /* Border yang lebih jelas */
-  --accent: #8C735B;     /* Bronze gelap (untuk aksen) */
+  --bg-main: #E6E1D8;    
+  --bg-card: #F4F1EB;    
+  --ink: #111111;        
+  --muted: #4A463F;      
+  --line: #D1CBC1;       
+  --accent: #8C735B;     
   --hero: #DFD9CF;       
   --footer-bg: #111111;  
   --footer-ink: #E6E1D8; 
@@ -25,9 +25,16 @@
 html { scroll-behavior: smooth; }
 body{background:var(--bg-main);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden; width: 100%;}
 
-/* --- ANIMASI LATAR BELAKANG --- */
-.bg-animation { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; background: var(--bg-main); }
-.bg-animation span { position: absolute; display: block; border-radius: 50%; background: radial-gradient(circle, rgba(140, 115, 91, 0.1) 0%, rgba(230, 225, 216, 0) 70%); animation: floatBg 25s infinite linear; filter: blur(60px); }
+/* --- ANIMASI LATAR BELAKANG (AURORA GLOW) --- */
+.bg-animation {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: -1; overflow: hidden; background: var(--bg-main);
+}
+.bg-animation span {
+  position: absolute; display: block; border-radius: 50%;
+  background: radial-gradient(circle, rgba(140, 115, 91, 0.15) 0%, rgba(230, 225, 216, 0) 70%);
+  animation: floatBg 25s infinite linear; filter: blur(60px);
+}
 .bg-animation span:nth-child(1) { width: 60vw; height: 60vw; top: -20vh; left: -20vw; animation-duration: 30s; }
 .bg-animation span:nth-child(2) { width: 50vw; height: 50vw; top: 30vh; right: -20vw; animation-duration: 35s; animation-direction: reverse; }
 .bg-animation span:nth-child(3) { width: 70vw; height: 70vw; bottom: -30vh; left: 0; animation-duration: 40s; }
