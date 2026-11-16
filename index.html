@@ -25,21 +25,33 @@
 html { scroll-behavior: smooth; overflow-x: hidden !important; width: 100%; max-width: 100vw;}
 body{background:var(--bg-main);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden !important; width: 100%; max-width: 100vw; position: relative;}
 
-/* --- ANIMASI BACKGROUND (MOVING GRID) --- */
-.bg-grid {
+/* --- ANIMASI BACKGROUND 3D CUBE --- */
+.scene {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-  z-index: -1;
-  background-color: var(--bg-main);
-  background-image: 
-    linear-gradient(rgba(138, 123, 107, 0.15) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(138, 123, 107, 0.15) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: moveGrid 20s linear infinite;
+  z-index: -1; perspective: 1000px; overflow: hidden;
+  display: flex; justify-content: center; align-items: center;
   pointer-events: none;
 }
-@keyframes moveGrid {
-  0% { background-position: 0 0; }
-  100% { background-position: 0 60px; }
+.cube {
+  width: 300px; height: 300px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateCube 20s infinite linear;
+}
+.face {
+  position: absolute; width: 300px; height: 300px;
+  border: 1px solid rgba(138, 123, 107, 0.2);
+  background: transparent;
+}
+.face.front  { transform: translateZ(150px); }
+.face.back   { transform: rotateY(180deg) translateZ(150px); }
+.face.right  { transform: rotateY(90deg) translateZ(150px); }
+.face.left   { transform: rotateY(-90deg) translateZ(150px); }
+.face.top    { transform: rotateX(90deg) translateZ(150px); }
+.face.bottom { transform: rotateX(-90deg) translateZ(150px); }
+@keyframes rotateCube {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
 }
 
 /* --- CUSTOM CURSOR & TRAIL --- */
@@ -199,7 +211,16 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 </head>
 <body>
 
-<div class="bg-grid"></div>
+<div class="scene">
+  <div class="cube">
+    <div class="face front"></div>
+    <div class="face back"></div>
+    <div class="face right"></div>
+    <div class="face left"></div>
+    <div class="face top"></div>
+    <div class="face bottom"></div>
+  </div>
+</div>
 
 <div class="cursor" id="customCursor"></div>
 <div id="preloader">Baéq.</div>
