@@ -25,30 +25,30 @@
 html { scroll-behavior: smooth; overflow-x: hidden !important; width: 100%; max-width: 100vw;}
 body{background:var(--bg-main);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden !important; width: 100%; max-width: 100vw; position: relative;}
 
-/* --- ANIMASI BACKGROUND 3D CUBE --- */
+/* --- ANIMASI BACKGROUND 3D CUBE (DIPERBESAR) --- */
 .scene {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-  z-index: -1; perspective: 1000px; overflow: hidden;
+  z-index: -1; perspective: 1200px; overflow: hidden;
   display: flex; justify-content: center; align-items: center;
   pointer-events: none;
 }
 .cube {
-  width: 300px; height: 300px;
+  width: 400px; height: 400px;
   position: relative;
   transform-style: preserve-3d;
-  animation: rotateCube 20s infinite linear;
+  animation: rotateCube 25s infinite linear;
 }
 .face {
-  position: absolute; width: 300px; height: 300px;
-  border: 1px solid rgba(138, 123, 107, 0.2);
+  position: absolute; width: 400px; height: 400px;
+  border: 1px solid rgba(138, 123, 107, 0.25);
   background: transparent;
 }
-.face.front  { transform: translateZ(150px); }
-.face.back   { transform: rotateY(180deg) translateZ(150px); }
-.face.right  { transform: rotateY(90deg) translateZ(150px); }
-.face.left   { transform: rotateY(-90deg) translateZ(150px); }
-.face.top    { transform: rotateX(90deg) translateZ(150px); }
-.face.bottom { transform: rotateX(-90deg) translateZ(150px); }
+.face.front  { transform: translateZ(200px); }
+.face.back   { transform: rotateY(180deg) translateZ(200px); }
+.face.right  { transform: rotateY(90deg) translateZ(200px); }
+.face.left   { transform: rotateY(-90deg) translateZ(200px); }
+.face.top    { transform: rotateX(90deg) translateZ(200px); }
+.face.bottom { transform: rotateX(-90deg) translateZ(200px); }
 @keyframes rotateCube {
   0% { transform: rotateX(0deg) rotateY(0deg); }
   100% { transform: rotateX(360deg) rotateY(360deg); }
@@ -65,14 +65,14 @@ body{background:var(--bg-main);color:var(--ink);font-family:'Inter',system-ui,sa
 
 /* --- NAVBAR --- */
 .strip{background:var(--ink);color:var(--bg-main);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase; text-align: center; padding: 12px; position: relative; z-index: 10;}
-header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 206, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 206, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
 .in{max-width:1200px;margin:0 auto;padding:0 20px;position:relative; width: 100%;}
 .pill{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:12px 28px;font:inherit;font-size:.75rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;background:transparent;color:var(--ink);cursor:pointer;transition:all 0.3s ease}
 .pill:hover,.pill[aria-pressed="true"]{background:var(--ink); color:var(--bg-main); border-color: var(--ink);}
 #cartbtn {border: 1px solid var(--ink); font-weight: 700;}
 
-/* --- HERO SECTION --- */
-.hero{color:var(--ink);padding:80px 0 100px;position:relative; display:flex; align-items:center; min-height: 80vh; background: rgba(196, 201, 206, 0.8); backdrop-filter: blur(5px);}
+/* --- HERO SECTION (TANPA BLUR) --- */
+.hero{color:var(--ink);padding:80px 0 100px;position:relative; display:flex; align-items:center; min-height: 80vh; background: rgba(196, 201, 206, 0.6);}
 .hgrid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center; width: 100%;}
 .hright p{max-width:40ch;color:var(--muted);margin:25px 0 35px; font-size: 1rem; font-weight: 500;}
 
@@ -82,8 +82,8 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 .sw:hover{transform:scale(1.15)}
 .sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--hero),0 0 0 3px var(--ink)}
 
-/* --- SECTION STYLING --- */
-.block{padding:100px 0; position: relative; z-index: 1; background: rgba(196, 201, 206, 0.9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);}
+/* --- SECTION STYLING (TANPA BLUR) --- */
+.block{padding:100px 0; position: relative; z-index: 1; background: rgba(196, 201, 206, 0.8); border-bottom: 1px solid var(--line);}
 .center{text-align:center}
 .center p{color:var(--muted);margin:20px auto 50px;max-width:50ch; font-size: 1rem; font-weight: 500;}
 
@@ -325,7 +325,7 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
   </div>
 </section>
 
-<section class="block dark" id="wear" style="background: rgba(196, 201, 206, 0.9); backdrop-filter: blur(10px);">
+<section class="block dark" id="wear" style="background: rgba(196, 201, 206, 0.9);">
   <div class="in rv">
     <h2>How to <i>w</i>ear it</h2>
     <div class="steps" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:60px;border-top:1px solid var(--line)">
