@@ -81,56 +81,25 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 .card .price{font-weight:700;font-size:1rem; margin-top: 15px; color: var(--ink); letter-spacing: 0.02em;}
 .card .pill{margin-top:20px; width: 100%; text-align: center;}
 
-/* --- GAME SECTION (NEW & IMPROVED) --- */
+/* --- GAME SECTION --- */
 .game-section {padding: 80px 20px; text-align: center; background: var(--bg-card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; z-index: 2;}
 .game-section h2 {margin-bottom: 10px; font-size: 2.5rem;}
 .game-section p {margin-bottom: 40px; color: var(--muted); font-size: 1.1rem;}
-
-/* Kad Game */
-.game-card {
-  max-width: 600px; margin: 0 auto; background: #F9F9F9; border-radius: 24px; padding: 40px; 
-  box-shadow: 0 20px 50px rgba(0,0,0,0.1); position: relative; overflow: hidden;
-  border: 1px solid var(--line);
-}
-.game-card::before {
-  content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-  background: radial-gradient(circle, rgba(138,123,107,0.1) 0%, transparent 60%);
-  animation: rotateBg 15s linear infinite; pointer-events: none;
-}
+.game-card {max-width: 600px; margin: 0 auto; background: #F9F9F9; border-radius: 24px; padding: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); position: relative; overflow: hidden; border: 1px solid var(--line);}
+.game-card::before {content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(138,123,107,0.1) 0%, transparent 60%); animation: rotateBg 15s linear infinite; pointer-events: none;}
 @keyframes rotateBg { to { transform: rotate(360deg); } }
-
-/* Point Display */
-.point-badge {
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  background: var(--ink); color: var(--bg-main); padding: 10px 25px; border-radius: 50px;
-  font-size: 1.2rem; font-weight: 700; margin-bottom: 30px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
+.point-badge {display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--ink); color: var(--bg-main); padding: 10px 25px; border-radius: 50px; font-size: 1.2rem; font-weight: 700; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);}
 .point-badge span { font-size: 1.8rem; color: var(--accent); }
-
-/* Spin Button */
 .spin-wrapper { position: relative; margin: 30px auto; width: 200px; height: 200px; }
-.spin-btn {
-  width: 100%; height: 100%; border-radius: 50%; border: 8px solid var(--ink);
-  background: var(--accent); color: white; font-size: 1.5rem; font-weight: 700;
-  cursor: pointer; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-transform: uppercase; letter-spacing: 2px;
-}
+.spin-btn {width: 100%; height: 100%; border-radius: 50%; border: 8px solid var(--ink); background: var(--accent); color: white; font-size: 1.5rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-transform: uppercase; letter-spacing: 2px;}
 .spin-btn:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
 .spin-btn:disabled { background: #999; border-color: #666; cursor: not-allowed; transform: none; box-shadow: none; }
 .spin-btn i { font-size: 2.5rem; margin-bottom: 5px; }
-
-/* Animasi Berputar */
 .spinning { animation: spinAnim 1s linear infinite; }
 @keyframes spinAnim { 100% { transform: rotate(360deg); } }
-
-/* Rewards List */
 .rewards-title { font-family: 'Inter Tight'; font-size: 1.2rem; margin: 40px 0 20px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid var(--line); display: inline-block; padding-bottom: 10px;}
 .reward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.reward-card {
-  background: white; border: 1px solid var(--line); border-radius: 12px; padding: 15px;
-  display: flex; flex-direction: column; align-items: center; gap: 10px; transition: all 0.3s;
-}
+.reward-card {background: white; border: 1px solid var(--line); border-radius: 12px; padding: 15px; display: flex; flex-direction: column; align-items: center; gap: 10px; transition: all 0.3s;}
 .reward-card:hover { border-color: var(--accent); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
 .reward-icon { font-size: 2rem; }
 .reward-cost { font-size: 0.8rem; color: var(--muted); font-weight: 600;}
@@ -139,7 +108,7 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 .claim-btn:hover { background: var(--accent); }
 .claim-btn:disabled { background: #ccc; cursor: not-allowed; }
 
-/* Notifikasi */
+/* Toast */
 .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--ink); color: white; padding: 15px 30px; border-radius: 50px; font-weight: 600; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 9999; opacity: 0; }
 .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
@@ -175,49 +144,12 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
   
   .hero {padding: 40px 0 60px !important; min-height: auto !important; overflow: hidden !important;}
   .hgrid {grid-template-columns: 1fr !important; gap: 40px !important; width: 100% !important;}
-  
-  .hright {
-    order: -1 !important; 
-    text-align: center !important; 
-    width: 100% !important; 
-    max-width: 100% !important;
-    padding: 0 15px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    overflow: hidden !important;
-  }
-
+  .hright {order: -1 !important; text-align: center !important; width: 100% !important; max-width: 100% !important; padding: 0 15px !important; display: flex !important; flex-direction: column !important; align-items: center !important; overflow: hidden !important;}
   .hero h1 {font-size: 3rem !important; line-height: 1.1 !important; word-break: break-word !important; width: 100% !important; max-width: 100% !important;}
   .cap {font-size: 0.7rem !important;}
-  
-  .hright p {
-    font-size: 0.95rem !important; 
-    margin: 15px 0 25px !important; 
-    padding: 0 !important; 
-    width: 100% !important; 
-    max-width: 100% !important; 
-    box-sizing: border-box !important;
-  }
-
-  .hmeta {
-    flex-direction: column !important; 
-    width: 100% !important; 
-    max-width: 100% !important; 
-    padding: 0 !important; 
-    box-sizing: border-box !important;
-    display: flex !important;
-  }
-  
-  .hmeta .pill {
-    width: 100% !important; 
-    padding: 14px !important; 
-    font-size: 0.75rem !important; 
-    box-sizing: border-box !important; 
-    margin-bottom: 10px !important;
-    max-width: 100% !important;
-  }
-
+  .hright p {font-size: 0.95rem !important; margin: 15px 0 25px !important; padding: 0 !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important;}
+  .hmeta {flex-direction: column !important; width: 100% !important; max-width: 100% !important; padding: 0 !important; box-sizing: border-box !important; display: flex !important;}
+  .hmeta .pill {width: 100% !important; padding: 14px !important; font-size: 0.75rem !important; box-sizing: border-box !important; margin-bottom: 10px !important; max-width: 100% !important;}
   .swatches {justify-content: center !important; margin-top: 20px !important; width: 100% !important;}
   
   .block {padding: 50px 0 !important;}
@@ -237,7 +169,6 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
   .cd {width: 18px !important; height: 18px !important;}
   .cn {font-size: 0.65rem !important;}
   
-  /* Game Section Mobile */
   .game-card { padding: 20px !important; }
   .spin-wrapper { width: 150px !important; height: 150px !important; }
   .spin-btn { font-size: 1.1rem !important; border-width: 5px !important; }
@@ -407,17 +338,17 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 <script>
-// --- LOGIK GAME (DAILY POINTS) ---
+// --- LOGIK GAME & DISKAUN ---
 const spinBtn = document.getElementById('spin-btn');
 const pointDisplay = document.getElementById('point-display');
 const toast = document.getElementById('toast');
 let points = parseInt(localStorage.getItem('baeq_points')) || 0;
 let lastSpinDate = localStorage.getItem('baeq_last_spin') || '';
-const today = new Date().toDateString();
+let activeDiscount = localStorage.getItem('baeq_discount') || ''; // Simpan kod diskaun aktif
 
+const today = new Date().toDateString();
 pointDisplay.textContent = points;
 
-// Semak jika dah spin hari ni
 if (lastSpinDate === today) {
     spinBtn.disabled = true;
     spinBtn.innerHTML = "<i>⏳</i><span>TOMORROW</span>";
@@ -425,28 +356,21 @@ if (lastSpinDate === today) {
 
 spinBtn.addEventListener('click', function() {
     if (lastSpinDate === today) return;
-    
     spinBtn.disabled = true;
     spinBtn.classList.add('spinning');
-    
     let count = 0;
     const interval = setInterval(() => {
-        // Teks berkelip (simulasi spin)
         pointDisplay.textContent = Math.floor(Math.random() * 100);
         count++;
         if (count > 15) {
             clearInterval(interval);
             spinBtn.classList.remove('spinning');
-            
             const earned = [10, 20, 30, 50, 100][Math.floor(Math.random() * 5)];
             points += earned;
             localStorage.setItem('baeq_points', points);
             localStorage.setItem('baeq_last_spin', today);
-            
             pointDisplay.textContent = points;
             spinBtn.innerHTML = "<i>✅</i><span>DONE</span>";
-            
-            // Tunjuk notifikasi
             showToast("You won " + earned + " points!");
         }
     }, 100);
@@ -466,8 +390,11 @@ function claimReward(cost, codePrefix) {
         pointDisplay.textContent = points;
         
         const code = codePrefix + "-" + Math.floor(Math.random() * 10000);
-        document.getElementById('claimed-code').innerHTML = "Your Code: <br><span style='font-size: 1.5rem; color: var(--ink);'>" + code + "</span><br><small>Show this to us on WhatsApp.</small>";
-        showToast("Reward claimed! Check your code below.");
+        activeDiscount = code; // Simpan kod dalam sistem
+        localStorage.setItem('baeq_discount', activeDiscount); // Simpan dalam browser
+
+        document.getElementById('claimed-code').innerHTML = "Your Code: <br><span style='font-size: 1.5rem; color: var(--ink);'>" + code + "</span><br><small>This code will be auto-applied at checkout.</small>";
+        showToast("Reward claimed! Code applied.");
     } else {
         showToast("Not enough points! You need " + cost + " points.");
     }
@@ -626,7 +553,10 @@ function renderCart(){
  document.getElementById('tot').textContent='RM'+t;
  document.getElementById('ship').textContent=!n?'':(t>=100?'Complimentary shipping applied':'Add RM'+(100-t)+' more for complimentary shipping');
  var co=document.getElementById('co');co.style.display=n?'block':'none';
- co.href=wa("Hi, I’d like to order:\n"+cart.map(function(l){return l.q+" x "+l.n+" ("+l.c+") RM"+(l.q*l.p)}).join("\n")+"\nTotal: RM"+t);
+ 
+ // TAMBAH KOD DISKAUN KAT WHATSAPP CHECKOUT
+ var discountMsg = activeDiscount ? "\n\n*Apply Discount Code: " + activeDiscount + "*" : "";
+ co.href=wa("Hi, I’d like to order:\n"+cart.map(function(l){return l.q+" x "+l.n+" ("+l.c+") RM"+(l.q*l.p)}).join("\n")+"\nTotal: RM"+t + discountMsg);
 }
 function openCart(o){root.classList.toggle('open',o)}
 document.addEventListener('click',function(e){
