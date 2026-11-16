@@ -11,13 +11,13 @@
 <style>
 /* --- PALETTE (BLUE GREY & PURE WHITE) --- */
 :root{
-  --bg-main: #C4C9CE;    /* Blue Grey (background utama) */
-  --bg-card: #FFFFFF;    /* PURE WHITE (kad produk - lebih bersih) */
-  --ink: #111111;        /* Hitam pekat */
-  --muted: #2C3236;      /* Kelabu gelap kebiruan (teks kecil) */
-  --line: #D1D6DB;       /* Border kelabu cerah (untuk kad) */
-  --accent: #8A7B6B;     /* Beige gelap (aksen) */
-  --hero: #B8BEC4;       /* Hero background (blue grey gelap sikit) */
+  --bg-main: #C4C9CE;    
+  --bg-card: #FFFFFF;    
+  --ink: #111111;        
+  --muted: #2C3236;      
+  --line: #D1D6DB;       
+  --accent: #8A7B6B;     
+  --hero: #B8BEC4;       
   --footer-bg: #111111;  
   --footer-ink: #C4C9CE; 
 }
@@ -69,9 +69,9 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 .marq i{padding:0 1.5em;color:var(--accent);text-transform:none; font-family: 'Playfair Display', serif; font-size: 1.5em; font-style: italic;}
 @keyframes mq{to{transform:translateX(-50%)}}
 
-/* --- PRODUCT CARDS (PUTIH BERSIH) --- */
+/* --- PRODUCT CARDS --- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:30px; text-align: left;}
-.card{background:var(--bg-card);border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;transition:all 0.4s ease; position: relative; overflow: hidden; z-index: 2; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);} /* Shadow lebih jelas */
+.card{background:var(--bg-card);border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;transition:all 0.4s ease; position: relative; overflow: hidden; z-index: 2; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);}
 .card:hover{border-color:var(--ink); box-shadow: 0 20px 50px rgba(0,0,0,0.15); transform: translateY(-8px);}
 .card .pic{background:#F5F5F5;aspect-ratio:1;display:grid;place-items:end center;margin-bottom:20px;overflow:hidden; border-radius: 8px;}
 .card .pic svg, .card .pic img{width:100%; height:100%; object-fit:cover; transition:transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);}
@@ -80,6 +80,16 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 .card p{margin:8px 0 0;font-size:.9rem;color:var(--muted);flex:1; line-height: 1.5; font-weight: 500;}
 .card .price{font-weight:700;font-size:1rem; margin-top: 15px; color: var(--ink); letter-spacing: 0.02em;}
 .card .pill{margin-top:20px; width: 100%; text-align: center;}
+
+/* --- GAME SECTION (SPIN & WIN) --- */
+.game-section {padding: 80px 20px; text-align: center; background: var(--bg-card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; z-index: 2;}
+.game-section h2 {margin-bottom: 10px;}
+.game-section p {margin-bottom: 30px; color: var(--muted);}
+.spin-box {max-width: 400px; margin: 0 auto; background: #F5F5F5; padding: 30px; border-radius: 12px; border: 1px solid var(--line); box-shadow: inset 0 0 20px rgba(0,0,0,0.05);}
+.result-text {font-size: 1.5rem; font-weight: 700; margin: 20px 0; color: var(--accent); height: 40px;}
+#spin-btn {background: var(--ink); color: var(--white); border: none; padding: 15px 40px; font-size: 1rem; font-weight: 600; cursor: pointer; border-radius: 6px; transition: all 0.3s;}
+#spin-btn:hover {transform: scale(1.05);}
+#spin-btn:disabled {background: #999; cursor: not-allowed; transform: none;}
 
 /* --- FOOTER GELAP --- */
 .end{background:var(--footer-bg); color:var(--footer-ink); padding:100px 0 40px; position: relative; z-index: 10; border-top: none;}
@@ -105,14 +115,12 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 
 /* --- !!! PAKSA FIX UNTUK PHONE !!! --- */
 @media(max-width: 900px) {
-  /* Navbar */
   .top .in {height: 60px !important;}
   .top nav {display: none !important;}
   .logo {font-size: 1.4rem !important;}
   .pill#cartbtn {padding: 8px 14px !important; font-size: 0.7rem !important;}
   .strip {padding: 10px !important; font-size: 0.7rem !important;}
   
-  /* Hero Section */
   .hero {padding: 40px 0 60px !important; min-height: auto !important; overflow: hidden !important;}
   .hgrid {grid-template-columns: 1fr !important; gap: 40px !important; width: 100% !important;}
   
@@ -160,14 +168,12 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 
   .swatches {justify-content: center !important; margin-top: 20px !important; width: 100% !important;}
   
-  /* Section */
   .block {padding: 50px 0 !important;}
   .center h2 {font-size: 2.2rem !important;}
   .split h2, .faq h2 {font-size: 2rem !important;}
   .split {gap: 30px !important;}
   .cells div {padding: 20px 0 !important;}
   
-  /* Grid Produk */
   .grid {grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important;}
   .card {padding: 10px !important;}
   .card h3 {font-size: 0.95rem !important; margin-top: 5px !important;}
@@ -179,11 +185,9 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
   .cd {width: 18px !important; height: 18px !important;}
   .cn {font-size: 0.65rem !important;}
   
-  /* Footer */
   .end {padding: 60px 0 30px !important;}
   .fgrid {grid-template-columns: 1fr !important; text-align: center !important; gap: 30px !important;}
   
-  /* Sembunyikan Kursor */
   * {cursor: auto !important;}
   .cursor, .trail-dot {display: none !important;}
 }
@@ -223,6 +227,18 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 <div class="marq" aria-hidden="true">
   <div>Soft Fit <i>&amp;</i> Breathable <i>&amp;</i> Stays in place <i>&amp;</i> Soft Fit <i>&amp;</i> Breathable <i>&amp;</i> Stays in place <i>&amp;</i> </div>
 </div>
+
+<!-- GAME SECTION -->
+<section class="game-section rv" id="game">
+  <div class="in">
+    <h2>Spin & <i>Save</i></h2>
+    <p>Feeling lucky? Spin the wheel for a discount code on your first order.</p>
+    <div class="spin-box">
+      <div class="result-text" id="result">Try your luck!</div>
+      <button id="spin-btn">Spin Now</button>
+    </div>
+  </div>
+</section>
 
 <section class="block b1" id="why">
   <div class="in">
@@ -292,6 +308,34 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 <script>
+// --- GAME LOGIC (SPIN & WIN) ---
+const spinBtn = document.getElementById('spin-btn');
+const resultText = document.getElementById('result');
+const discounts = ["10% OFF", "15% OFF", "FREE SHIPPING", "RM5 OFF", "20% OFF"];
+let hasSpun = false;
+
+spinBtn.addEventListener('click', function() {
+    if (hasSpun) return;
+    
+    spinBtn.disabled = true;
+    spinBtn.innerText = "Spinning...";
+    let count = 0;
+    const interval = setInterval(() => {
+        resultText.innerText = discounts[Math.floor(Math.random() * discounts.length)];
+        count++;
+        if (count > 10) {
+            clearInterval(interval);
+            const finalResult = discounts[Math.floor(Math.random() * discounts.length)];
+            resultText.innerText = "You won: " + finalResult + "!";
+            resultText.style.color = "#C4553D"; // Warna merah untuk highlight
+            spinBtn.innerText = "Code: BAEQ" + Math.floor(Math.random() * 1000);
+            spinBtn.style.background = "#8A7B6B"; // Warna beige gelap
+            spinBtn.style.color = "#fff";
+            hasSpun = true;
+        }
+    }, 100);
+});
+
 // --- CONFIG UNTUK ZARAH (PARTICLES) ---
 particlesJS("particles-js", {
   "particles": {
