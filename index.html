@@ -29,16 +29,23 @@ body{background:var(--bg-main);color:var(--ink);font-family:'Inter',system-ui,sa
 .bg-animation {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
   z-index: -1; overflow: hidden; background: var(--bg-main);
+  pointer-events: none; /* Supaya tak menghalang klik */
 }
 .bg-animation span {
   position: absolute; display: block; border-radius: 50%;
-  background: radial-gradient(circle, rgba(140, 115, 91, 0.15) 0%, rgba(230, 225, 216, 0) 70%);
-  animation: floatBg 25s infinite linear; filter: blur(60px);
+  background: radial-gradient(circle, rgba(140, 115, 91, 0.25) 0%, rgba(230, 225, 216, 0) 70%);
+  animation: floatBg 20s infinite linear; filter: blur(60px);
 }
-.bg-animation span:nth-child(1) { width: 60vw; height: 60vw; top: -20vh; left: -20vw; animation-duration: 30s; }
-.bg-animation span:nth-child(2) { width: 50vw; height: 50vw; top: 30vh; right: -20vw; animation-duration: 35s; animation-direction: reverse; }
-.bg-animation span:nth-child(3) { width: 70vw; height: 70vw; bottom: -30vh; left: 0; animation-duration: 40s; }
-@keyframes floatBg { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(5vw, -5vh) scale(1.1); } 100% { transform: translate(0, 0) scale(1); } }
+.bg-animation span:nth-child(1) { width: 50vw; height: 50vw; top: -10vh; left: -10vw; animation-duration: 25s; }
+.bg-animation span:nth-child(2) { width: 40vw; height: 40vw; top: 40vh; right: -10vw; animation-duration: 30s; animation-direction: reverse; }
+.bg-animation span:nth-child(3) { width: 60vw; height: 60vw; bottom: -20vh; left: 10vw; animation-duration: 35s; }
+
+@keyframes floatBg { 
+  0% { transform: translate(0, 0) scale(1); } 
+  33% { transform: translate(3vw, -5vh) scale(1.1); } 
+  66% { transform: translate(-3vw, 3vh) scale(0.9); } 
+  100% { transform: translate(0, 0) scale(1); } 
+}
 
 /* --- CUSTOM CURSOR & TRAIL --- */
 .cursor { position: fixed; width: 20px; height: 20px; border-radius: 50%; background: var(--ink); pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s, background-color 0.3s; display: none; mix-blend-mode: difference; }
@@ -162,6 +169,7 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(230, 225, 2
 </head>
 <body>
 
+<!-- ANIMASI LATAR BELAKANG -->
 <div class="bg-animation">
   <span></span>
   <span></span>
