@@ -81,15 +81,23 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 .card .price{font-weight:700;font-size:1rem; margin-top: 15px; color: var(--ink); letter-spacing: 0.02em;}
 .card .pill{margin-top:20px; width: 100%; text-align: center;}
 
-/* --- GAME SECTION (SPIN & WIN) --- */
+/* --- GAME SECTION (DAILY POINTS) --- */
 .game-section {padding: 80px 20px; text-align: center; background: var(--bg-card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; z-index: 2;}
 .game-section h2 {margin-bottom: 10px;}
 .game-section p {margin-bottom: 30px; color: var(--muted);}
-.spin-box {max-width: 400px; margin: 0 auto; background: #F5F5F5; padding: 30px; border-radius: 12px; border: 1px solid var(--line); box-shadow: inset 0 0 20px rgba(0,0,0,0.05);}
-.result-text {font-size: 1.5rem; font-weight: 700; margin: 20px 0; color: var(--accent); height: 40px;}
-#spin-btn {background: var(--ink); color: var(--white); border: none; padding: 15px 40px; font-size: 1rem; font-weight: 600; cursor: pointer; border-radius: 6px; transition: all 0.3s;}
-#spin-btn:hover {transform: scale(1.05);}
-#spin-btn:disabled {background: #999; cursor: not-allowed; transform: none;}
+.point-box {max-width: 450px; margin: 0 auto; background: #F5F5F5; padding: 30px; border-radius: 12px; border: 1px solid var(--line); box-shadow: inset 0 0 20px rgba(0,0,0,0.05); text-align: left;}
+.point-header {display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--line); padding-bottom: 15px;}
+.point-header h3 {font-size: 1.2rem; margin: 0;}
+.point-val {font-size: 1.5rem; font-weight: 700; color: var(--accent);}
+.result-text {font-size: 1.2rem; font-weight: 700; margin: 20px 0; color: var(--accent); text-align: center; min-height: 30px;}
+.spin-btn {background: var(--ink); color: var(--white); border: none; padding: 15px 40px; font-size: 1rem; font-weight: 600; cursor: pointer; border-radius: 6px; transition: all 0.3s; width: 100%;}
+.spin-btn:hover {transform: scale(1.02);}
+.spin-btn:disabled {background: #999; cursor: not-allowed; transform: none;}
+.rewards-list {margin-top: 20px;}
+.reward-item {display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line);}
+.reward-btn {background: var(--accent); color: white; border: none; padding: 8px 15px; font-size: 0.8rem; border-radius: 4px; cursor: pointer; transition: background 0.3s;}
+.reward-btn:hover {background: #6a5d4f;}
+.reward-btn:disabled {background: #ccc; cursor: not-allowed;}
 
 /* --- FOOTER GELAP --- */
 .end{background:var(--footer-bg); color:var(--footer-ink); padding:100px 0 40px; position: relative; z-index: 10; border-top: none;}
@@ -231,11 +239,33 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 <!-- GAME SECTION -->
 <section class="game-section rv" id="game">
   <div class="in">
-    <h2>Spin & <i>Save</i></h2>
-    <p>Feeling lucky? Spin the wheel for a discount code on your first order.</p>
-    <div class="spin-box">
-      <div class="result-text" id="result">Try your luck!</div>
-      <button id="spin-btn">Spin Now</button>
+    <h2>Daily <i>Rewards</i></h2>
+    <p>Spin every day to collect points. Redeem points for discounts below!</p>
+    <div class="point-box">
+      <div class="point-header">
+        <h3>Your Points</h3>
+        <span class="point-val" id="point-display">0</span>
+      </div>
+      <div class="result-text" id="result">Tap 'Spin' to collect points!</div>
+      <button class="spin-btn" id="spin-btn">Spin Now</button>
+      
+      <!-- REWARDS LIST -->
+      <div class="rewards-list">
+        <h4 style="margin-top: 20px; margin-bottom: 10px; font-size: 0.9rem;">Claim Rewards:</h4>
+        <div class="reward-item">
+          <span>RM5 OFF (100 pts)</span>
+          <button class="reward-btn" onclick="claimReward(100, 'RM5OFF')">Claim</button>
+        </div>
+        <div class="reward-item">
+          <span>10% OFF (200 pts)</span>
+          <button class="reward-btn" onclick="claimReward(200, '10PERCENT')">Claim</button>
+        </div>
+        <div class="reward-item">
+          <span>Free Shipping (150 pts)</span>
+          <button class="reward-btn" onclick="claimReward(150, 'FREESHIP')">Claim</button>
+        </div>
+      </div>
+      <div id="claimed-code" style="margin-top: 15px; font-weight: 700; color: var(--accent); text-align: center;"></div>
     </div>
   </div>
 </section>
@@ -308,33 +338,60 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 <script>
-// --- GAME LOGIC (SPIN & WIN) ---
+// --- LOGIK GAME (DAILY POINTS) ---
 const spinBtn = document.getElementById('spin-btn');
 const resultText = document.getElementById('result');
-const discounts = ["10% OFF", "15% OFF", "FREE SHIPPING", "RM5 OFF", "20% OFF"];
-let hasSpun = false;
+const pointDisplay = document.getElementById('point-display');
+let points = parseInt(localStorage.getItem('baeq_points')) || 0;
+let lastSpinDate = localStorage.getItem('baeq_last_spin') || '';
+const today = new Date().toDateString();
+
+pointDisplay.textContent = points;
+
+// Semak jika dah spin hari ni
+if (lastSpinDate === today) {
+    spinBtn.disabled = true;
+    spinBtn.innerText = "Come back tomorrow!";
+    resultText.innerText = "You've already spun today.";
+}
 
 spinBtn.addEventListener('click', function() {
-    if (hasSpun) return;
+    if (lastSpinDate === today) return;
     
     spinBtn.disabled = true;
     spinBtn.innerText = "Spinning...";
     let count = 0;
     const interval = setInterval(() => {
-        resultText.innerText = discounts[Math.floor(Math.random() * discounts.length)];
+        resultText.innerText = "+" + [10, 20, 30, 50][Math.floor(Math.random() * 4)] + " pts";
         count++;
         if (count > 10) {
             clearInterval(interval);
-            const finalResult = discounts[Math.floor(Math.random() * discounts.length)];
-            resultText.innerText = "You won: " + finalResult + "!";
-            resultText.style.color = "#C4553D"; // Warna merah untuk highlight
-            spinBtn.innerText = "Code: BAEQ" + Math.floor(Math.random() * 1000);
-            spinBtn.style.background = "#8A7B6B"; // Warna beige gelap
-            spinBtn.style.color = "#fff";
-            hasSpun = true;
+            const earned = [10, 20, 30, 50][Math.floor(Math.random() * 4)];
+            points += earned;
+            localStorage.setItem('baeq_points', points);
+            localStorage.setItem('baeq_last_spin', today);
+            
+            pointDisplay.textContent = points;
+            resultText.innerText = "You earned " + earned + " points!";
+            spinBtn.innerText = "Come back tomorrow!";
         }
     }, 100);
 });
+
+// --- CLAIM REWARD LOGIC ---
+function claimReward(cost, codePrefix) {
+    if (points >= cost) {
+        points -= cost;
+        localStorage.setItem('baeq_points', points);
+        pointDisplay.textContent = points;
+        
+        const code = codePrefix + "-" + Math.floor(Math.random() * 10000);
+        document.getElementById('claimed-code').innerHTML = "Your Code: <br><span style='font-size: 1.5rem; color: var(--ink);'>" + code + "</span><br><small>Show this to us on WhatsApp.</small>";
+        alert("Success! Your code is: " + code + ". Please screenshot this and send to us on WhatsApp.");
+    } else {
+        alert("Not enough points! You need " + cost + " points.");
+    }
+}
 
 // --- CONFIG UNTUK ZARAH (PARTICLES) ---
 particlesJS("particles-js", {
