@@ -271,6 +271,7 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 .checkout-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.checkout-field{display:grid;gap:6px}.checkout-field.full{grid-column:1/-1}.checkout-field label{font-size:.67rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}.checkout-field input,.checkout-field select,.checkout-field textarea{width:100%;padding:13px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font:inherit;font-size:.85rem;cursor:text}.checkout-field select{cursor:pointer}.checkout-field textarea{min-height:84px;resize:vertical}
 .checkout-summary{margin-top:20px;padding:18px;border:1px solid var(--line);border-radius:13px;background:#fff}.checkout-summary h3{font:700 .8rem 'Inter Tight',sans-serif;text-transform:uppercase}.checkout-summary-list{display:grid;gap:8px;margin:12px 0;list-style:none;color:var(--muted);font-size:.76rem}.checkout-totals{display:grid;gap:7px;padding-top:12px;border-top:1px solid var(--line);font-size:.82rem}.checkout-totals div{display:flex;justify-content:space-between;gap:20px}.checkout-totals .grand{font-size:1rem;font-weight:700}.checkout-actions{display:flex;gap:10px;margin-top:18px}.checkout-actions .pill{flex:1;text-align:center}.privacy-note{margin-top:11px;color:var(--muted);font-size:.65rem;text-align:center}
 .confidence{background:#eceff1}.confidence-head{max-width:650px;margin-bottom:42px}.confidence-head h2{font:400 clamp(2.5rem,6vw,4.8rem)/1.05 'Playfair Display',serif}.confidence-head p{margin-top:16px;color:var(--muted)}.confidence-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.confidence-card{padding:26px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.6)}.confidence-card span{display:grid;width:34px;height:34px;place-items:center;margin-bottom:30px;border-radius:50%;background:var(--ink);color:#fff;font-size:.75rem}.confidence-card h3{font:700 .95rem 'Inter Tight',sans-serif;text-transform:uppercase}.confidence-card p{margin-top:9px;color:var(--muted);font-size:.82rem}.order-flow{display:grid;grid-template-columns:repeat(3,1fr);margin-top:32px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.order-flow div{padding:20px;border-right:1px solid var(--line)}.order-flow div:last-child{border-right:0}.order-flow b{display:block;color:var(--accent);font:italic 1.8rem 'Playfair Display',serif}.order-flow strong{font-size:.78rem;text-transform:uppercase}.order-flow p{margin-top:4px;color:var(--muted);font-size:.72rem}
+.reviews-section{background:#f6f4f1}.reviews-head{display:flex;justify-content:space-between;align-items:end;gap:30px}.reviews-head>div{max-width:660px}.reviews-head h2{font:400 clamp(2.5rem,6vw,4.8rem)/1.05 'Playfair Display',serif}.reviews-head p{margin-top:16px;color:var(--muted)}.review-count{flex:0 0 auto;padding:10px 14px;border:1px solid var(--line);border-radius:999px;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.reviews-empty{display:grid;place-items:center;min-height:260px;margin-top:40px;padding:40px 20px;border:1px dashed #9fa5aa;border-radius:18px;background:rgba(255,255,255,.5);text-align:center}.reviews-empty-icon{display:grid;width:54px;height:54px;place-items:center;margin:0 auto 18px;border-radius:50%;background:var(--ink);color:#fff;font:400 1.5rem 'Playfair Display',serif}.reviews-empty h3{font:700 1rem 'Inter Tight',sans-serif;text-transform:uppercase}.reviews-empty p{max-width:42ch;margin:9px auto 0;color:var(--muted);font-size:.82rem}
 
 /* --- ANIMASI SCROLL REVEAL --- */
 .rv {opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out;}
@@ -412,6 +413,7 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
   .fab{right:14px;bottom:14px;padding:12px 16px}
   .drawer{padding:22px;max-width:100%}
   .confidence-grid{grid-template-columns:1fr}.order-flow{grid-template-columns:1fr}.order-flow div{border-right:0;border-bottom:1px solid var(--line)}.order-flow div:last-child{border-bottom:0}
+  .reviews-head{align-items:start;flex-direction:column}.reviews-empty{min-height:220px}
   .game-card.loyalty-shell{padding:0 !important}
   .checkout-panel{padding:22px 16px}.checkout-grid{grid-template-columns:1fr}.checkout-field.full{grid-column:auto}.checkout-actions{flex-direction:column}.product-specs{grid-template-columns:1fr 1fr}
   .trust-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 0}
@@ -676,6 +678,26 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
       <div><b>1</b><strong>Build your bag</strong><p>Choose the product and colour.</p></div>
       <div><b>2</b><strong>Complete checkout</strong><p>Add delivery details and review the estimate.</p></div>
       <div><b>3</b><strong>Confirm on WhatsApp</strong><p>Send the prepared order and receive payment details.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block reviews-section" id="reviews">
+  <div class="in rv">
+    <div class="reviews-head">
+      <div>
+        <span class="game-eyebrow">Customer reviews</span>
+        <h2>Shared by our<br><i>c</i>ustomers</h2>
+        <p>Real feedback from Baéq customers will be published here only after it is received and approved for sharing.</p>
+      </div>
+      <span class="review-count">0 reviews published</span>
+    </div>
+    <div class="reviews-empty" role="status">
+      <div>
+        <span class="reviews-empty-icon" aria-hidden="true">“</span>
+        <h3>Customer stories are coming soon</h3>
+        <p>There are no published reviews yet. This space is ready for genuine customer feedback—no sample or fabricated testimonials.</p>
+      </div>
     </div>
   </div>
 </section>
