@@ -1,291 +1,247 @@
-<!-- ══════════ BAÉQ 3D CAP VIEWER v2 (fail-safe) — tampal sebelum </body> ══════════ -->
+<!-- ══════════ BAÉQ 3D VIEWER v3 — tampal sebelum </body> ══════════ -->
 <style>
 .cap3d-wrap{width:100%;max-width:430px;margin-inline:auto}
 .cap3d-frame{padding:12px;border-radius:999px 999px 24px 24px;background:var(--bg-card);border:1px solid var(--line);box-shadow:0 28px 70px rgba(17,17,17,.13)}
-.cap3d-glass{position:relative;overflow:hidden;border-radius:999px 999px 16px 16px;aspect-ratio:3/4.1;background:linear-gradient(160deg,#edeae5,#d8d4cf 58%,#b8b4ae)}
-.cap3d-glass canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;outline-offset:-4px}
-.cap3d-hint{position:absolute;top:16px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid rgba(255,255,255,.6);border-radius:999px;background:rgba(17,17,17,.42);backdrop-filter:blur(9px);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap;pointer-events:none;z-index:2}
+.cap3d-glass{position:relative;overflow:hidden;border-radius:999px 999px 16px 16px;aspect-ratio:3/4.1;background:linear-gradient(160deg,#edeae5,#d8d4cf 58%,#b8b4ae);touch-action:pan-y;outline-offset:-4px}
+.cap3d-glass canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.cap3d-hint{position:absolute;top:16px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid rgba(255,255,255,.6);border-radius:999px;background:rgba(17,17,17,.42);backdrop-filter:blur(9px);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap;pointer-events:none;z-index:3}
 .cap3d-hint i{width:6px;height:6px;border-radius:50%;background:#d9c3aa;box-shadow:0 0 0 5px rgba(217,195,170,.17)}
-.cap3d-controls{position:absolute;left:12px;right:12px;bottom:12px;display:flex;justify-content:center;gap:8px;z-index:2}
+.cap3d-controls{position:absolute;left:12px;right:12px;bottom:12px;display:flex;justify-content:center;gap:8px;z-index:3}
 .cap3d-controls button{min-width:40px;min-height:40px;padding:0 13px;border:1px solid rgba(255,255,255,.55);border-radius:999px;background:rgba(17,17,17,.42);backdrop-filter:blur(9px);color:#fff;font:600 .68rem 'Inter',system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .25s,transform .2s}
 .cap3d-controls button:hover{background:rgba(17,17,17,.65);transform:translateY(-2px)}
 .cap3d-controls button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink)}
 .cap3d-name{display:block;margin-top:15px;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:1.2rem;color:var(--ink);font-weight:600;text-align:center}
-.cap3d-err{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;padding:10px 12px;border:1px dashed #b08968;border-radius:10px;background:#f7f2ec;color:#6b4a38;font-size:.7rem;font-weight:600}
-.cap3d-err button{border:1px solid #6b4a38;background:none;color:#6b4a38;border-radius:6px;padding:6px 10px;font:600 .65rem 'Inter',system-ui,sans-serif;cursor:pointer;text-transform:uppercase}
+.b3-stage{position:absolute;inset:0;display:grid;place-items:center;perspective:1000px}
+.b3-rotor{position:relative;width:200px;height:260px;transform-style:preserve-3d;will-change:transform}
+.b3-slice{position:absolute;left:50%;top:50%;width:200px;height:260px}
 @media(max-width:640px){.cap3d-wrap{max-width:390px}.cap3d-hint{font-size:.55rem;top:12px}.cap3d-controls button{min-height:42px}}
 </style>
 
-<script type="module">
-const TAG = '[Baéq3D]';
-const mwrap = document.querySelector('.mwrap');
-const mirrors = document.getElementById('mirrors');
-let busy = false, active = false, wrapEl = null, renderer = null, rafId = 0, errEl = null;
+<script>
+/* BAÉQ 3D VIEWER v3 — skrip klasik, tanpa module/importmap. Fail-safe berlapis. */
+(function(){
+var TAG='[Baéq3D]';
+var mwrap=document.querySelector('.mwrap'),mirrors=document.getElementById('mirrors');
+if(!mwrap||!mirrors){console.warn(TAG,'Elemen hero tak dijumpa.');return;}
 
-function cleanup(){
-  active = false; window.__baeq3D = null;
-  cancelAnimationFrame(rafId);
-  if (wrapEl){ wrapEl.remove(); wrapEl = null; }
-  if (mirrors) mirrors.style.display = mirrors.dataset.baeqD || 'flex';
-  if (renderer){ try{ renderer.dispose(); renderer.forceContextLoss(); }catch(e){} renderer = null; }
+/* Buang sisa blok lama yang rosak & pulihkan cermin */
+document.querySelectorAll('.cap3d-wrap:not([data-v3]),.cap3d-err').forEach(function(el){el.remove();});
+if(mirrors.style.display==='none')mirrors.style.display='flex';
+
+var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var DEG=Math.PI/180;
+var wrap=document.createElement('div');wrap.className='cap3d-wrap';wrap.setAttribute('data-v3','1');wrap.hidden=true;
+wrap.innerHTML=
+ '<div class="cap3d-frame"><div class="cap3d-glass" tabindex="0" role="application" aria-label="Model 3D inner cap. Seret untuk pusing 360 darjah.">'+
+ '<canvas></canvas>'+
+ '<div class="cap3d-hint"><i></i><span>360° · memuatkan…</span></div>'+
+ '<div class="cap3d-controls">'+
+ '<button type="button" class="c3-left" aria-label="Pusing ke kiri">⟲</button>'+
+ '<button type="button" class="c3-auto" aria-pressed="true" aria-label="Auto pusing">Auto ⏸</button>'+
+ '<button type="button" class="c3-right" aria-label="Pusing ke kanan">⟳</button>'+
+ '<button type="button" class="c3-tudung" aria-pressed="false" aria-label="Tunjuk layer tudung">Tudung ✕</button>'+
+ '</div></div></div>'+
+ '<span class="cap3d-name" aria-live="polite">Latte</span>';
+mwrap.insertBefore(wrap,mirrors);
+var glass=wrap.querySelector('.cap3d-glass'),canvas=wrap.querySelector('canvas'),
+    nameEl=wrap.querySelector('.cap3d-name'),hintEl=wrap.querySelector('.cap3d-hint span'),
+    btnAuto=wrap.querySelector('.c3-auto'),btnTudung=wrap.querySelector('.c3-tudung');
+
+var state={yaw:0,yawVel:0,autoAcc:0,pitch:4,pitchT:4,auto:!RM,tudung:false,drag:false,px:0,py:0,lastTouch:-10};
+var mode=null,modeName='',active=false,inView=true,last=performance.now();
+var curHex=(window.cur&&window.cur[1])||'#C9A98B',curName=(window.cur&&window.cur[0])||'Latte';
+function nowS(){return performance.now()/1000;}
+function shade(hex,f){var n=parseInt(hex.slice(1),16);return 'rgb('+Math.round(((n>>16)&255)*f)+','+Math.round(((n>>8)&255)*f)+','+Math.round((n&255)*f)+')';}
+
+/* ---- Kawalan 360° (sepunya untuk semua mod) ---- */
+glass.addEventListener('pointerdown',function(e){if(e.target.closest('button'))return;state.drag=true;state.px=e.clientX;state.py=e.clientY;try{glass.setPointerCapture(e.pointerId);}catch(_){}state.lastTouch=nowS();});
+glass.addEventListener('pointermove',function(e){if(!state.drag)return;var dx=e.clientX-state.px,dy=e.clientY-state.py;state.px=e.clientX;state.py=e.clientY;state.yaw+=dx*0.5;state.yawVel=dx*0.5;state.pitchT=Math.max(-6,Math.min(50,state.pitchT+dy*0.25));state.lastTouch=nowS();});
+function endDrag(){state.drag=false;state.lastTouch=nowS();}
+glass.addEventListener('pointerup',endDrag);glass.addEventListener('pointercancel',endDrag);
+glass.addEventListener('dblclick',function(){state.yaw=0;state.autoAcc=0;state.yawVel=0;state.pitchT=4;});
+glass.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){e.preventDefault();state.yawVel+=4;}else if(e.key==='ArrowRight'){e.preventDefault();state.yawVel-=4;}});
+function syncAuto(){btnAuto.textContent=state.auto?'Auto ⏸':'Auto ▶';btnAuto.setAttribute('aria-pressed',String(state.auto));}
+syncAuto();
+btnAuto.onclick=function(){state.auto=!state.auto;syncAuto();};
+wrap.querySelector('.c3-left').onclick=function(){state.yawVel+=4;state.lastTouch=nowS();};
+wrap.querySelector('.c3-right').onclick=function(){state.yawVel-=4;state.lastTouch=nowS();};
+btnTudung.onclick=function(){state.tudung=!state.tudung;btnTudung.textContent=state.tudung?'Tudung ✓':'Tudung ✕';btnTudung.setAttribute('aria-pressed',String(state.tudung));if(mode)mode.setTudung(state.tudung);};
+
+function reveal(){
+  if(!mirrors.dataset.baeqD)mirrors.dataset.baeqD=mirrors.style.display||'flex';
+  mirrors.style.display='none';wrap.hidden=false;active=true;
+  hintEl.textContent='360° · seret untuk pusing · '+modeName;
+  console.info(TAG,'Berjaya dipaparkan ✓ Mod: '+modeName);
 }
-function showErr(msg){
-  if (!mwrap) return;
-  if (errEl) errEl.remove();
-  errEl = document.createElement('div');
-  errEl.className = 'cap3d-err';
-  const s = document.createElement('span'); s.textContent = '⚠️ ' + msg; errEl.appendChild(s);
-  const b = document.createElement('button'); b.type = 'button'; b.textContent = 'Cuba lagi';
-  b.onclick = ()=>{ if(errEl){errEl.remove();errEl=null;} start(); };
-  errEl.appendChild(b); mwrap.appendChild(errEl);
+function setColorAll(hex,name){curHex=hex;if(name)curName=name;nameEl.textContent=curName;if(mode)mode.setColor(hex);}
+var origSetColor=window.setColor;
+window.setColor=function(c,fs){if(typeof origSetColor==='function')origSetColor(c,fs);setColorAll(c[1],c[0]);};
+
+/* ---- Loop sepunya ---- */
+function loop(now){
+  requestAnimationFrame(loop);
+  var dt=Math.min(0.05,(now-last)/1000);last=now;
+  if(!active||!mode||!inView||document.hidden)return;
+  try{
+    var t=now/1000;
+    if(state.auto&&!state.drag&&t-state.lastTouch>2)state.autoAcc+=dt*20;
+    if(!state.drag){state.yaw+=state.yawVel;state.yawVel*=0.92;}
+    state.pitch+=(state.pitchT-state.pitch)*Math.min(1,dt*8);
+    mode.apply(state,dt,t);
+  }catch(e){console.warn(TAG,'loop:',e);}
+}
+requestAnimationFrame(loop);
+if('IntersectionObserver' in window)new IntersectionObserver(function(es){inView=es[0].isIntersecting;},{threshold:0.02}).observe(glass);
+document.addEventListener('visibilitychange',function(){last=performance.now();});
+window.addEventListener('resize',function(){if(mode&&mode.resize)mode.resize();});
+
+/* ---- MOD RINGAN: CSS 3D (jalan tanpa internet, pasti keluar) ---- */
+function sliceSVG(){
+  return '<svg viewBox="0 0 200 260" width="200" height="260" aria-hidden="true">'+
+  '<path d="M40 260C40 214 70 199 100 197C130 199 160 214 160 260Z" fill="#EDE7DE"/>'+
+  '<rect x="88" y="164" width="24" height="38" rx="9" fill="#EDE7DE"/>'+
+  '<ellipse cx="100" cy="128" rx="40" ry="47" fill="#EDE7DE"/>'+
+  '<path d="M58 128A42 48 0 0 1 142 128L142 135A42 15 0 0 1 58 135Z" fill="var(--cap3d,#C9A98B)"/>'+
+  '<path class="b3-tud" style="display:none" d="M48 138A52 60 0 0 1 152 138L164 234C140 250 60 250 36 234Z" fill="var(--tud3d,#9a826b)"/>'+
+  '</svg>';
+}
+function initCSS(){
+  if(mode)return;
+  var stage=document.createElement('div');stage.className='b3-stage';
+  var rotor=document.createElement('div');rotor.className='b3-rotor';
+  var html='';
+  for(var i=0;i<16;i++){var z=-30+i*4;var s=(0.5+0.5*Math.sqrt(Math.max(0.05,1-(z/34)*(z/34)))).toFixed(3);
+    html+='<div class="b3-slice" style="transform:translate(-50%,-50%) translateZ('+z+'px) scale('+s+')">'+sliceSVG()+'</div>';}
+  rotor.innerHTML=html;stage.appendChild(rotor);glass.insertBefore(stage,glass.firstChild);
+  canvas.style.display='none';
+  mode={
+    apply:function(st){rotor.style.transform='rotateX('+(-st.pitch)+'deg) rotateY('+(st.yaw+st.autoAcc)+'deg)';},
+    setColor:function(hex){wrap.style.setProperty('--cap3d',hex);wrap.style.setProperty('--tud3d',shade(hex,0.78));},
+    setTudung:function(on){rotor.querySelectorAll('.b3-tud').forEach(function(p){p.style.display=on?'':'none';});},
+    resize:function(){}
+  };
+  modeName='Ringan';mode.setColor(curHex);mode.setTudung(state.tudung);
+  if(!active)reveal();
 }
 
-async function start(){
-  if (busy || !mwrap || !mirrors) return;
-  busy = true;
-  const CDNS = [
-    'https://unpkg.com/three@0.160.0/build/three.module.js',
-    'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js',
-    'https://esm.sh/three@0.160.0'
-  ];
-  let THREE = null, lastErr = null;
-  for (const url of CDNS){
-    try { const m = await import(url); if (m && m.WebGLRenderer){ THREE = m; break; } }
-    catch(e){ lastErr = e; }
-  }
-  if (!THREE){
-    busy = false;
-    console.warn(TAG, 'Semua CDN gagal. Semak internet.', lastErr);
-    showErr('3D gagal dimuat (internet/CDN). Paparan asal dikekalkan.');
-    return;
-  }
-  try { boot(THREE); }
-  catch(e){ console.warn(TAG, 'boot gagal:', e); cleanup(); showErr('3D gagal: ' + (e && e.message || e)); }
-  busy = false;
-}
+/* ---- MOD WEBGL: Three.js (skrip klasik UMD r149) ---- */
+function initGL(THREE){
+  var renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));
+  renderer.outputEncoding=THREE.sRGBEncoding;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
+  var scene=new THREE.Scene();
+  var camera=new THREE.PerspectiveCamera(36,3/4.1,0.1,40);
+  var env=new THREE.Scene();
+  env.add(new THREE.Mesh(new THREE.BoxGeometry(10,10,10),new THREE.MeshBasicMaterial({color:0x666666,side:THREE.BackSide})));
+  function panel(w,h,x,y,z,rx,ry,r,g,b){var m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color().setRGB(r,g,b)}));m.position.set(x,y,z);m.rotation.set(rx,ry,0);env.add(m);}
+  panel(6,6,0,4.9,0,Math.PI/2,0,5,4.6,4);panel(5,5,-4.9,1,0,0,Math.PI/2,1.2,1.5,2.2);
+  panel(5,5,0,1,-4.9,0,0,2.4,1.5,0.8);panel(5,5,0,1,4.9,0,Math.PI,0.9,0.9,1.0);
+  var pmrem=new THREE.PMREMGenerator(renderer);
+  scene.environment=pmrem.fromScene(env,0.04).texture;
+  var key=new THREE.DirectionalLight(0xfff2e2,2.6);key.position.set(3,5,4);scene.add(key);
+  var fill=new THREE.DirectionalLight(0xbfd0e0,1.0);fill.position.set(-4,2,3);scene.add(fill);
+  var rim=new THREE.DirectionalLight(0xd9c3aa,2.0);rim.position.set(-2,3,-4);scene.add(rim);
+  scene.add(new THREE.AmbientLight(0x8a8f94,0.55));
 
-function boot(THREE){
-  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---- UI (tersembunyi dulu sampai render pertama berjaya) ---- */
-  wrapEl = document.createElement('div');
-  wrapEl.className = 'cap3d-wrap';
-  wrapEl.hidden = true;
-  wrapEl.innerHTML =
-    '<div class="cap3d-frame"><div class="cap3d-glass">' +
-    '<canvas tabindex="0" role="application" aria-label="Model 3D inner cap. Seret atau guna butang anak panah untuk pusing 360 darjah."></canvas>' +
-    '<div class="cap3d-hint"><i></i>360° · seret untuk pusing</div>' +
-    '<div class="cap3d-controls">' +
-    '<button type="button" class="c3-left" aria-label="Pusing ke kiri">⟲</button>' +
-    '<button type="button" class="c3-auto" aria-pressed="true" aria-label="Auto pusing">Auto ⏸</button>' +
-    '<button type="button" class="c3-right" aria-label="Pusing ke kanan">⟳</button>' +
-    '<button type="button" class="c3-tudung" aria-pressed="false" aria-label="Tunjuk layer tudung">Tudung ✕</button>' +
-    '</div></div></div>' +
-    '<span class="cap3d-name" aria-live="polite">Latte</span>';
-  mwrap.insertBefore(wrapEl, mirrors);
-  const glass = wrapEl.querySelector('.cap3d-glass');
-  const canvas = wrapEl.querySelector('canvas');
-  const nameEl = wrapEl.querySelector('.cap3d-name');
-
-  renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true, powerPreference:'high-performance' });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.05;
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(36, 3/4.1, 0.1, 40);
-
-  /* ---- Environment sendiri (tanpa addon) ---- */
-  const env = new THREE.Scene();
-  env.add(new THREE.Mesh(new THREE.BoxGeometry(10,10,10), new THREE.MeshBasicMaterial({ color:0x666666, side:THREE.BackSide })));
-  function panel(w,h,x,y,z,rx,ry,r,g,b){
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(w,h), new THREE.MeshBasicMaterial({ color:new THREE.Color().setRGB(r,g,b) }));
-    m.position.set(x,y,z); m.rotation.set(rx,ry,0); env.add(m);
-  }
-  panel(6,6, 0,4.9,0, Math.PI/2,0, 5,4.6,4);
-  panel(5,5, -4.9,1,0, 0,Math.PI/2, 1.2,1.5,2.2);
-  panel(5,5, 0,1,-4.9, 0,0, 2.4,1.5,0.8);
-  panel(5,5, 0,1,4.9, 0,Math.PI, 0.9,0.9,1.0);
-  const pmrem = new THREE.PMREMGenerator(renderer);
-  scene.environment = pmrem.fromScene(env, 0.04).texture;
-
-  const key = new THREE.DirectionalLight(0xfff2e2, 2.6); key.position.set(3,5,4); scene.add(key);
-  const fill = new THREE.DirectionalLight(0xbfd0e0, 1.0); fill.position.set(-4,2,3); scene.add(fill);
-  const rim = new THREE.DirectionalLight(0xd9c3aa, 2.0); rim.position.set(-2,3,-4); scene.add(rim);
-  scene.add(new THREE.AmbientLight(0x8a8f94, 0.55));
-
-  /* ---- MODEL ---- */
-  const spin = new THREE.Group(); scene.add(spin);
-  const matCeramic = new THREE.MeshStandardMaterial({ color:0xEDE7DE, roughness:0.55, metalness:0, envMapIntensity:0.5 });
-  const matBase = new THREE.MeshStandardMaterial({ color:0x2b2b2e, roughness:0.4, metalness:0.6 });
-  const matBrass = new THREE.MeshStandardMaterial({ color:0x8A7B6B, roughness:0.32, metalness:0.9, envMapIntensity:1.2 });
-
-  const startHex = (window.cur && window.cur[1]) || '#C9A98B';
-  const capTarget = new THREE.Color(startHex);
-  const bandTarget = capTarget.clone().multiplyScalar(0.88);
-  const tudungTarget = capTarget.clone().multiplyScalar(0.78);
-  const sheenTarget = capTarget.clone().lerp(new THREE.Color(0xffffff), 0.5);
-
-  const matCap = new THREE.MeshPhysicalMaterial({ color:capTarget.clone(), roughness:0.85, metalness:0, sheen:1, sheenRoughness:0.55, sheenColor:sheenTarget.clone(), envMapIntensity:0.7, side:THREE.DoubleSide });
-  const matBand = new THREE.MeshPhysicalMaterial({ color:bandTarget.clone(), roughness:0.8, metalness:0, sheen:0.6, sheenRoughness:0.6, envMapIntensity:0.6 });
-  const matTudung = new THREE.MeshPhysicalMaterial({ color:tudungTarget.clone(), roughness:0.92, metalness:0, sheen:1, sheenRoughness:0.7, sheenColor:sheenTarget.clone(), envMapIntensity:0.55, side:THREE.DoubleSide });
-
-  const base = new THREE.Mesh(new THREE.CylinderGeometry(0.6, 0.7, 0.12, 40), matBase); base.position.y = 0.06; spin.add(base);
-  const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 0.5, 14), matBrass); pole.position.y = 0.36; spin.add(pole);
-  const bustPts = [[0.001,0.60],[0.50,0.60],[0.52,0.66],[0.47,0.80],[0.36,0.94],[0.22,1.05],[0.155,1.14],[0.145,1.30]].map(p=>new THREE.Vector2(p[0],p[1]));
-  spin.add(new THREE.Mesh(new THREE.LatheGeometry(bustPts, 44), matCeramic));
-  const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.145, 0.15, 0.34, 20), matCeramic); neck.position.y = 1.36; spin.add(neck);
-  const head = new THREE.Mesh(new THREE.SphereGeometry(0.42, 40, 30), matCeramic);
-  head.scale.set(0.84, 1.02, 0.9); head.position.y = 1.74; spin.add(head);
-  const nose = new THREE.Mesh(new THREE.SphereGeometry(0.05, 14, 10), matCeramic);
-  nose.scale.set(0.7, 1.1, 0.8); nose.position.set(0, 1.68, 0.365); spin.add(nose);
-  const cap = new THREE.Mesh(new THREE.SphereGeometry(0.475, 44, 30, 0, Math.PI*2, 0, Math.PI*0.68), matCap);
-  cap.scale.set(0.86, 1.04, 0.92); cap.position.y = 1.755; cap.rotation.x = -0.20; spin.add(cap);
-  const band = new THREE.Mesh(new THREE.TorusGeometry(0.403, 0.028, 12, 44), matBand);
-  band.rotation.x = Math.PI/2; band.position.y = -0.252; cap.add(band);
-  const tudungPts = [[0.02,2.30],[0.26,2.26],[0.44,2.10],[0.52,1.86],[0.55,1.58],[0.60,1.30],[0.70,1.02],[0.80,0.78],[0.84,0.66]].map(p=>new THREE.Vector2(p[0],p[1]));
-  const tudung = new THREE.Mesh(new THREE.LatheGeometry(tudungPts, 48, Math.PI*0.24, Math.PI*1.52), matTudung);
-  tudung.visible = false; tudung.scale.setScalar(0.92); spin.add(tudung);
-  let tudungOn = false, tudungScale = 0.92;
-
-  const ring = new THREE.Mesh(new THREE.TorusGeometry(1.02, 0.018, 10, 60), matBrass);
-  ring.position.set(0, 1.5, -0.6); scene.add(ring);
-
-  const shCanvas = document.createElement('canvas'); shCanvas.width = shCanvas.height = 128;
-  const sg = shCanvas.getContext('2d');
-  const grad = sg.createRadialGradient(64,64,6,64,64,64);
-  grad.addColorStop(0,'rgba(0,0,0,.5)'); grad.addColorStop(1,'rgba(0,0,0,0)');
-  sg.fillStyle = grad; sg.fillRect(0,0,128,128);
-  const shadow = new THREE.Mesh(new THREE.PlaneGeometry(2.4,2.4), new THREE.MeshBasicMaterial({ map:new THREE.CanvasTexture(shCanvas), transparent:true, opacity:0.55, depthWrite:false }));
-  shadow.rotation.x = -Math.PI/2; shadow.position.y = 0.002; scene.add(shadow);
-
-  const dustN = 60, dustPos = new Float32Array(dustN*3), dustSeed = [];
-  for (let i=0;i<dustN;i++) dustSeed.push([Math.random()*2.4-1.2, 0.2+Math.random()*2.4, Math.random()*2-1, Math.random()*6.28]);
-  const dustGeo = new THREE.BufferGeometry();
-  dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos,3));
-  const dust = new THREE.Points(dustGeo, new THREE.PointsMaterial({ color:0xd9c3aa, size:0.02, transparent:true, opacity:0.4, depthWrite:false, blending:THREE.AdditiveBlending }));
+  var spin=new THREE.Group();scene.add(spin);
+  var matCeramic=new THREE.MeshStandardMaterial({color:0xEDE7DE,roughness:0.55,metalness:0,envMapIntensity:0.5});
+  var matBase=new THREE.MeshStandardMaterial({color:0x2b2b2e,roughness:0.4,metalness:0.6});
+  var matBrass=new THREE.MeshStandardMaterial({color:0x8A7B6B,roughness:0.32,metalness:0.9,envMapIntensity:1.2});
+  var capT=new THREE.Color(curHex),bandT=capT.clone().multiplyScalar(0.88),tudT=capT.clone().multiplyScalar(0.78),sheenT=capT.clone().lerp(new THREE.Color(0xffffff),0.5);
+  var matCap=new THREE.MeshPhysicalMaterial({color:capT.clone(),roughness:0.85,sheen:1,sheenRoughness:0.55,sheenColor:sheenT.clone(),envMapIntensity:0.7,side:THREE.DoubleSide});
+  var matBand=new THREE.MeshPhysicalMaterial({color:bandT.clone(),roughness:0.8,sheen:0.6,sheenRoughness:0.6,envMapIntensity:0.6});
+  var matTudung=new THREE.MeshPhysicalMaterial({color:tudT.clone(),roughness:0.92,sheen:1,sheenRoughness:0.7,sheenColor:sheenT.clone(),envMapIntensity:0.55,side:THREE.DoubleSide});
+  var base=new THREE.Mesh(new THREE.CylinderGeometry(0.6,0.7,0.12,40),matBase);base.position.y=0.06;spin.add(base);
+  var pole=new THREE.Mesh(new THREE.CylinderGeometry(0.045,0.045,0.5,14),matBrass);pole.position.y=0.36;spin.add(pole);
+  var bustPts=[[0.001,0.60],[0.50,0.60],[0.52,0.66],[0.47,0.80],[0.36,0.94],[0.22,1.05],[0.155,1.14],[0.145,1.30]].map(function(p){return new THREE.Vector2(p[0],p[1]);});
+  spin.add(new THREE.Mesh(new THREE.LatheGeometry(bustPts,44),matCeramic));
+  var neck=new THREE.Mesh(new THREE.CylinderGeometry(0.145,0.15,0.34,20),matCeramic);neck.position.y=1.36;spin.add(neck);
+  var head=new THREE.Mesh(new THREE.SphereGeometry(0.42,40,30),matCeramic);head.scale.set(0.84,1.02,0.9);head.position.y=1.74;spin.add(head);
+  var nose=new THREE.Mesh(new THREE.SphereGeometry(0.05,14,10),matCeramic);nose.scale.set(0.7,1.1,0.8);nose.position.set(0,1.68,0.365);spin.add(nose);
+  var cap=new THREE.Mesh(new THREE.SphereGeometry(0.475,44,30,0,Math.PI*2,0,Math.PI*0.68),matCap);
+  cap.scale.set(0.86,1.04,0.92);cap.position.y=1.755;cap.rotation.x=-0.20;spin.add(cap);
+  var band=new THREE.Mesh(new THREE.TorusGeometry(0.403,0.028,12,44),matBand);band.rotation.x=Math.PI/2;band.position.y=-0.252;cap.add(band);
+  var tudPts=[[0.02,2.30],[0.26,2.26],[0.44,2.10],[0.52,1.86],[0.55,1.58],[0.60,1.30],[0.70,1.02],[0.80,0.78],[0.84,0.66]].map(function(p){return new THREE.Vector2(p[0],p[1]);});
+  var tudung=new THREE.Mesh(new THREE.LatheGeometry(tudPts,48,Math.PI*0.24,Math.PI*1.52),matTudung);
+  tudung.visible=false;tudung.scale.setScalar(0.92);spin.add(tudung);
+  var tudScale=0.92;
+  var ring=new THREE.Mesh(new THREE.TorusGeometry(1.02,0.018,10,60),matBrass);ring.position.set(0,1.5,-0.6);scene.add(ring);
+  var sc=document.createElement('canvas');sc.width=sc.height=128;var sg=sc.getContext('2d');
+  var gr=sg.createRadialGradient(64,64,6,64,64,64);gr.addColorStop(0,'rgba(0,0,0,.5)');gr.addColorStop(1,'rgba(0,0,0,0)');
+  sg.fillStyle=gr;sg.fillRect(0,0,128,128);
+  var shadow=new THREE.Mesh(new THREE.PlaneGeometry(2.4,2.4),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(sc),transparent:true,opacity:0.55,depthWrite:false}));
+  shadow.rotation.x=-Math.PI/2;shadow.position.y=0.002;scene.add(shadow);
+  var dN=60,dPos=new Float32Array(dN*3),dSeed=[];
+  for(var i=0;i<dN;i++)dSeed.push([Math.random()*2.4-1.2,0.2+Math.random()*2.4,Math.random()*2-1,Math.random()*6.28]);
+  var dGeo=new THREE.BufferGeometry();dGeo.setAttribute('position',new THREE.BufferAttribute(dPos,3));
+  var dust=new THREE.Points(dGeo,new THREE.PointsMaterial({color:0xd9c3aa,size:0.02,transparent:true,opacity:0.4,depthWrite:false,blending:THREE.AdditiveBlending}));
   scene.add(dust);
 
-  /* ---- KAWALAN 360° (vanilla, tanpa addon) ---- */
-  let yaw = 0, yawVel = 0, autoAcc = 0, pitch = 0.06, pitchT = 0.06;
-  let autoOn = !RM, dragging = false, px = 0, py = 0, lastTouch = -10;
-  const nowS = ()=>performance.now()/1000;
-  canvas.addEventListener('pointerdown', e=>{ dragging = true; px = e.clientX; py = e.clientY; try{canvas.setPointerCapture(e.pointerId);}catch(_){} lastTouch = nowS(); });
-  canvas.addEventListener('pointermove', e=>{
-    if (!dragging) return;
-    const dx = e.clientX - px, dy = e.clientY - py; px = e.clientX; py = e.clientY;
-    yaw += dx*0.008; yawVel = dx*0.008;
-    pitchT = Math.min(0.85, Math.max(-0.08, pitchT + dy*0.004));
-    lastTouch = nowS();
-  });
-  const endDrag = ()=>{ dragging = false; lastTouch = nowS(); };
-  canvas.addEventListener('pointerup', endDrag);
-  canvas.addEventListener('pointercancel', endDrag);
-  canvas.addEventListener('dblclick', ()=>{ yaw = 0; autoAcc = 0; yawVel = 0; pitchT = 0.06; });
-  canvas.addEventListener('keydown', e=>{
-    if (e.key === 'ArrowLeft'){ e.preventDefault(); yawVel += 0.05; }
-    else if (e.key === 'ArrowRight'){ e.preventDefault(); yawVel -= 0.05; }
-  });
-  const btnAuto = wrapEl.querySelector('.c3-auto');
-  const btnTudung = wrapEl.querySelector('.c3-tudung');
-  function syncAutoBtn(){ btnAuto.textContent = autoOn ? 'Auto ⏸' : 'Auto ▶'; btnAuto.setAttribute('aria-pressed', String(autoOn)); }
-  syncAutoBtn();
-  btnAuto.onclick = ()=>{ autoOn = !autoOn; syncAutoBtn(); };
-  wrapEl.querySelector('.c3-left').onclick = ()=>{ yawVel += 0.06; lastTouch = nowS(); };
-  wrapEl.querySelector('.c3-right').onclick = ()=>{ yawVel -= 0.06; lastTouch = nowS(); };
-  btnTudung.onclick = ()=>{
-    tudungOn = !tudungOn; tudung.visible = true;
-    btnTudung.textContent = tudungOn ? 'Tudung ✓' : 'Tudung ✕';
-    btnTudung.setAttribute('aria-pressed', String(tudungOn));
+  function sizeTo(w,h){camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false);}
+  var w0=Math.max(280,mwrap.clientWidth||360);sizeTo(w0,Math.round(w0*4.1/3));
+  camera.position.set(0,1.4+Math.sin(4*DEG)*4.7,Math.cos(4*DEG)*4.7);camera.lookAt(0,1.4,0);
+  renderer.render(scene,camera); /* render bukti — kalau gagal, throw → mod ringan ambil alih */
+
+  var old=glass.querySelector('.b3-stage');if(old)old.remove();
+  canvas.style.display='';
+  mode={
+    apply:function(st,dt,t){
+      spin.rotation.y=(st.yaw+st.autoAcc)*DEG;
+      var p=st.pitch*DEG;
+      camera.position.set(0,1.4+Math.sin(p)*4.7,Math.cos(p)*4.7);camera.lookAt(0,1.4,0);
+      var k=Math.min(1,dt*7);
+      matCap.color.lerp(capT,k);matCap.sheenColor.lerp(sheenT,k);
+      matBand.color.lerp(bandT,k);matTudung.color.lerp(tudT,k);matTudung.sheenColor.lerp(sheenT,k);
+      tudScale+=((st.tudung?1:0.92)-tudScale)*Math.min(1,dt*8);
+      tudung.scale.setScalar(tudScale);
+      if(!st.tudung&&tudScale<0.925)tudung.visible=false;
+      var dsp=RM?0:1;
+      for(var i=0;i<dN;i++){var s=dSeed[i];dPos[i*3]=s[0]+Math.sin(t*0.25+s[3])*0.08*dsp;dPos[i*3+1]=s[1]+Math.sin(t*0.3+s[3]*2)*0.1*dsp;dPos[i*3+2]=s[2];}
+      dGeo.attributes.position.needsUpdate=true;
+      renderer.render(scene,camera);
+    },
+    setColor:function(hex){capT.set(hex);bandT.copy(capT).multiplyScalar(0.88);tudT.copy(capT).multiplyScalar(0.78);sheenT.copy(capT).lerp(new THREE.Color(0xffffff),0.5);},
+    setTudung:function(on){if(on)tudung.visible=true;},
+    resize:function(){var w=glass.clientWidth,h=glass.clientHeight;if(w&&h)sizeTo(w,h);}
   };
-
-  /* ---- SYNC WARNA ---- */
-  function setCapColor(hex, name){
-    capTarget.set(hex);
-    bandTarget.copy(capTarget).multiplyScalar(0.88);
-    tudungTarget.copy(capTarget).multiplyScalar(0.78);
-    sheenTarget.copy(capTarget).lerp(new THREE.Color(0xffffff), 0.5);
-    if (name) nameEl.textContent = name;
-  }
-
-  /* ---- RENDER PERTAMA (bukti berjaya) → baru swap dengan cermin asal ---- */
-  const w0 = Math.max(280, mwrap.clientWidth || 360), h0 = Math.round(w0*4.1/3);
-  renderer.setSize(w0, h0, false);
-  camera.aspect = w0/h0; camera.updateProjectionMatrix();
-  camera.position.set(0, 1.4 + Math.sin(pitch)*4.7, Math.cos(pitch)*4.7);
-  camera.lookAt(0, 1.4, 0);
-  renderer.render(scene, camera); // kalau throw → catch di start() → cermin asal kekal
-
-  mirrors.dataset.baeqD = mirrors.style.display;
-  mirrors.style.display = 'none';
-  wrapEl.hidden = false;
-  active = true;
-
-  window.__baeq3D = { setColor: setCapColor };
-  if (!window.__baeqOrigSetColor) window.__baeqOrigSetColor = window.setColor;
-  window.setColor = function(c, fs){
-    if (typeof window.__baeqOrigSetColor === 'function') window.__baeqOrigSetColor(c, fs);
-    if (window.__baeq3D) window.__baeq3D.setColor(c[1], c[0]);
-  };
-  if (window.cur) setCapColor(window.cur[1], window.cur[0]);
-
-  new ResizeObserver(()=>{
-    const w = glass.clientWidth, h = glass.clientHeight;
-    if (!w || !h) return;
-    camera.aspect = w/h; camera.updateProjectionMatrix();
-    renderer.setSize(w, h, false);
-  }).observe(glass);
-
-  /* ---- LOOP ---- */
-  let inView = true, last = performance.now();
-  new IntersectionObserver(es=>{ inView = es[0].isIntersecting; }, { threshold:0.02 }).observe(glass);
-  document.addEventListener('visibilitychange', ()=>{ last = performance.now(); });
-
-  function frame(now){
-    rafId = requestAnimationFrame(frame);
-    try {
-      const dt = Math.min(0.05, (now-last)/1000); last = now;
-      if (!active || !inView || document.hidden) return;
-      const t = now/1000;
-
-      if (autoOn && !dragging && t - lastTouch > 2) autoAcc += dt*0.35;
-      if (!dragging){ yaw += yawVel; yawVel *= 0.92; }
-      spin.rotation.y = yaw + autoAcc;
-      pitch += (pitchT - pitch)*Math.min(1, dt*8);
-      camera.position.set(0, 1.4 + Math.sin(pitch)*4.7, Math.cos(pitch)*4.7);
-      camera.lookAt(0, 1.4, 0);
-
-      const k = Math.min(1, dt*7);
-      matCap.color.lerp(capTarget, k);
-      matCap.sheenColor.lerp(sheenTarget, k);
-      matBand.color.lerp(bandTarget, k);
-      matTudung.color.lerp(tudungTarget, k);
-      matTudung.sheenColor.lerp(sheenTarget, k);
-
-      tudungScale += ((tudungOn?1:0.92) - tudungScale)*Math.min(1, dt*8);
-      tudung.scale.setScalar(tudungScale);
-      if (!tudungOn && tudungScale < 0.925) tudung.visible = false;
-
-      const dsp = RM ? 0 : 1;
-      for (let i=0;i<dustN;i++){
-        const s = dustSeed[i];
-        dustPos[i*3]   = s[0] + Math.sin(t*0.25+s[3])*0.08*dsp;
-        dustPos[i*3+1] = s[1] + Math.sin(t*0.3+s[3]*2)*0.1*dsp;
-        dustPos[i*3+2] = s[2];
-      }
-      dustGeo.attributes.position.needsUpdate = true;
-
-      renderer.render(scene, camera);
-    } catch(e){
-      console.warn(TAG, 'loop gagal:', e);
-      cleanup();
-      showErr('3D terhenti: ' + (e && e.message || e));
-    }
-  }
-  rafId = requestAnimationFrame(frame);
-  console.info(TAG, '3D berjaya dipaparkan ✓');
+  modeName='WebGL';mode.setColor(curHex);mode.setTudung(state.tudung);
+  if(!active)reveal();else hintEl.textContent='360° · seret untuk pusing · '+modeName;
+  mode.resize();
 }
 
-start();
+/* ---- Pemuat CDN berantai (skrip klasik — tak perlu CORS/module) ---- */
+var CDNS=[
+ 'https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js',
+ 'https://unpkg.com/three@0.149.0/build/three.min.js',
+ 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.149.0/three.min.js'
+];
+var idx=0;
+function loadNext(){
+  if(idx>=CDNS.length){console.warn(TAG,'Semua CDN gagal → Mod Ringan');try{initCSS();}catch(e){console.warn(TAG,e);}return;}
+  var s=document.createElement('script');s.src=CDNS[idx++];
+  s.onload=function(){
+    if(!window.THREE){loadNext();return;}
+    try{initGL(window.THREE);}
+    catch(e){console.warn(TAG,'WebGL gagal → Mod Ringan:',e);try{initCSS();}catch(_){}}
+  };
+  s.onerror=function(){console.warn(TAG,'CDN gagal: '+s.src);loadNext();};
+  document.head.appendChild(s);
+}
+loadNext();
+/* Internet perlahan? Mod ringan keluar dulu, auto-naik taraf ke WebGL bila siap */
+setTimeout(function(){if(!active){try{initCSS();}catch(e){console.warn(TAG,e);}}},6000);
+/* Penjaga: kalau blok lama masih sorok cermin, pulihkan */
+var guard=0,gi=setInterval(function(){
+  guard++;
+  if(!active&&mirrors.style.display==='none'){
+    document.querySelectorAll('.cap3d-wrap:not([data-v3])').forEach(function(el){el.remove();});
+    mirrors.style.display='flex';
+  }
+  if(active||guard>15)clearInterval(gi);
+},1000);
+setColorAll(curHex,curName);
+console.info(TAG,'v3 dimuatkan. Menunggu 3D…');
+})();
 </script>
-<!-- ══════════ TAMAT BAÉQ 3D v2 ══════════ -->
+<!-- ══════════ TAMAT BAÉQ 3D v3 ══════════ -->
