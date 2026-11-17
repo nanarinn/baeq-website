@@ -473,6 +473,19 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
   .particles,.scene,.cursor,.trail-dot{display:none !important}
   .rv{opacity:1;transform:none}
 }
+
+/* --- 360° TURNTABLE (CARTOON CERMIN) --- */
+.glass{perspective:1600px}
+.turntable{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform;pointer-events:none}
+.tt-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#F0EDE6}
+.tt-face svg{width:100%;height:100%;display:block}
+.tt-0{transform:rotateY(0deg) translateZ(var(--tz,150px))}
+.tt-90{transform:rotateY(90deg) translateZ(var(--tz,150px))}
+.tt-180{transform:rotateY(180deg) translateZ(var(--tz,150px))}
+.tt-270{transform:rotateY(270deg) translateZ(var(--tz,150px))}
+.mirror-note .note-left{display:flex;align-items:center;gap:8px;min-width:0}
+.spin-toggle{flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.14);color:#fff;font-size:.6rem;line-height:1;display:grid;place-items:center;cursor:pointer;transition:background .3s}
+.spin-toggle:hover{background:rgba(255,255,255,.3)}
 </style>
 </head>
 <body>
@@ -1065,7 +1078,7 @@ document.querySelectorAll('.magnetic-btn').forEach(btn => {
     });
 });
 
-// --- DATA & LOGIC BAWAAN ---
+// --- DATA & LOGIK BAWAAN ---
 var WA="60125332101"; // <--- NOMBOR WHATSAPP ANDA DI SINI
 var colors=[["Latte","#C9A98B"],["Cream","#E9DCC3"],["Mocha","#9A7458"],["Dusty rose","#D9B3A8"],["Sage","#B5C0A3"],["Dark brown","#6B4A38"]];
 var cat="All"; 
@@ -1108,30 +1121,61 @@ function pic(c,k){
  '</svg>';
 }
 
-// Editorial mirror portrait: a woman adjusting her hijab, fully drawn in code (no generated image).
-function mirrorPortrait(c,index){
- var uid='mirror-'+index;
- return '<svg viewBox="0 0 360 480" role="img" aria-label="Woman adjusting her hijab in a mirror" style="width:100%;height:100%;object-fit:cover">'+
- '<defs>'+
- '<linearGradient id="'+uid+'-room" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#edeae5"/><stop offset=".58" stop-color="#d8d4cf"/><stop offset="1" stop-color="#b8b4ae"/></linearGradient>'+
- '<linearGradient id="'+uid+'-skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0c8ad"/><stop offset=".55" stop-color="#ddb092"/><stop offset="1" stop-color="#c58e70"/></linearGradient>'+
- '<linearGradient id="'+uid+'-cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+c+'"/><stop offset=".6" stop-color="'+c+'"/><stop offset="1" stop-color="#302925" stop-opacity=".32"/></linearGradient>'+
- '<filter id="'+uid+'-soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="10"/></filter>'+
- '</defs>'+
- '<rect width="360" height="480" fill="url(#'+uid+'-room)"/>'+
- '<circle cx="296" cy="74" r="72" fill="#fff" opacity=".28" filter="url(#'+uid+'-soft)"/><path d="M26 365c54-20 255-20 308 0v115H26Z" fill="#252426"/>'+
- '<path d="M72 480c4-95 20-164 43-211-18-44-10-119 17-164 13-22 31-37 48-45 17 8 35 23 48 45 27 45 35 120 17 164 23 47 39 116 43 211Z" fill="url(#'+uid+'-cloth)"/>'+
- '<path d="M180 78c-43 0-68 38-65 91 2 40 18 83 65 103 47-20 63-63 65-103 3-53-22-91-65-91Z" fill="url(#'+uid+'-skin)"/>'+
- '<path d="M119 155c5-57 26-90 61-90s56 33 61 90c-18-36-35-51-61-51s-43 15-61 51Z" fill="'+c+'" opacity=".98"/>'+
- '<path d="M126 153c8-36 25-52 54-52s46 16 54 52" fill="none" stroke="#fff" stroke-opacity=".27" stroke-width="3"/>'+
- '<path d="M145 174c9-7 20-8 29-2M186 172c10-6 21-5 29 2" fill="none" stroke="#4b332c" stroke-width="3" stroke-linecap="round"/>'+
- '<path d="M147 184c8 5 18 5 26 0M188 184c8 5 18 5 26 0" fill="none" stroke="#3c2c27" stroke-width="2.5" stroke-linecap="round"/>'+
- '<path d="M180 185c-3 16-5 26 3 30" fill="none" stroke="#b67961" stroke-width="2" stroke-linecap="round"/><path d="M167 231c9 5 18 5 27 0" fill="none" stroke="#9b5d58" stroke-width="2.4" stroke-linecap="round"/>'+
- '<path d="M114 268c17 20 40 31 66 31s49-11 66-31c-5 55-22 104-66 135-44-31-61-80-66-135Z" fill="url(#'+uid+'-cloth)"/><path d="M140 294c9 51 22 80 40 109M220 294c-9 51-22 80-40 109" fill="none" stroke="#fff" stroke-opacity=".19" stroke-width="2"/>'+
- '<g class="adjust-hand-left"><path d="M78 427c4-74 11-129 29-177" fill="none" stroke="url(#'+uid+'-skin)" stroke-width="23" stroke-linecap="round"/><path d="M103 251c-8-17-5-32 4-47 4-7 11-5 11 3l-2 24 9-23c3-8 11-7 11 2l-7 31c-3 13-10 21-26 10Z" fill="url(#'+uid+'-skin)"/></g>'+
- '<g class="adjust-hand-right"><path d="M282 427c-4-74-11-129-29-177" fill="none" stroke="url(#'+uid+'-skin)" stroke-width="23" stroke-linecap="round"/><path d="M257 251c8-17 5-32-4-47-4-7-11-5-11 3l2 24-9-23c-3-8-11-7-11 2l7 31c3 13 10 21 26 10Z" fill="url(#'+uid+'-skin)"/></g>'+
- '<path d="M58 448c79-27 165-27 244 0" fill="none" stroke="#fff" stroke-opacity=".11" stroke-width="2"/><rect x="18" y="18" width="324" height="444" rx="160" fill="none" stroke="#fff" stroke-opacity=".2"/>'+
- '</svg>';
+// Editorial mirror portrait with 4 angles: f=depan, r=tepi kanan, b=belakang, l=tepi kiri (auto-mirror).
+function mirrorView(c,index,view){
+ var uid='mirror-'+index+'-'+view;
+ var defs='<defs>'+
+  '<linearGradient id="'+uid+'-room" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#edeae5"/><stop offset=".58" stop-color="#d8d4cf"/><stop offset="1" stop-color="#b8b4ae"/></linearGradient>'+
+  '<linearGradient id="'+uid+'-skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0c8ad"/><stop offset=".55" stop-color="#ddb092"/><stop offset="1" stop-color="#c58e70"/></linearGradient>'+
+  '<linearGradient id="'+uid+'-cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+c+'"/><stop offset=".6" stop-color="'+c+'"/><stop offset="1" stop-color="#302925" stop-opacity=".32"/></linearGradient>'+
+  '<filter id="'+uid+'-soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="10"/></filter>'+
+ '</defs>';
+ var room='<rect width="360" height="480" fill="url(#'+uid+'-room)"/>'+
+  (view==='f'
+   ?'<circle cx="296" cy="74" r="72" fill="#fff" opacity=".28" filter="url(#'+uid+'-soft)"/>'
+   :'<circle cx="296" cy="74" r="72" fill="#fff" opacity=".16"/><circle cx="296" cy="74" r="50" fill="#fff" opacity=".14"/>')+
+  '<path d="M26 365c54-20 255-20 308 0v115H26Z" fill="#252426"/>';
+ var frame='<path d="M58 448c79-27 165-27 244 0" fill="none" stroke="#fff" stroke-opacity=".11" stroke-width="2"/><rect x="18" y="18" width="324" height="444" rx="160" fill="none" stroke="#fff" stroke-opacity=".2"/>';
+ var body='';
+ if(view==='f'){
+  body='<path d="M72 480c4-95 20-164 43-211-18-44-10-119 17-164 13-22 31-37 48-45 17 8 35 23 48 45 27 45 35 120 17 164 23 47 39 116 43 211Z" fill="url(#'+uid+'-cloth)"/>'+
+  '<path d="M180 78c-43 0-68 38-65 91 2 40 18 83 65 103 47-20 63-63 65-103 3-53-22-91-65-91Z" fill="url(#'+uid+'-skin)"/>'+
+  '<path d="M119 155c5-57 26-90 61-90s56 33 61 90c-18-36-35-51-61-51s-43 15-61 51Z" fill="'+c+'" opacity=".98"/>'+
+  '<path d="M126 153c8-36 25-52 54-52s46 16 54 52" fill="none" stroke="#fff" stroke-opacity=".27" stroke-width="3"/>'+
+  '<path d="M145 174c9-7 20-8 29-2M186 172c10-6 21-5 29 2" fill="none" stroke="#4b332c" stroke-width="3" stroke-linecap="round"/>'+
+  '<path d="M147 184c8 5 18 5 26 0M188 184c8 5 18 5 26 0" fill="none" stroke="#3c2c27" stroke-width="2.5" stroke-linecap="round"/>'+
+  '<path d="M180 185c-3 16-5 26 3 30" fill="none" stroke="#b67961" stroke-width="2" stroke-linecap="round"/>'+
+  '<path d="M167 231c9 5 18 5 27 0" fill="none" stroke="#9b5d58" stroke-width="2.4" stroke-linecap="round"/>'+
+  '<path d="M114 268c17 20 40 31 66 31s49-11 66-31c-5 55-22 104-66 135-44-31-61-80-66-135Z" fill="url(#'+uid+'-cloth)"/>'+
+  '<path d="M140 294c9 51 22 80 40 109M220 294c-9 51-22 80-40 109" fill="none" stroke="#fff" stroke-opacity=".19" stroke-width="2"/>'+
+  '<g class="adjust-hand-left"><path d="M78 427c4-74 11-129 29-177" fill="none" stroke="url(#'+uid+'-skin)" stroke-width="23" stroke-linecap="round"/><path d="M103 251c-8-17-5-32 4-47 4-7 11-5 11 3l-2 24 9-23c3-8 11-7 11 2l-7 31c-3 13-10 21-26 10Z" fill="url(#'+uid+'-skin)"/></g>'+
+  '<g class="adjust-hand-right"><path d="M282 427c-4-74-11-129-29-177" fill="none" stroke="url(#'+uid+'-skin)" stroke-width="23" stroke-linecap="round"/><path d="M257 251c8-17 5-32-4-47-4-7-11-5-11 3l2 24-9-23c-3-8-11-7-11 2l7 31c3 13 10 21 26 10Z" fill="url(#'+uid+'-skin)"/></g>';
+ } else if(view==='b'){
+  body='<path d="M180 60c-46 0-77 38-79 92-1 34 8 66 25 90-23 48-37 122-41 238h190c-4-116-18-190-41-238 17-24 26-56 25-90-2-54-33-92-79-92Z" fill="url(#'+uid+'-cloth)"/>'+
+  '<ellipse cx="180" cy="150" rx="36" ry="42" fill="#1b1715" opacity=".08"/>'+
+  '<path d="M180 66v180" stroke="#1b1715" stroke-opacity=".14" stroke-width="2"/>'+
+  '<path d="M134 118c-9 34-7 72 6 102M226 118c9 34 7 72-6 102" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="2"/>'+
+  '<path d="M148 84c10-10 21-15 32-15s22 5 32 15" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2.5" stroke-linecap="round"/>'+
+  '<path d="M114 252c19 21 41 31 66 31s47-10 66-31c-4 60-23 113-66 148-43-35-62-88-66-148Z" fill="url(#'+uid+'-cloth)"/>'+
+  '<path d="M148 284c8 48 18 78 32 104M212 284c-8 48-18 78-32 104" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="2"/>'+
+  '<rect x="167" y="256" width="26" height="12" rx="2" fill="#fff" opacity=".8"/><text x="180" y="264.5" fill="#302b28" font-family="Inter, sans-serif" font-size="6" text-anchor="middle">BAÉQ</text>';
+ } else {
+  body='<path d="M92 480c3-92 16-162 38-212-15-26-23-58-21-92 3-58 33-100 76-100 45 0 73 42 73 100 0 32-9 62-24 86 23 50 36 122 39 218Z" fill="url(#'+uid+'-cloth)"/>'+
+  '<path d="M204 94c27 10 44 40 46 74 1 13-2 25-7 36l9 12c2 3 0 6-3 6h-7c1 8-2 14-8 18 4 5 3 10-2 13-9 6-21 7-31 3-15-6-26-23-30-45-5-28-3-61 8-85 8-19 14-28 25-35Z" fill="url(#'+uid+'-skin)"/>'+
+  '<path d="M217 158c7-5 15-5 21-1" fill="none" stroke="#4b332c" stroke-width="3" stroke-linecap="round"/>'+
+  '<path d="M220 170c6-4 12-4 17 0" fill="none" stroke="#3c2c27" stroke-width="2.5" stroke-linecap="round"/>'+
+  '<path d="M236 236c4 3 9 3 12 0" fill="none" stroke="#9b5d58" stroke-width="2.2" stroke-linecap="round"/>'+
+  '<path d="M204 94c-14 8-24 22-30 42-8 26-9 60-3 88 4 20 12 36 24 46l-14 8c-16-12-27-32-32-58-6-32-4-70 6-98 8-22 20-38 36-46Z" fill="url(#'+uid+'-cloth)"/>'+
+  '<path d="M204 94c-14 8-24 22-30 42-8 26-9 60-3 88 4 20 12 36 24 46" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="2.5"/>'+
+  '<path d="M150 96c12-16 28-24 44-24" fill="none" stroke="#fff" stroke-opacity=".4" stroke-width="2.5" stroke-linecap="round"/>'+
+  '<path d="M118 262c16 22 38 34 64 36 25 2 47-8 60-26-4 58-20 110-58 148-40-36-58-94-66-158Z" fill="url(#'+uid+'-cloth)"/>'+
+  '<path d="M152 292c8 48 18 78 32 104M214 288c-8 46-18 76-30 102" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="2"/>'+
+  '<g class="adjust-hand-right"><path d="M266 434c-2-72-9-128-26-172" fill="none" stroke="url(#'+uid+'-skin)" stroke-width="23" stroke-linecap="round"/><path d="M240 262c-7-16-5-31 3-45 4-7 11-5 11 3l-2 23 8-22c3-8 11-7 11 2l-6 30c-3 13-10 21-25 9Z" fill="url(#'+uid+'-skin)"/></g>';
+ }
+ var inner=room+body+frame;
+ if(view==='l') inner='<g transform="translate(360 0) scale(-1 1)">'+inner+'</g>';
+ var label={f:'front',r:'right side',b:'back',l:'left side'}[view];
+ return '<svg viewBox="0 0 360 480" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Woman adjusting her hijab, '+label+' view" style="width:100%;height:100%">'+defs+inner+'</svg>';
 }
 
 (function(){
@@ -1267,13 +1311,78 @@ if('IntersectionObserver' in window){
   document.querySelectorAll('.rv').forEach(function(el){io.observe(el)})
 }
 
+// --- CERMIN 360° TURNTABLE ---
 var mir=document.getElementById('mirrors'),mcnt=document.getElementById('mcount'),mi=0,lockT=0,raf;
-mir.innerHTML=colors.map(function(c,j){return '<div class="mirror" data-j="'+j+'" style="flex:0 0 74%;scroll-snap-align:center;text-align:center;transform:scale(.86);opacity:.5;transition:transform .35s,opacity .35s"><div class="frame" style="padding:12px;border-radius:999px 999px 24px 24px;background:var(--bg-card);border:1px solid var(--line)"><div class="glass" style="position:relative;overflow:hidden;border-radius:999px 999px 16px 16px;aspect-ratio:3/4.1;background:#F0EDE6;display:grid;place-items:end center;">'+mirrorPortrait(c[1],j)+'<div class="mirror-note"><span>Adjusting the fit</span><i></i></div><span class="shine" style="position:absolute;inset:-20%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.3) 46%,rgba(255,255,255,.05) 52%,transparent 58%);pointer-events:none"></span></div></div><span class="mname" style="display:block;margin-top:15px;font-family:\'Playfair Display\',Georgia,serif;font-style:italic;font-size:1.2rem;color:var(--ink);font-weight:600;">'+c[0]+'</span></div>'}).join('');
-function mark(j){[].forEach.call(mir.children,function(m,k){m.classList.toggle('on',k===j); m.style.transform = k===j ? 'scale(1)' : 'scale(.86)'; m.style.opacity = k===j ? '1' : '.5';});mcnt.textContent=(j+1)+' / '+colors.length}
+var SPIN_SPEED=40; // darjah per detik — 360/40 = 9 detik satu pusingan penuh
+var spinAngle=0,autoSpin=!reduceMotion,dragging=false,dragX=0,dragA=0,lastT=0;
+var spinHint=window.matchMedia('(pointer: fine)').matches?'Drag to spin · 360°':'Auto spin · 360°';
+
+function ttFace(cls,c,j,view){return '<div class="tt-face '+cls+'">'+mirrorView(c,j,view)+'</div>'}
+
+mir.innerHTML=colors.map(function(c,j){
+ return '<div class="mirror" data-j="'+j+'" style="flex:0 0 74%;scroll-snap-align:center;text-align:center;transform:scale(.86);opacity:.5;transition:transform .35s,opacity .35s">'+
+ '<div class="frame" style="padding:12px;border-radius:999px 999px 24px 24px;background:var(--bg-card);border:1px solid var(--line)">'+
+ '<div class="glass" style="position:relative;overflow:hidden;border-radius:999px 999px 16px 16px;aspect-ratio:3/4.1;background:#F0EDE6;">'+
+ '<div class="turntable">'+ttFace('tt-0',c[1],j,'f')+ttFace('tt-90',c[1],j,'l')+ttFace('tt-180',c[1],j,'b')+ttFace('tt-270',c[1],j,'r')+'</div>'+
+ '<div class="mirror-note"><span class="note-left"><i></i><span>'+spinHint+'</span></span><button class="spin-toggle" type="button" aria-label="Pause or play 360 spin">'+(autoSpin?'❚❚':'▶')+'</button></div>'+
+ '<span class="shine" style="position:absolute;inset:-20%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.3) 46%,rgba(255,255,255,.05) 52%,transparent 58%);pointer-events:none"></span>'+
+ '</div></div>'+
+ '<span class="mname" style="display:block;margin-top:15px;font-family:\'Playfair Display\',Georgia,serif;font-style:italic;font-size:1.2rem;color:var(--ink);font-weight:600;">'+c[0]+'</span></div>';
+}).join('');
+
+// Kedalaman kotak 3D ikut lebar cermin (responsif)
+function sizeTurntables(){[].forEach.call(mir.querySelectorAll('.glass'),function(g){g.style.setProperty('--tz',(g.clientWidth/2)+'px')})}
+sizeTurntables();
+window.addEventListener('resize',sizeTurntables);
+window.addEventListener('load',sizeTurntables);
+
+function mark(j){
+ [].forEach.call(mir.children,function(m,k){
+  m.classList.toggle('on',k===j);
+  m.style.transform=k===j?'scale(1)':'scale(.86)';
+  m.style.opacity=k===j?'1':'.5';
+  if(k!==j){var tt=m.querySelector('.turntable');if(tt)tt.style.transform='rotateY(0deg)'}
+ });
+ spinAngle=0;
+ mcnt.textContent=(j+1)+' / '+colors.length;
+}
 function goMirror(j){var el=mir.children[j];if(!el)return;mi=j;mark(j);lockT=Date.now()+700;mir.scrollTo({left:el.offsetLeft-(mir.clientWidth-el.clientWidth)/2,behavior:'smooth'})}
 mir.addEventListener('scroll',function(){if(Date.now()<lockT)return;cancelAnimationFrame(raf);raf=requestAnimationFrame(function(){var mid=mir.scrollLeft+mir.clientWidth/2,best=0,bd=1e9;[].forEach.call(mir.children,function(m,k){var d=Math.abs(m.offsetLeft+m.clientWidth/2-mid);if(d<bd){bd=d;best=k}});if(best!==mi){mi=best;mark(best);setColor(colors[best],true)}})});
 document.getElementById('mprev').onclick=function(){setColor(colors[Math.max(0,mi-1)])};
 document.getElementById('mnext').onclick=function(){setColor(colors[Math.min(colors.length-1,mi+1)])};
+
+// Butang pause / play
+mir.addEventListener('click',function(e){
+ var b=e.target.closest('.spin-toggle');if(!b)return;
+ e.stopPropagation();
+ autoSpin=!autoSpin;
+ mir.querySelectorAll('.spin-toggle').forEach(function(x){x.textContent=autoSpin?'❚❚':'▶'});
+});
+
+// Drag dengan mouse (desktop) untuk pusing manual — touch dibiarkan supaya swipe tukar warna masih jalan
+mir.addEventListener('pointerdown',function(e){
+ if(e.pointerType!=='mouse'||e.target.closest('.spin-toggle'))return;
+ if(!e.target.closest('.glass'))return;
+ dragging=true;dragX=e.clientX;dragA=spinAngle;
+ try{mir.setPointerCapture(e.pointerId)}catch(err){}
+ e.preventDefault();
+});
+mir.addEventListener('pointermove',function(e){
+ if(!dragging)return;
+ spinAngle=((dragA+(e.clientX-dragX)*0.5)%360+360)%360;
+});
+['pointerup','pointercancel'].forEach(function(ev){mir.addEventListener(ev,function(){dragging=false})});
+
+// Enjin putaran 360 — hanya cermin aktif berputar (jimat prestasi)
+function spinLoop(t){
+ var dt=lastT?Math.min((t-lastT)/1000,.05):0;lastT=t;
+ if(autoSpin&&!dragging)spinAngle=(spinAngle+dt*SPIN_SPEED)%360;
+ var active=mir.children[mi];
+ if(active){var tt=active.querySelector('.turntable');if(tt)tt.style.transform='rotateY('+spinAngle+'deg)'}
+ requestAnimationFrame(spinLoop);
+}
+requestAnimationFrame(spinLoop);
+
 setColor(colors[0]);
 </script>
 </body>
