@@ -25,7 +25,7 @@
 html { scroll-behavior: smooth; overflow-x: hidden !important; width: 100%; max-width: 100vw;}
 body{background:var(--bg-main);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden !important; width: 100%; max-width: 100vw; position: relative;}
 
-/* --- ANIMASI BACKGROUND 3D CUBE --- */
+/* --- ANIMASI BACKGROUND (3D CUBE + FLOATING TEXT + PARTICLES) --- */
 .scene {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
   z-index: -1; perspective: 1200px; overflow: hidden;
@@ -52,6 +52,31 @@ body{background:var(--bg-main);color:var(--ink);font-family:'Inter',system-ui,sa
 @keyframes rotateCube {
   0% { transform: rotateX(0deg) rotateY(0deg); }
   100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+/* Teks Bergerak (Watermark) */
+.bg-text {
+  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  font-family: 'Playfair Display', serif; font-size: 20vw; font-weight: 700;
+  color: rgba(138, 123, 107, 0.05); white-space: nowrap; pointer-events: none;
+  z-index: -2; animation: floatText 20s ease-in-out infinite alternate;
+}
+@keyframes floatText { from { transform: translate(-50%, -50%) translateX(-5vw); } to { transform: translate(-50%, -50%) translateX(5vw); } }
+
+/* Titik-titik (Particles) */
+.particles {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: -1; pointer-events: none; overflow: hidden;
+}
+.particle {
+  position: absolute; bottom: -10px; background: rgba(138, 123, 107, 0.4);
+  border-radius: 50%; animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
 }
 
 /* --- CUSTOM CURSOR & TRAIL --- */
@@ -231,6 +256,8 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
     <div class="face bottom"></div>
   </div>
 </div>
+<div class="bg-text">BAÉQ</div>
+<div class="particles" id="particles-container"></div>
 
 <div class="cursor" id="customCursor"></div>
 <div id="preloader">Baéq.</div>
@@ -379,6 +406,20 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 <aside class="drawer" id="drawer" aria-label="Cart"><header><h2 style="font-family: 'Playfair Display', serif; font-weight: 400; font-size: 1.8rem;">Your Bag</h2><button class="pill" id="closecart" style="padding: 8px 15px; font-size: 0.7rem;">Close</button></header><ul id="lines" style="list-style:none;margin:0;padding:0;flex:1;overflow:auto; border-top: 1px solid var(--line); margin-top: 20px;"></ul><div class="sum" style="padding-top:20px;display:grid;gap:15px;"><div class="row" style="display:flex;justify-content:space-between;font-weight:600; font-size: 1rem;"><span>Total</span><span id="tot">RM0</span></div><small id="ship" style="color:var(--muted); font-size: 0.8rem;"></small><a class="pill" id="co" target="_blank" rel="noopener" href="#" style="text-align:center; background: var(--ink); color: var(--bg-main); border: none; padding: 14px;"><span>Checkout</span></a><small style="color:var(--muted); text-align: center; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;">Payment details via WhatsApp</small></div></aside>
 
 <script>
+// --- PARTICLE GENERATOR ---
+const pContainer = document.getElementById('particles-container');
+for (let i = 0; i < 40; i++) {
+    let p = document.createElement('div');
+    p.className = 'particle';
+    let size = Math.random() * 6 + 2 + 'px';
+    p.style.width = size;
+    p.style.height = size;
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.animationDuration = Math.random() * 15 + 10 + 's';
+    p.style.animationDelay = Math.random() * 10 + 's';
+    pContainer.appendChild(p);
+}
+
 // --- LOGIK GAME & DISKAUN ---
 const spinBtn = document.getElementById('spin-btn');
 const pointDisplay = document.getElementById('point-display');
