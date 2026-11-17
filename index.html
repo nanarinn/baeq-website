@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Baéq – Premium Inner caps</title>
 <meta name="description" content="Baéq inner caps in soft, cool fabrics. Order on WhatsApp. Shipping across Malaysia.">
 <meta name="theme-color" content="#C4C9CE">
@@ -242,6 +242,107 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
   * {cursor: auto !important;}
   .cursor, .trail-dot {display: none !important;}
 }
+
+/* --- RESPONSIVE NAVIGATION & POLISH --- */
+.nav-shell{height:70px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-family:'Playfair Display',serif;font-weight:500;font-size:1.75rem;text-decoration:none;color:var(--ink);letter-spacing:-.02em;position:relative;z-index:2}
+.primary-nav{display:flex;align-items:center;gap:30px}
+.primary-nav a{position:relative;color:var(--ink);font-size:.7rem;font-weight:600;letter-spacing:.08em;text-decoration:none;text-transform:uppercase}
+.primary-nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-7px;height:1px;background:var(--ink);transition:right .3s ease}
+.primary-nav a:hover::after,.primary-nav a:focus-visible::after{right:0}
+.menu-toggle{display:none;width:42px;height:42px;border:1px solid var(--ink);border-radius:50%;background:transparent;place-items:center;gap:4px;padding:11px;cursor:pointer}
+.menu-toggle span{display:block;width:18px;height:1.5px;background:var(--ink);transition:transform .3s ease,opacity .3s ease}
+.menu-open .menu-toggle span:first-child{transform:translateY(3px) rotate(45deg)}
+.menu-open .menu-toggle span:last-child{transform:translateY(-3px) rotate(-45deg)}
+.top{transition:box-shadow .3s ease,background .3s ease}
+.top.scrolled{background:rgba(235,238,240,.94);box-shadow:0 12px 35px rgba(17,17,17,.08)}
+.scroll-progress{position:absolute;left:0;bottom:-1px;width:100%;height:2px;background:linear-gradient(90deg,var(--accent),var(--ink));transform:scaleX(0);transform-origin:left center;will-change:transform}
+
+.hero::before{content:"";position:absolute;width:min(56vw,720px);aspect-ratio:1;right:-18vw;top:-22vw;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.52),rgba(138,123,107,.14) 42%,transparent 70%);filter:blur(4px);animation:heroGlow 8s ease-in-out infinite alternate;pointer-events:none}
+@keyframes heroGlow{to{transform:translate(-5vw,6vw) scale(1.12)}}
+.hmeta{display:flex;flex-wrap:wrap;gap:12px}
+.mwrap{min-width:0}
+.mirror.on .shine{animation:mirrorSweep 2.8s ease-in-out infinite}
+@keyframes mirrorSweep{0%,35%{transform:translateX(-65%)}75%,100%{transform:translateX(65%)}}
+
+.split{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(40px,8vw,110px);align-items:start}
+.split h2,.faq h2,.end h2,.dark h2{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,6vw,5rem);font-weight:400;line-height:1.02;letter-spacing:-.04em}
+.split>div>p{margin-top:22px;max-width:46ch;color:var(--muted)}
+.cells{border-top:1px solid var(--line)}
+.cells>div{padding:25px 0;border-bottom:1px solid var(--line);transition:padding-left .3s ease,background .3s ease}
+.cells>div:hover{padding-left:14px;background:linear-gradient(90deg,rgba(255,255,255,.32),transparent)}
+.cells h3{font:600 1.05rem 'Inter Tight',sans-serif;text-transform:uppercase}
+.cells p{margin-top:7px;color:var(--muted)}
+.tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.faq{display:grid;grid-template-columns:minmax(0,.65fr) minmax(0,1.35fr);gap:clamp(40px,8vw,100px)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{display:flex;justify-content:space-between;gap:20px;padding:22px 0;cursor:pointer;font-weight:600;list-style:none}
+.faq summary::after{content:"+";font-size:1.25rem;transition:transform .25s ease}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 40px 22px 0;color:var(--muted)}
+.step{transition:transform .35s ease,background .35s ease}
+.step:hover{transform:translateY(-7px);background:rgba(255,255,255,.18)}
+
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.5) 50%,transparent 65%);transform:translateX(-130%);transition:transform .75s ease;pointer-events:none}
+.card:hover::after{transform:translateX(130%)}
+.rv{transition-delay:var(--reveal-delay,0ms)}
+:focus-visible{outline:3px solid rgba(17,17,17,.65);outline-offset:4px}
+
+@media(max-width:900px){
+  .top .nav-shell{height:64px !important}
+  .menu-toggle{display:grid;order:2}
+  .top #primaryNav{display:flex !important;position:absolute;top:calc(100% + 10px);left:14px;right:14px;flex-direction:column;align-items:stretch;gap:0;padding:10px;border:1px solid var(--line);border-radius:16px;background:rgba(247,248,249,.97);box-shadow:0 24px 55px rgba(17,17,17,.18);opacity:0;visibility:hidden;transform:translateY(-12px) scale(.98);transform-origin:top;transition:opacity .25s ease,transform .25s ease,visibility .25s;pointer-events:none}
+  .menu-open .top #primaryNav{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+  .primary-nav a{padding:15px 14px;border-radius:10px;font-size:.78rem}
+  .primary-nav a:hover,.primary-nav a:focus-visible{background:rgba(196,201,206,.45)}
+  .primary-nav a::after{display:none}
+  #cartbtn{order:3}
+  .split,.faq{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr !important;gap:0}
+  .step{padding:28px 0 !important;border-right:0 !important;border-bottom:1px solid var(--line)}
+  .fab{right:14px;bottom:14px;padding:12px 16px}
+  .drawer{padding:22px;max-width:100%}
+}
+
+@media(max-width:640px){
+  .in{padding-inline:16px}
+  .strip{font-size:.62rem !important;line-height:1.4}
+  .logo{font-size:1.5rem !important}
+  .menu-toggle{width:38px;height:38px}
+  #cartbtn{padding:8px 10px !important}
+  .hero{padding:30px 0 52px !important}
+  .hgrid{gap:26px !important}
+  .hero h1{font-size:clamp(2.75rem,18vw,4.6rem) !important}
+  .mwrap{width:100%;max-width:390px;margin-inline:auto}
+  .mirrors{padding-inline:8% !important}
+  .mirror{flex-basis:84% !important}
+  .hmeta{display:grid !important;grid-template-columns:1fr;width:100%}
+  .hmeta .pill{margin-bottom:0 !important;min-height:48px;display:grid;place-items:center}
+  .grid{grid-template-columns:1fr !important;gap:18px !important}
+  .card{padding:15px !important;border-radius:16px}
+  .card h3{font-size:1.15rem !important}
+  .card p{font-size:.84rem !important}
+  .card .price{font-size:1rem !important}
+  .card .pill{min-height:46px;font-size:.75rem !important}
+  .cd{width:28px !important;height:28px !important}
+  .game-section{padding:58px 14px}
+  .game-section h2{font-size:2.15rem}
+  .game-section p{font-size:.95rem;margin-bottom:28px}
+  .game-card{padding:24px 16px !important;border-radius:18px}
+  .reward-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px}
+  .reward-card{padding:13px 10px}
+  .reward-name{font-size:.86rem}
+  .claim-btn{min-height:40px}
+  .toast{bottom:82px;width:calc(100% - 28px);padding:13px 18px;text-align:center;font-size:.85rem}
+  .fgrid{margin-top:55px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;scroll-behavior:auto !important;transition-duration:.01ms !important}
+  .particles,.scene,.cursor,.trail-dot{display:none !important}
+  .rv{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
@@ -265,7 +366,20 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 <div class="toast" id="toast">Points collected!</div>
 
 <div class="strip"><div class="in"><span>Complimentary shipping over RM100</span></div></div>
-<header class="top"><div class="in" style="display:flex;align-items:center;justify-content:space-between;height:70px;"><a class="logo" href="#" style="font-family:'Playfair Display',serif;font-weight:500;font-size:1.6rem;text-decoration:none; color: var(--ink); letter-spacing: -0.02em;">Baéq</a><nav style="display:flex;"><a href="#collection" style="margin:0 15px;text-decoration:none;font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; font-weight:600; color:var(--ink);">Collection</a><a href="#why" style="margin:0 15px;text-decoration:none;font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; font-weight:600; color:var(--ink);">Philosophy</a><a href="#faq" style="margin:0 15px;text-decoration:none;font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; font-weight:600; color:var(--ink);">FAQ</a><a href="#order" style="margin:0 15px;text-decoration:none;font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; font-weight:600; color:var(--ink);">Contact</a></nav><button class="pill" id="cartbtn" aria-label="Open cart" style="padding: 8px 15px; font-size: 0.7rem;">Bag (<b id="cnt">0</b>)</button></div></header>
+<header class="top" id="siteHeader">
+  <div class="in nav-shell">
+    <a class="logo" href="#" aria-label="Baéq home">Baéq</a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation menu"><span></span><span></span></button>
+    <nav class="primary-nav" id="primaryNav" aria-label="Primary navigation">
+      <a href="#collection">Collection</a>
+      <a href="#why">Philosophy</a>
+      <a href="#faq">FAQ</a>
+      <a href="#order">Contact</a>
+    </nav>
+    <button class="pill" id="cartbtn" aria-label="Open cart">Bag (<b id="cnt">0</b>)</button>
+  </div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+</header>
 
 <section class="hero">
   <div class="in hgrid">
@@ -408,7 +522,9 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 <script>
 // --- PARTICLE GENERATOR ---
 const pContainer = document.getElementById('particles-container');
-for (let i = 0; i < 40; i++) {
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const particleCount = reduceMotion ? 0 : (window.innerWidth < 700 ? 12 : 32);
+for (let i = 0; i < particleCount; i++) {
     let p = document.createElement('div');
     p.className = 'particle';
     let size = Math.random() * 6 + 2 + 'px';
@@ -514,6 +630,51 @@ window.addEventListener('load', function() {
     document.getElementById('preloader').classList.add('hide');
 });
 
+// --- MOBILE MENU & SCROLL INDICATOR ---
+const menuToggle = document.getElementById('menuToggle');
+const primaryNav = document.getElementById('primaryNav');
+const siteHeader = document.getElementById('siteHeader');
+const scrollProgress = document.getElementById('scrollProgress');
+
+function closeMenu() {
+    document.body.classList.remove('menu-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Open navigation menu');
+}
+
+menuToggle.addEventListener('click', function() {
+    const opening = !document.body.classList.contains('menu-open');
+    document.body.classList.toggle('menu-open', opening);
+    menuToggle.setAttribute('aria-expanded', String(opening));
+    menuToggle.setAttribute('aria-label', opening ? 'Close navigation menu' : 'Open navigation menu');
+});
+
+primaryNav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', closeMenu);
+});
+
+let scrollTicking = false;
+function updateScrollEffects() {
+    const top = window.scrollY;
+    const max = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+    siteHeader.classList.toggle('scrolled', top > 12);
+    scrollProgress.style.transform = 'scaleX(' + Math.min(top / max, 1) + ')';
+
+    if (!reduceMotion) {
+        const title = document.getElementById('heroTitle');
+        if (title) title.style.transform = 'translateY(' + Math.min(top * 0.08, 45) + 'px)';
+    }
+    scrollTicking = false;
+}
+
+window.addEventListener('scroll', function() {
+    if (!scrollTicking) {
+        requestAnimationFrame(updateScrollEffects);
+        scrollTicking = true;
+    }
+}, { passive: true });
+updateScrollEffects();
+
 // --- MAGNETIC BUTTON LOGIC ---
 document.querySelectorAll('.magnetic-btn').forEach(btn => {
     btn.addEventListener('mousemove', e => {
@@ -525,15 +686,6 @@ document.querySelectorAll('.magnetic-btn').forEach(btn => {
     btn.addEventListener('mouseleave', () => {
         btn.style.transform = `translate(0px, 0px)`;
     });
-});
-
-// --- PARALLAX EFFECT ON SCROLL ---
-window.addEventListener('scroll', () => {
-    const title = document.getElementById('heroTitle');
-    if(title){
-        let scrollY = window.scrollY;
-        title.style.transform = `translateY(${scrollY * 0.1}px)`;
-    }
 });
 
 // --- DATA & LOGIC BAWAAN ---
@@ -632,13 +784,40 @@ document.getElementById('cartbtn').onclick=function(){openCart(true)};
 document.getElementById('closecart').onclick=document.getElementById('scrim').onclick=function(){openCart(false)};
 document.addEventListener('keydown',function(e){if(e.key==='Escape')openCart(false)});
 
+// Close the mobile menu when tapping outside it or pressing Escape.
+document.addEventListener('click', function(e) {
+  if (document.body.classList.contains('menu-open') && !e.target.closest('.top')) closeMenu();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeMenu();
+});
+
+// A subtle pointer tilt for product cards on capable desktop devices.
+if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  document.addEventListener('pointermove', function(e) {
+    const card = e.target.closest('.card');
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const rx = ((e.clientY - rect.top) / rect.height - .5) * -3;
+    const ry = ((e.clientX - rect.left) / rect.width - .5) * 3;
+    card.style.transform = 'translateY(-8px) perspective(900px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
+  });
+  document.addEventListener('pointerout', function(e) {
+    const card = e.target.closest('.card');
+    if (card && !card.contains(e.relatedTarget)) card.style.removeProperty('transform');
+  });
+}
+
 renderCart();
+document.querySelectorAll('.cells > div, .step, .reward-card').forEach(function(el, index) {
+  el.style.setProperty('--reveal-delay', Math.min(index * 70, 280) + 'ms');
+});
 if('IntersectionObserver' in window){
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){
       if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}
     })
-  },{threshold:.15});
+  },{threshold:.04,rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.rv').forEach(function(el){io.observe(el)})
 }
 
