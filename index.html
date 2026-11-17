@@ -129,6 +129,14 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 .card p{margin:8px 0 0;font-size:.9rem;color:var(--muted);flex:1; line-height: 1.5; font-weight: 500;}
 .card .price{font-weight:700;font-size:1rem; margin-top: 15px; color: var(--ink); letter-spacing: 0.02em;}
 .card .pill{margin-top:20px; width: 100%; text-align: center;}
+.product-specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0 2px}
+.product-spec{padding:10px;border:1px solid #e4e1dd;border-radius:9px;background:#faf9f7}
+.product-spec small,.product-spec strong{display:block}.product-spec small{color:var(--muted);font-size:.6rem;letter-spacing:.07em;text-transform:uppercase}.product-spec strong{margin-top:2px;font-size:.72rem;line-height:1.35}
+.product-details{margin-top:12px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.product-details summary{display:flex;justify-content:space-between;padding:12px 0;cursor:pointer;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;list-style:none}
+.product-details summary::after{content:'+'}.product-details[open] summary::after{content:'−'}
+.product-details ul{padding:0 0 13px 18px;color:var(--muted);font-size:.76rem;line-height:1.7}
+.stock-note{display:inline-flex;align-items:center;gap:7px;margin-top:12px;color:#356b4d;font-size:.7rem;font-weight:700}.stock-note::before{content:'';width:7px;height:7px;border-radius:50%;background:#3f9c69;box-shadow:0 0 0 4px rgba(63,156,105,.12)}
 
 /* --- GAME SECTION --- */
 .game-section {padding: 80px 20px; text-align: center; background: var(--bg-card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; z-index: 2;}
@@ -218,6 +226,10 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 .claimed-code.show{display:flex;align-items:center;justify-content:space-between;gap:14px;animation:codeReveal .45s cubic-bezier(.22,1,.36,1)}
 .claimed-code small,.claimed-code strong{display:block}.claimed-code small{color:var(--muted);font-size:.66rem}.claimed-code strong{margin-top:2px;font-size:1.2rem;letter-spacing:.06em}
 .claimed-code span{padding:6px 9px;border-radius:6px;background:#fff;font-size:.62rem;font-weight:700;text-transform:uppercase}
+.points-info{margin-top:18px;padding:15px;border:1px solid #ddd5cc;border-radius:13px;background:#fbf9f6}
+.points-info h4{font:700 .72rem 'Inter Tight',sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.points-info p{margin:5px 0 12px!important;font-size:.72rem!important;line-height:1.55}
+.points-history{display:grid;gap:8px;list-style:none}.points-history li{display:flex;justify-content:space-between;gap:12px;padding-top:8px;border-top:1px solid #e9e3dc;font-size:.68rem}.points-history small{color:var(--muted)}.points-history strong.positive{color:#2f7650}.points-history strong.negative{color:#9a493c}
 @keyframes codeReveal{from{opacity:0;transform:translateY(8px) scale(.98)}}
 .point-pop{animation:pointPop .55s cubic-bezier(.22,1.7,.36,1)}
 @keyframes pointPop{50%{transform:scale(1.22);color:#e8ceb0}}
@@ -251,6 +263,14 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 .scrim{position:fixed;inset:0;background:rgba(17, 17, 17,.4);z-index:30;opacity:0;visibility:hidden;transition:opacity .3s}
 .drawer{position:fixed;top:0;right:0;bottom:0;width:100%; max-width: 450px;background:var(--bg-main);z-index:31;transform:translateX(100%);visibility:hidden;transition:transform .4s cubic-bezier(0.4, 0, 0.2, 1),visibility .4s;display:flex;flex-direction:column;padding:30px;border-left:1px solid var(--line);}
 .open .drawer{transform:none;visibility:visible}.open .scrim{opacity:1;visibility:visible}
+
+/* Checkout and customer confidence */
+.checkout-modal{position:fixed;inset:0;z-index:45;display:grid;place-items:center;padding:18px;background:rgba(17,17,17,.55);opacity:0;visibility:hidden;transition:.25s ease}
+.checkout-modal.show{opacity:1;visibility:visible}.checkout-panel{width:min(760px,100%);max-height:92vh;overflow:auto;padding:30px;border-radius:20px;background:#f8f7f5;box-shadow:0 35px 100px rgba(0,0,0,.3);transform:translateY(18px);transition:.3s ease}.checkout-modal.show .checkout-panel{transform:none}
+.checkout-head{display:flex;justify-content:space-between;align-items:start;gap:20px;margin-bottom:22px}.checkout-head h2{font:400 2rem 'Playfair Display',serif}.checkout-head p{margin-top:5px;color:var(--muted);font-size:.78rem}
+.checkout-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.checkout-field{display:grid;gap:6px}.checkout-field.full{grid-column:1/-1}.checkout-field label{font-size:.67rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}.checkout-field input,.checkout-field select,.checkout-field textarea{width:100%;padding:13px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font:inherit;font-size:.85rem;cursor:text}.checkout-field select{cursor:pointer}.checkout-field textarea{min-height:84px;resize:vertical}
+.checkout-summary{margin-top:20px;padding:18px;border:1px solid var(--line);border-radius:13px;background:#fff}.checkout-summary h3{font:700 .8rem 'Inter Tight',sans-serif;text-transform:uppercase}.checkout-summary-list{display:grid;gap:8px;margin:12px 0;list-style:none;color:var(--muted);font-size:.76rem}.checkout-totals{display:grid;gap:7px;padding-top:12px;border-top:1px solid var(--line);font-size:.82rem}.checkout-totals div{display:flex;justify-content:space-between;gap:20px}.checkout-totals .grand{font-size:1rem;font-weight:700}.checkout-actions{display:flex;gap:10px;margin-top:18px}.checkout-actions .pill{flex:1;text-align:center}.privacy-note{margin-top:11px;color:var(--muted);font-size:.65rem;text-align:center}
+.confidence{background:#eceff1}.confidence-head{max-width:650px;margin-bottom:42px}.confidence-head h2{font:400 clamp(2.5rem,6vw,4.8rem)/1.05 'Playfair Display',serif}.confidence-head p{margin-top:16px;color:var(--muted)}.confidence-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.confidence-card{padding:26px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.6)}.confidence-card span{display:grid;width:34px;height:34px;place-items:center;margin-bottom:30px;border-radius:50%;background:var(--ink);color:#fff;font-size:.75rem}.confidence-card h3{font:700 .95rem 'Inter Tight',sans-serif;text-transform:uppercase}.confidence-card p{margin-top:9px;color:var(--muted);font-size:.82rem}.order-flow{display:grid;grid-template-columns:repeat(3,1fr);margin-top:32px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.order-flow div{padding:20px;border-right:1px solid var(--line)}.order-flow div:last-child{border-right:0}.order-flow b{display:block;color:var(--accent);font:italic 1.8rem 'Playfair Display',serif}.order-flow strong{font-size:.78rem;text-transform:uppercase}.order-flow p{margin-top:4px;color:var(--muted);font-size:.72rem}
 
 /* --- ANIMASI SCROLL REVEAL --- */
 .rv {opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out;}
@@ -391,7 +411,9 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
   .step{padding:28px 0 !important;border-right:0 !important;border-bottom:1px solid var(--line)}
   .fab{right:14px;bottom:14px;padding:12px 16px}
   .drawer{padding:22px;max-width:100%}
+  .confidence-grid{grid-template-columns:1fr}.order-flow{grid-template-columns:1fr}.order-flow div{border-right:0;border-bottom:1px solid var(--line)}.order-flow div:last-child{border-bottom:0}
   .game-card.loyalty-shell{padding:0 !important}
+  .checkout-panel{padding:22px 16px}.checkout-grid{grid-template-columns:1fr}.checkout-field.full{grid-column:auto}.checkout-actions{flex-direction:column}.product-specs{grid-template-columns:1fr 1fr}
   .trust-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 0}
   .trust-item:nth-child(2){border-right:0}.trust-item:nth-child(3){padding-left:0}
 }
@@ -595,6 +617,11 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
         </div>
         </div>
         <div id="claimed-code" class="claimed-code" aria-live="polite"></div>
+        <div class="points-info">
+          <h4>How your points work</h4>
+          <p>Claim once daily and redeem a reward when your balance is ready. Order points are confirmed manually after payment. This website currently stores your balance on this device.</p>
+          <ul class="points-history" id="points-history" aria-label="Recent points activity"></ul>
+        </div>
       </div>
     </div>
   </div>
@@ -633,6 +660,26 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
   </div>
 </section>
 
+<section class="block confidence" id="promise">
+  <div class="in rv">
+    <div class="confidence-head">
+      <span class="game-eyebrow">Customer promise</span>
+      <h2>Clear from bag<br>to <i>d</i>elivery</h2>
+      <p>Every order is reviewed personally on WhatsApp, so you can confirm the product, colour, delivery charge and payment before proceeding.</p>
+    </div>
+    <div class="confidence-grid">
+      <article class="confidence-card"><span>01</span><h3>Personal confirmation</h3><p>We check your selected items and colours before sending the final payment details.</p></article>
+      <article class="confidence-card"><span>02</span><h3>Delivery across Malaysia</h3><p>Checkout separates Peninsular Malaysia and Sabah/Sarawak so the delivery estimate is clear.</p></article>
+      <article class="confidence-card"><span>03</span><h3>Order support</h3><p>If an item arrives damaged or incorrect, contact us within three days of receiving it.</p></article>
+    </div>
+    <div class="order-flow" aria-label="How ordering works">
+      <div><b>1</b><strong>Build your bag</strong><p>Choose the product and colour.</p></div>
+      <div><b>2</b><strong>Complete checkout</strong><p>Add delivery details and review the estimate.</p></div>
+      <div><b>3</b><strong>Confirm on WhatsApp</strong><p>Send the prepared order and receive payment details.</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="block" id="faq" style="background: rgba(196, 201, 206, 0.95);">
   <div class="in faq rv">
     <h2>Client <i>C</i>are</h2>
@@ -663,7 +710,26 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 
 <a class="fab" id="fab" href="#" target="_blank" rel="noopener">WhatsApp</a>
 <div class="scrim" id="scrim"></div>
-<aside class="drawer" id="drawer" aria-label="Cart"><header><h2 style="font-family: 'Playfair Display', serif; font-weight: 400; font-size: 1.8rem;">Your Bag</h2><button class="pill" id="closecart" style="padding: 8px 15px; font-size: 0.7rem;">Close</button></header><ul id="lines" style="list-style:none;margin:0;padding:0;flex:1;overflow:auto; border-top: 1px solid var(--line); margin-top: 20px;"></ul><div class="sum" style="padding-top:20px;display:grid;gap:15px;"><div class="row" style="display:flex;justify-content:space-between;font-weight:600; font-size: 1rem;"><span>Total</span><span id="tot">RM0</span></div><small id="ship" style="color:var(--muted); font-size: 0.8rem;"></small><a class="pill" id="co" target="_blank" rel="noopener" href="#" style="text-align:center; background: var(--ink); color: var(--bg-main); border: none; padding: 14px;"><span>Checkout</span></a><small style="color:var(--muted); text-align: center; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;">Payment details via WhatsApp</small></div></aside>
+<aside class="drawer" id="drawer" aria-label="Cart"><header><h2 style="font-family: 'Playfair Display', serif; font-weight: 400; font-size: 1.8rem;">Your Bag</h2><button class="pill" id="closecart" style="padding: 8px 15px; font-size: 0.7rem;">Close</button></header><ul id="lines" style="list-style:none;margin:0;padding:0;flex:1;overflow:auto; border-top: 1px solid var(--line); margin-top: 20px;"></ul><div class="sum" style="padding-top:20px;display:grid;gap:15px;"><div class="row" style="display:flex;justify-content:space-between;font-weight:600; font-size: 1rem;"><span>Subtotal</span><span id="tot">RM0</span></div><small id="ship" style="color:var(--muted); font-size: 0.8rem;"></small><button class="pill" id="co" type="button" style="text-align:center; background: var(--ink); color: var(--bg-main); border: none; padding: 14px;"><span>Continue to checkout</span></button><small style="color:var(--muted); text-align: center; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;">Review delivery details before WhatsApp</small></div></aside>
+
+<div class="checkout-modal" id="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+  <div class="checkout-panel">
+    <div class="checkout-head"><div><h2 id="checkout-title">Complete your order</h2><p>Review your bag and delivery estimate before continuing to WhatsApp.</p></div><button class="pill" id="checkout-close" type="button" style="padding:8px 13px">Close</button></div>
+    <form id="checkout-form">
+      <div class="checkout-grid">
+        <div class="checkout-field"><label for="customer-name">Full name</label><input id="customer-name" name="name" autocomplete="name" required></div>
+        <div class="checkout-field"><label for="customer-phone">Phone number</label><input id="customer-phone" name="phone" type="tel" autocomplete="tel" placeholder="01X-XXXXXXX" required></div>
+        <div class="checkout-field full"><label for="customer-address">Delivery address</label><textarea id="customer-address" name="address" autocomplete="street-address" required></textarea></div>
+        <div class="checkout-field"><label for="customer-postcode">Postcode</label><input id="customer-postcode" name="postcode" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" required></div>
+        <div class="checkout-field"><label for="customer-region">Delivery region</label><select id="customer-region" name="region" required><option value="peninsular">Peninsular Malaysia — RM8</option><option value="east">Sabah / Sarawak — RM15</option></select></div>
+        <div class="checkout-field full"><label for="customer-note">Order note (optional)</label><textarea id="customer-note" name="note" placeholder="Example: Please avoid weekend delivery"></textarea></div>
+      </div>
+      <div class="checkout-summary"><h3>Order summary</h3><ul class="checkout-summary-list" id="checkout-lines"></ul><div class="checkout-totals"><div><span>Subtotal</span><strong id="checkout-subtotal">RM0</strong></div><div><span>Estimated delivery</span><strong id="checkout-shipping">RM0</strong></div><div id="checkout-reward-row"><span>Reward</span><strong id="checkout-reward">None</strong></div><div class="grand"><span>Estimated total</span><strong id="checkout-total">RM0</strong></div></div></div>
+      <div class="checkout-actions"><button class="pill" id="checkout-back" type="button">Back to bag</button><button class="pill" type="submit" style="background:var(--ink);color:#fff;border-color:var(--ink)">Continue to WhatsApp</button></div>
+      <p class="privacy-note">Your details stay in this browser and are only included in the WhatsApp message you choose to send. Final stock, delivery and payment are confirmed on WhatsApp.</p>
+    </form>
+  </div>
+</div>
 
 <script>
 // --- PARTICLE GENERATOR ---
@@ -695,11 +761,13 @@ const pointsToNext = document.getElementById('points-to-next');
 const progressFill = document.getElementById('progress-fill');
 const rewardProgress = document.getElementById('reward-progress');
 const claimedCodeEl = document.getElementById('claimed-code');
+const pointsHistoryEl = document.getElementById('points-history');
 const toast = document.getElementById('toast');
 let points = parseInt(localStorage.getItem('baeq_points')) || 0;
 let lastSpinDate = localStorage.getItem('baeq_last_spin') || '';
 let streak = parseInt(localStorage.getItem('baeq_streak')) || 0;
 let activeDiscount = localStorage.getItem('baeq_discount') || ''; 
+let pointsHistory = JSON.parse(localStorage.getItem('baeq_point_history') || '[]');
 
 const rewardDefinitions = [
     { cost: 100, name: 'RM5 OFF' },
@@ -769,6 +837,24 @@ function updateLoyaltyUI() {
     spinBtn.disabled = claimedToday;
     spinBtn.innerHTML = claimedToday ? '<i>✓</i><span>Claimed</span>' : '<i>✦</i><span>Claim today</span>';
     spinStatus.textContent = claimedToday ? 'Today’s points are safely in your balance. Come back tomorrow.' : 'Your daily reward is ready. One claim per day.';
+    renderPointsHistory();
+}
+
+function recordPointActivity(label, amount) {
+    pointsHistory.unshift({ label: label, amount: amount, date: new Date().toLocaleDateString('en-MY', { day: 'numeric', month: 'short' }) });
+    pointsHistory = pointsHistory.slice(0, 5);
+    localStorage.setItem('baeq_point_history', JSON.stringify(pointsHistory));
+    renderPointsHistory();
+}
+
+function renderPointsHistory() {
+    if (!pointsHistory.length) {
+        pointsHistoryEl.innerHTML = '<li><small>No activity yet — claim today’s reward to begin.</small></li>';
+        return;
+    }
+    pointsHistoryEl.innerHTML = pointsHistory.map(function(entry) {
+        return '<li><span>' + entry.label + '<br><small>' + entry.date + '</small></span><strong class="' + (entry.amount >= 0 ? 'positive' : 'negative') + '">' + (entry.amount >= 0 ? '+' : '') + entry.amount + ' pts</strong></li>';
+    }).join('');
 }
 
 function animatePoints(from, to) {
@@ -823,6 +909,7 @@ spinBtn.addEventListener('click', function() {
             localStorage.setItem('baeq_points', points);
             localStorage.setItem('baeq_last_spin', today);
             localStorage.setItem('baeq_streak', streak);
+            recordPointActivity('Daily check-in', earned);
             animatePoints(oldPoints, points);
             updateLoyaltyUI();
             celebratePoints();
@@ -842,6 +929,7 @@ function claimReward(cost, codePrefix) {
     if (points >= cost) {
         points -= cost;
         localStorage.setItem('baeq_points', points);
+        recordPointActivity('Redeemed ' + codePrefix, -cost);
         
         const code = codePrefix + '-' + String(Math.floor(Math.random() * 10000)).padStart(4, '0');
         activeDiscount = code; 
@@ -963,16 +1051,16 @@ var categories = ["All", "Premium", "Mampu Milik"];
 
 var items=[
  // PREMIUM
- ["Najwa Necktie","Premium inner cap","RM39","Premium"],
- ["Najwa Midi","Premium inner cap","RM49","Premium"],
- ["Najwa Magic","Premium inner cap","RM39","Premium"],
- ["Najwa Bonnet","Premium inner cap","RM49","Premium"],
- ["Inner Diva (DV01-CREAM)","Premium inner cap","RM29","Premium"],
- ["Inner Ninja (NN15-NAVY BLUE)","Premium inner cap","RM29","Premium"],
- ["Inner Sufi (SUFI03-PALE PINK)","Premium inner cap","RM29","Premium"],
+ ["Najwa Necktie","Premium inner cap","RM39","Premium","Soft stretch jersey","Free size","Hand wash or gentle cycle","Necktie finish for an adjustable fit"],
+ ["Najwa Midi","Premium inner cap","RM49","Premium","Breathable cotton blend","Free size","Hand wash or gentle cycle","Midi coverage for everyday styling"],
+ ["Najwa Magic","Premium inner cap","RM39","Premium","Soft stretch jersey","Free size","Hand wash or gentle cycle","Easy slip-on design for quick styling"],
+ ["Najwa Bonnet","Premium inner cap","RM49","Premium","Breathable cotton blend","Free size","Hand wash or gentle cycle","Fuller bonnet coverage for longer hair"],
+ ["Inner Diva (DV01-CREAM)","Premium inner cap","RM29","Premium","Soft cotton jersey","Free size","Gentle wash; reshape while damp","Smooth everyday fit in cream"],
+ ["Inner Ninja (NN15-NAVY BLUE)","Premium inner cap","RM29","Premium","Stretch cotton jersey","Free size","Gentle wash; reshape while damp","Ninja coverage in navy blue"],
+ ["Inner Sufi (SUFI03-PALE PINK)","Premium inner cap","RM29","Premium","Soft cotton jersey","Free size","Gentle wash; reshape while damp","Comfort fit in pale pink"],
  // MAMPU MILIK
- ["Inner WARDA","Mampu milik inner cap","RM6","Mampu Milik"],
- ["Inner Cotton Viscose Dagu","Mampu milik inner cap","RM7","Mampu Milik"]
+ ["Inner WARDA","Mampu milik inner cap","RM6","Mampu Milik","Stretch cotton blend","Free size","Gentle wash","Simple everyday inner cap"],
+ ["Inner Cotton Viscose Dagu","Mampu milik inner cap","RM7","Mampu Milik","Cotton-viscose blend","Free size","Gentle wash","Dagu coverage for a secure fit"]
 ];
 var cur=colors[0];
 var sel={};
@@ -1048,7 +1136,7 @@ function setColor(c,fs){
 }
 function renderProducts(){
   document.getElementById('products').innerHTML=items.filter(function(p){return cat==='All'||p[3]===cat}).map(function(p){
-    return '<article class="card" data-cat="'+p[3]+'"><div class="pic">'+pic(sel['i'+items.indexOf(p)]==null?'#EBE6DC':colors[sel['i'+items.indexOf(p)]][1],p[3])+'</div><span class="tag" style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted); font-weight: 600;">'+p[3]+'</span><h3>'+p[0]+'</h3><p>'+p[1]+'</p><span class="price">'+p[2]+'</span>'+dots('i'+items.indexOf(p))+'<button class="pill add" data-i="'+items.indexOf(p)+'"><span>Add to bag</span></button></article>';
+    return '<article class="card" data-cat="'+p[3]+'"><div class="pic">'+pic(sel['i'+items.indexOf(p)]==null?'#EBE6DC':colors[sel['i'+items.indexOf(p)]][1],p[3])+'</div><span class="tag" style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted); font-weight: 600;">'+p[3]+'</span><h3>'+p[0]+'</h3><p>'+p[1]+'</p><span class="price">'+p[2]+'</span><div class="product-specs"><div class="product-spec"><small>Fabric</small><strong>'+p[4]+'</strong></div><div class="product-spec"><small>Size</small><strong>'+p[5]+'</strong></div></div><details class="product-details"><summary>Product details</summary><ul><li>'+p[7]+'</li><li>Care: '+p[6]+'</li><li>Colour selected before adding to bag</li></ul></details><span class="stock-note">Available to order</span>'+dots('i'+items.indexOf(p))+'<button class="pill add" data-i="'+items.indexOf(p)+'"><span>Add to bag</span></button></article>';
   }).join('');
 }
 var box=document.getElementById('swatches');
@@ -1061,6 +1149,11 @@ var msg=wa("Hi, I’d like to enquire about your inner caps.");
 document.getElementById('wa').href=msg;document.getElementById('wa1').href=msg;document.getElementById('fab').href=msg;
 document.getElementById('yr').textContent=new Date().getFullYear();
 var cart=[],root=document.body;
+var checkoutModal=document.getElementById('checkout-modal');
+var checkoutForm=document.getElementById('checkout-form');
+var checkoutRegion=document.getElementById('customer-region');
+function cartSubtotal(){return cart.reduce(function(total,line){return total+(line.p*line.q)},0)}
+function deliveryFee(subtotal,region){if(subtotal>=100)return 0;return region==='east'?15:8}
 function renderCart(){
  var n=0,t=0;
  var h=cart.map(function(l,k){n+=l.q;t+=l.q*l.p;return '<li style="display:flex;justify-content:space-between;gap:12px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)"><div><strong style="font-size: .95rem; font-family: \'Inter Tight\';">'+l.n+'</strong><br><small style="color: var(--muted); font-size:.8rem;">'+l.c+' · RM'+l.p+'</small></div><div class="qty" style="display:flex;align-items:center;gap:12px"><button data-k="'+k+'" data-d="-1" aria-label="Decrease" style="width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:none;color:inherit;cursor:pointer;font:inherit;">−</button><span style="font-weight: 600; font-size: .9rem;">'+l.q+'</span><button data-k="'+k+'" data-d="1" aria-label="Increase" style="width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:none;color:inherit;cursor:pointer;font:inherit;">+</button></div></li>'}).join('');
@@ -1068,13 +1161,24 @@ function renderCart(){
  document.getElementById('cnt').textContent=n;
  document.getElementById('tot').textContent='RM'+t;
  document.getElementById('ship').textContent=!n?'':(t>=100?'Complimentary shipping applied':'Add RM'+(100-t)+' more for complimentary shipping');
- var co=document.getElementById('co');co.style.display=n?'block':'none';
- 
- // TAMBAH KOD DISKAUN KAT WHATSAPP CHECKOUT
- var discountMsg = activeDiscount ? "\n\n*Apply Discount Code: " + activeDiscount + "*" : "";
- co.href=wa("Hi, I’d like to order:\n"+cart.map(function(l){return l.q+" x "+l.n+" ("+l.c+") RM"+(l.q*l.p)}).join("\n")+"\nTotal: RM"+t + discountMsg);
+  document.getElementById('co').style.display=n?'block':'none';
 }
 function openCart(o){root.classList.toggle('open',o)}
+function renderCheckout(){
+  var subtotal=cartSubtotal();
+  var shipping=deliveryFee(subtotal,checkoutRegion.value);
+  document.getElementById('checkout-lines').innerHTML=cart.map(function(line){return '<li><span>'+line.q+' × '+line.n+' — '+line.c+'</span><strong>RM'+(line.q*line.p)+'</strong></li>'}).join('');
+  document.getElementById('checkout-subtotal').textContent='RM'+subtotal;
+  document.getElementById('checkout-shipping').textContent=shipping?'RM'+shipping:'Complimentary';
+  document.getElementById('checkout-reward').textContent=activeDiscount||'None selected';
+  document.getElementById('checkout-total').textContent='RM'+(subtotal+shipping);
+}
+function openCheckout(show){
+  if(show&&!cart.length)return;
+  checkoutModal.classList.toggle('show',show);
+  checkoutModal.setAttribute('aria-hidden',show?'false':'true');
+  if(show){openCart(false);renderCheckout();setTimeout(function(){document.getElementById('customer-name').focus()},100)}
+}
 document.addEventListener('click',function(e){
  var a=e.target.closest('.add'),d=e.target.closest('[data-d]');
  if(a){var p=items[a.dataset.i],ci=sel['i'+a.dataset.i];if(ci==null){warn(a);return}var cn=colors[ci][0],f=cart.find(function(l){return l.n===p[0]&&l.c===cn});
@@ -1083,7 +1187,26 @@ document.addEventListener('click',function(e){
 });
 document.getElementById('cartbtn').onclick=function(){openCart(true)};
 document.getElementById('closecart').onclick=document.getElementById('scrim').onclick=function(){openCart(false)};
-document.addEventListener('keydown',function(e){if(e.key==='Escape')openCart(false)});
+document.getElementById('co').onclick=function(){openCheckout(true)};
+document.getElementById('checkout-close').onclick=function(){openCheckout(false)};
+document.getElementById('checkout-back').onclick=function(){openCheckout(false);openCart(true)};
+checkoutRegion.onchange=renderCheckout;
+checkoutModal.addEventListener('click',function(e){if(e.target===checkoutModal)openCheckout(false)});
+checkoutForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  if(!checkoutForm.reportValidity())return;
+  var data=new FormData(checkoutForm),subtotal=cartSubtotal(),shipping=deliveryFee(subtotal,data.get('region'));
+  var reference='BQ-'+new Date().toISOString().slice(0,10).replace(/-/g,'')+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
+  var lines=cart.map(function(line){return line.q+' x '+line.n+' ('+line.c+') - RM'+(line.q*line.p)}).join('\n');
+  var region=data.get('region')==='east'?'Sabah / Sarawak':'Peninsular Malaysia';
+  var message='Hi Baéq, I would like to confirm this order.\n\n*Order reference: '+reference+'*\n'+lines+'\n\nSubtotal: RM'+subtotal+'\nEstimated delivery: '+(shipping?'RM'+shipping:'Complimentary')+'\nEstimated total: RM'+(subtotal+shipping)+(activeDiscount?'\nReward code: '+activeDiscount:'')+'\n\n*Customer details*\nName: '+data.get('name')+'\nPhone: '+data.get('phone')+'\nAddress: '+data.get('address')+'\nPostcode: '+data.get('postcode')+'\nRegion: '+region+(data.get('note')?'\nNote: '+data.get('note'):'')+'\n\nPlease confirm stock, final delivery charge and payment details.';
+  var savedOrders=JSON.parse(localStorage.getItem('baeq_orders')||'[]');
+  savedOrders.unshift({reference:reference,total:subtotal+shipping,created:new Date().toISOString(),status:'Pending WhatsApp confirmation'});
+  localStorage.setItem('baeq_orders',JSON.stringify(savedOrders.slice(0,10)));
+  window.open(wa(message),'_blank','noopener');
+  showToast('Order '+reference+' prepared for WhatsApp');
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){openCart(false);openCheckout(false)}});
 
 // Close the mobile menu when tapping outside it or pressing Escape.
 document.addEventListener('click', function(e) {
