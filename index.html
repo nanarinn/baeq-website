@@ -474,15 +474,10 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
   .rv{opacity:1;transform:none}
 }
 
-/* --- 360° TURNTABLE (CARTOON CERMIN) --- */
-.glass{perspective:1600px}
-.turntable{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform;pointer-events:none}
-.tt-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#F0EDE6}
-.tt-face svg{width:100%;height:100%;display:block}
-.tt-0{transform:rotateY(0deg) translateZ(var(--tz,150px))}
-.tt-90{transform:rotateY(90deg) translateZ(var(--tz,150px))}
-.tt-180{transform:rotateY(180deg) translateZ(var(--tz,150px))}
-.tt-270{transform:rotateY(270deg) translateZ(var(--tz,150px))}
+/* --- 360° TURNTABLE SMOOTH (TIADA GARIS SAMBUNGAN) --- */
+.turntable{position:absolute;inset:0;pointer-events:none}
+.tt-layer{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;will-change:transform,opacity;background:#F0EDE6}
+.tt-layer svg{width:100%;height:100%;display:block}
 .mirror-note .note-left{display:flex;align-items:center;gap:8px;min-width:0}
 .spin-toggle{flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.14);color:#fff;font-size:.6rem;line-height:1;display:grid;place-items:center;cursor:pointer;transition:background .3s}
 .spin-toggle:hover{background:rgba(255,255,255,.3)}
@@ -1311,37 +1306,41 @@ if('IntersectionObserver' in window){
   document.querySelectorAll('.rv').forEach(function(el){io.observe(el)})
 }
 
-// --- CERMIN 360° TURNTABLE ---
+// --- CERMIN 360° SMOOTH (SATU PAPARAN + CROSSFADE, TIADA GARIS) ---
 var mir=document.getElementById('mirrors'),mcnt=document.getElementById('mcount'),mi=0,lockT=0,raf;
 var SPIN_SPEED=40; // darjah per detik — 360/40 = 9 detik satu pusingan penuh
+var VIEWS=['f','r','b','l'];
 var spinAngle=0,autoSpin=!reduceMotion,dragging=false,dragX=0,dragA=0,lastT=0;
 var spinHint=window.matchMedia('(pointer: fine)').matches?'Drag to spin · 360°':'Auto spin · 360°';
 
-function ttFace(cls,c,j,view){return '<div class="tt-face '+cls+'">'+mirrorView(c,j,view)+'</div>'}
+// Jana & simpan semua sudut siap-siap (supaya pertukaran nanti lancar, tak perlu lukis semula)
+var viewCache=colors.map(function(c,j){var o={};VIEWS.forEach(function(v){o[v]=mirrorView(c[1],j,v)});return o});
 
 mir.innerHTML=colors.map(function(c,j){
  return '<div class="mirror" data-j="'+j+'" style="flex:0 0 74%;scroll-snap-align:center;text-align:center;transform:scale(.86);opacity:.5;transition:transform .35s,opacity .35s">'+
  '<div class="frame" style="padding:12px;border-radius:999px 999px 24px 24px;background:var(--bg-card);border:1px solid var(--line)">'+
  '<div class="glass" style="position:relative;overflow:hidden;border-radius:999px 999px 16px 16px;aspect-ratio:3/4.1;background:#F0EDE6;">'+
- '<div class="turntable">'+ttFace('tt-0',c[1],j,'f')+ttFace('tt-90',c[1],j,'l')+ttFace('tt-180',c[1],j,'b')+ttFace('tt-270',c[1],j,'r')+'</div>'+
+ '<div class="turntable"><div class="tt-layer tt-a" data-v="f">'+viewCache[j].f+'</div><div class="tt-layer tt-b" data-v="r" style="opacity:0">'+viewCache[j].r+'</div></div>'+
  '<div class="mirror-note"><span class="note-left"><i></i><span>'+spinHint+'</span></span><button class="spin-toggle" type="button" aria-label="Pause or play 360 spin">'+(autoSpin?'❚❚':'▶')+'</button></div>'+
  '<span class="shine" style="position:absolute;inset:-20%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.3) 46%,rgba(255,255,255,.05) 52%,transparent 58%);pointer-events:none"></span>'+
  '</div></div>'+
  '<span class="mname" style="display:block;margin-top:15px;font-family:\'Playfair Display\',Georgia,serif;font-style:italic;font-size:1.2rem;color:var(--ink);font-weight:600;">'+c[0]+'</span></div>';
 }).join('');
 
-// Kedalaman kotak 3D ikut lebar cermin (responsif)
-function sizeTurntables(){[].forEach.call(mir.querySelectorAll('.glass'),function(g){g.style.setProperty('--tz',(g.clientWidth/2)+'px')})}
-sizeTurntables();
-window.addEventListener('resize',sizeTurntables);
-window.addEventListener('load',sizeTurntables);
+function resetMirror(m,k){
+ var a=m.querySelector('.tt-a'),b=m.querySelector('.tt-b');
+ if(!a||!b)return;
+ if(a.dataset.v!=='f'){a.dataset.v='f';a.innerHTML=viewCache[k].f}
+ a.style.opacity='1';a.style.transform='none';
+ b.style.opacity='0';
+}
 
 function mark(j){
  [].forEach.call(mir.children,function(m,k){
   m.classList.toggle('on',k===j);
   m.style.transform=k===j?'scale(1)':'scale(.86)';
   m.style.opacity=k===j?'1':'.5';
-  if(k!==j){var tt=m.querySelector('.turntable');if(tt)tt.style.transform='rotateY(0deg)'}
+  if(k!==j)resetMirror(m,k);
  });
  spinAngle=0;
  mcnt.textContent=(j+1)+' / '+colors.length;
@@ -1373,12 +1372,26 @@ mir.addEventListener('pointermove',function(e){
 });
 ['pointerup','pointercancel'].forEach(function(ev){mir.addEventListener(ev,function(){dragging=false})});
 
-// Enjin putaran 360 — hanya cermin aktif berputar (jimat prestasi)
+// Enjin putaran smooth: satu sudut diputar dalam perspektif, sudut seterusnya
+// masuk melalui crossfade lembut — tiada bucu, tiada garis sambungan.
 function spinLoop(t){
  var dt=lastT?Math.min((t-lastT)/1000,.05):0;lastT=t;
  if(autoSpin&&!dragging)spinAngle=(spinAngle+dt*SPIN_SPEED)%360;
- var active=mir.children[mi];
- if(active){var tt=active.querySelector('.turntable');if(tt)tt.style.transform='rotateY('+spinAngle+'deg)'}
+ var m=mir.children[mi];
+ if(m){
+  var a=m.querySelector('.tt-a'),b=m.querySelector('.tt-b');
+  if(a&&b){
+   var u=(spinAngle+45)/90,s=Math.floor(u),frac=u-s;
+   var iA=((s%4)+4)%4,iB=(iA+1)%4;
+   var k=Math.min(Math.max((frac-0.78)/0.22,0),1);k=k*k*(3-2*k); // smoothstep
+   if(a.dataset.v!==VIEWS[iA]){a.dataset.v=VIEWS[iA];a.innerHTML=viewCache[mi][VIEWS[iA]]}
+   if(b.dataset.v!==VIEWS[iB]){b.dataset.v=VIEWS[iB];b.innerHTML=viewCache[mi][VIEWS[iB]]}
+   a.style.transform='perspective(1600px) rotateY('+((frac-0.5)*90)+'deg)';
+   b.style.transform='perspective(1600px) rotateY('+((frac-1.5)*90)+'deg)';
+   a.style.opacity=String(1-k);
+   b.style.opacity=String(k);
+  }
+ }
  requestAnimationFrame(spinLoop);
 }
 requestAnimationFrame(spinLoop);
