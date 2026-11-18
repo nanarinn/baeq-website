@@ -29,6 +29,11 @@ body{background:var(--bg-main);color:var(--ink);font-family:'Inter',system-ui,sa
 ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:8px;border:2px solid var(--bg-main)}
 ::-webkit-scrollbar-thumb:hover{background:var(--ink)}
 
+/* --- LAPISAN ATMOSFER (aurora + grain) --- */
+.aurora{position:fixed;inset:-20%;z-index:-1;pointer-events:none;background:radial-gradient(38% 30% at 18% 22%,rgba(138,123,107,.20),transparent 70%),radial-gradient(30% 26% at 82% 18%,rgba(184,190,196,.5),transparent 70%),radial-gradient(34% 30% at 70% 82%,rgba(201,169,139,.18),transparent 70%);animation:auroraDrift 26s ease-in-out infinite alternate;filter:blur(10px)}
+@keyframes auroraDrift{to{transform:translate3d(3%,2%,0) rotate(2deg) scale(1.06)}}
+.grain{position:fixed;inset:0;z-index:4;pointer-events:none;opacity:.055;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+
 /* --- ANIMASI BACKGROUND (3D CUBE + FLOATING TEXT + PARTICLES) --- */
 .scene {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -98,12 +103,14 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 .in{max-width:1200px;margin:0 auto;padding:0 20px;position:relative; width: 100%;}
 .pill{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:12px 28px;font:inherit;font-size:.75rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;background:transparent;color:var(--ink);cursor:pointer;transition:all 0.3s ease}
 .pill:hover,.pill[aria-pressed="true"]{background:var(--ink); color:var(--bg-main); border-color: var(--ink);}
+.pill:active{transform:translateY(1px) scale(.99)}
 #cartbtn {border: 1px solid var(--ink); font-weight: 700;}
 
 /* --- HERO SECTION --- */
 .hero{color:var(--ink);padding:80px 0 100px;position:relative; display:flex; align-items:center; min-height: 80vh; background: rgba(196, 201, 206, 0.6);}
 .hgrid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center; width: 100%;}
 .hright p{max-width:40ch;color:var(--muted);margin:25px 0 35px; font-size: 1rem; font-weight: 500;}
+.hright{will-change:transform}
 
 /* --- SWATCHES --- */
 .swatches{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:30px}
@@ -116,23 +123,25 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 .center{text-align:center}
 .center p{color:var(--muted);margin:20px auto 50px;max-width:50ch; font-size: 1rem; font-weight: 500;}
 
-/* --- TULISAN BERGERAK (MARQUEE) --- */
-.marq{overflow:hidden;background:var(--ink);color:var(--bg-main);padding:20px 0;white-space:nowrap; position: relative; z-index: 5;}
+/* --- TULISAN BERGERAK (MARQUEE 3D) --- */
+.marq{overflow:hidden;background:var(--ink);color:var(--bg-main);padding:20px 0;white-space:nowrap; position: relative; z-index: 5;transform:perspective(900px) rotateX(9deg) scale(1.02);transform-origin:top center;box-shadow:0 24px 50px rgba(17,17,17,.25)}
 .marq div{display:inline-block;animation:mq 25s linear infinite; font-family:'Inter Tight',sans-serif;font-size:clamp(1rem,2.5vw,1.5rem);text-transform:uppercase;letter-spacing:.15em;font-weight:600}
 .marq i{padding:0 1.5em;color:var(--accent);text-transform:none; font-family: 'Playfair Display', serif; font-size: 1.5em; font-style: italic;}
 @keyframes mq{to{transform:translateX(-50%)}}
 
-/* --- PRODUCT CARDS --- */
+/* --- PRODUCT CARDS (3D berlapis) --- */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:30px; text-align: left;}
-.card{background:var(--bg-card);border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;transition:all 0.4s ease; position: relative; overflow: hidden; z-index: 2; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);}
-.card:hover{border-color:var(--ink); box-shadow: 0 20px 50px rgba(0,0,0,0.15); transform: translateY(-8px);}
-.card .pic{background:#F5F5F5;aspect-ratio:1;display:grid;place-items:end center;margin-bottom:20px;overflow:hidden; border-radius: 8px;}
+.card{background:var(--bg-card);border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;transition:all 0.4s ease; position: relative; overflow: hidden; z-index: 2; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);transform-style:preserve-3d;will-change:transform}
+.card::before{content:"";position:absolute;inset:12px -6px -14px -6px;background:radial-gradient(60% 60% at 50% 60%,rgba(17,17,17,.28),transparent 70%);filter:blur(14px);transform:translateZ(-30px);z-index:-1;opacity:.5;transition:opacity .4s}
+.card:hover::before{opacity:.85}
+.card:hover{border-color:var(--ink); box-shadow: 0 20px 50px rgba(0,0,0,0.15);}
+.card .pic{background:#F5F5F5;aspect-ratio:1;display:grid;place-items:end center;margin-bottom:20px;overflow:hidden; border-radius: 8px;transform:translateZ(26px)}
 .card .pic svg, .card .pic img{width:100%; height:100%; object-fit:cover; transition:transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);}
 .card:hover .pic svg, .card:hover .pic img{transform:scale(1.05);}
-.card h3{font-size:1.4rem; font-family: 'Inter Tight', sans-serif; font-weight: 600; line-height:1.2; text-transform: uppercase; margin-top: 5px; color: var(--ink);}
+.card h3{font-size:1.4rem; font-family: 'Inter Tight', sans-serif; font-weight: 600; line-height:1.2; text-transform: uppercase; margin-top: 5px; color: var(--ink);transform:translateZ(18px)}
 .card p{margin:8px 0 0;font-size:.9rem;color:var(--muted);flex:1; line-height: 1.5; font-weight: 500;}
-.card .price{font-weight:700;font-size:1rem; margin-top: 15px; color: var(--ink); letter-spacing: 0.02em;}
-.card .pill{margin-top:20px; width: 100%; text-align: center;}
+.card .price{font-weight:700;font-size:1rem; margin-top: 15px; color: var(--ink); letter-spacing: 0.02em;transform:translateZ(12px)}
+.card .pill{margin-top:20px; width: 100%; text-align: center;transform:translateZ(10px)}
 .product-specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0 2px}
 .product-spec{padding:10px;border:1px solid #e4e1dd;border-radius:9px;background:#faf9f7}
 .product-spec small,.product-spec strong{display:block}.product-spec small{color:var(--muted);font-size:.6rem;letter-spacing:.07em;text-transform:uppercase}.product-spec strong{margin-top:2px;font-size:.72rem;line-height:1.35}
@@ -373,14 +382,15 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 
 .trust-strip{position:relative;z-index:4;padding:22px 0;background:rgba(255,255,255,.8);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
 .trust-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
-.trust-item{padding:4px 24px;border-right:1px solid var(--line)}
+.trust-item{padding:4px 24px;border-right:1px solid var(--line);transition:transform .35s ease}
+.trust-item:hover{transform:translateY(-4px)}
 .trust-item:first-child{padding-left:0}.trust-item:last-child{padding-right:0;border-right:0}
 .trust-item strong,.trust-item span{display:block}
 .trust-item strong{font:600 .78rem 'Inter Tight',sans-serif;letter-spacing:.04em;text-transform:uppercase}
 .trust-item span{margin-top:3px;color:var(--muted);font-size:.7rem}
 
 .split{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(40px,8vw,110px);align-items:start}
-.split h2,.faq h2,.end h2,.dark h2{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,6vw,5rem);font-weight:400;line-height:1.02;letter-spacing:-.04em}
+.split h2,.faq h2,.end h2,.dark h2{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,6vw,5rem);font-weight:400;line-height:1.02;letter-spacing:-.04em;text-shadow:0 1px 0 rgba(255,255,255,.6),0 12px 28px rgba(17,17,17,.12)}
 .split>div>p{margin-top:22px;max-width:46ch;color:var(--muted)}
 .cells{border-top:1px solid var(--line)}
 .cells>div{padding:25px 0;border-bottom:1px solid var(--line);transition:padding-left .3s ease,background .3s ease}
@@ -495,6 +505,11 @@ header.top { position: sticky; top: 0; z-index: 20; background: rgba(196, 201, 2
 .checkout-panel::-webkit-scrollbar,#lines::-webkit-scrollbar{width:8px}
 .checkout-panel::-webkit-scrollbar-thumb,#lines::-webkit-scrollbar-thumb{background:var(--accent);border:2px solid #f8f7f5}
 
+/* --- HERO 3D STAGE + CHIP FLOTTING --- */
+.stage3d{position:relative;transform-style:preserve-3d;will-change:transform}
+.chip3d{position:absolute;z-index:3;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.66);border:1px solid rgba(255,255,255,.85);backdrop-filter:blur(8px);box-shadow:0 14px 34px rgba(17,17,17,.16);font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);pointer-events:none;will-change:transform;white-space:nowrap}
+.chip3d i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:6px;vertical-align:middle}
+
 /* --- FIGURINE ATELIER (panel kawalan) --- */
 .atelier{margin-top:18px;padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.72);backdrop-filter:blur(10px);box-shadow:0 14px 40px rgba(17,17,17,.08);text-align:left}
 .atelier.disabled{opacity:.55;pointer-events:none}
@@ -521,10 +536,13 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 .a-toggle input{width:16px;height:16px;accent-color:var(--accent);cursor:pointer}
 .atelier-actions{display:flex;gap:8px;flex-wrap:wrap}
 .atelier-actions .pill{padding:8px 14px;font-size:.62rem}
-@media(max-width:640px){.atelier{padding:12px}.atelier-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.atelier{padding:12px}.atelier-grid{grid-template-columns:1fr 1fr}.chip3d{display:none}}
 </style>
 </head>
 <body>
+
+<div class="aurora"></div>
+<div class="grain"></div>
 
 <div class="scene">
   <div class="cube">
@@ -560,14 +578,19 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 </header>
 
-<section class="hero">
+<section class="hero" id="hero">
   <div class="in hgrid">
     <div class="mwrap" role="group" aria-label="Mirror colour slider" data-mood="studio">
-      <div class="mirrors" id="mirrors" style="display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 13% 14px;scrollbar-width:none; cursor: grab;"></div>
-      <div class="marrows" style="display:flex;justify-content:center;align-items:center;gap:20px;font-size:.8rem;color:var(--muted); margin-top: 15px; text-transform:uppercase; letter-spacing:0.05em; font-weight:600;">
-        <button id="mprev" aria-label="Previous colour" style="width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer; transition: all 0.3s;">←</button>
-        <span id="mcount" style="font-weight: 600;"></span>
-        <button id="mnext" aria-label="Next colour" style="width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer; transition: all 0.3s;">→</button>
+      <div class="stage3d" id="stage3d">
+        <span class="chip3d" data-depth="1.3" style="top:4%;left:-3%"><i></i>Soft jersey</span>
+        <span class="chip3d" data-depth="1.8" style="top:36%;right:-5%"><i></i>Stay-put band</span>
+        <span class="chip3d" data-depth="1.1" style="bottom:16%;left:-5%"><i></i>Cool cotton</span>
+        <div class="mirrors" id="mirrors" style="display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 13% 14px;scrollbar-width:none; cursor: grab;"></div>
+        <div class="marrows" style="display:flex;justify-content:center;align-items:center;gap:20px;font-size:.8rem;color:var(--muted); margin-top: 15px; text-transform:uppercase; letter-spacing:0.05em; font-weight:600;">
+          <button id="mprev" aria-label="Previous colour" style="width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer; transition: all 0.3s;">←</button>
+          <span id="mcount" style="font-weight: 600;"></span>
+          <button id="mnext" aria-label="Next colour" style="width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer; transition: all 0.3s;">→</button>
+        </div>
       </div>
 
       <div class="atelier" id="atelier" aria-label="Figurine atelier controls">
@@ -585,11 +608,14 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
           <label class="a-field"><span>Zoom</span><input type="range" id="ctlZoom" min="50" max="85" value="64"></label>
           <label class="a-field"><span>Glow</span><input type="range" id="ctlGlow" min="0" max="100" value="50"></label>
           <label class="a-field"><span>Fabric sheen</span><input type="range" id="ctlSheen" min="0" max="100" value="60"></label>
+          <label class="a-field"><span>Rim light</span><input type="range" id="ctlRim" min="0" max="100" value="55"></label>
+          <label class="a-field"><span>Gold dust</span><input type="range" id="ctlDust" min="0" max="100" value="60"></label>
           <label class="a-field"><span>Light mood</span><select id="ctlMood"><option value="studio">Studio</option><option value="golden">Golden hour</option><option value="dusk">Soft dusk</option></select></label>
         </div>
         <div class="atelier-row toggles">
           <label class="a-toggle"><input type="checkbox" id="ctlMotion" checked><span>Hand motion</span></label>
           <label class="a-toggle"><input type="checkbox" id="ctlAuto" checked><span>Auto spin</span></label>
+          <label class="a-toggle"><input type="checkbox" id="ctlHolo" checked><span>Product hologram</span></label>
         </div>
         <div class="atelier-actions">
           <button class="pill" id="ctlReset" type="button">⟲ Reset</button>
@@ -599,7 +625,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
       </div>
     </div>
     
-    <div class="hright">
+    <div class="hright" id="hright">
       <span class="cap" style="font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); display: block; margin-bottom: 15px; font-weight: 700;">The Everyday Collection</span>
       <h1 id="heroTitle" style="will-change: transform; color: var(--ink); font-family: 'Playfair Display', serif; font-weight: 500; font-size: clamp(3rem, 8vw, 6rem); line-height: 1.05;">Inner<br><i>C</i>aps</h1>
       <p>Premium inner caps crafted from soft fabrics that absorb sweat and stay in place all day. Pick a colour and order straight through WhatsApp.</p>
@@ -1353,8 +1379,8 @@ if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').mat
     const card = e.target.closest('.card');
     if (!card) return;
     const rect = card.getBoundingClientRect();
-    const rx = ((e.clientY - rect.top) / rect.height - .5) * -3;
-    const ry = ((e.clientX - rect.left) / rect.width - .5) * 3;
+    const rx = ((e.clientY - rect.top) / rect.height - .5) * -7;
+    const ry = ((e.clientX - rect.left) / rect.width - .5) * 7;
     card.style.transform = 'translateY(-8px) perspective(900px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
   });
   document.addEventListener('pointerout', function(e) {
@@ -1402,15 +1428,18 @@ var skins=[
  {name:'Sawo matang',skin:'#C9915F',lip:'#9E5A48',blush:'#C07A5C',brow:'#33231C'},
  {name:'Gelap',skin:'#8E5B3A',lip:'#7C4234',blush:'#A5624A',brow:'#241812'}
 ];
-var skinIdx=1,mood='studio',motionOn=true,motionAmp=1,glowAmt=.5,sheenAmt=.6;
+var skinIdx=1,mood='studio',motionOn=true,motionAmp=1,glowAmt=.5,sheenAmt=.6,rimAmt=.55,dustAmt=.6,holoOn=true;
 
 var use3D=false,renderer=null,scene3=null,camera3=null,figure=null,dust=null,canvas3D=null;
 var clothGrad=null,clothSolid=null,clothDeep=null,skinMat=null,lipMat=null,blushMat=null,browMat=null;
 var gradGeos=[],armL=null,armR=null,handL=null,handR=null,headGrp=null,bodyMesh=null,hijabMesh=null,tailGrp=null;
 var keyL=null,rimL=null,hemiL=null,accentL=null,beautyL=null,halo=null,haloMat=null,sgMat=null,drapeTail=null,broochGem=null;
+var rimMat=null,holo=null,holoGlow=null,holoMat=null,dustMat=null,rayMats=[],fabricTex=null;
 var angle=0,targetAngle=0,spinVel=0,camY=1.55,targetCamY=1.55,dist=6.4,targetDist=6.4,driftX=0;
 var dragging3=false,px3=0,py3=0,lastInteract=-1e9,lastT=0;
 var AUTO_SPEED=0.45;
+var hxT=0,hyT=0,hx=0,hy=0;
+var stage3d=document.getElementById('stage3d'),hright=document.getElementById('hright'),chips=[].slice.call(document.querySelectorAll('.chip3d'));
 
 function srgb(hex){var c=new THREE.Color(hex);c.convertSRGBToLinear();return c}
 function shade(hex,f){var c=new THREE.Color(hex);c.convertSRGBToLinear();c.multiplyScalar(f);return c}
@@ -1421,6 +1450,41 @@ function radialTex(inner,outer){
  var g=cx.createRadialGradient(64,64,0,64,64,64);
  g.addColorStop(0,inner);g.addColorStop(1,outer);
  cx.fillStyle=g;cx.fillRect(0,0,128,128);
+ return new THREE.CanvasTexture(cv);
+}
+function makeFabric(){
+ var cv=document.createElement('canvas');cv.width=cv.height=128;
+ var cx=cv.getContext('2d');
+ cx.fillStyle='#808080';cx.fillRect(0,0,128,128);
+ for(var y=0;y<128;y+=3){cx.fillStyle=y%6?'rgba(255,255,255,.16)':'rgba(0,0,0,.16)';cx.fillRect(0,y,128,1)}
+ for(var x=0;x<128;x+=3){cx.fillStyle=x%6?'rgba(255,255,255,.12)':'rgba(0,0,0,.12)';cx.fillRect(x,0,1,128)}
+ for(var i=0;i<260;i++){cx.fillStyle=Math.random()>.5?'rgba(255,255,255,.10)':'rgba(0,0,0,.10)';cx.fillRect(Math.random()*128,Math.random()*128,1,1)}
+ var t=new THREE.CanvasTexture(cv);
+ t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(6,6);
+ return t;
+}
+function makeEnv(){
+ var faces=[];
+ var cols=[['#cfd6dd','#8f979e'],['#e8ddcf','#9a8f83'],['#fff6e8','#d9cfc2'],['#5a5f66','#33373c'],['#e3d9cc','#948b80'],['#c9d2da','#87909a']];
+ for(var i=0;i<6;i++){
+  var cv=document.createElement('canvas');cv.width=cv.height=64;
+  var cx=cv.getContext('2d');
+  var g=cx.createLinearGradient(0,0,0,64);
+  g.addColorStop(0,cols[i][0]);g.addColorStop(1,cols[i][1]);
+  cx.fillStyle=g;cx.fillRect(0,0,64,64);
+  cx.fillStyle='rgba(255,255,255,.5)';cx.beginPath();cx.arc(20,18,10,0,7);cx.fill();
+  faces.push(cv);
+ }
+ var t=new THREE.CubeTexture(faces);
+ t.needsUpdate=true;t.encoding=THREE.sRGBEncoding;
+ return t;
+}
+function makeRayTex(){
+ var cv=document.createElement('canvas');cv.width=64;cv.height=256;
+ var cx=cv.getContext('2d');
+ var g=cx.createLinearGradient(0,0,0,256);
+ g.addColorStop(0,'rgba(255,240,214,.85)');g.addColorStop(1,'rgba(255,240,214,0)');
+ cx.fillStyle=g;cx.fillRect(0,0,64,256);
  return new THREE.CanvasTexture(cv);
 }
 
@@ -1441,6 +1505,7 @@ function paintGradient(geo,hex){
 function applyCloth(hex){
  clothSolid.color.copy(srgb(hex));
  clothDeep.color.copy(shade(hex,.74));
+ if(holoMat)holoMat.color.copy(srgb(hex));
  gradGeos.forEach(function(g){paintGradient(g,hex)});
 }
 
@@ -1463,10 +1528,24 @@ function applyGlow(){
  haloMat.opacity=glowAmt*.7;
  sgMat.opacity=.2+glowAmt*.6;
  accentL.intensity=MOODS[mood].ai*(.5+glowAmt);
+ rayMats.forEach(function(m){m.opacity=.04+glowAmt*.14});
+ if(holoGlow)holoGlow.material.opacity=.2+glowAmt*.3;
 }
 function applySheen(){
  if(!use3D)return;
  rimL.intensity=MOODS[mood].ri*(.45+sheenAmt*1.1);
+}
+function applyRim(){
+ if(!use3D)return;
+ rimMat.uniforms.uIntensity.value=rimAmt*.9;
+}
+function applyDust(){
+ if(!use3D)return;
+ dustMat.opacity=dustAmt*.8;
+}
+function applyHolo(){
+ if(!use3D)return;
+ holo.visible=holoOn;holoGlow.visible=holoOn;
 }
 function applyMood(m){
  mood=m;var d=MOODS[m];
@@ -1510,16 +1589,25 @@ function buildHijabGeometry(){
 
 function buildFigurine(){
  var g=new THREE.Group();
- clothGrad=new THREE.MeshStandardMaterial({color:0xffffff,vertexColors:true,roughness:.74,metalness:.03,side:THREE.DoubleSide});
- clothSolid=new THREE.MeshStandardMaterial({color:srgb(colors[0][1]),roughness:.76,metalness:.03});
- clothDeep=new THREE.MeshStandardMaterial({color:shade(colors[0][1],.74),roughness:.82,metalness:.02});
- skinMat=new THREE.MeshStandardMaterial({color:srgb(skins[skinIdx].skin),roughness:.42,metalness:0,emissive:srgb('#2A1206'),emissiveIntensity:.10});
- lipMat=new THREE.MeshStandardMaterial({color:srgb(skins[skinIdx].lip),roughness:.45});
+ fabricTex=makeFabric();
+ clothGrad=new THREE.MeshStandardMaterial({color:0xffffff,vertexColors:true,roughness:.74,metalness:.03,side:THREE.DoubleSide,bumpMap:fabricTex,bumpScale:.012});
+ clothSolid=new THREE.MeshStandardMaterial({color:srgb(colors[0][1]),roughness:.76,metalness:.03,bumpMap:fabricTex,bumpScale:.012});
+ clothDeep=new THREE.MeshStandardMaterial({color:shade(colors[0][1],.74),roughness:.82,metalness:.02,bumpMap:fabricTex,bumpScale:.01});
+ skinMat=new THREE.MeshPhysicalMaterial({color:srgb(skins[skinIdx].skin),roughness:.42,metalness:0,clearcoat:.12,clearcoatRoughness:.5,emissive:srgb('#2A1206'),emissiveIntensity:.10});
+ lipMat=new THREE.MeshPhysicalMaterial({color:srgb(skins[skinIdx].lip),roughness:.35,clearcoat:.6,clearcoatRoughness:.25});
  blushMat=new THREE.MeshBasicMaterial({color:srgb(skins[skinIdx].blush),transparent:true,opacity:.22,depthWrite:false});
  browMat=new THREE.MeshStandardMaterial({color:srgb(skins[skinIdx].brow),roughness:.6});
  var cream=new THREE.MeshStandardMaterial({color:srgb('#F3EDE4'),roughness:.35,metalness:.08});
  var bronze=new THREE.MeshStandardMaterial({color:srgb('#8A7B6B'),roughness:.28,metalness:.9});
- var pearl=new THREE.MeshStandardMaterial({color:srgb('#F6EFE6'),roughness:.15,metalness:.3,emissive:srgb('#8A7B6B'),emissiveIntensity:.25});
+ var pearl=new THREE.MeshPhysicalMaterial({color:srgb('#F6EFE6'),roughness:.15,metalness:.3,clearcoat:1,emissive:srgb('#8A7B6B'),emissiveIntensity:.25});
+
+ // Rim-light shell (fresnel) untuk kain
+ rimMat=new THREE.ShaderMaterial({
+  uniforms:{uColor:{value:new THREE.Color('#ffe6c4')},uIntensity:{value:.5}},
+  vertexShader:'varying vec3 vN;varying vec3 vV;void main(){vec4 mv=modelViewMatrix*vec4(position,1.0);vN=normalize(normalMatrix*normal);vV=normalize(-mv.xyz);gl_Position=projectionMatrix*mv;}',
+  fragmentShader:'uniform vec3 uColor;uniform float uIntensity;varying vec3 vN;varying vec3 vV;void main(){float f=pow(1.0-abs(dot(normalize(vN),normalize(vV))),2.2);gl_FragColor=vec4(uColor,f*uIntensity);}',
+  transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.FrontSide
+ });
 
  var disc=new THREE.Mesh(new THREE.CylinderGeometry(.95,.99,.1,56),cream);
  disc.position.y=.17;disc.receiveShadow=true;g.add(disc);
@@ -1532,6 +1620,7 @@ function buildFigurine(){
  var bodyGeo=new THREE.LatheGeometry(new THREE.SplineCurve(prof).getPoints(48),56);
  bodyMesh=new THREE.Mesh(bodyGeo,clothGrad);bodyMesh.castShadow=true;g.add(bodyMesh);
  gradGeos.push(bodyGeo);
+ var bodyShell=new THREE.Mesh(bodyGeo,rimMat);bodyShell.scale.setScalar(1.03);g.add(bodyShell);
 
  // Sash pinggang + bow kecil di belakang
  var sash=new THREE.Mesh(new THREE.TorusGeometry(.352,.026,10,48),clothDeep);
@@ -1565,15 +1654,18 @@ function buildFigurine(){
  hijabMesh=new THREE.Mesh(hijabGeo,clothGrad);
  hijabMesh.castShadow=true;headGrp.add(hijabMesh);
  gradGeos.push(hijabGeo);
+ var hijabShell=new THREE.Mesh(hijabGeo,rimMat);hijabShell.scale.setScalar(1.03);headGrp.add(hijabShell);
 
- // Birai fabrik sekeliling muka (terbuka di dagu)
+ // Birai fabrik sekeliling muka + rantai emas halus
  var edge=new THREE.Mesh(new THREE.TorusGeometry(.30,.014,10,48,Math.PI*1.25),clothSolid);
  edge.position.set(0,-.02,.235);edge.rotation.set(-.06,0,-Math.PI*.125);headGrp.add(edge);
+ var chain=new THREE.Mesh(new THREE.TorusGeometry(.305,.004,6,48,Math.PI*1.2),bronze);
+ chain.position.set(0,-.02,.245);chain.rotation.set(-.06,0,-Math.PI*.12);headGrp.add(chain);
  // Anak tudung Baéq kelihatan di dahi
  var band=new THREE.Mesh(new THREE.TorusGeometry(.265,.018,10,40),clothDeep);
  band.position.set(0,.12,-.02);band.rotation.x=Math.PI/2+.10;headGrp.add(band);
 
- // Brooch emas + permata pearl di sisi tudung
+ // Brooch emas + permata pearl
  var brooch=new THREE.Group();brooch.position.set(-.26,-.20,.22);headGrp.add(brooch);
  brooch.add(new THREE.Mesh(new THREE.TorusGeometry(.032,.007,8,24),bronze));
  broochGem=new THREE.Mesh(new THREE.SphereGeometry(.016,12,10),pearl);
@@ -1581,41 +1673,49 @@ function buildFigurine(){
 
  function arc(r,t,len,mat){return new THREE.Mesh(new THREE.TorusGeometry(r,t,8,24,len),mat)}
  [-1,1].forEach(function(sd){
-  // Eyeshadow lembut
   var shadow=arc(.056,.006,Math.PI*.75,blushMat);
   shadow.position.set(.115*sd,.032,.240);shadow.rotation.set(-.15,0,.06*sd);headGrp.add(shadow);
-  // Mata pejam tenang
+  var crease=arc(.052,.0035,Math.PI*.7,browMat);
+  crease.position.set(.115*sd,.045,.238);crease.rotation.set(-.15,0,.06*sd);headGrp.add(crease);
   var eye=arc(.05,.009,Math.PI*.8,browMat);
   eye.position.set(.115*sd,.015,.243);eye.rotation.set(-.15,0,.06*sd);headGrp.add(eye);
-  // Bulu mata
-  for(var l=0;l<3;l++){
-   var lash=new THREE.Mesh(new THREE.CylinderGeometry(.0022,.0015,.02,5),browMat);
-   lash.position.set(sd*(.152+l*.009),.026+l*.005,.238-l*.004);
-   lash.rotation.set(-.2,0,sd*(-.5-l*.25));headGrp.add(lash);
+  for(var l=0;l<4;l++){
+   var lash=new THREE.Mesh(new THREE.CylinderGeometry(.0022,.0014,.022,5),browMat);
+   lash.position.set(sd*(.150+l*.008),.024+l*.005,.238-l*.004);
+   lash.rotation.set(-.2,0,sd*(-.45-l*.22));headGrp.add(lash);
   }
-  // Kening halus
   var brow=arc(.055,.006,Math.PI*.65,browMat);
   brow.position.set(.118*sd,.095,.232);brow.rotation.set(-.12,0,.1*sd);headGrp.add(brow);
-  // Blush pipi
   var blush=new THREE.Mesh(new THREE.SphereGeometry(.05,16,12),blushMat);
   blush.scale.set(1,.62,.25);blush.position.set(.16*sd,-.045,.216);headGrp.add(blush);
+  var cheekHi=new THREE.Mesh(new THREE.SphereGeometry(.012,8,6),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.3}));
+  cheekHi.position.set(.13*sd,-.02,.235);headGrp.add(cheekHi);
  });
- // Hidung halus
  var bridge=new THREE.Mesh(new THREE.SphereGeometry(.012,10,8),skinMat);
  bridge.scale.set(.6,1.6,.5);bridge.position.set(0,-.005,.258);headGrp.add(bridge);
  var nose=new THREE.Mesh(new THREE.SphereGeometry(.02,14,10),skinMat);
  nose.scale.set(.8,1.05,.9);nose.position.set(0,-.045,.262);headGrp.add(nose);
- // Bibir: cupid's bow + bibir bawah penuh + kilauan
  [-1,1].forEach(function(sd){
   var lu=new THREE.Mesh(new THREE.SphereGeometry(.028,12,10),lipMat);
   lu.scale.set(1.1,.5,.5);lu.position.set(.020*sd,-.096,.254);lu.rotation.z=sd*.25;headGrp.add(lu);
  });
  var lipLo=new THREE.Mesh(new THREE.SphereGeometry(.05,16,12),lipMat);
  lipLo.scale.set(.9,.48,.42);lipLo.position.set(0,-.117,.250);headGrp.add(lipLo);
- var gloss=new THREE.Mesh(new THREE.SphereGeometry(.007,8,6),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.7}));
+ var gloss=new THREE.Mesh(new THREE.SphereGeometry(.008,8,6),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.75}));
  gloss.position.set(.012,-.126,.272);headGrp.add(gloss);
+ var chinHi=new THREE.Mesh(new THREE.SphereGeometry(.01,8,6),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.25}));
+ chinHi.position.set(0,-.165,.24);headGrp.add(chinHi);
  var smile=arc(.04,.004,Math.PI*.6,browMat);
  smile.position.set(0,-.104,.252);smile.rotation.set(-.1,0,Math.PI);headGrp.add(smile);
+
+ // Lapisan shawl luar: riben dada + panel belakang
+ [[-.2,-.55,.42,-.05,-.95,.5],[.2,-.55,.42,.05,-.95,.5],[0,-.5,.46,0,-.98,.52]].forEach(function(p){
+  var c=new THREE.CatmullRomCurve3([new THREE.Vector3(p[0],p[1],p[2]),new THREE.Vector3((p[0]+p[3])/2,(p[1]+p[4])/2,(p[2]+p[5])/2+.03),new THREE.Vector3(p[3],p[4],p[5])]);
+  var rib=new THREE.Mesh(new THREE.TubeGeometry(c,16,.02,8),clothSolid);
+  rib.castShadow=true;headGrp.add(rib);
+ });
+ var backPanel=new THREE.Mesh(new THREE.SphereGeometry(.5,24,18),clothSolid);
+ backPanel.scale.set(1.1,.9,.35);backPanel.position.set(0,-.6,-.35);backPanel.castShadow=true;headGrp.add(backPanel);
 
  // Simpul necktie sisi leher + ekor ke dada
  tailGrp=new THREE.Group();tailGrp.position.set(.36,2.02,.16);g.add(tailGrp);
@@ -1684,6 +1784,7 @@ function initThree(){
  canvas3D.className='canvas3d';
  canvas3D.setAttribute('aria-label','3D figurine wearing Baéq inner cap and tudung, drag to rotate 360 degrees');
  scene3=new THREE.Scene();
+ scene3.environment=makeEnv();
  camera3=new THREE.PerspectiveCamera(32,3/4.1,.1,50);
  camera3.position.set(0,camY,dist);camera3.lookAt(0,1.35,0);
  hemiL=new THREE.HemisphereLight(0xf5efe6,0x3a3f45,.75);scene3.add(hemiL);
@@ -1699,7 +1800,16 @@ function initThree(){
  beautyL=new THREE.DirectionalLight(0xfff2e2,.4);beautyL.position.set(0,3.2,4);scene3.add(beautyL);
  accentL=new THREE.PointLight(0xd9b38c,.55,8);accentL.position.set(0,.6,1.6);scene3.add(accentL);
 
- // Halo cahaya belakang patung + glow pentas
+ // God rays lembut
+ var rayTex=makeRayTex();
+ [[-1.2,2.6,-.6,.5,.3],[1.4,2.8,-.8,-.4,-.3]].forEach(function(p){
+  var m=new THREE.MeshBasicMaterial({map:rayTex,transparent:true,opacity:.1,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide});
+  var ray=new THREE.Mesh(new THREE.PlaneGeometry(1.1,3.6),m);
+  ray.position.set(p[0],p[1],p[2]);ray.rotation.set(0,p[4],p[3]);
+  scene3.add(ray);rayMats.push(m);
+ });
+
+ // Halo + glow pentas
  haloMat=new THREE.SpriteMaterial({map:radialTex('rgba(255,226,190,.9)','rgba(255,226,190,0)'),transparent:true,opacity:.35,blending:THREE.AdditiveBlending,depthWrite:false});
  halo=new THREE.Sprite(haloMat);halo.scale.set(3.4,3.4,1);halo.position.set(0,1.7,-1.1);scene3.add(halo);
  sgMat=new THREE.MeshBasicMaterial({map:radialTex('rgba(217,189,155,.55)','rgba(217,189,155,0)'),transparent:true,opacity:.5,blending:THREE.AdditiveBlending,depthWrite:false});
@@ -1714,6 +1824,18 @@ function initThree(){
  figure=buildFigurine();scene3.add(figure);
  applyCloth(colors[0][1]);
 
+ // Hologram inner cap 3D terapung sebelah patung
+ holoMat=new THREE.MeshStandardMaterial({color:srgb(colors[0][1]),emissive:srgb('#8A7B6B'),emissiveIntensity:.35,roughness:.5,metalness:.1,transparent:true,opacity:.95,bumpMap:fabricTex,bumpScale:.01});
+ var holoProf=[[.001,0],[.40,0],[.50,.10],[.53,.34],[.47,.58],[.30,.76],[.001,.82]].map(function(p){return new THREE.Vector2(p[0],p[1])});
+ var holoGeo=new THREE.LatheGeometry(new THREE.SplineCurve(holoProf).getPoints(32),48);
+ holo=new THREE.Group();
+ holo.add(new THREE.Mesh(holoGeo,holoMat));
+ holo.add(new THREE.Mesh(holoGeo,new THREE.MeshBasicMaterial({color:srgb('#D9BD9B'),wireframe:true,transparent:true,opacity:.18})));
+ holo.scale.setScalar(.5);holo.position.set(1.18,1.32,.25);
+ scene3.add(holo);
+ holoGlow=new THREE.Sprite(new THREE.SpriteMaterial({map:radialTex('rgba(217,189,155,.8)','rgba(217,189,155,0)'),transparent:true,opacity:.35,blending:THREE.AdditiveBlending,depthWrite:false}));
+ holoGlow.scale.set(1.1,1.1,1);holoGlow.position.set(1.18,.75,.25);scene3.add(holoGlow);
+
  // Habuk emas bulat bercahaya
  var dn=42,dp=new Float32Array(dn*3);
  for(var i=0;i<dn;i++){
@@ -1722,7 +1844,8 @@ function initThree(){
  }
  var dg=new THREE.BufferGeometry();
  dg.setAttribute('position',new THREE.BufferAttribute(dp,3));
- dust=new THREE.Points(dg,new THREE.PointsMaterial({map:radialTex('rgba(255,232,200,1)','rgba(255,232,200,0)'),color:srgb('#E8CBA8'),size:.07,transparent:true,opacity:.6,depthWrite:false,blending:THREE.AdditiveBlending,sizeAttenuation:true}));
+ dustMat=new THREE.PointsMaterial({map:radialTex('rgba(255,232,200,1)','rgba(255,232,200,0)'),color:srgb('#E8CBA8'),size:.07,transparent:true,opacity:.6,depthWrite:false,blending:THREE.AdditiveBlending,sizeAttenuation:true});
+ dust=new THREE.Points(dg,dustMat);
  scene3.add(dust);
 
  canvas3D.addEventListener('pointerdown',function(e){
@@ -1777,7 +1900,7 @@ if(use3D){
  if('ResizeObserver' in window){new ResizeObserver(fit3D).observe(mir)}
  window.addEventListener('resize',fit3D);
  window.addEventListener('load',fit3D);
- applySkin(skinIdx);applyMood('studio');
+ applySkin(skinIdx);applyMood('studio');applyRim();applyDust();applyHolo();
 }else{
  colors.forEach(function(c,j){VIEWS.forEach(function(v){if(!viewCache[j][v])viewCache[j][v]=mirrorView(c[1],j,v)})});
  [].forEach.call(mir.children,function(m){
@@ -1795,6 +1918,15 @@ if('IntersectionObserver' in window){
  new IntersectionObserver(function(es){heroVisible=es[0].isIntersecting},{threshold:.05}).observe(document.querySelector('.mwrap'));
 }
 
+// Parallax hero mengikut pointer
+var heroEl=document.getElementById('hero');
+heroEl.addEventListener('pointermove',function(e){
+ var r=heroEl.getBoundingClientRect();
+ hxT=((e.clientX-r.left)/r.width-.5)*2;
+ hyT=((e.clientY-r.top)/r.height-.5)*2;
+});
+heroEl.addEventListener('pointerleave',function(){hxT=0;hyT=0});
+
 // --- Atelier controls ---
 var skinSw=document.getElementById('skinSw');
 skins.forEach(function(s,i){
@@ -1806,16 +1938,20 @@ skins.forEach(function(s,i){
  skinSw.appendChild(b);
 });
 var ctlSpeed=document.getElementById('ctlSpeed'),ctlCam=document.getElementById('ctlCam'),ctlZoom=document.getElementById('ctlZoom'),
-    ctlGlow=document.getElementById('ctlGlow'),ctlSheen=document.getElementById('ctlSheen'),
-    ctlMood=document.getElementById('ctlMood'),ctlMotion=document.getElementById('ctlMotion'),ctlAuto=document.getElementById('ctlAuto');
+    ctlGlow=document.getElementById('ctlGlow'),ctlSheen=document.getElementById('ctlSheen'),ctlRim=document.getElementById('ctlRim'),
+    ctlDust=document.getElementById('ctlDust'),ctlMood=document.getElementById('ctlMood'),ctlMotion=document.getElementById('ctlMotion'),
+    ctlAuto=document.getElementById('ctlAuto'),ctlHolo=document.getElementById('ctlHolo');
 ctlSpeed.oninput=function(){AUTO_SPEED=this.value/100};
 ctlCam.oninput=function(){targetCamY=this.value/100;lastInteract=performance.now()};
 ctlZoom.oninput=function(){targetDist=this.value/10;lastInteract=performance.now()};
 ctlGlow.oninput=function(){glowAmt=this.value/100;applyGlow()};
 ctlSheen.oninput=function(){sheenAmt=this.value/100;applySheen()};
+ctlRim.oninput=function(){rimAmt=this.value/100;applyRim()};
+ctlDust.oninput=function(){dustAmt=this.value/100;applyDust()};
 ctlMood.onchange=function(){applyMood(this.value)};
 ctlMotion.onchange=function(){motionOn=this.checked};
 ctlAuto.onchange=function(){autoSpin=this.checked;mir.querySelectorAll('.spin-toggle').forEach(function(x){x.textContent=autoSpin?'❚❚':'▶'})};
+ctlHolo.onchange=function(){holoOn=this.checked;applyHolo()};
 
 function syncAtelier(){
  ctlSpeed.value=Math.round(AUTO_SPEED*100);
@@ -1823,15 +1959,17 @@ function syncAtelier(){
  ctlZoom.value=Math.round(targetDist*10);
  ctlGlow.value=Math.round(glowAmt*100);
  ctlSheen.value=Math.round(sheenAmt*100);
- ctlMood.value=mood;ctlMotion.checked=motionOn;ctlAuto.checked=autoSpin;
+ ctlRim.value=Math.round(rimAmt*100);
+ ctlDust.value=Math.round(dustAmt*100);
+ ctlMood.value=mood;ctlMotion.checked=motionOn;ctlAuto.checked=autoSpin;ctlHolo.checked=holoOn;
  mir.querySelectorAll('.spin-toggle').forEach(function(x){x.textContent=autoSpin?'❚❚':'▶'});
 }
 function resetLook(){
  if(!use3D){spinAngle=0;autoSpin=!reduceMotion;syncAtelier();return}
  targetAngle=Math.round(angle/(Math.PI*2))*Math.PI*2;spinVel=0;
  targetCamY=1.55;targetDist=6.4;AUTO_SPEED=.45;motionOn=true;autoSpin=!reduceMotion;
- glowAmt=.5;sheenAmt=.6;
- applySkin(1);applyMood('studio');syncAtelier();
+ glowAmt=.5;sheenAmt=.6;rimAmt=.55;dustAmt=.6;holoOn=true;
+ applySkin(1);applyMood('studio');applyRim();applyDust();applyHolo();syncAtelier();
  lastInteract=performance.now();
 }
 document.getElementById('ctlReset').onclick=function(){resetLook();showToast('Atelier reset')};
@@ -1840,8 +1978,9 @@ document.getElementById('ctlSurprise').onclick=function(){
  var ci=Math.floor(Math.random()*colors.length),si=Math.floor(Math.random()*skins.length);
  var ms=['studio','golden','dusk'],mm=ms[Math.floor(Math.random()*3)];
  AUTO_SPEED=(30+Math.random()*40)/100;targetCamY=(120+Math.random()*80)/100;
- glowAmt=.3+Math.random()*.5;sheenAmt=.3+Math.random()*.6;
- motionOn=true;applySkin(si);applyMood(mm);setColor(colors[ci]);syncAtelier();
+ glowAmt=.3+Math.random()*.5;sheenAmt=.3+Math.random()*.6;rimAmt=.3+Math.random()*.6;dustAmt=.3+Math.random()*.6;
+ holoOn=Math.random()>.25;motionOn=true;
+ applySkin(si);applyMood(mm);applyRim();applyDust();applyHolo();setColor(colors[ci]);syncAtelier();
  showToast('New look: '+colors[ci][0]+' × '+skins[si].name);
 };
 document.getElementById('ctlSave').onclick=function(){
@@ -1909,6 +2048,14 @@ function mirrorLoop(t){
  requestAnimationFrame(mirrorLoop);
  var dt=lastT?Math.min((t-lastT)/1000,.05):0;lastT=t;
  if(!heroVisible||document.hidden)return;
+ // Parallax hero
+ hx+=(hxT-hx)*.06;hy+=(hyT-hy)*.06;
+ if(stage3d)stage3d.style.transform='perspective(1200px) rotateY('+(hx*5)+'deg) rotateX('+(-hy*4)+'deg)';
+ if(hright)hright.style.transform='translate3d('+(hx*-6)+'px,'+(hy*-4)+'px,0)';
+ chips.forEach(function(c,i){
+  var d=parseFloat(c.dataset.depth)||1;
+  c.style.transform='translate3d('+(hx*12*d)+'px,'+(hy*9*d+Math.sin(t*.001+i*2)*6)+'px,0)';
+ });
  if(use3D){
   if(autoSpin&&!dragging3&&t-lastInteract>2200)targetAngle+=AUTO_SPEED*dt;
   if(!dragging3){targetAngle+=spinVel;spinVel*=.93;if(Math.abs(spinVel)<1e-4)spinVel=0}
@@ -1933,6 +2080,10 @@ function mirrorLoop(t){
   broochGem.scale.setScalar(1+.1*Math.sin(t*.002));
   halo.scale.setScalar(3.4*(1+.02*Math.sin(t*.0006)));
   figure.rotation.y=angle;
+  figure.rotation.z=.008*Math.sin(t*.0004);
+  figure.position.y=.01*Math.sin(t*.0009);
+  holo.rotation.y+=dt*.7;
+  holo.position.y=1.32+Math.sin(t*.0011)*.06;
   dust.rotation.y=-angle*.25+t*.00005;
   var idle=(t-lastInteract>2600)&&!dragging3;
   driftX+=((idle?Math.sin(t*.00012)*.12:0)-driftX)*.02;
