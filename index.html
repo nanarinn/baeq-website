@@ -111,7 +111,6 @@ header.top{position:sticky;top:0;z-index:20;background:rgba(196,201,206,.9);back
 .marrows{display:flex;justify-content:center;align-items:center;gap:20px;margin-top:10px;font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
 .marrows button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.45);color:var(--ink);cursor:pointer;font-size:1rem;transition:all .25s}
 .marrows button:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-/* ── slim studio rail ── */
 .rail{margin-top:14px;padding:12px 14px;border-radius:18px;border:1px solid rgba(232,178,60,.24);
 background:linear-gradient(152deg,rgba(43,30,27,.94),rgba(20,14,12,.9));box-shadow:0 22px 54px rgba(17,17,17,.24);backdrop-filter:blur(10px)}
 .rail-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:9px}
@@ -274,11 +273,11 @@ background:linear-gradient(152deg,rgba(43,30,27,.94),rgba(20,14,12,.9));box-shad
 .game-card.loyalty-shell{max-width:1100px;padding:0;display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);text-align:left;border-radius:28px;background:rgba(255,255,255,.82);box-shadow:0 35px 90px rgba(17,17,17,.12);backdrop-filter:blur(12px)}
 .loyalty-dashboard{position:relative;padding:34px;background:#171717;color:#fff;overflow:hidden}
 .loyalty-dashboard::before{content:"";position:absolute;width:290px;height:290px;right:-140px;top:-130px;border:1px solid rgba(255,255,255,.14);border-radius:50%;box-shadow:0 0 0 42px rgba(255,255,255,.025),0 0 0 84px rgba(255,255,255,.02)}
-.loyalty-top{position:relative;display:flex;justify-content:space-between;align-items:center;gap:16px;z-index:1}
+.loyalty-top{position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;z-index:1}
 .point-badge{color:#fff;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
 .point-badge span{display:block;margin-top:3px;color:#fff;font:400 3.4rem/1 'Playfair Display',serif;letter-spacing:-.04em}
-.streak-badge{padding:10px 13px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(255,255,255,.08);font-size:.72rem;font-weight:600;white-space:nowrap}
-.streak-badge strong{font-size:1rem;color:#e1c6a5}
+.balance-tag{padding:10px 13px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(255,255,255,.08);font-size:.68rem;font-weight:600;white-space:nowrap;color:#cfc6bb}
+.balance-tag strong{color:#e1c6a5;font-size:.86rem}
 .loyalty-progress{position:relative;margin:26px 0 22px;padding:17px;border:1px solid rgba(255,255,255,.13);border-radius:15px;background:rgba(255,255,255,.055);z-index:1}
 .progress-copy{display:flex;justify-content:space-between;gap:16px;align-items:flex-end}
 .progress-copy small{display:block;color:#aaa;font-size:.64rem;letter-spacing:.09em;text-transform:uppercase}
@@ -286,14 +285,21 @@ background:linear-gradient(152deg,rgba(43,30,27,.94),rgba(20,14,12,.9));box-shad
 .progress-copy span{color:#d7c2a9;font-size:.72rem;font-weight:600;text-align:right}
 .progress-track{height:6px;margin-top:14px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden}
 .progress-fill{width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#aa8e72,#ead7be);transition:width .7s cubic-bezier(.22,1,.36,1)}
-.week-checkin{position:relative;z-index:1}
-.week-label{display:flex;justify-content:space-between;margin-bottom:11px;color:#bbb;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase}
-.week-label strong{color:#fff;font-weight:600}
-.streak-days{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
-.streak-day{display:grid;place-items:center;aspect-ratio:1;border:1px solid rgba(255,255,255,.14);border-radius:50%;color:#888;font-size:.62rem;font-weight:700;transition:all .3s}
-.streak-day.done{color:#171717;border-color:#dcc3a4;background:#dcc3a4;box-shadow:0 0 0 4px rgba(220,195,164,.09)}
-.streak-day.today{color:#fff;border-color:#fff;animation:dayPulse 2s ease-in-out infinite}
-@keyframes dayPulse{50%{box-shadow:0 0 0 7px rgba(255,255,255,.08)}}
+.earn-routes{position:relative;z-index:1}
+.er-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:11px;color:#bbb;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase}
+.er-head strong{color:#fff;font-weight:600}
+.er-list{list-style:none;display:grid;gap:7px}
+.er-list li{display:flex;align-items:center;gap:11px;padding:10px 12px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.045);transition:border-color .3s,background .3s}
+.er-list li:hover{border-color:rgba(232,178,60,.34);background:rgba(232,178,60,.07)}
+.er-list em{flex:0 0 auto;width:29px;height:29px;border-radius:9px;display:grid;place-items:center;font-style:normal;font-size:.82rem;background:rgba(232,178,60,.14);border:1px solid rgba(232,178,60,.3);color:#E8B23C}
+.er-list .er-copy{flex:1;min-width:0}
+.er-list strong{display:block;font-size:.76rem;color:#fff;line-height:1.3}
+.er-list small{display:block;font-size:.62rem;color:#a9a29a;margin-top:1px;line-height:1.35}
+.er-tag{flex:0 0 auto;font:700 .55rem 'Inter Tight',sans-serif;letter-spacing:.09em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.08);color:#d7c2a9;border:0;white-space:nowrap}
+.er-tag.ready{background:rgba(127,176,105,.2);color:#A6D68F}
+.er-tag.done{background:rgba(255,255,255,.06);color:#8d867e}
+button.er-tag{cursor:pointer;border:1px solid rgba(232,178,60,.5);background:linear-gradient(120deg,#E8B23C,#C9862B);color:#1B1310;transition:transform .2s}
+button.er-tag:hover{transform:translateY(-2px)}
 .spin-zone{position:relative;display:grid;justify-items:center;margin-top:27px;z-index:1}
 .spin-wrapper{position:relative;width:174px;height:174px}
 .spin-wrapper::before{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(from 0deg,#d9bd9b 0 8deg,transparent 8deg 18deg);-webkit-mask:radial-gradient(circle,transparent 0 69%,#000 70%);mask:radial-gradient(circle,transparent 0 69%,#000 70%);opacity:.9}
@@ -650,12 +656,14 @@ linear-gradient(168deg,#1B1310 0%,#241A18 46%,#22304A 100%)}
 .reward-name{font-size:.86rem}
 .claim-btn{min-height:40px}
 .loyalty-dashboard,.rewards-panel{padding:24px 16px}
-.loyalty-top{align-items:flex-start}
 .point-badge span{font-size:3rem}
-.streak-badge{font-size:.64rem}
+.balance-tag{font-size:.62rem;padding:8px 11px}
 .spin-wrapper{width:158px!important;height:158px!important}
 .loyalty-jump{flex-direction:column;align-items:stretch}
 .loyalty-jump p{text-align:center}
+.er-list li{padding:9px 10px;gap:9px}
+.er-list strong{font-size:.72rem}
+.er-list small{font-size:.58rem}
 .toast{bottom:82px;width:calc(100% - 28px);padding:13px 18px;font-size:.85rem}
 .fgrid{margin-top:55px}
 .trust-strip{padding:18px 0}
@@ -852,14 +860,14 @@ html{scroll-behavior:auto}
 <div class="in">
 <div class="game-heading">
 <span class="game-eyebrow">Baéq Circle</span>
-<h2>Your daily <i>reward ritual</i></h2>
-<p>Check in once a day, grow your streak, play the arcade, and turn points into savings on your next order.</p>
+<h2>Your <i>reward balance</i></h2>
+<p>Claim your daily bonus, play the arcade, and turn points into savings on your next order.</p>
 </div>
 <div class="game-card loyalty-shell">
 <div class="loyalty-dashboard">
 <div class="loyalty-top">
 <div class="point-badge">Available points <span id="point-display">0</span></div>
-<div class="streak-badge">🔥 <strong id="streak-display">0</strong> day streak</div>
+<div class="balance-tag">Worth up to <strong id="worthTag">RM0</strong> off</div>
 </div>
 <div class="loyalty-progress">
 <div class="progress-copy">
@@ -868,13 +876,17 @@ html{scroll-behavior:auto}
 </div>
 <div class="progress-track" role="progressbar" aria-label="Progress to next reward" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="reward-progress"><div class="progress-fill" id="progress-fill"></div></div>
 </div>
-<div class="week-checkin">
-<div class="week-label"><span>Your weekly rhythm</span><strong id="week-status">Start today</strong></div>
-<div class="streak-days" id="streak-days" aria-label="Seven day check-in streak"></div>
+<div class="earn-routes">
+<div class="er-head"><span>Ways to earn</span><strong id="erSummary">1 ready</strong></div>
+<ul class="er-list">
+<li><em>✦</em><div class="er-copy"><strong>Daily bonus</strong><small>10–100 points · once per day</small></div><span class="er-tag ready" id="erDaily">Ready</span></li>
+<li><em>🎮</em><div class="er-copy"><strong>Baéq Arcade</strong><small id="erArcade">Up to 120 points per round</small></div><button class="er-tag" type="button" id="erPlay">Play</button></li>
+<li><em>🛍️</em><div class="er-copy"><strong>Confirmed order</strong><small>Added manually after payment</small></div><span class="er-tag">Manual</span></li>
+</ul>
 </div>
 <div class="spin-zone">
 <div class="spin-wrapper" id="spin-wrapper"><button class="spin-btn" id="spin-btn" type="button"><i>✦</i><span>Claim today</span></button></div>
-<p class="spin-status" id="spin-status">Your daily reward is ready.</p>
+<p class="spin-status" id="spin-status">Your daily bonus is ready.</p>
 </div>
 <div class="loyalty-jump">
 <p>Want points faster? Play the <b>Baéq Arcade</b> — every cleared colour lot pays up to <b>120 points</b>.</p>
@@ -892,7 +904,7 @@ html{scroll-behavior:auto}
 <div id="claimed-code" class="claimed-code" aria-live="polite"></div>
 <div class="points-info">
 <h4>How your points work</h4>
-<p>Claim once daily, play the arcade any time, and redeem a reward when your balance is ready. Order points are confirmed manually after payment. This website stores your balance on this device.</p>
+<p>Claim your daily bonus, play the arcade any time, and redeem a reward when your balance is ready. Order points are confirmed manually after payment. This website stores your balance on this device.</p>
 <ul class="points-history" id="points-history" aria-label="Recent points activity"></ul>
 </div>
 </div>
@@ -1104,33 +1116,26 @@ p.style.width=s;p.style.height=s;p.style.left=Math.random()*100+'vw';
 p.style.animationDuration=Math.random()*15+10+'s';p.style.animationDelay=Math.random()*10+'s';box.appendChild(p)}
 })();
 
-/* ═════ loyalty ═════ */
+/* ═════ loyalty (no streak) ═════ */
 var points=parseInt(localStorage.getItem('baeq_points'))||0;
 var lastSpinDate=localStorage.getItem('baeq_last_spin')||'';
-var streak=parseInt(localStorage.getItem('baeq_streak'))||0;
 var activeDiscount=localStorage.getItem('baeq_discount')||'';
 var pointsHistory=read('baeq_point_history',[]);
-var rewardDefinitions=[{cost:100,name:'RM5 OFF'},{cost:150,name:'FREE SHIPPING'},{cost:200,name:'10% OFF'},{cost:400,name:'20% OFF'}];
+try{localStorage.removeItem('baeq_streak')}catch(e){}
+var rewardDefinitions=[{cost:100,name:'RM5 OFF',value:5},{cost:150,name:'FREE SHIPPING',value:8},{cost:200,name:'10% OFF',value:12},{cost:400,name:'20% OFF',value:25}];
 var spinBtn=document.getElementById('spin-btn'),spinWrapper=document.getElementById('spin-wrapper'),
-pointDisplay=document.getElementById('point-display'),streakDisplay=document.getElementById('streak-display'),
-streakDays=document.getElementById('streak-days'),weekStatus=document.getElementById('week-status'),
-spinStatus=document.getElementById('spin-status'),nextRewardName=document.getElementById('next-reward-name'),
-pointsToNext=document.getElementById('points-to-next'),progressFill=document.getElementById('progress-fill'),
-rewardProgress=document.getElementById('reward-progress'),claimedCodeEl=document.getElementById('claimed-code'),
-pointsHistoryEl=document.getElementById('points-history');
+pointDisplay=document.getElementById('point-display'),spinStatus=document.getElementById('spin-status'),
+nextRewardName=document.getElementById('next-reward-name'),pointsToNext=document.getElementById('points-to-next'),
+progressFill=document.getElementById('progress-fill'),rewardProgress=document.getElementById('reward-progress'),
+claimedCodeEl=document.getElementById('claimed-code'),pointsHistoryEl=document.getElementById('points-history'),
+worthTag=document.getElementById('worthTag'),erDaily=document.getElementById('erDaily'),
+erArcade=document.getElementById('erArcade'),erSummary=document.getElementById('erSummary');
 function localDateKey(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function normalizeStoredDate(v){if(!v)return'';if(/^\d{4}-\d{2}-\d{2}$/.test(v))return v;var p=new Date(v);return isNaN(p.getTime())?'':localDateKey(p)}
 var today=localDateKey(new Date());
 lastSpinDate=normalizeStoredDate(lastSpinDate);
-function renderStreak(){
-var claimedToday=lastSpinDate===today,activeDays=Math.min(streak,7);
-streakDays.innerHTML=Array.from({length:7},function(_,i){
-var done=i<activeDays,isToday=!claimedToday&&i===Math.min(activeDays,6);
-return'<span class="streak-day'+(done?' done':'')+(isToday?' today':'')+'">'+(done?'✓':i+1)+'</span>'}).join('');
-weekStatus.textContent=claimedToday?'Claimed today':(streak?'Keep it going':'Start today');
-}
 function renderPointsHistory(){
-if(!pointsHistory.length){pointsHistoryEl.innerHTML='<li><small>No activity yet — claim today’s reward or play the arcade.</small></li>';return}
+if(!pointsHistory.length){pointsHistoryEl.innerHTML='<li><small>No activity yet — claim your daily bonus or play the arcade.</small></li>';return}
 pointsHistoryEl.innerHTML=pointsHistory.map(function(e){
 return'<li><span>'+e.label+'<br><small>'+e.date+'</small></span><strong class="'+(e.amount>=0?'positive':'negative')+'">'+(e.amount>=0?'+':'')+e.amount+' pts</strong></li>'}).join('');
 }
@@ -1138,11 +1143,17 @@ function recordPointActivity(label,amount){
 pointsHistory.unshift({label:label,amount:amount,date:new Date().toLocaleDateString('en-MY',{day:'numeric',month:'short'})});
 pointsHistory=pointsHistory.slice(0,5);store('baeq_point_history',pointsHistory);renderPointsHistory();
 }
+function bestArcadeScore(){
+var s=read('baeq_arcade_stats',{}),b=s.best||{},top=0;
+Object.keys(b).forEach(function(k){if(b[k]&&b[k].score>top)top=b[k].score});
+return top;
+}
 function updateLoyaltyUI(){
 var claimedToday=lastSpinDate===today;
-pointDisplay.textContent=points;streakDisplay.textContent=streak;
+pointDisplay.textContent=points;
 document.getElementById('navPointsVal').textContent=points;
-renderStreak();
+var unlocked=rewardDefinitions.filter(function(r){return points>=r.cost});
+worthTag.textContent='RM'+(unlocked.length?unlocked[unlocked.length-1].value:0);
 var next=rewardDefinitions.find(function(r){return points<r.cost});
 if(next){var rem=next.cost-points,pr=Math.min(100,Math.round(points/next.cost*100));
 nextRewardName.textContent=next.name;pointsToNext.textContent=rem+' points to go';
@@ -1150,13 +1161,18 @@ progressFill.style.width=pr+'%';rewardProgress.setAttribute('aria-valuenow',Stri
 }else{nextRewardName.textContent='Top reward ready';pointsToNext.textContent='Choose your reward';
 progressFill.style.width='100%';rewardProgress.setAttribute('aria-valuenow','100')}
 document.querySelectorAll('.reward-card[data-cost]').forEach(function(card){
-var cost=Number(card.dataset.cost),unlocked=points>=cost,b=card.querySelector('.claim-btn');
-card.classList.toggle('unlocked',unlocked);
-b.textContent=unlocked?'Redeem now':(cost-points)+' pts to go';
+var cost=Number(card.dataset.cost),ok=points>=cost,b=card.querySelector('.claim-btn');
+card.classList.toggle('unlocked',ok);
+b.textContent=ok?'Redeem now':(cost-points)+' pts to go';
 });
 spinBtn.disabled=claimedToday;
 spinBtn.innerHTML=claimedToday?'<i>✓</i><span>Claimed</span>':'<i>✦</i><span>Claim today</span>';
-spinStatus.textContent=claimedToday?'Today’s points are safely in your balance. Come back tomorrow.':'Your daily reward is ready. One claim per day.';
+spinStatus.textContent=claimedToday?'Today’s bonus is safely in your balance. Come back tomorrow.':'Your daily bonus is ready. One claim per day.';
+erDaily.textContent=claimedToday?'Claimed':'Ready';
+erDaily.className='er-tag '+(claimedToday?'done':'ready');
+var bs=bestArcadeScore();
+erArcade.textContent=bs?('Best score '+bs+' · up to 120 points per round'):'Up to 120 points per round';
+erSummary.textContent=claimedToday?'Arcade open':'1 ready';
 renderPointsHistory();
 }
 function animatePoints(from,to){
@@ -1182,16 +1198,14 @@ spinBtn.addEventListener('click',function(){
 if(lastSpinDate===today)return;
 spinBtn.disabled=true;spinWrapper.classList.add('spinning');
 spinBtn.innerHTML='<i>✦</i><span>Finding points</span>';
-spinStatus.textContent='Opening today’s Baéq reward…';
+spinStatus.textContent='Opening today’s Baéq bonus…';
 var count=0,iv=setInterval(function(){
 count++;var sp=spinBtn.querySelector('span');if(sp)sp.textContent='Finding points'+'.'.repeat((count%3)+1);
 if(count>9){clearInterval(iv);spinWrapper.classList.remove('spinning');
 var pool=[10,20,20,30,30,50,100],earned=pool[Math.floor(Math.random()*pool.length)],old=points;
-var y=new Date();y.setDate(y.getDate()-1);
-streak=lastSpinDate===localDateKey(y)?streak+1:1;
 points+=earned;lastSpinDate=today;
-localStorage.setItem('baeq_points',points);localStorage.setItem('baeq_last_spin',today);localStorage.setItem('baeq_streak',streak);
-recordPointActivity('Daily check-in',earned);
+localStorage.setItem('baeq_points',points);localStorage.setItem('baeq_last_spin',today);
+recordPointActivity('Daily bonus',earned);
 animatePoints(old,points);updateLoyaltyUI();celebratePoints();
 showToast('+'+earned+' points added to your Baéq Circle')}
 },90);
@@ -1215,7 +1229,9 @@ document.querySelectorAll('[data-redeem]').forEach(function(b){
 b.addEventListener('click',function(){claimReward(Number(b.dataset.redeem),b.dataset.code)});
 });
 if(activeDiscount){claimedCodeEl.innerHTML='<div><small>Active checkout reward</small><strong>'+activeDiscount+'</strong></div><span>Applied</span>';claimedCodeEl.classList.add('show')}
-document.getElementById('jumpArcade').addEventListener('click',function(){document.getElementById('arcade').scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'})});
+function goArcade(){document.getElementById('arcade').scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'})}
+document.getElementById('jumpArcade').addEventListener('click',goArcade);
+document.getElementById('erPlay').addEventListener('click',goArcade);
 updateLoyaltyUI();
 
 /* ═════ cursor / nav / scroll ═════ */
@@ -1472,7 +1488,7 @@ var skins=[
 {name:'Deep',skin:'#905D3C',lip:'#7E4436',blush:'#A7644C',brow:'#241812',iris:'#2E1B10'}
 ];
 var skinIdx=1,mood='studio',motionOn=true,motionAmp=1,blinkOn=true,holoOn=true;
-var glowAmt=.55,sheenAmt=.6,rimAmt=.55,dustAmt=.6,bloomAmt=.55,dofAmt=.35;
+var glowAmt=.55,sheenAmt=.6,dustAmt=.6,bloomAmt=.55,dofAmt=.35;
 var use3D=false,renderer=null,scene3=null,camera3=null,figure=null,dust=null,canvas3D=null;
 var clothGrad,clothSolid,clothDeep,skinMat,lipMat,blushMat,browMat,irisMat,scleraMat,glossMat;
 var gradGeos=[],armL,armR,handL,handR,headGrp,bodyMesh,hijabMesh,tailGrp,drapeTail,broochGem;
@@ -2406,7 +2422,7 @@ $('gClaimAmt').textContent=earnedPts;
 btnClaim.disabled=false;btnClaim.textContent='Claim '+earnedPts+' points';btnClaim.dataset.pts=earnedPts;
 $('gClaimNote').textContent='One claim per round · added straight to your balance.';
 claimed=false;win.classList.add('on');
-paintHUD();paintRail();
+paintHUD();paintRail();updateLoyaltyUI();
 var w=fx.getBoundingClientRect();
 burst(w.width/2,w.height*.4,['#E8B23C','#F4E9D6','#B5C0A3','#D9B3A8','#7FB069'],30);
 Snd.win();
