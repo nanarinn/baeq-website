@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Baéq – Premium Inner Caps</title>
-<meta name="description" content="Baéq inner caps in soft, cool fabrics. Play the arcade, earn points, order on WhatsApp. Shipping across Malaysia.">
+<meta name="description" content="Baéq inner caps in soft, cool fabrics. Play the arcade, earn points, spend them straight on your order. Shipping across Malaysia.">
 <meta name="theme-color" content="#C4C9CE">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -49,13 +49,14 @@ header.top{position:sticky;top:0;z-index:20;background:rgba(196,201,206,.9);back
 .in{max-width:1200px;margin:0 auto;padding:0 20px;position:relative;width:100%}
 .nav-shell{height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .logo{font-family:'Playfair Display',serif;font-weight:500;font-size:1.75rem;text-decoration:none;color:var(--ink);letter-spacing:-.02em;z-index:2}
-.primary-nav{display:flex;align-items:center;gap:26px}
+.primary-nav{display:flex;align-items:center;gap:24px}
 .primary-nav a{position:relative;color:var(--ink);font-size:.7rem;font-weight:600;letter-spacing:.08em;text-decoration:none;text-transform:uppercase;padding:4px 0}
 .primary-nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:1.5px;background:var(--ink);transition:right .3s ease}
 .primary-nav a:hover::after,.primary-nav a:focus-visible::after,.primary-nav a.current::after{right:0}
 .primary-nav a.current{color:var(--mocha)}
 .nav-right{display:flex;align-items:center;gap:10px}
-.nav-points{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:999px;border:1px solid var(--gold);background:linear-gradient(120deg,rgba(201,162,39,.16),rgba(255,255,255,.5));font:700 .68rem 'Inter Tight',sans-serif;letter-spacing:.06em;color:#5A4A22;white-space:nowrap}
+.nav-points{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:999px;border:1px solid var(--gold);background:linear-gradient(120deg,rgba(201,162,39,.16),rgba(255,255,255,.5));font:700 .68rem 'Inter Tight',sans-serif;letter-spacing:.06em;color:#5A4A22;white-space:nowrap;text-decoration:none;transition:transform .2s}
+.nav-points:hover{transform:translateY(-2px)}
 .nav-points b{font-variant-numeric:tabular-nums;font-size:.8rem}
 .pill{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:12px 28px;font:inherit;font-size:.75rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;background:transparent;color:var(--ink);cursor:pointer;transition:all .3s ease;text-decoration:none}
 .pill:hover,.pill[aria-pressed="true"]{background:var(--ink);color:var(--bg-main);border-color:var(--ink)}
@@ -174,6 +175,8 @@ background:linear-gradient(152deg,rgba(43,30,27,.94),rgba(20,14,12,.9));box-shad
 .card::before{content:"";position:absolute;inset:12px -6px -14px -6px;background:radial-gradient(60% 60% at 50% 60%,rgba(17,17,17,.28),transparent 70%);filter:blur(14px);transform:translateZ(-30px);z-index:-1;opacity:.5;transition:opacity .4s}
 .card:hover::before{opacity:.85}
 .card:hover{border-color:var(--ink);box-shadow:0 20px 50px rgba(0,0,0,.15)}
+.card.flash{animation:cardFlash 1.6s ease}
+@keyframes cardFlash{0%,100%{box-shadow:0 10px 30px rgba(0,0,0,.05)}30%{box-shadow:0 0 0 3px var(--gold),0 20px 50px rgba(201,162,39,.35)}}
 .card::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.5) 50%,transparent 65%);transform:translateX(-130%);transition:transform .75s;pointer-events:none}
 .card:hover::after{transform:translateX(130%)}
 .card .pic{background:#F5F5F5;aspect-ratio:1;display:grid;place-items:end center;margin-bottom:12px;overflow:hidden;border-radius:8px;transform:translateZ(26px)}
@@ -183,6 +186,7 @@ background:linear-gradient(152deg,rgba(43,30,27,.94),rgba(20,14,12,.9));box-shad
 .card p{margin:8px 0 0;font-size:.9rem;color:var(--muted);flex:1;line-height:1.5;font-weight:500}
 .card .price{font-weight:700;font-size:1rem;margin-top:15px;letter-spacing:.02em;transform:translateZ(12px)}
 .card .pill{margin-top:20px;width:100%;text-align:center;transform:translateZ(10px)}
+.card .pts-price{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font:700 .6rem 'Inter Tight',sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#6B5B2A;background:rgba(201,162,39,.14);border:1px solid rgba(201,162,39,.34);padding:5px 9px;border-radius:999px}
 .product-specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0 2px}
 .product-spec{padding:10px;border:1px solid #e4e1dd;border-radius:9px;background:#faf9f7}
 .product-spec small,.product-spec strong{display:block}
@@ -264,94 +268,104 @@ background:linear-gradient(152deg,rgba(43,30,27,.94),rgba(20,14,12,.9));box-shad
 .scopy:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 .studio-foot{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
 .studio-foot .pill{padding:9px 15px;font-size:.63rem}
-/* ── loyalty ── */
-.game-section{padding:100px 20px;text-align:center;background:linear-gradient(145deg,#f7f5f2 0%,#fff 45%,#eeeae5 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:2;overflow:hidden}
-.game-heading{max-width:640px;margin:0 auto 42px}
-.game-section .game-heading h2{font:400 clamp(2.7rem,6vw,5rem)/1 'Playfair Display',serif;letter-spacing:-.04em}
-.game-section .game-heading p{max-width:48ch;margin:18px auto 0;font-size:1rem;line-height:1.65;color:var(--muted)}
-.game-card{max-width:600px;margin:0 auto;background:#F9F9F9;border-radius:24px;padding:40px;box-shadow:0 20px 50px rgba(0,0,0,.1);position:relative;overflow:hidden;border:1px solid var(--line)}
-.game-card.loyalty-shell{max-width:1100px;padding:0;display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);text-align:left;border-radius:28px;background:rgba(255,255,255,.82);box-shadow:0 35px 90px rgba(17,17,17,.12);backdrop-filter:blur(12px)}
-.loyalty-dashboard{position:relative;padding:34px;background:#171717;color:#fff;overflow:hidden}
-.loyalty-dashboard::before{content:"";position:absolute;width:290px;height:290px;right:-140px;top:-130px;border:1px solid rgba(255,255,255,.14);border-radius:50%;box-shadow:0 0 0 42px rgba(255,255,255,.025),0 0 0 84px rgba(255,255,255,.02)}
-.loyalty-top{position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;z-index:1}
+/* ── wallet ── */
+.wallet-section{padding:100px 20px;background:linear-gradient(150deg,#f7f5f2 0%,#fff 46%,#ece7e0 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:2;overflow:hidden}
+.w-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+.w-head h2{font:400 clamp(2.6rem,6vw,4.6rem)/1 'Playfair Display',serif;letter-spacing:-.04em}
+.w-head p{max-width:56ch;margin-top:16px;color:var(--muted);font-size:.95rem;line-height:1.65}
+.wallet-shell{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);border-radius:26px;overflow:hidden;border:1px solid var(--line);background:rgba(255,255,255,.8);box-shadow:0 35px 90px rgba(17,17,17,.12)}
+.w-balance{position:relative;padding:32px;background:#171717;color:#fff;overflow:hidden}
+.w-balance::before{content:"";position:absolute;width:300px;height:300px;right:-150px;top:-140px;border:1px solid rgba(255,255,255,.14);border-radius:50%;box-shadow:0 0 0 44px rgba(255,255,255,.025),0 0 0 88px rgba(255,255,255,.02)}
+.wb-top{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
 .point-badge{color:#fff;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
 .point-badge span{display:block;margin-top:3px;color:#fff;font:400 3.4rem/1 'Playfair Display',serif;letter-spacing:-.04em}
-.balance-tag{padding:10px 13px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(255,255,255,.08);font-size:.68rem;font-weight:600;white-space:nowrap;color:#cfc6bb}
-.balance-tag strong{color:#e1c6a5;font-size:.86rem}
-.loyalty-progress{position:relative;margin:26px 0 22px;padding:17px;border:1px solid rgba(255,255,255,.13);border-radius:15px;background:rgba(255,255,255,.055);z-index:1}
-.progress-copy{display:flex;justify-content:space-between;gap:16px;align-items:flex-end}
-.progress-copy small{display:block;color:#aaa;font-size:.64rem;letter-spacing:.09em;text-transform:uppercase}
-.progress-copy strong{display:block;margin-top:3px;font-size:.9rem}
-.progress-copy span{color:#d7c2a9;font-size:.72rem;font-weight:600;text-align:right}
-.progress-track{height:6px;margin-top:14px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden}
-.progress-fill{width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#aa8e72,#ead7be);transition:width .7s cubic-bezier(.22,1,.36,1)}
-.earn-routes{position:relative;z-index:1}
-.er-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:11px;color:#bbb;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase}
-.er-head strong{color:#fff;font-weight:600}
+.wb-worth{text-align:right;padding:10px 14px;border:1px solid rgba(232,178,60,.42);border-radius:14px;background:rgba(232,178,60,.12)}
+.wb-worth small{display:block;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:#d9c6a6}
+.wb-worth strong{display:block;margin-top:2px;font:600 1.4rem 'Inter Tight',sans-serif;color:#F0C86A;font-variant-numeric:tabular-nums}
+.wb-rate{position:relative;z-index:1;margin-top:16px;font-size:.68rem;color:#a9a29a;letter-spacing:.04em}
+.wb-ladder{position:relative;z-index:1;margin-top:18px;display:grid;gap:7px}
+.wl-row{display:flex;align-items:center;gap:11px;padding:10px 12px;border:1px solid rgba(255,255,255,.11);border-radius:12px;background:rgba(255,255,255,.04);transition:.3s}
+.wl-row.on{border-color:rgba(127,176,105,.5);background:rgba(127,176,105,.12)}
+.wl-row em{flex:0 0 auto;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-style:normal;font-size:.7rem;background:rgba(255,255,255,.08);color:#cfc6bb}
+.wl-row.on em{background:rgba(127,176,105,.24);color:#A6D68F}
+.wl-row .wl-copy{flex:1;min-width:0}
+.wl-row strong{display:block;font-size:.76rem;line-height:1.3}
+.wl-row small{display:block;font-size:.6rem;color:#a9a29a;margin-top:1px}
+.wl-row b{flex:0 0 auto;font:700 .56rem 'Inter Tight',sans-serif;letter-spacing:.09em;text-transform:uppercase;color:#d7c2a9}
+.wl-row.on b{color:#A6D68F}
+.wb-progress{position:relative;z-index:1;margin-top:16px}
+.wb-progress .wp-copy{display:flex;justify-content:space-between;gap:14px;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:#a9a29a}
+.wb-progress .wp-copy strong{color:#fff}
+.wp-track{height:6px;margin-top:9px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden}
+.wp-fill{height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,#aa8e72,#F0C86A);transition:width .7s cubic-bezier(.22,1,.36,1)}
+.wb-earn{position:relative;z-index:1;margin-top:20px}
+.we-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#a9a29a}
+.we-head strong{color:#fff}
 .er-list{list-style:none;display:grid;gap:7px}
-.er-list li{display:flex;align-items:center;gap:11px;padding:10px 12px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.045);transition:border-color .3s,background .3s}
+.er-list li{display:flex;align-items:center;gap:11px;padding:10px 12px;border:1px solid rgba(255,255,255,.11);border-radius:12px;background:rgba(255,255,255,.045);transition:.3s}
 .er-list li:hover{border-color:rgba(232,178,60,.34);background:rgba(232,178,60,.07)}
 .er-list em{flex:0 0 auto;width:29px;height:29px;border-radius:9px;display:grid;place-items:center;font-style:normal;font-size:.82rem;background:rgba(232,178,60,.14);border:1px solid rgba(232,178,60,.3);color:#E8B23C}
 .er-list .er-copy{flex:1;min-width:0}
 .er-list strong{display:block;font-size:.76rem;color:#fff;line-height:1.3}
-.er-list small{display:block;font-size:.62rem;color:#a9a29a;margin-top:1px;line-height:1.35}
+.er-list small{display:block;font-size:.61rem;color:#a9a29a;margin-top:1px;line-height:1.35}
 .er-tag{flex:0 0 auto;font:700 .55rem 'Inter Tight',sans-serif;letter-spacing:.09em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.08);color:#d7c2a9;border:0;white-space:nowrap}
-.er-tag.ready{background:rgba(127,176,105,.2);color:#A6D68F}
-.er-tag.done{background:rgba(255,255,255,.06);color:#8d867e}
 button.er-tag{cursor:pointer;border:1px solid rgba(232,178,60,.5);background:linear-gradient(120deg,#E8B23C,#C9862B);color:#1B1310;transition:transform .2s}
 button.er-tag:hover{transform:translateY(-2px)}
-.spin-zone{position:relative;display:grid;justify-items:center;margin-top:27px;z-index:1}
-.spin-wrapper{position:relative;width:174px;height:174px}
-.spin-wrapper::before{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(from 0deg,#d9bd9b 0 8deg,transparent 8deg 18deg);-webkit-mask:radial-gradient(circle,transparent 0 69%,#000 70%);mask:radial-gradient(circle,transparent 0 69%,#000 70%);opacity:.9}
-.spin-wrapper::after{content:"";position:absolute;left:50%;top:-9px;transform:translateX(-50%);border-left:8px solid transparent;border-right:8px solid transparent;border-top:16px solid #fff;z-index:3}
-.spin-wrapper.spinning::before{animation:wheelSpin .7s linear infinite}
-@keyframes wheelSpin{to{transform:rotate(360deg)}}
-.spin-btn{position:absolute;inset:19px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:radial-gradient(circle at 35% 30%,#a88d72,#725e4c);color:#fff;font-weight:700;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;text-transform:uppercase;box-shadow:inset 0 0 0 7px rgba(255,255,255,.06),0 18px 35px rgba(0,0,0,.34);font-size:.78rem;letter-spacing:.14em;transition:transform .3s}
-.spin-btn:hover{transform:scale(1.035)}
-.spin-btn:disabled{color:#ddd;border-color:rgba(255,255,255,.1);background:#4b4b4b;opacity:.8;transform:none}
-.spin-btn i{font-style:normal;font-size:1.65rem;margin-bottom:5px}
-.spin-status{min-height:36px;margin:13px 0 0!important;color:#bbb!important;font-size:.72rem!important;line-height:1.45;text-align:center}
-.loyalty-jump{position:relative;z-index:1;margin-top:18px;display:flex;align-items:center;gap:10px;padding:13px 15px;border:1px dashed rgba(232,178,60,.5);border-radius:14px;background:rgba(232,178,60,.09)}
-.loyalty-jump p{margin:0;font-size:.72rem;color:#e8dcc8;line-height:1.45;text-align:left;flex:1}
-.loyalty-jump b{color:#E8B23C}
-.loyalty-jump button{flex:0 0 auto;padding:9px 15px;border-radius:999px;border:1px solid #E8B23C;background:linear-gradient(120deg,#E8B23C,#C9862B);color:#1B1310;font:700 .62rem 'Inter Tight',sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:transform .2s}
-.loyalty-jump button:hover{transform:translateY(-2px)}
-.rewards-panel{padding:34px}
-.rewards-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:22px}
-.rewards-title{font-family:'Inter Tight';font-size:1.2rem;text-transform:uppercase;letter-spacing:1px}
-.rewards-head span{color:var(--muted);font-size:.68rem;text-align:right}
-.reward-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.reward-card{position:relative;background:#fff;border:1px solid var(--line);align-items:flex-start;padding:17px;border-radius:15px;overflow:hidden;display:flex;flex-direction:column;gap:10px;transition:all .3s}
-.reward-card::after{content:"";position:absolute;width:80px;height:80px;right:-38px;top:-38px;border-radius:50%;background:rgba(138,123,107,.09);transition:transform .35s}
-.reward-card:hover::after{transform:scale(1.35)}
-.reward-card.unlocked{border-color:#a88d72;box-shadow:0 10px 30px rgba(138,123,107,.12)}
-.reward-card.unlocked::before{content:"Ready";position:absolute;right:10px;top:10px;padding:4px 7px;border-radius:99px;color:#fff;background:#1d1d1d;font-size:.55rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-.reward-icon{display:grid;width:39px;height:39px;place-items:center;border-radius:11px;background:#f1ece6;font-size:1.25rem}
-.reward-name{font-weight:700;font-size:.92rem}
-.reward-cost{font-size:.7rem;color:var(--muted);font-weight:600}
-.claim-btn{min-height:38px;margin-top:2px;border:1px solid var(--ink);border-radius:8px;background:transparent;color:var(--ink);position:relative;z-index:1;font-weight:600;font-size:.8rem;cursor:pointer;width:100%;transition:all .3s}
-.reward-card.unlocked .claim-btn{background:var(--ink);color:#fff}
-.claim-btn:hover{color:#fff;background:var(--accent);border-color:var(--accent)}
-.claimed-code{display:none;margin-top:18px;padding:16px;border:1px dashed #9e8266;border-radius:12px;background:#f7f2ec;text-align:left}
-.claimed-code.show{display:flex;align-items:center;justify-content:space-between;gap:14px;animation:codeReveal .45s cubic-bezier(.22,1,.36,1)}
-.claimed-code small,.claimed-code strong{display:block}
-.claimed-code small{color:var(--muted);font-size:.66rem}
-.claimed-code strong{margin-top:2px;font-size:1.2rem;letter-spacing:.06em}
-.claimed-code span{padding:6px 9px;border-radius:6px;background:#fff;font-size:.62rem;font-weight:700;text-transform:uppercase}
-.points-info{margin-top:18px;padding:15px;border:1px solid #ddd5cc;border-radius:13px;background:#fbf9f6}
+.w-spend{padding:32px}
+.w-spend h3{font:700 .72rem 'Inter Tight',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.w-spend h3::after{content:"";flex:1;height:1px;background:var(--line)}
+.ws-steps{list-style:none;counter-reset:w;display:grid;gap:10px;margin-bottom:22px}
+.ws-steps li{counter-increment:w;display:flex;gap:12px;align-items:flex-start;padding:13px 15px;border:1px solid var(--line);border-radius:13px;background:#fff}
+.ws-steps li::before{content:counter(w);flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;font:700 .68rem 'Inter Tight',sans-serif;display:grid;place-items:center}
+.ws-steps strong{display:block;font:600 .84rem 'Inter Tight',sans-serif;text-transform:uppercase;letter-spacing:.03em}
+.ws-steps span{display:block;margin-top:3px;font-size:.75rem;color:var(--muted);line-height:1.5}
+.ws-table{display:grid;gap:7px;margin-bottom:20px}
+.ws-row{display:flex;align-items:center;gap:12px;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(120deg,rgba(201,162,39,.07),#fff)}
+.ws-row .ws-sw{width:22px;height:22px;border-radius:50%;flex:0 0 auto;box-shadow:inset 0 0 0 1px rgba(17,17,17,.14)}
+.ws-row .ws-copy{flex:1;min-width:0}
+.ws-row strong{display:block;font:600 .8rem 'Inter Tight',sans-serif;text-transform:uppercase;letter-spacing:.02em;line-height:1.25}
+.ws-row small{display:block;font-size:.66rem;color:var(--muted);margin-top:1px}
+.ws-row b{font:700 .72rem 'Inter Tight',sans-serif;color:#6B5B2A;white-space:nowrap}
+.ws-row button{flex:0 0 auto;padding:7px 12px;border-radius:999px;border:1px solid var(--ink);background:transparent;color:var(--ink);font:700 .56rem 'Inter Tight',sans-serif;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;transition:.22s}
+.ws-row button:hover{background:var(--ink);color:#fff}
+.points-info{padding:15px;border:1px solid #ddd5cc;border-radius:13px;background:#fbf9f6}
 .points-info h4{font:700 .72rem 'Inter Tight',sans-serif;letter-spacing:.08em;text-transform:uppercase}
-.points-info p{margin:5px 0 12px!important;font-size:.72rem!important;line-height:1.55;color:var(--muted)}
-.points-history{display:grid;gap:8px;list-style:none}
+.points-info p{margin:5px 0 12px;font-size:.72rem;line-height:1.55;color:var(--muted)}
+.points-history{display:grid;gap:8px;list-style:none;max-height:190px;overflow:auto;scrollbar-width:thin;scrollbar-color:var(--accent) #F1ECE4;padding-right:4px}
+.points-history::-webkit-scrollbar{width:7px}
+.points-history::-webkit-scrollbar-track{background:#F1ECE4;border-radius:7px}
+.points-history::-webkit-scrollbar-thumb{background:var(--accent);border-radius:7px}
 .points-history li{display:flex;justify-content:space-between;gap:12px;padding-top:8px;border-top:1px solid #e9e3dc;font-size:.68rem}
 .points-history small{color:var(--muted)}
 .points-history strong.positive{color:#2f7650}
 .points-history strong.negative{color:#9a493c}
-@keyframes codeReveal{from{opacity:0;transform:translateY(8px) scale(.98)}}
 .point-pop{animation:pointPop .55s cubic-bezier(.22,1.7,.36,1)}
 @keyframes pointPop{50%{transform:scale(1.22);color:#e8ceb0}}
 .confetti-piece{position:absolute;z-index:8;width:7px;height:11px;left:50%;top:52%;border-radius:2px;pointer-events:none;animation:confettiFly .9s ease-out forwards}
 @keyframes confettiFly{to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
-@media(max-width:780px){.game-card.loyalty-shell{grid-template-columns:1fr}.loyalty-dashboard,.rewards-panel{padding:26px 20px}.rewards-panel{border-top:1px solid var(--line)}}
+@media(max-width:860px){.wallet-shell{grid-template-columns:1fr}.w-balance,.w-spend{padding:24px 18px}.w-spend{border-top:1px solid var(--line)}}
+/* ── points spend control ── */
+.pts-spend{margin-top:16px;padding:14px;border:1px solid rgba(201,162,39,.5);border-radius:14px;background:linear-gradient(150deg,rgba(201,162,39,.12),rgba(255,255,255,.55))}
+.ps-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.ps-head small{display:block;font-size:.58rem;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+.ps-head strong{display:block;font:600 .92rem 'Inter Tight',sans-serif;margin-top:2px;font-variant-numeric:tabular-nums}
+.ps-toggle{display:inline-flex;align-items:center;gap:7px;font:700 .6rem 'Inter Tight',sans-serif;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:#fff;transition:.22s}
+.ps-toggle.on{border-color:var(--gold);background:rgba(201,162,39,.16)}
+.ps-toggle input{width:15px;height:15px;accent-color:var(--gold);cursor:pointer}
+.ps-body{display:none;margin-top:12px}
+.ps-body.on{display:block}
+.ps-body input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:22px;background:transparent;cursor:pointer}
+.ps-body input[type=range]::-webkit-slider-runnable-track{height:5px;border-radius:5px;background:linear-gradient(90deg,var(--gold),rgba(17,17,17,.14))}
+.ps-body input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:17px;height:17px;border-radius:50%;background:var(--ink);border:2px solid #fff;margin-top:-6px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.ps-body input[type=range]::-moz-range-track{height:5px;border-radius:5px;background:linear-gradient(90deg,var(--gold),rgba(17,17,17,.14))}
+.ps-body input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:var(--ink);border:2px solid #fff}
+.ps-presets{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.ps-presets button{padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:#fff;font:700 .57rem 'Inter Tight',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.2s}
+.ps-presets button:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.ps-line{display:flex;justify-content:space-between;gap:12px;margin-top:10px;font-size:.78rem;font-weight:600}
+.ps-line strong{color:#2F7650;font-variant-numeric:tabular-nums}
+.ps-empty{margin:10px 0 0;font-size:.7rem;color:var(--muted);line-height:1.5}
+.ps-empty a{color:#6B5B2A;font-weight:700}
 /* ── arcade ── */
 #arcade{
 --g-ink:#150F0D;--g-surf:#241A18;--g-indigo:#2B3A55;--g-cream:#F4E9D6;--g-gold:#E8B23C;
@@ -526,11 +540,15 @@ linear-gradient(168deg,#1B1310 0%,#241A18 46%,#22304A 100%)}
 .fab{position:fixed;right:20px;bottom:20px;z-index:25;background:var(--ink);color:var(--bg-main);padding:14px 24px;font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:transform .2s;border:1px solid var(--ink);border-radius:6px;text-decoration:none}
 .fab:hover{transform:translateY(-4px);background:transparent;color:var(--ink)}
 .scrim{position:fixed;inset:0;background:rgba(17,17,17,.4);z-index:30;opacity:0;visibility:hidden;transition:opacity .3s}
-.drawer{position:fixed;top:0;right:0;bottom:0;width:100%;max-width:450px;background:var(--bg-main);z-index:31;transform:translateX(100%);visibility:hidden;transition:transform .4s cubic-bezier(.4,0,.2,1),visibility .4s;display:flex;flex-direction:column;padding:30px;border-left:1px solid var(--line)}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:100%;max-width:460px;background:var(--bg-main);z-index:31;transform:translateX(100%);visibility:hidden;transition:transform .4s cubic-bezier(.4,0,.2,1),visibility .4s;display:flex;flex-direction:column;padding:28px;border-left:1px solid var(--line)}
 .open .drawer{transform:none;visibility:visible}
 .open .scrim{opacity:1;visibility:visible}
-#lines{list-style:none;flex:1;overflow:auto;border-top:1px solid var(--line);margin-top:20px;scrollbar-width:thin;scrollbar-color:var(--accent) rgba(17,17,17,.08)}
-#lines li{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+#lines{list-style:none;flex:1;overflow:auto;border-top:1px solid var(--line);margin-top:18px;min-height:60px;scrollbar-width:thin;scrollbar-color:var(--accent) rgba(17,17,17,.08)}
+#lines li{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.drawer-foot{padding-top:16px;display:grid;gap:10px}
+.df-row{display:flex;justify-content:space-between;gap:16px;font-size:.82rem}
+.df-row.save{color:#2F7650;font-weight:700}
+.df-row.grand{font-weight:700;font-size:1.02rem;padding-top:9px;border-top:1px solid var(--line)}
 .checkout-modal{position:fixed;inset:0;z-index:45;display:grid;place-items:center;padding:18px;background:rgba(17,17,17,.55);opacity:0;visibility:hidden;transition:.25s}
 .checkout-modal.show{opacity:1;visibility:visible}
 .checkout-panel{width:min(760px,100%);max-height:92vh;overflow:auto;padding:30px;border-radius:20px;background:#f8f7f5;box-shadow:0 35px 100px rgba(0,0,0,.3);transform:translateY(18px);transition:.3s;scrollbar-width:thin;scrollbar-color:var(--accent) #EFEBE5}
@@ -553,7 +571,8 @@ linear-gradient(168deg,#1B1310 0%,#241A18 46%,#22304A 100%)}
 .checkout-summary-list li{display:flex;justify-content:space-between;gap:14px}
 .checkout-totals{display:grid;gap:7px;padding-top:12px;border-top:1px solid var(--line);font-size:.82rem}
 .checkout-totals div{display:flex;justify-content:space-between;gap:20px}
-.checkout-totals .grand{font-size:1rem;font-weight:700}
+.checkout-totals .save{color:#2F7650;font-weight:700}
+.checkout-totals .grand{font-size:1rem;font-weight:700;padding-top:8px;border-top:1px solid var(--line)}
 .checkout-actions{display:flex;gap:10px;margin-top:18px}
 .checkout-actions .pill{flex:1;text-align:center}
 .privacy-note{margin-top:11px;color:var(--muted);font-size:.65rem;text-align:center}
@@ -600,12 +619,10 @@ linear-gradient(168deg,#1B1310 0%,#241A18 46%,#22304A 100%)}
 .face.top{transform:rotateX(90deg) translateZ(125px)!important}.face.bottom{transform:rotateX(-90deg) translateZ(125px)!important}
 .steps{grid-template-columns:1fr!important}
 .step{padding:26px 0!important;border-right:0!important;border-bottom:1px solid var(--line)}
-.reward-grid{grid-template-columns:1fr!important}
 .confidence-grid,.order-flow{grid-template-columns:1fr}
 .order-flow div{border-right:0;border-bottom:1px solid var(--line)}
 .order-flow div:last-child{border-bottom:0}
 .reviews-head{align-items:start;flex-direction:column}
-.game-card.loyalty-shell{padding:0!important}
 .checkout-panel{padding:22px 16px}
 .checkout-grid{grid-template-columns:1fr}
 .checkout-field.full{grid-column:auto}
@@ -618,7 +635,8 @@ linear-gradient(168deg,#1B1310 0%,#241A18 46%,#22304A 100%)}
 .fgrid{grid-template-columns:1fr!important;text-align:center;gap:30px}
 .fab{right:14px;bottom:14px;padding:12px 16px}
 .studio-btn{left:14px;bottom:14px;padding:10px 14px;font-size:.62rem}
-.drawer{padding:22px;max-width:100%}
+.drawer{padding:20px;max-width:100%}
+.wallet-section{padding:58px 14px}
 *{cursor:auto!important}
 .cursor,.trail-dot{display:none!important}
 }
@@ -649,21 +667,9 @@ linear-gradient(168deg,#1B1310 0%,#241A18 46%,#22304A 100%)}
 .card .pill{min-height:46px;font-size:.75rem!important}
 .cd{width:28px!important;height:28px!important}
 .pthumb{width:42px;height:42px}
-.game-section{padding:58px 14px}
-.game-card{padding:24px 16px!important;border-radius:18px}
-.reward-grid{grid-template-columns:1fr 1fr!important;gap:10px}
-.reward-card{padding:13px 10px}
-.reward-name{font-size:.86rem}
-.claim-btn{min-height:40px}
-.loyalty-dashboard,.rewards-panel{padding:24px 16px}
 .point-badge span{font-size:3rem}
-.balance-tag{font-size:.62rem;padding:8px 11px}
-.spin-wrapper{width:158px!important;height:158px!important}
-.loyalty-jump{flex-direction:column;align-items:stretch}
-.loyalty-jump p{text-align:center}
-.er-list li{padding:9px 10px;gap:9px}
-.er-list strong{font-size:.72rem}
-.er-list small{font-size:.58rem}
+.wb-worth strong{font-size:1.2rem}
+.ws-row{flex-wrap:wrap}
 .toast{bottom:82px;width:calc(100% - 28px);padding:13px 18px;font-size:.85rem}
 .fgrid{margin-top:55px}
 .trust-strip{padding:18px 0}
@@ -695,17 +701,17 @@ html{scroll-behavior:auto}
 <div id="preloader">Baéq.</div>
 <div class="toast" id="toast">Points collected!</div>
 
-<div class="strip"><div class="in"><span>Complimentary shipping over RM100 · Play the arcade, earn real points</span></div></div>
+<div class="strip"><div class="in"><span>Complimentary shipping over RM100 · 20 arcade points = RM1 off your order</span></div></div>
 
 <header class="top" id="siteHeader">
 <div class="in nav-shell">
 <a class="logo" href="#hero" aria-label="Baéq home">Baéq</a>
 <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation menu"><span></span><span></span></button>
 <nav class="primary-nav" id="primaryNav" aria-label="Primary navigation">
-<a href="#collection">Collection</a><a href="#arcade">Play &amp; Earn</a><a href="#game">Rewards</a><a href="#faq">FAQ</a><a href="#order">Contact</a>
+<a href="#collection">Collection</a><a href="#arcade">Play &amp; Earn</a><a href="#wallet">Wallet</a><a href="#faq">FAQ</a><a href="#order">Contact</a>
 </nav>
 <div class="nav-right">
-<span class="nav-points" id="navPoints" title="Baéq Circle balance">✦ <b id="navPointsVal">0</b> pts</span>
+<a class="nav-points" id="navPoints" href="#wallet" title="Your points wallet">✦ <b id="navPointsVal">0</b> pts</a>
 <button class="pill" id="cartbtn" aria-label="Open cart">Bag (<b id="cnt">0</b>)</button>
 </div>
 </div>
@@ -755,7 +761,7 @@ html{scroll-behavior:auto}
 <div class="hright" id="hright">
 <span class="cap">The Everyday Collection</span>
 <h1 id="heroTitle" style="will-change:transform;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(3rem,8vw,6rem);line-height:1.05">Inner<br><i>C</i>aps</h1>
-<p>Premium inner caps crafted from soft fabrics that absorb sweat and stay in place all day. Spin the figurine, pick a colour, play the arcade for points, then order straight through WhatsApp.</p>
+<p>Premium inner caps in soft, sweat-absorbing fabric that stays put all day. Spin the figurine, pick a colour, play the arcade — then spend your points straight on the order.</p>
 <div class="hmeta">
 <a class="pill magnetic-btn" href="#collection" style="background:var(--ink);color:var(--bg-main);border:none;padding:14px"><span>Shop the collection</span></a>
 <a class="pill magnetic-btn" href="#arcade" style="border-color:var(--gold);background:rgba(201,162,39,.14);padding:14px"><span>✦ Play &amp; earn points</span></a>
@@ -770,7 +776,7 @@ html{scroll-behavior:auto}
 <section class="trust-strip" aria-label="Shopping assurances">
 <div class="in trust-grid">
 <div class="trust-item"><strong>Breathable comfort</strong><span>Soft fabric for everyday wear</span></div>
-<div class="trust-item"><strong>Secure fit</strong><span>Designed to stay comfortably in place</span></div>
+<div class="trust-item"><strong>Points that pay</strong><span>20 points = RM1 off any order</span></div>
 <div class="trust-item"><strong>Malaysia delivery</strong><span>Peninsular, Sabah and Sarawak</span></div>
 <div class="trust-item"><strong>Personal service</strong><span>Order and enquire through WhatsApp</span></div>
 </div>
@@ -782,7 +788,7 @@ html{scroll-behavior:auto}
 <div>
 <span class="g-eye">Baéq Arcade</span>
 <h2 id="arcade-title">Match the <i>dye lot</i></h2>
-<p class="g-lede">Every Baéq colour comes from its own dye lot. Flip two cards, find the matching pair, and clear the whole lot. The faster you finish and the longer your combo, the more Baéq Circle points you earn — ready to spend on your next checkout.</p>
+<p class="g-lede">Every Baéq colour comes from its own dye lot. Flip two cards, find the matching pair, and clear the whole lot. The faster you finish and the longer your combo, the more points you earn — and those points come straight off your order total.</p>
 </div>
 <button class="g-sound" id="gSound" type="button" aria-pressed="true"><b>🔊</b><span id="gSoundTxt">Sound: On</span></button>
 </div>
@@ -809,7 +815,7 @@ html{scroll-behavior:auto}
 <h3 id="gWinTitle">Lot <i>cleared</i></h3>
 <div class="g-break" id="gBreak"></div>
 <div class="g-claim">
-<p>Points for Baéq Circle: <b id="gClaimAmt">0</b></p>
+<p>Points for your wallet: <b id="gClaimAmt">0</b> <span id="gClaimWorth" style="color:rgba(244,233,214,.6);font-size:.72rem"></span></p>
 <button class="g-big" id="gClaim" type="button">Claim points</button>
 <p class="g-note" id="gClaimNote">One claim per round · added straight to your balance.</p>
 </div>
@@ -847,7 +853,7 @@ html{scroll-behavior:auto}
 <li><em>1</em><span>Flip two cards. Matching colours stay open and score points.</span></li>
 <li><em>2</em><span>Consecutive matches build a <strong>×1 → ×5 combo</strong>. One miss resets it.</span></li>
 <li><em>3</em><span>Clear every pair. Your time decides the Gold / Silver / Bronze medal.</span></li>
-<li><em>4</em><span>Press <strong>Claim points</strong> — they land in Baéq Circle and become checkout discounts.</span></li>
+<li><em>4</em><span>Press <strong>Claim points</strong>, then open your bag and switch on <strong>Use points</strong> — the total drops instantly.</span></li>
 </ul>
 <div class="g-tiers" id="gTiers"></div>
 </div>
@@ -856,55 +862,50 @@ html{scroll-behavior:auto}
 </div>
 </section>
 
-<section class="game-section rv" id="game">
+<section class="wallet-section rv" id="wallet" aria-labelledby="wallet-title">
 <div class="in">
-<div class="game-heading">
+<div class="w-head">
+<div>
 <span class="game-eyebrow">Baéq Circle</span>
-<h2>Your <i>reward balance</i></h2>
-<p>Claim your daily bonus, play the arcade, and turn points into savings on your next order.</p>
+<h2 id="wallet-title">Your points <i>wallet</i></h2>
+<p>No coupons, no codes to copy. Points you win in the arcade become ringgit off your order. Add caps to your bag, switch on <strong>Use points</strong>, drag the slider, and the total drops before you send the order on WhatsApp.</p>
 </div>
-<div class="game-card loyalty-shell">
-<div class="loyalty-dashboard">
-<div class="loyalty-top">
+<a class="pill magnetic-btn" href="#arcade" style="border-color:var(--gold);background:rgba(201,162,39,.16);padding:14px"><span>✦ Play to earn</span></a>
+</div>
+
+<div class="wallet-shell">
+<div class="w-balance">
+<div class="wb-top">
 <div class="point-badge">Available points <span id="point-display">0</span></div>
-<div class="balance-tag">Worth up to <strong id="worthTag">RM0</strong> off</div>
+<div class="wb-worth"><small>Spending power</small><strong id="wWorth">RM0.00</strong></div>
 </div>
-<div class="loyalty-progress">
-<div class="progress-copy">
-<div><small>Next reward</small><strong id="next-reward-name">RM5 OFF</strong></div>
-<span id="points-to-next">100 points to go</span>
+<div class="wb-rate">20 points = RM1 · every point is RM0.05 off your order</div>
+<div class="wb-ladder" id="wLadder"></div>
+<div class="wb-progress">
+<div class="wp-copy"><span id="wNextLabel">Next milestone</span><strong id="wNextNeed">—</strong></div>
+<div class="wp-track"><div class="wp-fill" id="wFill"></div></div>
 </div>
-<div class="progress-track" role="progressbar" aria-label="Progress to next reward" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="reward-progress"><div class="progress-fill" id="progress-fill"></div></div>
-</div>
-<div class="earn-routes">
-<div class="er-head"><span>Ways to earn</span><strong id="erSummary">1 ready</strong></div>
+<div class="wb-earn">
+<div class="we-head"><span>Ways to earn</span><strong>Arcade open</strong></div>
 <ul class="er-list">
-<li><em>✦</em><div class="er-copy"><strong>Daily bonus</strong><small>10–100 points · once per day</small></div><span class="er-tag ready" id="erDaily">Ready</span></li>
 <li><em>🎮</em><div class="er-copy"><strong>Baéq Arcade</strong><small id="erArcade">Up to 120 points per round</small></div><button class="er-tag" type="button" id="erPlay">Play</button></li>
-<li><em>🛍️</em><div class="er-copy"><strong>Confirmed order</strong><small>Added manually after payment</small></div><span class="er-tag">Manual</span></li>
+<li><em>🛍️</em><div class="er-copy"><strong>Confirmed order</strong><small>Bonus added manually after payment</small></div><span class="er-tag">Manual</span></li>
 </ul>
 </div>
-<div class="spin-zone">
-<div class="spin-wrapper" id="spin-wrapper"><button class="spin-btn" id="spin-btn" type="button"><i>✦</i><span>Claim today</span></button></div>
-<p class="spin-status" id="spin-status">Your daily bonus is ready.</p>
 </div>
-<div class="loyalty-jump">
-<p>Want points faster? Play the <b>Baéq Arcade</b> — every cleared colour lot pays up to <b>120 points</b>.</p>
-<button type="button" id="jumpArcade">Play now</button>
-</div>
-</div>
-<div class="rewards-panel">
-<div class="rewards-head"><h3 class="rewards-title">Reward wardrobe</h3><span>Points are applied instantly<br>to your next checkout</span></div>
-<div class="reward-grid">
-<div class="reward-card" data-cost="100"><div class="reward-icon">🎟️</div><div class="reward-name">RM5 OFF</div><div class="reward-cost">100 Points</div><button class="claim-btn" type="button" data-redeem="100" data-code="RM5OFF">Redeem</button></div>
-<div class="reward-card" data-cost="150"><div class="reward-icon">🚚</div><div class="reward-name">FREE SHIP</div><div class="reward-cost">150 Points</div><button class="claim-btn" type="button" data-redeem="150" data-code="FREESHIP">Redeem</button></div>
-<div class="reward-card" data-cost="200"><div class="reward-icon">💸</div><div class="reward-name">10% OFF</div><div class="reward-cost">200 Points</div><button class="claim-btn" type="button" data-redeem="200" data-code="10OFF">Redeem</button></div>
-<div class="reward-card" data-cost="400"><div class="reward-icon">👑</div><div class="reward-name">20% OFF</div><div class="reward-cost">400 Points</div><button class="claim-btn" type="button" data-redeem="400" data-code="20OFF">Redeem</button></div>
-</div>
-<div id="claimed-code" class="claimed-code" aria-live="polite"></div>
+
+<div class="w-spend">
+<h3>How to order with points</h3>
+<ol class="ws-steps">
+<li><div><strong>Add caps to your bag</strong><span>Pick a colour on any product, then tap Add to bag.</span></div></li>
+<li><div><strong>Switch on “Use points”</strong><span>Inside your bag and at checkout. Drag the slider or tap Max — the discount and new total update live.</span></div></li>
+<li><div><strong>Send the order</strong><span>Continue to WhatsApp. Your points are only deducted when the order is actually sent, and the discount is written into the message.</span></div></li>
+</ol>
+<h3>What your points can cover</h3>
+<div class="ws-table" id="wPrices"></div>
 <div class="points-info">
-<h4>How your points work</h4>
-<p>Claim your daily bonus, play the arcade any time, and redeem a reward when your balance is ready. Order points are confirmed manually after payment. This website stores your balance on this device.</p>
+<h4>Points ledger</h4>
+<p>Everything you earn and spend is recorded here. Your balance is stored on this device.</p>
 <ul class="points-history" id="points-history" aria-label="Recent points activity"></ul>
 </div>
 </div>
@@ -926,7 +927,7 @@ html{scroll-behavior:auto}
 <section class="block" id="collection" style="background:rgba(196,201,206,.95)">
 <div class="in center rv">
 <h2>The <i>C</i>ollection</h2>
-<p>Premium and affordable inner caps. Choose a colour, then add to bag.</p>
+<p>Premium and affordable inner caps. Choose a colour, then add to bag — your points apply at checkout.</p>
 <div class="tabs" id="tabs" role="group" aria-label="Filter products"></div>
 <div class="grid" id="products"></div>
 </div>
@@ -945,7 +946,7 @@ html{scroll-behavior:auto}
 
 <section class="block confidence" id="promise">
 <div class="in rv">
-<div class="confidence-head"><span class="game-eyebrow">Customer promise</span><h2>Clear from bag<br>to <i>d</i>elivery</h2><p>Every order is reviewed personally on WhatsApp, so you can confirm the product, colour, delivery charge and payment before proceeding.</p></div>
+<div class="confidence-head"><span class="game-eyebrow">Customer promise</span><h2>Clear from bag<br>to <i>d</i>elivery</h2><p>Every order is reviewed personally on WhatsApp, so you can confirm the product, colour, points discount, delivery charge and payment before proceeding.</p></div>
 <div class="confidence-grid">
 <article class="confidence-card"><span>01</span><h3>Personal confirmation</h3><p>We check your selected items and colours before sending the final payment details.</p></article>
 <article class="confidence-card"><span>02</span><h3>Delivery across Malaysia</h3><p>Checkout separates Peninsular Malaysia and Sabah/Sarawak so the delivery estimate is clear.</p></article>
@@ -953,7 +954,7 @@ html{scroll-behavior:auto}
 </div>
 <div class="order-flow" aria-label="How ordering works">
 <div><b>1</b><strong>Build your bag</strong><p>Choose the product and colour.</p></div>
-<div><b>2</b><strong>Complete checkout</strong><p>Add delivery details and review the estimate.</p></div>
+<div><b>2</b><strong>Apply your points</strong><p>Switch on Use points and watch the total drop.</p></div>
 <div><b>3</b><strong>Confirm on WhatsApp</strong><p>Send the prepared order and receive payment details.</p></div>
 </div>
 </div>
@@ -973,10 +974,11 @@ html{scroll-behavior:auto}
 <div class="in faq rv">
 <h2>Client <i>C</i>are</h2>
 <div>
-<details><summary>How do I order?</summary><p>Tap Add to bag on a product, then Continue to checkout. WhatsApp opens with the order already written. Send it to us and we’ll confirm stock and payment.</p></details>
-<details><summary>How do arcade points work?</summary><p>Clear a colour lot in the Baéq Arcade and press Claim points. They are added to your Baéq Circle balance on this device immediately and can be redeemed for checkout rewards.</p></details>
+<details><summary>How do I order using my game points?</summary><p>Add a product to your bag, then switch on <strong>Use points</strong> in the bag or at checkout. Drag the slider or tap Max to choose how many points to spend — 20 points removes RM1. The discount and new total appear immediately and are written into the WhatsApp order message. Points are deducted only when you actually send the order.</p></details>
+<details><summary>How much is one point worth?</summary><p>One point is RM0.05. Twenty points equal RM1. You can spend points on the product subtotal, up to the full subtotal — delivery is charged separately unless your subtotal reaches RM100.</p></details>
+<details><summary>How do I earn points?</summary><p>Clear a colour lot in the Baéq Arcade and press Claim points. Faster finishes, longer combos and higher difficulty pay more — up to 120 points per round. Confirmed orders may also receive a manual bonus after payment.</p></details>
+<details><summary>Do my points expire or disappear?</summary><p>Points stay in your wallet on this device until you spend them. If you close checkout without sending the order, nothing is deducted.</p></details>
 <details><summary>How do I spin the figurine?</summary><p>Drag the figurine left or right to rotate it, scroll to zoom, and use the Look Studio rail underneath to change spin speed, lighting, glow, skin tone and more.</p></details>
-<details><summary>How do I choose a size?</summary><p>Most of our inner caps are free size and stretch. If you’re unsure, ask us on WhatsApp.</p></details>
 <details><summary>How long does delivery take?</summary><p>Usually 2 to 4 working days for Peninsular Malaysia, and 4 to 7 days for Sabah and Sarawak.</p></details>
 <details><summary>Can I exchange or return an item?</summary><p>Yes, if the item is damaged or the wrong one was sent. Contact us within 3 days of receiving it.</p></details>
 <details><summary>Which payment methods do you accept?</summary><p>Bank transfer, DuitNow and e-wallets. We’ll send the details through WhatsApp.</p></details>
@@ -1008,17 +1010,36 @@ html{scroll-behavior:auto}
 <button class="pill" id="closecart" type="button" style="padding:8px 15px;font-size:.7rem">Close</button>
 </header>
 <ul id="lines"></ul>
-<div style="padding-top:20px;display:grid;gap:15px">
-<div style="display:flex;justify-content:space-between;font-weight:600;font-size:1rem"><span>Subtotal</span><span id="tot">RM0</span></div>
-<small id="ship" style="color:var(--muted);font-size:.8rem"></small>
+<div class="drawer-foot">
+<div class="pts-spend" data-spend="bag">
+<div class="ps-head">
+<div><small>Points wallet</small><strong class="ps-balance">0 pts · RM0.00</strong></div>
+<label class="ps-toggle"><input type="checkbox" class="ps-use"><span>Use points</span></label>
+</div>
+<div class="ps-body">
+<input type="range" class="ps-range" min="0" max="0" step="5" value="0" aria-label="Points to spend">
+<div class="ps-presets">
+<button type="button" data-p="25">25%</button>
+<button type="button" data-p="50">50%</button>
+<button type="button" data-p="100">Max</button>
+<button type="button" data-p="0">Clear</button>
+</div>
+<div class="ps-line"><span class="ps-using">0 points</span><strong class="ps-off">−RM0.00</strong></div>
+</div>
+<p class="ps-empty">No points yet — clear a colour lot in the <a href="#arcade">arcade</a> to earn some.</p>
+</div>
+<div class="df-row"><span>Subtotal</span><span id="tot">RM0</span></div>
+<div class="df-row save" id="bagSaveRow" style="display:none"><span>Points discount</span><span id="bagSave">−RM0.00</span></div>
+<div class="df-row grand"><span>Total before delivery</span><span id="bagGrand">RM0</span></div>
+<small id="ship" style="color:var(--muted);font-size:.78rem"></small>
 <button class="pill" id="co" type="button" style="text-align:center;background:var(--ink);color:var(--bg-main);border:none;padding:14px"><span>Continue to checkout</span></button>
-<small style="color:var(--muted);text-align:center;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em">Review delivery details before WhatsApp</small>
+<small style="color:var(--muted);text-align:center;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em">Points are deducted only when you send the order</small>
 </div>
 </aside>
 
 <div class="checkout-modal" id="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title" aria-hidden="true">
 <div class="checkout-panel">
-<div class="checkout-head"><div><h2 id="checkout-title">Complete your order</h2><p>Review your bag and delivery estimate before continuing to WhatsApp.</p></div><button class="pill" id="checkout-close" type="button" style="padding:8px 13px">Close</button></div>
+<div class="checkout-head"><div><h2 id="checkout-title">Complete your order</h2><p>Apply your points, review the delivery estimate, then continue to WhatsApp.</p></div><button class="pill" id="checkout-close" type="button" style="padding:8px 13px">Close</button></div>
 <form id="checkout-form">
 <div class="checkout-grid">
 <div class="checkout-field"><label for="customer-name">Full name</label><input id="customer-name" name="name" autocomplete="name" required></div>
@@ -1028,9 +1049,34 @@ html{scroll-behavior:auto}
 <div class="checkout-field"><label for="customer-region">Delivery region</label><select id="customer-region" name="region" required><option value="peninsular">Peninsular Malaysia — RM8</option><option value="east">Sabah / Sarawak — RM15</option></select></div>
 <div class="checkout-field full"><label for="customer-note">Order note (optional)</label><textarea id="customer-note" name="note" placeholder="Example: Please avoid weekend delivery"></textarea></div>
 </div>
-<div class="checkout-summary"><h3>Order summary</h3><ul class="checkout-summary-list" id="checkout-lines"></ul><div class="checkout-totals"><div><span>Subtotal</span><strong id="checkout-subtotal">RM0</strong></div><div><span>Estimated delivery</span><strong id="checkout-shipping">RM0</strong></div><div><span>Reward</span><strong id="checkout-reward">None</strong></div><div class="grand"><span>Estimated total</span><strong id="checkout-total">RM0</strong></div></div></div>
-<div class="checkout-actions"><button class="pill" id="checkout-back" type="button">Back to bag</button><button class="pill" type="submit" style="background:var(--ink);color:#fff;border-color:var(--ink)">Continue to WhatsApp</button></div>
-<p class="privacy-note">Your details stay in this browser and are only included in the WhatsApp message you choose to send. Final stock, delivery and payment are confirmed on WhatsApp.</p>
+
+<div class="pts-spend" data-spend="checkout">
+<div class="ps-head">
+<div><small>Points wallet</small><strong class="ps-balance">0 pts · RM0.00</strong></div>
+<label class="ps-toggle"><input type="checkbox" class="ps-use"><span>Use points</span></label>
+</div>
+<div class="ps-body">
+<input type="range" class="ps-range" min="0" max="0" step="5" value="0" aria-label="Points to spend at checkout">
+<div class="ps-presets">
+<button type="button" data-p="25">25%</button>
+<button type="button" data-p="50">50%</button>
+<button type="button" data-p="100">Max</button>
+<button type="button" data-p="0">Clear</button>
+</div>
+<div class="ps-line"><span class="ps-using">0 points</span><strong class="ps-off">−RM0.00</strong></div>
+</div>
+<p class="ps-empty">No points yet — clear a colour lot in the <a href="#arcade">arcade</a> to earn some.</p>
+</div>
+
+<div class="checkout-summary"><h3>Order summary</h3><ul class="checkout-summary-list" id="checkout-lines"></ul>
+<div class="checkout-totals">
+<div><span>Subtotal</span><strong id="checkout-subtotal">RM0</strong></div>
+<div class="save" id="checkout-save-row" style="display:none"><span id="checkout-save-label">Points discount</span><strong id="checkout-save">−RM0.00</strong></div>
+<div><span>Estimated delivery</span><strong id="checkout-shipping">RM0</strong></div>
+<div class="grand"><span>Estimated total</span><strong id="checkout-total">RM0</strong></div>
+</div></div>
+<div class="checkout-actions"><button class="pill" id="checkout-back" type="button">Back to bag</button><button class="pill" type="submit" style="background:var(--ink);color:#fff;border-color:var(--ink)">Send order on WhatsApp</button></div>
+<p class="privacy-note">Your details stay in this browser and are only included in the WhatsApp message you choose to send. Points are deducted the moment you send. Final stock, delivery and payment are confirmed on WhatsApp.</p>
 </form>
 </div>
 </div>
@@ -1077,6 +1123,7 @@ html{scroll-behavior:auto}
 /* ═════ base ═════ */
 var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var WA="60125332101";
+var POINT_VALUE=0.05;
 var colors=[["Latte","#C9A98B"],["Cream","#E9DCC3"],["Mocha","#9A7458"],["Dusty rose","#D9B3A8"],["Sage","#B5C0A3"],["Dark brown","#6B4A38"]];
 var MIRROR_PHOTOS=["images/model-latte.jpg","images/model-cream.jpg","images/model-mocha.jpg","images/model-rose.jpg","images/model-sage.jpg","images/model-brown.jpg"];
 var PHOTOS={
@@ -1106,9 +1153,12 @@ function slug(s){return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').repla
 function resolveSrc(p){return LOCAL_PREVIEW[p]||p}
 function store(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 function read(k,f){try{var v=localStorage.getItem(k);return v===null?f:JSON.parse(v)}catch(e){return f}}
+function rm(n){return 'RM'+(Math.round(n*100)/100).toFixed(2)}
+function rmInt(n){return 'RM'+Math.round(n)}
+function ptsFor(rmVal){return Math.ceil(rmVal/POINT_VALUE)}
 function wa(t){return"https://wa.me/"+WA+"?text="+encodeURIComponent(t)}
 var toastEl=document.getElementById('toast'),toastT=0;
-function showToast(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(toastT);toastT=setTimeout(function(){toastEl.classList.remove('show')},3200)}
+function showToast(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(toastT);toastT=setTimeout(function(){toastEl.classList.remove('show')},3400)}
 (function(){
 var box=document.getElementById('particles-container'),n=reduceMotion?0:(window.innerWidth<700?12:32);
 for(var i=0;i<n;i++){var p=document.createElement('div');p.className='particle';var s=Math.random()*6+2+'px';
@@ -1116,63 +1166,60 @@ p.style.width=s;p.style.height=s;p.style.left=Math.random()*100+'vw';
 p.style.animationDuration=Math.random()*15+10+'s';p.style.animationDelay=Math.random()*10+'s';box.appendChild(p)}
 })();
 
-/* ═════ loyalty (no streak) ═════ */
+/* ═════ wallet ═════ */
 var points=parseInt(localStorage.getItem('baeq_points'))||0;
-var lastSpinDate=localStorage.getItem('baeq_last_spin')||'';
-var activeDiscount=localStorage.getItem('baeq_discount')||'';
 var pointsHistory=read('baeq_point_history',[]);
-try{localStorage.removeItem('baeq_streak')}catch(e){}
-var rewardDefinitions=[{cost:100,name:'RM5 OFF',value:5},{cost:150,name:'FREE SHIPPING',value:8},{cost:200,name:'10% OFF',value:12},{cost:400,name:'20% OFF',value:25}];
-var spinBtn=document.getElementById('spin-btn'),spinWrapper=document.getElementById('spin-wrapper'),
-pointDisplay=document.getElementById('point-display'),spinStatus=document.getElementById('spin-status'),
-nextRewardName=document.getElementById('next-reward-name'),pointsToNext=document.getElementById('points-to-next'),
-progressFill=document.getElementById('progress-fill'),rewardProgress=document.getElementById('reward-progress'),
-claimedCodeEl=document.getElementById('claimed-code'),pointsHistoryEl=document.getElementById('points-history'),
-worthTag=document.getElementById('worthTag'),erDaily=document.getElementById('erDaily'),
-erArcade=document.getElementById('erArcade'),erSummary=document.getElementById('erSummary');
-function localDateKey(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
-function normalizeStoredDate(v){if(!v)return'';if(/^\d{4}-\d{2}-\d{2}$/.test(v))return v;var p=new Date(v);return isNaN(p.getTime())?'':localDateKey(p)}
-var today=localDateKey(new Date());
-lastSpinDate=normalizeStoredDate(lastSpinDate);
+try{localStorage.removeItem('baeq_streak');localStorage.removeItem('baeq_discount');localStorage.removeItem('baeq_last_spin')}catch(e){}
+var pointDisplay=document.getElementById('point-display'),pointsHistoryEl=document.getElementById('points-history'),
+wWorth=document.getElementById('wWorth'),wLadder=document.getElementById('wLadder'),wFill=document.getElementById('wFill'),
+wNextLabel=document.getElementById('wNextLabel'),wNextNeed=document.getElementById('wNextNeed'),
+erArcade=document.getElementById('erArcade'),wPrices=document.getElementById('wPrices');
+var LADDER=[
+{p:100,i:'✦',t:'RM5 off any order',s:'2 rounds of Easy arcade'},
+{p:200,i:'✦',t:'RM10 off any order',s:'Covers a budget inner cap'},
+{p:580,i:'🧵',t:'Inner Diva fully covered',s:'RM29 premium inner cap'},
+{p:780,i:'👑',t:'Najwa Necktie fully covered',s:'RM39 signature necktie'}
+];
 function renderPointsHistory(){
-if(!pointsHistory.length){pointsHistoryEl.innerHTML='<li><small>No activity yet — claim your daily bonus or play the arcade.</small></li>';return}
+if(!pointsHistory.length){pointsHistoryEl.innerHTML='<li><small>No activity yet — clear a colour lot in the arcade to start earning.</small></li>';return}
 pointsHistoryEl.innerHTML=pointsHistory.map(function(e){
 return'<li><span>'+e.label+'<br><small>'+e.date+'</small></span><strong class="'+(e.amount>=0?'positive':'negative')+'">'+(e.amount>=0?'+':'')+e.amount+' pts</strong></li>'}).join('');
 }
 function recordPointActivity(label,amount){
 pointsHistory.unshift({label:label,amount:amount,date:new Date().toLocaleDateString('en-MY',{day:'numeric',month:'short'})});
-pointsHistory=pointsHistory.slice(0,5);store('baeq_point_history',pointsHistory);renderPointsHistory();
+pointsHistory=pointsHistory.slice(0,12);store('baeq_point_history',pointsHistory);renderPointsHistory();
 }
 function bestArcadeScore(){
 var s=read('baeq_arcade_stats',{}),b=s.best||{},top=0;
 Object.keys(b).forEach(function(k){if(b[k]&&b[k].score>top)top=b[k].score});
 return top;
 }
-function updateLoyaltyUI(){
-var claimedToday=lastSpinDate===today;
+function paintWallet(){
 pointDisplay.textContent=points;
 document.getElementById('navPointsVal').textContent=points;
-var unlocked=rewardDefinitions.filter(function(r){return points>=r.cost});
-worthTag.textContent='RM'+(unlocked.length?unlocked[unlocked.length-1].value:0);
-var next=rewardDefinitions.find(function(r){return points<r.cost});
-if(next){var rem=next.cost-points,pr=Math.min(100,Math.round(points/next.cost*100));
-nextRewardName.textContent=next.name;pointsToNext.textContent=rem+' points to go';
-progressFill.style.width=pr+'%';rewardProgress.setAttribute('aria-valuenow',String(pr));
-}else{nextRewardName.textContent='Top reward ready';pointsToNext.textContent='Choose your reward';
-progressFill.style.width='100%';rewardProgress.setAttribute('aria-valuenow','100')}
-document.querySelectorAll('.reward-card[data-cost]').forEach(function(card){
-var cost=Number(card.dataset.cost),ok=points>=cost,b=card.querySelector('.claim-btn');
-card.classList.toggle('unlocked',ok);
-b.textContent=ok?'Redeem now':(cost-points)+' pts to go';
-});
-spinBtn.disabled=claimedToday;
-spinBtn.innerHTML=claimedToday?'<i>✓</i><span>Claimed</span>':'<i>✦</i><span>Claim today</span>';
-spinStatus.textContent=claimedToday?'Today’s bonus is safely in your balance. Come back tomorrow.':'Your daily bonus is ready. One claim per day.';
-erDaily.textContent=claimedToday?'Claimed':'Ready';
-erDaily.className='er-tag '+(claimedToday?'done':'ready');
+wWorth.textContent=rm(points*POINT_VALUE);
+wLadder.innerHTML=LADDER.map(function(l){
+var ok=points>=l.p;
+return '<div class="wl-row'+(ok?' on':'')+'"><em>'+l.i+'</em><div class="wl-copy"><strong>'+l.t+'</strong><small>'+l.s+'</small></div><b>'+(ok?'Unlocked':l.p+' pts')+'</b></div>';
+}).join('');
+var next=LADDER.find(function(l){return points<l.p});
+if(next){
+wNextLabel.textContent='Next: '+next.t;
+wNextNeed.textContent=(next.p-points)+' pts to go';
+wFill.style.width=Math.min(100,Math.round(points/next.p*100))+'%';
+}else{
+wNextLabel.textContent='Every reward unlocked';
+wNextNeed.textContent='Spend them in your bag';
+wFill.style.width='100%';
+}
 var bs=bestArcadeScore();
 erArcade.textContent=bs?('Best score '+bs+' · up to 120 points per round'):'Up to 120 points per round';
-erSummary.textContent=claimedToday?'Arcade open':'1 ready';
+wPrices.innerHTML=items.map(function(p,i){
+var price=parseInt(p[2].slice(2),10),need=ptsFor(price),ok=points>=need;
+return '<div class="ws-row"><span class="ws-sw" style="background:'+colors[i%colors.length][1]+'"></span>'+
+'<div class="ws-copy"><strong>'+p[0]+'</strong><small>'+p[2]+' · '+(ok?'your wallet covers this':'need '+(need-points)+' more points')+'</small></div>'+
+'<b>'+need+' pts</b><button type="button" data-goto="'+i+'">View</button></div>';
+}).join('');
 renderPointsHistory();
 }
 function animatePoints(from,to){
@@ -1180,12 +1227,13 @@ var started=performance.now();pointDisplay.classList.add('point-pop');
 function fr(now){var p=Math.min((now-started)/650,1),e=1-Math.pow(1-p,3);
 var v=Math.round(from+(to-from)*e);pointDisplay.textContent=v;
 document.getElementById('navPointsVal').textContent=v;
+wWorth.textContent=rm(v*POINT_VALUE);
 if(p<1)requestAnimationFrame(fr);else setTimeout(function(){pointDisplay.classList.remove('point-pop')},120)}
 requestAnimationFrame(fr);
 }
 function celebratePoints(){
 if(reduceMotion)return;
-var host=document.querySelector('.loyalty-shell');if(!host)return;
+var host=document.querySelector('.wallet-shell');if(!host)return;
 var cols=['#d9bd9b','#ffffff','#8a7b6b','#c4c9ce','#E8B23C'];
 for(var i=0;i<22;i++){var p=document.createElement('span');p.className='confetti-piece';
 p.style.background=cols[i%cols.length];
@@ -1194,45 +1242,19 @@ p.style.setProperty('--y',(Math.random()*-240-40)+'px');
 p.style.setProperty('--r',(Math.random()*540-270)+'deg');
 host.appendChild(p);setTimeout((function(el){return function(){el.remove()}})(p),950)}
 }
-spinBtn.addEventListener('click',function(){
-if(lastSpinDate===today)return;
-spinBtn.disabled=true;spinWrapper.classList.add('spinning');
-spinBtn.innerHTML='<i>✦</i><span>Finding points</span>';
-spinStatus.textContent='Opening today’s Baéq bonus…';
-var count=0,iv=setInterval(function(){
-count++;var sp=spinBtn.querySelector('span');if(sp)sp.textContent='Finding points'+'.'.repeat((count%3)+1);
-if(count>9){clearInterval(iv);spinWrapper.classList.remove('spinning');
-var pool=[10,20,20,30,30,50,100],earned=pool[Math.floor(Math.random()*pool.length)],old=points;
-points+=earned;lastSpinDate=today;
-localStorage.setItem('baeq_points',points);localStorage.setItem('baeq_last_spin',today);
-recordPointActivity('Daily bonus',earned);
-animatePoints(old,points);updateLoyaltyUI();celebratePoints();
-showToast('+'+earned+' points added to your Baéq Circle')}
-},90);
+function updateLoyaltyUI(){paintWallet();paintSpend()}
+wPrices.addEventListener('click',function(e){
+var b=e.target.closest('[data-goto]');if(!b)return;
+cat='All';document.querySelectorAll('.tabs .pill').forEach(function(x,i){x.setAttribute('aria-pressed',i===0)});
+renderProducts();
+var idx=+b.dataset.goto,name=items[idx][0];
+var card=document.querySelector('.card[data-name="'+name.replace(/"/g,'\\"')+'"]');
+var target=document.getElementById('collection');
+if(target)target.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});
+if(card){setTimeout(function(){card.classList.add('flash');setTimeout(function(){card.classList.remove('flash')},1700)},reduceMotion?0:520)}
 });
-function claimReward(cost,prefix){
-if(points>=cost){
-points-=cost;localStorage.setItem('baeq_points',points);
-recordPointActivity('Redeemed '+prefix,-cost);
-var code=prefix+'-'+String(Math.floor(Math.random()*10000)).padStart(4,'0');
-activeDiscount=code;localStorage.setItem('baeq_discount',code);
-claimedCodeEl.innerHTML='<div><small>Active checkout reward</small><strong>'+code+'</strong></div><span>Applied</span>';
-claimedCodeEl.classList.add('show');
-updateLoyaltyUI();celebratePoints();showToast('Reward unlocked and added to checkout');
-}else{
-var card=document.querySelector('.reward-card[data-cost="'+cost+'"]');
-if(card&&card.animate)card.animate([{transform:'translateX(0)'},{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(0)'}],{duration:280});
-showToast((cost-points)+' more points needed — play the arcade to earn more');
-}
-}
-document.querySelectorAll('[data-redeem]').forEach(function(b){
-b.addEventListener('click',function(){claimReward(Number(b.dataset.redeem),b.dataset.code)});
-});
-if(activeDiscount){claimedCodeEl.innerHTML='<div><small>Active checkout reward</small><strong>'+activeDiscount+'</strong></div><span>Applied</span>';claimedCodeEl.classList.add('show')}
 function goArcade(){document.getElementById('arcade').scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'})}
-document.getElementById('jumpArcade').addEventListener('click',goArcade);
 document.getElementById('erPlay').addEventListener('click',goArcade);
-updateLoyaltyUI();
 
 /* ═════ cursor / nav / scroll ═════ */
 (function(){
@@ -1437,10 +1459,11 @@ function renderProducts(){
 document.getElementById('products').innerHTML=items.filter(function(p){return cat==='All'||p[3]===cat}).map(function(p){
 var idx=items.indexOf(p),si=sel['i'+idx],col=si==null?'#EBE6DC':colors[si][1],cn=si==null?'':colors[si][0];
 var tag=p[3]==='Mampu Milik'?'Budget':'Premium';
+var price=parseInt(p[2].slice(2),10);
 return '<article class="card" data-cat="'+p[3]+'" data-name="'+p[0]+'"><div class="pmedia">'+mediaBlock(p[0],col,p[3],cn)+
 '</div><span style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600">'+tag+
 '</span><h3>'+p[0]+'</h3><p>'+p[1]+'</p><span class="price">'+p[2]+
-'</span><div class="product-specs"><div class="product-spec"><small>Fabric</small><strong>'+p[4]+
+'</span><span class="pts-price">✦ '+ptsFor(price)+' pts covers it</span><div class="product-specs"><div class="product-spec"><small>Fabric</small><strong>'+p[4]+
 '</strong></div><div class="product-spec"><small>Size</small><strong>'+p[5]+
 '</strong></div></div><details class="product-details"><summary>Product details</summary><ul><li>'+p[7]+
 '</li><li>Care: '+p[6]+'</li><li>Colour selected before adding to bag</li></ul></details><span class="stock-note">Available to order</span>'+
@@ -2099,11 +2122,71 @@ a.style.opacity=String(1-k);b.style.opacity=String(k);
 }
 requestAnimationFrame(mirrorLoop);
 
-/* ═════ cart & checkout ═════ */
+/* ═════ cart · points · checkout ═════ */
 var cart=[],checkoutModal=document.getElementById('checkout-modal'),
 checkoutForm=document.getElementById('checkout-form'),checkoutRegion=document.getElementById('customer-region');
+var redeemOn=false,redeemPts=0;
+var spendRoots=[].slice.call(document.querySelectorAll('[data-spend]')).map(function(root){
+return {root:root,use:root.querySelector('.ps-use'),range:root.querySelector('.ps-range'),
+body:root.querySelector('.ps-body'),bal:root.querySelector('.ps-balance'),using:root.querySelector('.ps-using'),
+off:root.querySelector('.ps-off'),empty:root.querySelector('.ps-empty'),toggle:root.querySelector('.ps-toggle')};
+});
 function cartSubtotal(){return cart.reduce(function(t,l){return t+l.p*l.q},0)}
 function deliveryFee(sub,region){if(sub>=100)return 0;return region==='east'?15:8}
+function maxRedeemPts(){return Math.max(0,Math.min(points,Math.floor(cartSubtotal()/POINT_VALUE)))}
+function discountRM(){return Math.round(redeemPts*POINT_VALUE*100)/100}
+function clampRedeem(){
+var max=maxRedeemPts();
+if(redeemPts>max)redeemPts=max;
+if(max<=0){redeemOn=false;redeemPts=0}
+if(redeemPts<=0)redeemOn=false;
+}
+function paintSpend(){
+clampRedeem();
+var max=maxRedeemPts(),off=discountRM(),hasPoints=points>0,canUse=max>0;
+spendRoots.forEach(function(s){
+s.bal.textContent=points+' pts · '+rm(points*POINT_VALUE);
+s.use.checked=redeemOn;
+s.use.disabled=!canUse;
+s.toggle.classList.toggle('on',redeemOn);
+s.body.classList.toggle('on',redeemOn&&canUse);
+s.range.max=String(max);
+s.range.value=String(redeemPts);
+s.range.disabled=!canUse;
+s.using.textContent=redeemPts+' points applied';
+s.off.textContent='−'+rm(off);
+if(!hasPoints){s.empty.style.display='block';s.empty.innerHTML='No points yet — clear a colour lot in the <a href="#arcade">arcade</a> to earn some.'}
+else if(!canUse){s.empty.style.display='block';s.empty.innerHTML='Add a product to your bag to spend your '+points+' points.'}
+else{s.empty.style.display='block';s.empty.innerHTML='You can spend up to <strong>'+max+' points</strong> ('+rm(max*POINT_VALUE)+') on this bag. 20 points = RM1.'}
+});
+var sub=cartSubtotal();
+document.getElementById('bagSaveRow').style.display=off>0?'flex':'none';
+document.getElementById('bagSave').textContent='−'+rm(off);
+document.getElementById('bagGrand').textContent=rm(Math.max(0,sub-off));
+}
+spendRoots.forEach(function(s){
+s.use.addEventListener('change',function(){
+if(s.use.checked){var max=maxRedeemPts();if(max<=0){s.use.checked=false;showToast('Add a product to your bag first');return}
+redeemOn=true;redeemPts=max;showToast(max+' points applied · '+rm(max*POINT_VALUE)+' off');}
+else{redeemOn=false;redeemPts=0}
+paintSpend();renderCheckout();
+});
+s.range.addEventListener('input',function(){
+redeemPts=Math.min(maxRedeemPts(),Math.max(0,parseInt(s.range.value,10)||0));
+redeemOn=redeemPts>0;
+paintSpend();renderCheckout();
+});
+s.root.querySelector('.ps-presets').addEventListener('click',function(e){
+var b=e.target.closest('button[data-p]');if(!b)return;
+var max=maxRedeemPts();if(max<=0){showToast('Add a product to your bag first');return}
+var pct=parseInt(b.dataset.p,10);
+redeemPts=Math.round(max*pct/100);
+if(pct===100)redeemPts=max;
+redeemOn=redeemPts>0;
+paintSpend();renderCheckout();
+if(redeemPts>0)showToast(redeemPts+' points applied · '+rm(discountRM())+' off');
+});
+});
 function renderCart(){
 var n=0,t=0;
 var h=cart.map(function(l,k){n+=l.q;t+=l.q*l.p;
@@ -2112,27 +2195,31 @@ return '<li><div><strong style="font-size:.95rem;font-family:\'Inter Tight\'">'+
 '<button type="button" data-k="'+k+'" data-d="-1" aria-label="Decrease" style="width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:none;color:inherit;cursor:pointer;font:inherit">−</button>'+
 '<span style="font-weight:600;font-size:.9rem">'+l.q+'</span>'+
 '<button type="button" data-k="'+k+'" data-d="1" aria-label="Increase" style="width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:none;color:inherit;cursor:pointer;font:inherit">+</button></div></li>'}).join('');
-document.getElementById('lines').innerHTML=h||'<li style="color:var(--muted);text-align:center;padding:40px 0;font-size:.9rem;display:block">Your bag is empty.</li>';
+document.getElementById('lines').innerHTML=h||'<li style="color:var(--muted);text-align:center;padding:36px 0;font-size:.9rem;display:block;border:0">Your bag is empty.</li>';
 document.getElementById('cnt').textContent=n;
-document.getElementById('tot').textContent='RM'+t;
-document.getElementById('ship').textContent=!n?'':(t>=100?'Complimentary shipping applied':'Add RM'+(100-t)+' more for complimentary shipping');
+document.getElementById('tot').textContent=rmInt(t);
+document.getElementById('ship').textContent=!n?'':(t>=100?'Complimentary shipping applied':'Add '+rmInt(100-t)+' more for complimentary shipping');
 document.getElementById('co').style.display=n?'block':'none';
+paintSpend();
 }
 function openCart(o){document.body.classList.toggle('open',o)}
 function renderCheckout(){
-var sub=cartSubtotal(),ship=deliveryFee(sub,checkoutRegion.value);
+var sub=cartSubtotal(),ship=deliveryFee(sub,checkoutRegion.value),off=discountRM();
+off=Math.min(off,sub);
 document.getElementById('checkout-lines').innerHTML=cart.map(function(l){
-return '<li><span>'+l.q+' × '+l.n+' — '+l.c+'</span><strong>RM'+(l.q*l.p)+'</strong></li>'}).join('');
-document.getElementById('checkout-subtotal').textContent='RM'+sub;
-document.getElementById('checkout-shipping').textContent=ship?'RM'+ship:'Complimentary';
-document.getElementById('checkout-reward').textContent=activeDiscount||'None selected';
-document.getElementById('checkout-total').textContent='RM'+(sub+ship);
+return '<li><span>'+l.q+' × '+l.n+' — '+l.c+'</span><strong>'+rmInt(l.q*l.p)+'</strong></li>'}).join('');
+document.getElementById('checkout-subtotal').textContent=rmInt(sub);
+document.getElementById('checkout-save-row').style.display=off>0?'flex':'none';
+document.getElementById('checkout-save-label').textContent='Points discount · '+redeemPts+' pts';
+document.getElementById('checkout-save').textContent='−'+rm(off);
+document.getElementById('checkout-shipping').textContent=ship?rmInt(ship):'Complimentary';
+document.getElementById('checkout-total').textContent=rm(Math.max(0,sub-off)+ship);
 }
 function openCheckout(show){
 if(show&&!cart.length)return;
 checkoutModal.classList.toggle('show',show);
 checkoutModal.setAttribute('aria-hidden',show?'false':'true');
-if(show){openCart(false);renderCheckout();setTimeout(function(){document.getElementById('customer-name').focus()},100)}
+if(show){openCart(false);paintSpend();renderCheckout();setTimeout(function(){document.getElementById('customer-name').focus()},100)}
 }
 document.addEventListener('click',function(e){
 var a=e.target.closest('.add'),d=e.target.closest('[data-d]');
@@ -2141,9 +2228,10 @@ var p=items[a.dataset.i],ci=sel['i'+a.dataset.i];
 if(ci==null){var n=a.closest('article').querySelector('.cn');n.textContent='Please choose a colour first';n.style.color='#C4553D';return}
 var cn=colors[ci][0],f=cart.find(function(l){return l.n===p[0]&&l.c===cn});
 if(f)f.q++;else cart.push({n:p[0],c:cn,p:parseInt(p[2].slice(2),10),q:1});
-renderCart();openCart(true);
+renderCart();renderCheckout();openCart(true);
+if(points>0)showToast('Added · you have '+points+' points to spend');
 }
-if(d){var l=cart[d.dataset.k];if(!l)return;l.q+=parseInt(d.dataset.d,10);if(l.q<1)cart.splice(d.dataset.k,1);renderCart()}
+if(d){var l=cart[d.dataset.k];if(!l)return;l.q+=parseInt(d.dataset.d,10);if(l.q<1)cart.splice(d.dataset.k,1);renderCart();renderCheckout()}
 });
 document.getElementById('cartbtn').onclick=function(){openCart(true)};
 document.getElementById('closecart').onclick=document.getElementById('scrim').onclick=function(){openCart(false)};
@@ -2155,16 +2243,20 @@ checkoutModal.addEventListener('click',function(e){if(e.target===checkoutModal)o
 checkoutForm.addEventListener('submit',function(e){
 e.preventDefault();
 if(!checkoutForm.reportValidity())return;
+if(!cart.length){showToast('Your bag is empty');return}
 var data=new FormData(checkoutForm),sub=cartSubtotal(),ship=deliveryFee(sub,data.get('region'));
+clampRedeem();
+var used=redeemOn?redeemPts:0,off=Math.min(discountRM(),sub);
+var total=Math.max(0,sub-off)+ship;
 var ref='BQ-'+new Date().toISOString().slice(0,10).replace(/-/g,'')+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
 var lines=cart.map(function(l){return l.q+' x '+l.n+' ('+l.c+') - RM'+(l.q*l.p)}).join('\n');
 var region=data.get('region')==='east'?'Sabah / Sarawak':'Peninsular Malaysia';
 var msg='Hi Baéq, I would like to confirm this order.\n\n'+
 '*Order reference: '+ref+'*\n'+lines+'\n\n'+
-'Subtotal: RM'+sub+'\n'+
-'Estimated delivery: '+(ship?'RM'+ship:'Complimentary')+'\n'+
-'Estimated total: RM'+(sub+ship)+'\n'+
-(activeDiscount?'Reward code: '+activeDiscount+'\n':'')+
+'Subtotal: '+rmInt(sub)+'\n'+
+(used>0?('Points redeemed: '+used+' pts (-'+rm(off)+')\n'):'')+
+'Estimated delivery: '+(ship?rmInt(ship):'Complimentary')+'\n'+
+'*Total to pay: '+rm(total)+'*\n'+
 '\n*Customer details*\n'+
 'Name: '+data.get('name')+'\n'+
 'Phone: '+data.get('phone')+'\n'+
@@ -2173,16 +2265,26 @@ var msg='Hi Baéq, I would like to confirm this order.\n\n'+
 'Region: '+region+'\n'+
 (data.get('note')?'Note: '+data.get('note')+'\n':'')+
 '\nPlease confirm stock, final delivery charge and payment details.';
+var old=points;
+if(used>0){
+points=Math.max(0,points-used);
+localStorage.setItem('baeq_points',points);
+recordPointActivity('Spent on order '+ref,-used);
+}
 var saved=read('baeq_orders',[]);
-saved.unshift({reference:ref,total:sub+ship,created:new Date().toISOString(),status:'Pending WhatsApp confirmation'});
+saved.unshift({reference:ref,subtotal:sub,pointsUsed:used,discount:off,total:total,created:new Date().toISOString(),status:'Pending WhatsApp confirmation'});
 store('baeq_orders',saved.slice(0,10));
 window.open(wa(msg),'_blank','noopener');
-showToast('Order '+ref+' prepared for WhatsApp');
+redeemOn=false;redeemPts=0;cart=[];
+renderCart();paintWallet();renderCheckout();
+openCheckout(false);openCart(false);
+if(used>0){animatePoints(old,points);showToast('Order '+ref+' sent · '+used+' points redeemed, '+rm(off)+' off')}
+else showToast('Order '+ref+' prepared for WhatsApp');
 });
 var msgLink=wa("Hi, I’d like to enquire about your inner caps.");
 document.getElementById('wa').href=msgLink;document.getElementById('fab').href=msgLink;
 document.getElementById('yr').textContent=new Date().getFullYear();
-renderCart();
+renderCart();paintWallet();
 
 /* ═════ image setup ═════ */
 var studio=document.getElementById('studio'),studioList=document.getElementById('studioList'),
@@ -2265,7 +2367,7 @@ if(e.key==='Escape'){openCart(false);openCheckout(false);closeMenu();closeStudio
 });
 
 /* ═════ reveal & tilt ═════ */
-document.querySelectorAll('.cells > div, .step, .reward-card').forEach(function(el,i){el.style.setProperty('--reveal-delay',Math.min(i*70,280)+'ms')});
+document.querySelectorAll('.cells > div, .step, .confidence-card').forEach(function(el,i){el.style.setProperty('--reveal-delay',Math.min(i*70,280)+'ms')});
 if('IntersectionObserver' in window){
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.04,rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
@@ -2419,10 +2521,11 @@ $('gBreak').innerHTML=
 '<div><span>Flawless bonus</span><span>+'+pb+'</span></div>'+
 '<div class="total"><span>Total score</span><b>'+score+'</b></div>';
 $('gClaimAmt').textContent=earnedPts;
+$('gClaimWorth').textContent='· worth '+rm(earnedPts*POINT_VALUE)+' off your order';
 btnClaim.disabled=false;btnClaim.textContent='Claim '+earnedPts+' points';btnClaim.dataset.pts=earnedPts;
-$('gClaimNote').textContent='One claim per round · added straight to your balance.';
+$('gClaimNote').textContent='One claim per round · added straight to your wallet.';
 claimed=false;win.classList.add('on');
-paintHUD();paintRail();updateLoyaltyUI();
+paintHUD();paintRail();paintWallet();
 var w=fx.getBoundingClientRect();
 burst(w.width/2,w.height*.4,['#E8B23C','#F4E9D6','#B5C0A3','#D9B3A8','#7FB069'],30);
 Snd.win();
@@ -2504,16 +2607,16 @@ showToast(diff.label+' mode · '+diff.pairs+' pairs');
 btnClaim.onclick=function(){
 if(claimed)return;
 var pts=Number(btnClaim.dataset.pts)||0;if(pts<=0)return;
-claimed=true;btnClaim.disabled=true;btnClaim.textContent='✓ Points claimed';
+claimed=true;btnClaim.disabled=true;btnClaim.textContent='✓ Added to wallet';
 var old=points;points+=pts;
 localStorage.setItem('baeq_points',points);
 recordPointActivity('Arcade · '+diff.label+' '+score+' score',pts);
 stats.earned+=pts;
 if(stats.earned>=500)award('haul');
 store('baeq_arcade_stats',stats);
-animatePoints(old,points);updateLoyaltyUI();celebratePoints();paintRail();
-$('gClaimNote').textContent='Your balance is now '+points+' points. Spend it in Baéq Circle for a checkout discount.';
-Snd.claim();showToast('+'+pts+' points added to Baéq Circle!');
+animatePoints(old,points);paintWallet();paintSpend();celebratePoints();paintRail();
+$('gClaimNote').textContent='Wallet now '+points+' points ('+rm(points*POINT_VALUE)+'). Open your bag and switch on Use points.';
+Snd.claim();showToast('+'+pts+' points · '+rm(pts*POINT_VALUE)+' off your next order');
 var w=fx.getBoundingClientRect();burst(w.width/2,w.height*.55,['#E8B23C','#F4E9D6','#7FB069'],22);
 };
 if('IntersectionObserver' in window){
